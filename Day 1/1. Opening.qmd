@@ -1,0 +1,39 @@
+---
+title: "Welcome" 
+subtitle: ""
+author: "Alex van Vorstenbosch"
+footer: "ChatGPT for Data Science"
+title-slide-attributes:
+  data-background-image: "./figures/ds-with-llm.png"
+  data-background-opacity: "0.5"
+  data-background-size: cover
+institute: "Erasmus Q-intelligence "
+date: "11-17-2023"
+format:
+    revealjs:
+        slide-number: true
+        chalkboard: 
+            buttons: false
+        preview-links: auto 
+        theme: night 
+
+css: style.scss
+execute:
+    warning: false
+    error: false
+---
+
+## About me
+:::: {.columns}
+
+::: {.column width="50%"}
+- Alex van Vorstenbosch
+- Data Scientist, NZa
+- PhD candidate, Tilburg University
+- NLP-enthousiast
+:::
+
+::: {.column width="40%"}
+![](figures/that's-me.jpg)
+:::
+:::
