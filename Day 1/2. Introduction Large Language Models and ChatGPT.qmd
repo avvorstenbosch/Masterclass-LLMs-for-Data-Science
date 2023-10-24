@@ -1,0 +1,71 @@
+---
+title: "Introduction Large Language Models and ChatGPT" 
+subtitle: ""
+author: "Alex van Vorstenbosch"
+footer: "LLMs and ChatGPT"
+title-slide-attributes:
+  data-background-image: "./figures/LLMs-and-chatgpt.png"
+  data-background-opacity: "0.5"
+  data-background-size: cover
+institute: "Erasmus Q-intelligence "
+date: "11-17-2023"
+format:
+    revealjs:
+        width: 1600
+        height: 1000
+        slide-number: true
+        chalkboard: 
+            buttons: false
+        preview-links: true 
+        theme: night 
+        scrollable: false
+execute:
+    warning: false
+    error: false
+---
+
+## What is ChatGPT?
+
+## Overview
+
+## Next-word prediction machine
+- Similair to what you have in your phone
+
+## But very powerfull with many strong properties:
+- Understand language conventions (syntax, grammer, etc.)
+- Can answer questions (Have internal knowledge, )
+- Can code
+- Can write just like humans, and in specific styles
+- Can do some basic arithmatic
+- Can understand sentiment, style, etc.
+- Can do logical reasoning (too some extent)
+
+## Large language models imply the existence of small language models
+
+
+## A brief history of NLP
+- Classic ML: Bag-of-Words, TF-IDF etc.
+- Word2Vec - Neural Informative Representations
+- Transformers - Context based representations
+- GPT2 Keep scaling this up
+- Scaling laws --> Large language models i.e. GTP3
+- `emergent` properties
+- Instruction-tuning and RLHF --> ChatGPT
+
+## How does a LLM work
+- Training:
+    - Pretraining
+    - Finetuning
+    - RLHF
+
+- Processing data:
+    - BPE-tokenizer
+    - Embeddings
+    - (Self-)Attention Mechanism 
+    - output softmax predictions (with temperature)
+
+# Strenghts of LLMs
+
+# Weaknesses of LLMs
+
+# How you should not think of ChatGPT
