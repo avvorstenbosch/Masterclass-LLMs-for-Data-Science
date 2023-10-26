@@ -19,6 +19,8 @@ format:
         preview-links: true 
         theme: night 
         scrollable: false
+        css: style.scss
+
 execute:
     warning: false
     error: false
