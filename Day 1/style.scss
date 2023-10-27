@@ -22,6 +22,36 @@ $presentation-h2-font-size: 1.4em;
   top: -200px;
 }
 
+/*-- slide titels --*/
 h1.title {
   font-size: 180px; !important
+}
+
+/*-- highlighted text in slides
+ example: 
+ <span class="highlighted-text">Introduction</span>
+--*/
+.highlighted-text {
+  color: #f7c420;
+  font-weight: bold;
+  padding: 2px 5px;
+}
+
+.iframe-chatgpt {
+  height: 650px;
+  width: 500px;
+  border: 0;
+  background-color: antiquewhite;
+  border-radius: 12px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;  /* This ensures the iframe behaves like a block element */
+}
+
+.full-bg-slide {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100vw; /* ensures the slide takes the full width of the viewport */
+  height: 100vh; 
 }

@@ -1,5 +1,5 @@
 ---
-title: "Introduction Large Language Models and ChatGPT" 
+title: "Introduction to Large Language Models and ChatGPT" 
 subtitle: ""
 author: "Alex van Vorstenbosch"
 footer: "LLMs and ChatGPT"
@@ -11,6 +11,7 @@ institute: "Erasmus Q-intelligence "
 date: "11-17-2023"
 format:
     revealjs:
+        auto-fit: true
         width: 1600
         height: 1000
         slide-number: true
@@ -19,18 +20,65 @@ format:
         preview-links: true 
         theme: night 
         scrollable: false
+        css: style.scss
 execute:
     warning: false
     error: false
 ---
 
-## What is ChatGPT?
+# What is ChatGPT?
+:::: {.columns}
+
+::: {.column width="60%"}
+- A Large Language model trained on enormous amounts of data:
+    - Which was instruction tuned
+    - Which was finetuned with RLHF
+- Which resulted in:
+    - *Extremely* impressive Chatbot capabilities
+    - *Much* better interaction and
+    - *Much* better language understanding while also 
+    - *Accessible* to use for **Anybody**
+:::
+::: {.column width="40%"}
+<iframe src="https://chat.openai.com/share/7c278d44-48bd-47c7-8523-ce080b4d4ee1" class="iframe-chatgpt"></iframe>
+:::
+:::
 
 ## Overview
+- A brief history of LLMs
+- Capabilities of ChatGPT
+- Real-world applications of ChatGPT
+
+## Overview
+- <span class="highlighted-text">A brief history of LLMs</span>
+- Capabilities of ChatGPT
+- Real-world applications of ChatGPT
+
+# A brief history of LLMs
+## Next-word prediction machine
+$$P(token_n|token_{n-1}, \cdots, token_1)$$
+
+A token: *a single character, a combination of characters, or a word*
 
 ## Next-word prediction machine
-- Similair to what you have in your phone
+$$P(token_n|token_{n-1}, \cdots, token_1)$$
 
+This is nothing new, your phone does something similair: 
+![Whatsapp showing predictions for the phrase: Hi! What is the plan for.](./figures/text-prediction-whatsapp.png){fig-align=center}
+
+## {.full-bg-slide background-image="./figures/slide-chatpgtinternals.png"}
+
+## Overview
+- <span class="highlighted-text">A brief history of LLMs</span>
+- Capabilities of ChatGPT
+- Real-world applications of ChatGPT
+
+## Overview
+- A brief history of LLMs
+- <span class="highlighted-text">Capabilities of ChatGPT</span>
+- Real-world applications of ChatGPT
+
+# Capabilities of ChatGPT
 ## But very powerfull with many strong properties:
 - Understand language conventions (syntax, grammer, etc.)
 - Can answer questions (Have internal knowledge, )
@@ -64,8 +112,20 @@ execute:
     - (Self-)Attention Mechanism 
     - output softmax predictions (with temperature)
 
-# Strenghts of LLMs
+## Strenghts of LLMs
 
-# Weaknesses of LLMs
+## Weaknesses of LLMs
 
-# How you should not think of ChatGPT
+## How you should not think of ChatGPT
+
+## Overview
+- A brief history of LLMs
+- <span class="highlighted-text">Capabilities of ChatGPT</span>
+- Real-world applications of ChatGPT
+
+## Overview
+- A brief history of LLMs
+- Capabilities of ChatGPT
+- <span class="highlighted-text">Real-world applications of ChatGPT </span>
+
+# Real world applications of ChatGPT
