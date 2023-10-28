@@ -64,9 +64,254 @@ A token: *a single character, a combination of characters, or a word*
 $$P(token_n|token_{n-1}, \cdots, token_1)$$
 
 This is nothing new, your phone does something similair: 
-![Whatsapp showing predictions for the phrase: Hi! What is the plan for.](./figures/text-prediction-whatsapp.png){fig-align=center}
+
+![](./figures/text-prediction-whatsapp.png){fig-align="center"}
 
 ## {.full-bg-slide background-image="./figures/slide-chatpgtinternals.png"}
+
+## Byte-Pair Encoding Tokenizer
+- Easy algorithm to *compress* text into most common elements
+- [Flying, Trying, Sky, Cry, Sly] --> "F, L, Y, I, N, G, T, R, K, C, S"
+- "F, L, Y, I, N, G, T, R, K, C, S, **IN**"
+- "F, L, Y, I, N, G, T, R, K, C, S, IN, **LY**"
+- "F, L, Y, I, N, G, T, R, K, C, S, IN, LY, **RY**"
+- "F, L, Y, I, N, G, T, R, K, C, S, IN, LY, RY, **ING**"
+- etc...
+
+## Byte-Pair Encoding Tokenizer
+- Able to:
+    - encode you whole vocabulary per definition
+    - Chose precize size you want for your model
+    - Assign tokens to most *important* parts of vocabulary
+- This does mean that English gets more tokens than Dutch:
+
+:::{.columns}
+:::{.column width="50%"}
+![](./figures/tokenizer-dutch.png)
+:::
+
+:::{.column width="50%"}
+![](./figures/tokenizer-english.png)
+
+:::
+:::
+
+- [Try it Yourself](https://platform.openai.com/tokenizer)
+
+## One-hot Encoding {.smaller}
+
+:::{data-id="words"}
+$$
+\begin{array}{c@{\hspace{0.3cm}}c@{\hspace{0.3cm}}c@{\hspace{0.3cm}}c@{\hspace{0.3cm}}c}
+\text{A} & \text{dry} & \text{well!} & \text{Well} & \text{done!} \\
+\begin{pmatrix}
+1\\
+0\\
+0\\
+0
+\end{pmatrix} & \begin{pmatrix}
+0\\
+1\\
+0\\
+0
+\end{pmatrix} & \begin{pmatrix}
+0\\
+0\\
+1\\
+0
+\end{pmatrix} & \begin{pmatrix}
+0\\
+0\\
+1\\
+0
+\end{pmatrix} & \begin{pmatrix}
+0\\
+0\\
+0\\
+1
+\end{pmatrix}
+\end{array}
+$$
+:::
+:::{.incremental}
+- Sparse vector of the vocabulary dimension
+- 3 out of 4 numbers are uninformative
+- 'Expensive' for large corpus of text
+- Can we do better?
+:::
+
+## Word embeddings{.smaller}
+
+:::{data-id="words"}
+$$
+\begin{array}{c@{\hspace{0.3cm}}c@{\hspace{0.3cm}}c@{\hspace{0.3cm}}c@{\hspace{0.3cm}}c}
+\text{A} & \text{dry} & \text{well!} & \text{Well} & \text{done!} \\
+\begin{pmatrix}
+\phantom{-}0.33\\
+-0.51\\
+\phantom{-}0.83\\
+\phantom{-}0.12
+\end{pmatrix} & \begin{pmatrix}
+\phantom{-}0.97\\
+-0.15\\
+-0.11\\
+\phantom{-}0.85
+\end{pmatrix} & \begin{pmatrix}
+\phantom{-}0.94\\
+\phantom{-}0.79\\
+-0.34\\
+\phantom{-}0.35
+\end{pmatrix} & \begin{pmatrix}
+\phantom{-}0.94\\
+\phantom{-}0.79\\
+-0.34\\
+\phantom{-}0.35
+\end{pmatrix} & \begin{pmatrix}
+-0.02\\
+\phantom{-}0.69\\
+\phantom{-}0.54\\
+-0.12
+\end{pmatrix}
+\end{array}
+$$
+:::
+:::{.incremental}
+- Dense vectors of Dimension N (hyperparameter of model ~ 728)
+- Latent embedding ![](./figures/word-embeddings.png){.absolute left="65%" top="55%" width="auto" height="400px"}
+- Meaningfull representation
+- Encoded semantic information: 
+:::
+::::{.inline-fragment style="margin-left: 25%; text-align: center"}
+:::{.fragment} 
+King - Man + Woman = 
+:::
+:::{.fragment} 
+Queen 
+:::
+::::
+:::{.incremental}
+- This still has some issues...
+:::
+
+## Word embeddings{.smaller}
+
+$$
+\begin{array}{c@{\hspace{0.3cm}}c@{\hspace{0.3cm}}c@{\hspace{0.3cm}}c@{\hspace{0.3cm}}c}
+\text{A} & \text{dry} & \text{well!} & \text{Well} & \text{done!} \\
+\begin{pmatrix}
+\phantom{-}0.33\\
+-0.51\\
+\phantom{-}0.83\\
+\phantom{-}0.12
+\end{pmatrix} & \begin{pmatrix}
+\phantom{-}0.97\\
+-0.15\\
+-0.11\\
+\phantom{-}0.85
+\end{pmatrix} & \color{red}{\begin{pmatrix}
+\phantom{-}0.94\\
+\phantom{-}0.79\\
+-0.34\\
+\phantom{-}0.35
+\end{pmatrix}} & \color{red}{\begin{pmatrix}
+\phantom{-}0.94\\
+\phantom{-}0.79\\
+-0.34\\
+\phantom{-}0.35
+\end{pmatrix}} & \begin{pmatrix}
+-0.02\\
+\phantom{-}0.69\\
+\phantom{-}0.54\\
+-0.12
+\end{pmatrix}
+\end{array}
+$$
+
+- Dense vectors
+- Latent embedding ![](./figures/word-embeddings.png){.absolute left="65%" top="55%" width="auto" height="400px"}
+- The numbers are now informative to qualities of the token
+- Semantiscly-meaningfull: 
+
+:::{style="text-align: center"}
+King - Man + Woman = Queen 
+:::
+ 
+- This still causes problems...
+
+## Transformer Embeddings {.smaller}
+:::{data-id="words"}
+$$
+\begin{array}{c@{\hspace{0.3cm}}c@{\hspace{0.3cm}}c@{\hspace{0.3cm}}c@{\hspace{0.3cm}}c}
+\text{A} & \text{dry} & \text{well!} & \text{Well} & \text{done!} \\
+\begin{pmatrix}
+\phantom{-}0.33\\
+-0.51\\
+\phantom{-}0.83\\
+\phantom{-}0.12
+\end{pmatrix} & \begin{pmatrix}
+\phantom{-}0.97\\
+-0.15\\
+-0.11\\
+\phantom{-}0.75
+\end{pmatrix} & \begin{pmatrix}
+\phantom{-}0.54\\
+-0.79\\
+-0.34\\
+\phantom{-}0.22
+\end{pmatrix} & \begin{pmatrix}
+-0.41\\
+\phantom{-}0.79\\
+\phantom{-}0.17\\
+\phantom{-}0.84
+\end{pmatrix} & \begin{pmatrix}
+-0.02\\
+\phantom{-}0.69\\
+\phantom{-}0.54\\
+-0.12
+\end{pmatrix}
+\end{array}
+$$
+:::
+:::{.incremental}
+- Word-embedding now depends on context
+- Able to encode even more meaningfull information
+- Emperically this just works!
+- The start of the new age of NLP ^[*Attention is all you need [https://arxiv.org/abs/1706.03762](https://arxiv.org/abs/1706.03762)*]
+:::
+
+## What Does self-attention look like {auto-animate="true"}
+![](figures/fully_connected.png){fig-align="center"}
+
+## What Does self-attention look like {auto-animate="true"}
+
+![](figures/fully_connected.png){.absolute left="70%" top="70%" width="auto" height="250px"}
+$$
+Attention \sim Query \cdot Key^{T} 
+$$
+
+:::{.incremental}
+- Conceptual Interpretation:
+    - Query: I have a *Noun*, I need a Subject!
+    - Key: I have a *Subject* here. 
+:::
+
+## What does self-attention look like
+
+<iframe width="80%" height="80%" justify-content=center src="./figures/html_head.html" style="display: block; margin: 0 auto;"></iframe>
+
+
+::: aside
+[1. jessevig/bertviz](https://github.com/jessevig/bertviz)
+:::
+
+## Are you still following what is happening? {auto-animate="true"}
+
+<iframe width="80%" height="80%" src="./figures/html_transformer.html" scrollable="no"style="display: block; margin: 0 auto;"></iframe>
+
+::: aside
+[1. jessevig/bertviz](https://github.com/jessevig/bertviz)
+:::
+
 
 ## Overview
 - <span class="highlighted-text">A brief history of LLMs</span>

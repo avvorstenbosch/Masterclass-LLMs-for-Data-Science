@@ -48,10 +48,18 @@ h1.title {
   display: block;  /* This ensures the iframe behaves like a block element */
 }
 
-.full-bg-slide {
-  background-size: cover;
-  background-position: center;
+.full-bg-slide .slide-background-content {
+  background-size: 100% auto !important; /*This ensures the slide fits on screen*/
   background-repeat: no-repeat;
-  width: 100vw; /* ensures the slide takes the full width of the viewport */
-  height: 100vh; 
+  background-position: center center !important;
+}
+
+.inline-fragment {
+  display: flex;
+}
+
+.inline-fragment p {
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-top: 4px;
 }
