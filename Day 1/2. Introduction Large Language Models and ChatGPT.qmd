@@ -190,6 +190,8 @@ Queen
 :::
 ::::
 :::{.incremental}
+- These embeddings marked the start of the new NLP era ^[*2013 - Efficient Estimation of Word Representations in
+Vector Space[https://arxiv.org/pdf/1301.3781.pdf](https://arxiv.org/pdf/1301.3781.pdf)*] 
 - This still has some issues...
 :::
 
@@ -276,7 +278,7 @@ $$
 - Word-embedding now depends on context
 - Able to encode even more meaningfull information
 - Emperically this just works!
-- The start of the new age of NLP ^[*Attention is all you need [https://arxiv.org/abs/1706.03762](https://arxiv.org/abs/1706.03762)*]
+- The start of the new age of NLP ^[*2017 - Attention is all you need [https://arxiv.org/abs/1706.03762](https://arxiv.org/abs/1706.03762)*]
 :::
 
 ## What Does self-attention look like {auto-animate="true"}
@@ -312,6 +314,90 @@ $$
 [1. jessevig/bertviz](https://github.com/jessevig/bertviz)
 :::
 
+## Attention and BERT
+- [BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding](https://arxiv.org/abs/1810.04805)
+- Pretraining on massive corpora of text
+- Very powerfull contextual embeddings of language
+- *State-of-the-art* on many language tasks with finetuning
+    - Sentiment Analysis
+    - Text Classification
+    - Named entity recognition
+    - Question Answering
+    - Language Modeling
+- Bert-base: 110m parameters
+- Bert-large: 340m parameters
+
+## If we have more compute ...
+- What if we want to improve our models.
+- Companies like OpenAI have more compute available, what should they do?
+
+:::{.columns}
+
+:::{.column width="50%"}
+![](./figures/openai-compute-curves.png)
+Optimal model size grows smoothly with the loss target and compute $\mathrm{budget^1}$
+:::
+
+:::{.column width="50%"}
+![](./figures/openai-compute-allocation.png)
+For optimally compute-efficient training, most of the increase should go towards increased model
+size^[[Scaling Laws for Neural Language Models](https://arxiv.org/pdf/2001.08361.pdf)]
+:::
+:::
+
+## ... we puth it towards the model scale
+![Alt text](./figures/model_size_growing.jpg)
+Models just kept on growing, credit: [Julien Simon, Huggingface](https://huggingface.co/blog/large-language-models)
+
+## GPT3 *IS* ChatGPT, almost ...
+- [2020 - Language Models are Few-Shot Learners](https://arxiv.org/pdf/2005.14165.pdf)
+- These models are so good at language modeling (*SOTA*), that finetuning is no longer needed to perform NLP task
+- Very strong 0-shot performance in many NLP task (already in GPT2)
+- Can perform **In-context learning**:
+    - Given a few examples, learn how to perform task
+    - *No model parameters are adjusted at any point*
+
+## 
+![[Andrej Karpathy, Microsoft - State of GPT](https://karpathy.ai/stateofgpt.pdf)](./figures/stateofgpt.png)
+
+## Instruction tuning (finetuning)
+
+- The models just predict likely continuations of text.
+- This does not match with the behaviour we seek
+
+:::{.panel-tabset}
+## Base model
+```
+INPUT:
+Explain what a Large Language Model is.
+
+OUTPUT:
+Explain what a transformer model is.
+
+Explain what a tokenizer is.
+
+Explain what gradient descent is.
+```
+
+## Instruction tuning 
+```
+INPUT:
+Explain what a Large Language Model is.
+
+HUMAN EXAMPLE:
+A Large Language Model is a foundational language model with typically billions of parameters. These models have become popular in recent years because of their ease of use combined with impressive performance across the board on NLP-tasks
+```
+:::
+
+
+## A brief history of NLP
+- Classic ML: Bag-of-Words, TF-IDF etc.
+- Word2Vec - Neural Informative Representations
+- Transformers - Context based representations
+- GPT2 Keep scaling this up
+- Scaling laws --> Large language models i.e. GTP3
+- `emergent` properties
+- Instruction-tuning and RLHF --> ChatGPT
 
 ## Overview
 - <span class="highlighted-text">A brief history of LLMs</span>
@@ -332,18 +418,6 @@ $$
 - Can do some basic arithmatic
 - Can understand sentiment, style, etc.
 - Can do logical reasoning (too some extent)
-
-## Large language models imply the existence of small language models
-
-
-## A brief history of NLP
-- Classic ML: Bag-of-Words, TF-IDF etc.
-- Word2Vec - Neural Informative Representations
-- Transformers - Context based representations
-- GPT2 Keep scaling this up
-- Scaling laws --> Large language models i.e. GTP3
-- `emergent` properties
-- Instruction-tuning and RLHF --> ChatGPT
 
 ## How does a LLM work
 - Training:
