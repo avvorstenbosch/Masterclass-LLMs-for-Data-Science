@@ -1,0 +1,39 @@
+---
+title: "Ethical Considerations in Using LLMs"
+subtitle: "*The good, the bad, and the ugly*"
+author: "Alex van Vorstenbosch"
+footer: "Ethics and LLMs"
+title-slide-attributes:
+  data-background-image: "./figures/llms-and-ethics.webp" 
+  data-background-opacity: "0.5"
+  data-background-size: cover
+institute: "Erasmus Q-intelligence "
+date: "11-17-2023"
+format:
+    revealjs:
+        width: 1600
+        height: 1000
+        slide-number: true
+        chalkboard: 
+            buttons: false
+        preview-links: true 
+        theme: night 
+        scrollable: false
+        css: style.scss
+execute:
+    warning: false
+    error: false
+    cache: true
+---
+
+## Overview
+- Biases and Misinformation
+- The Dark Side of LLMs
+- Privacy and Legal Challenges
+
+## Overview
+- <span class="highlighted-text">Biases and Misinformation</span>
+- The Dark Side of LLMs
+- Privacy and Legal Challenges
+
+# Biases and Misinformation
