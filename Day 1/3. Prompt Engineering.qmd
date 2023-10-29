@@ -24,3 +24,84 @@ execute:
     error: false
     cache: true
 ---
+
+## Overview
+- Introduction to Prompting
+- Best techniques for prompting
+
+## Overview
+- <span class="highlighted-text">Introduction to Prompting</span>
+- Best techniques for prompting
+
+# Introduction to prompting
+
+## Introduction to prompting
+- Prompts are a `natural (language)` way to interact with language models
+    - very easy to understand
+    - anybody can do it
+- Enables `Semantic coding` instead of `logical coding`
+- This makes it very easy and very fast to itterate
+
+## NLP-lifecycle on it's head
+
+Regular ML:
+Problem -> Idea -> Gather data -> Train Model -> Evaluate Model -> `Repeat if neccessary` -> deploy
+Duration: Months
+
+Prompting workflow:
+Problem -> Idea -> Gather data -> Finetune prompt -> Evaluate Model -> `Repeat if neccessary` -> deploy
+Duration: Days
+
+
+# Best techniques for prompting
+
+## Overview
+- <span class="highlighted-text">Introduction to Prompting</span>
+- Best techniques for prompting
+
+## Overview
+- Introduction to Prompting
+- <span class="highlighted-text">Best techniques for prompting</span>
+
+## Best techniques for prompting
+
+- Make use of a general prompting template 
+- Use delimiters to mark sections of your prompt
+- Take into account the order of operations 
+- Give LLMs room to think with chain-of-thought guiding
+- Split tasks into simpler subtasks
+- Mind the Context Window
+- assigning roles for beter behaviour 
+- and making use of general statistical conditioning taking into account potential out-of-distribution behavior.
+
+## General prompting template
+```{python}
+#| eval: false
+#| echo: true
+#| output: false
+f"""
+ROLE: {ROLE}
+TASK: {TASK_DESCRIPTION}
+      {TASK SPECIFICATION}
+      {FORMAT OUTPUT}
+"""
+```
+
+
+## Use delimiters
+
+- Indicates what describes the task at hand, and what the task should be performed on
+- use either: `### TEXT ###`, `""" TEXT """`, or `''' TEXT '''` as all these triplets are a single token
+- Or use clear section titles, HTML-tags, etc.
+
+## Chain-of-thought prompting
+
+- Some tasks are complicated for a LLM, based on just the prompt
+- Give the model room to think with Chain-of-Thought prompting:
+EXAMPLE: FEW_SHOT_LEARNING
+
+## Chain-of-thought prompting
+You can already improve performance by just adding:
+"Let's think step by step." at the end of a prompt
+
+
