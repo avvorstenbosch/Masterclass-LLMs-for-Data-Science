@@ -1,6 +1,6 @@
 ---
-title: "Introduction to prompt engineering"
-subtitle: "'*Attention is all you need*'"
+title: "Introduction to Prompt Engineering"
+subtitle: "*How to get your LLM to do what you want*"
 author: "Alex van Vorstenbosch"
 footer: "Prompt Engineering"
 title-slide-attributes:
