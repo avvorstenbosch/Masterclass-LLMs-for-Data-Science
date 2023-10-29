@@ -19,6 +19,7 @@ format:
         preview-links: true 
         theme: night 
         scrollable: false
+        css: style.scss
 execute:
     warning: false
     error: false
@@ -66,6 +67,8 @@ Duration: Days
 ## Best techniques for prompting
 
 - Make use of a general prompting template 
+- Be precise in your description
+- 'No' is also an answer
 - Use delimiters to mark sections of your prompt
 - Take into account the order of operations 
 - Give LLMs room to think with chain-of-thought guiding
@@ -75,6 +78,12 @@ Duration: Days
 - and making use of general statistical conditioning taking into account potential out-of-distribution behavior.
 
 ## General prompting template
+- A general decent prompt templates looks like the following:
+- Specify which ROLE the model should assume.
+- Specify the task it should perform:
+    - TASK_DESCRIPTION: What is the task.
+    - TASK_SPECIFICATION: Specify how the task should be performed
+    - FORMAT_OUTPUT: (Optional) Specify how the answer should be given.
 ```{python}
 #| eval: false
 #| echo: true
@@ -82,17 +91,131 @@ Duration: Days
 f"""
 ROLE: {ROLE}
 TASK: {TASK_DESCRIPTION}
-      {TASK SPECIFICATION}
-      {FORMAT OUTPUT}
+      {TASK_SPECIFICATION}
+      {FORMAT_OUTPUT}
 """
 ```
 
+## General prompting template
+::: {.columns}
+::: {.column width="60%"}
+- A general decent prompt templates looks like the following:
+- Specify which ROLE the model should assume.
+- Specify the task it should perform:
+    - TASK_DESCRIPTION: What is the task.
+    - TASK_SPECIFICATION: Specify how the task should be performed
+    - FORMAT_OUTPUT: (Optional) Specify how the answer should be given.
+:::
+
+::: {.column width="40%"}
+<iframe src="https://chat.openai.com/share/aec332f7-d4fc-40fd-b203-d15458880610" class="iframe-chatgpt"></iframe>
+:::
+:::
+
+## Be precise in your task descriptions
+
+You may think your task is clear, but it may not be:
+
+::: {.columns}
+::: {.column width="25%"}
+ 
+:::
+
+::: {.column width="50%"}
+
+*As I'm going to the store, my roommate asks me:*
+*'Can you get a gallon of milk? And if they have eggs, get 6.'*
+
+*When I come home my roommate was in shock: "You got 6 gallons of milk?!"*
+*I responded 'They had eggs.'*
+
+:::
+
+::: {.column width="25%"}
+ 
+:::
+:::
+
+
+## Be precise in your task descriptions
+- LLMs don't know anything about you or the task it is given.
+- "Please explain to me how LLMs works?"
+    - What is your background knowledge? Academic, high-school, etc..
+    - What type of explanation? Technical, simple summary, etc..
+    - How long should it be? 5 paragraphs, 5 sentences, etc..
+    - Do you need references? 
+    - etc... 
 
 ## Use delimiters
 
 - Indicates what describes the task at hand, and what the task should be performed on
-- use either: `### TEXT ###`, `""" TEXT """`, or `''' TEXT '''` as all these triplets are a single token
+- use either: 
+    - *### TEXT ###* 
+    - *""" TEXT """* 
+    - *''' TEXT '''* 
+    - These triplets are all a single token
 - Or use clear section titles, HTML-tags, etc.
+
+## Include a reference text
+::: {.columns}
+::: {.column width="60%"}
+- LLMs should not be trusted with giving specific information, they can make up completely nonsence answers
+- These answers are called <span class="highlighted-text">Hallucinations</span>, more on them later.
+:::
+::: {.column width="40%"}
+<iframe class="iframe-chatgpt" src="https://chat.openai.com/share/49872740-604f-4b27-a844-002eff6743a9"></iframe>
+:::
+:::
+
+## Include a reference text
+- To help mitigate this (partially), you can Include a reference text^[[OpenAI GPT guide](https://platform.openai.com/docs/guides/gpt-best-practices/strategy-provide-reference-text)]
+```{python}
+#| eval: false
+#| echo: true
+#| output: false
+f"""
+ROLE: {ROLE}
+TASK: {TASK_DESCRIPTION}
+      Your task is to answer the question using only the provided document 
+      and to cite the passage(s) of the document used to answer the question.
+      If the document does not contain the information needed to answer this question 
+      then simply write: 
+        'Insufficient information.' 
+      If an answer to the  question is provided, it must be annotated with a citation. 
+      Use the following format to cite relevant passages ({'citation' : …}).
+      {FORMAT_OUTPUT}
+
+DOCUMENT:
+'''
+{DOCUMENT}
+'''
+
+"""
+```
+
+## 'No' is also an answer! 
+- To help mitigate this (partially), you can Include a reference text^[[OpenAI GPT guide](https://platform.openai.com/docs/guides/gpt-best-practices/strategy-provide-reference-text)]
+- Explicitly tell the model to not answer the question if it can't.
+```{python}
+#| eval: false
+#| echo: true
+#| output: false
+f"""
+ROLE: {ROLE}
+TASK: {TASK_DESCRIPTION}
+      Your task is to answer the question using only the provided document 
+      and to cite the passage(s) of the document used to answer the question.
+      The answer must be annotated with a citation. 
+      Use the following format to cite relevant passages ({'citation' : …}).
+      {FORMAT_OUTPUT}
+
+DOCUMENT:
+'''
+{DOCUMENT}
+'''
+
+"""
+```
 
 ## Chain-of-thought prompting
 
