@@ -386,6 +386,7 @@ Models just kept on growing, credit: [Julien Simon, Huggingface](https://hugging
 - Can perform **In-context learning**:
     - Given a few examples, learn how to perform task
     - *No model parameters are adjusted at any point*
+    - `Emergent property` of LLMs
 
 ## 
 ![[Andrej Karpathy, Microsoft - State of GPT](https://karpathy.ai/stateofgpt.pdf)](./figures/stateofgpt.png)
