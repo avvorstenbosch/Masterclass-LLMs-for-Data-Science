@@ -70,12 +70,11 @@ Duration: Days
 - Be precise in your description
 - 'No' is also an answer
 - Use delimiters to mark sections of your prompt
+- Give LLMs room to think
 - Take into account the order of operations 
-- Give LLMs room to think with chain-of-thought guiding
+- Guide complex problems with chain-of-thought prompting
 - Split tasks into simpler subtasks
 - Mind the Context Window
-- assigning roles for beter behaviour 
-- and making use of general statistical conditioning taking into account potential out-of-distribution behavior.
 
 ## General prompting template
 - A general decent prompt templates looks like the following:
@@ -105,6 +104,7 @@ TASK: {TASK_DESCRIPTION}
     - TASK_DESCRIPTION: What is the task.
     - TASK_SPECIFICATION: Specify how the task should be performed
     - FORMAT_OUTPUT: (Optional) Specify how the answer should be given.
+- Don't take the role too far: You might go '*out-of-distribution*'
 :::
 
 ::: {.column width="40%"}
@@ -178,10 +178,7 @@ ROLE: {ROLE}
 TASK: {TASK_DESCRIPTION}
       Your task is to answer the question using only the provided document 
       and to cite the passage(s) of the document used to answer the question.
-      If the document does not contain the information needed to answer this question 
-      then simply write: 
-        'Insufficient information.' 
-      If an answer to the  question is provided, it must be annotated with a citation. 
+      The answer must be annotated with a citation. 
       Use the following format to cite relevant passages ({'citation' : …}).
       {FORMAT_OUTPUT}
 
@@ -205,7 +202,10 @@ ROLE: {ROLE}
 TASK: {TASK_DESCRIPTION}
       Your task is to answer the question using only the provided document 
       and to cite the passage(s) of the document used to answer the question.
-      The answer must be annotated with a citation. 
+      If the document does not contain the information needed to answer this question 
+      then simply write: 
+        'Insufficient information.' 
+      If an answer to the  question is provided, it must be annotated with a citation. 
       Use the following format to cite relevant passages ({'citation' : …}).
       {FORMAT_OUTPUT}
 
@@ -217,11 +217,68 @@ DOCUMENT:
 """
 ```
 
+## Give models time-to-think {.smaller}
+
+Determine if my answer below is correct.
+
+I'm trying to figure out how expensive my prompting of the GPT4 API will be in total.
+I'm going to run around 1000 prompts. For these prompts, the average prompt-lengt is 250 words.
+The average response length of the model for these prompts is 300 words. 
+
+The API pricing is as follows:
+$0.03/1k prompt tokens.
+$0.06/1k sampled tokens.
+
+We can assume that 1 token is on average 3/4th of a single word. 
+What
+
+
+First work out your own solution to the problem. Then compare your solution to the given solution and evaluate if the given solution is correct or not. Don't decide if the student's solution is correct until you have done the problem yourself.
+
+I'm trying to figure out how expensive my prompting of the GPT4 API will be in total.
+I'm going to run around 1000 prompts. For these prompts, the average prompt-lengt is 250 words.
+The average response length of the model for these prompts is 300 words. 
+
+The API pricing is as follows:
+$0.03/1k prompt tokens.
+$0.06/1k sampled tokens.
+
+We can assume that 1 token is on average 3/4th of a single word. 
+What
+
+I found the following answer:
+18 dollars.
+
+## Take into account the order-of-operations {.smaller}
+- First give calculation steps, then give the answer.
+- Otherwise the model tries to retrofit the computation to the answer.
+
+::: {.columns}
+::: {.column width="50%"}
+::: {style="text-align: center"}
+**Bad order**
+:::
+<iframe style="width:100%; height:800px;" class="iframe-chatgpt" src="https://chat.openai.com/share/a1c44c6d-a815-421a-bb2d-eb999cc250db"></iframe>
+
+:::
+::: {.column width="50%"}
+::: {style="text-align: center"}
+**Good order**
+:::
+<iframe style="width:100%; height:800px;" class="iframe-chatgpt" src="https://chat.openai.com/share/0e0d9797-f300-4d88-9cee-d954fbae6108"></iframe>
+
+:::
+
+:::
+
 ## Chain-of-thought prompting
 
 - Some tasks are complicated for a LLM, based on just the prompt
-- Give the model room to think with Chain-of-Thought prompting:
+- Give the model room to think with Chain-of-Thought prompting
+- Chain-of-Thought prompting is essentially single or few-shot prompting for reasoning:
 EXAMPLE: FEW_SHOT_LEARNING
+- Even zero-shot chain-of-thought prompting works *Let's think step by step*
+- That this works, is one of the emergent properties of LLMs
 
 ## Chain-of-thought prompting
 You can already improve performance by just adding:
