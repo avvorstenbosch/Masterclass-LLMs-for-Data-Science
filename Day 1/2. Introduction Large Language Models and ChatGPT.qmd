@@ -314,11 +314,41 @@ $$
 [1. jessevig/bertviz](https://github.com/jessevig/bertviz)
 :::
 
+## Sampling output tokens
+- Output is sampled, and therefore a stochastic:
+    - **Running the same prompt twice will give 2 different results**
+$$
+P_i = \frac{e^{\frac{y_i}{T}}}{\sum_i^n e^{\frac{y_i}{T}}} = \frac{(e^{y_i})^\frac{1}{T}}{\sum_i^n (e^{y_i})^\frac{1}{T}}
+$$
+
+:::{.panel-tabset}
+
+## T = 1 (normal)
+
+![](./figures/ptoken-t1.png){fig-aling=center}
+
+## T = 0.5 
+
+![](./figures/ptoken-t05.png){fig-aling=center}
+
+
+## T = 2
+
+![](./figures/ptoken-t2.png){fig-aling=center}
+
+
+## T = 0
+
+![](./figures/ptoken-t0.png){fig-aling=center}
+
+:::
+
+
 ## Attention and BERT
 - [BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding](https://arxiv.org/abs/1810.04805)
 - Pretraining on massive corpora of text
 - Very powerfull contextual embeddings of language
-- *State-of-the-art* on many language tasks with finetuning
+- *State-of-the-art* on many language tasks with finetuning:
     - Sentiment Analysis
     - Text Classification
     - Named entity recognition
@@ -389,15 +419,17 @@ A Large Language Model is a foundational language model with typically billions 
 ```
 :::
 
+## Reinforcement Learning From Human Feedback
 
-## A brief history of NLP
-- Classic ML: Bag-of-Words, TF-IDF etc.
-- Word2Vec - Neural Informative Representations
-- Transformers - Context based representations
-- GPT2 Keep scaling this up
-- Scaling laws --> Large language models i.e. GTP3
-- `emergent` properties
-- Instruction-tuning and RLHF --> ChatGPT
+- Not just showing example completions, but also rating them.
+- Apply Reward Modeling and Reinforcement learning to 
+tune the model towards higher quality responses.
+- Very difficult to train, but...
+- It just works better.
+
+## And this gives you...
+
+<iframe src="https://chat.openai.com/share/36173d8f-2a3e-4994-8a6a-04cc5188d97f" class="iframe-chatgpt"></iframe>
 
 ## Overview
 - <span class="highlighted-text">A brief history of LLMs</span>
@@ -410,32 +442,65 @@ A Large Language Model is a foundational language model with typically billions 
 - Real-world applications of ChatGPT
 
 # Capabilities of ChatGPT
-## But very powerfull with many strong properties:
-- Understand language conventions (syntax, grammer, etc.)
-- Can answer questions (Have internal knowledge, )
-- Can code
-- Can write just like humans, and in specific styles
-- Can do some basic arithmatic
-- Can understand sentiment, style, etc.
-- Can do logical reasoning (too some extent)
-
-## How does a LLM work
-- Training:
-    - Pretraining
-    - Finetuning
-    - RLHF
-
-- Processing data:
-    - BPE-tokenizer
-    - Embeddings
-    - (Self-)Attention Mechanism 
-    - output softmax predictions (with temperature)
 
 ## Strenghts of LLMs
 
+Foundational language model that:
+
+- Understands language conventions (syntax, grammer, etc.)
+- can answer questions (Has internal knowledge base)
+- can code
+- Can write just like humans
+- Can do some basic arithmatic
+- Can understand *deep* elements of writing: sentiment, style, etc.
+- Can do logical reasoning (to some extent)
+- [Capabilities measured on easy scales](https://openai.com/research/gpt-4)
+
 ## Weaknesses of LLMs
 
+- Limited input window (4096 tokens)
+- It has no memory
+- It can only predict next tokens, nothing else:
+    - It cannot perform tasks while
+- It cannot think in multiple directions like we do
+- It doesn't understand it's own internal model!
+
 ## How you should not think of ChatGPT
+
+- We tend to feel empathy for ChatGPT
+    - People like to say thank you to ChatGPT
+    - It feels very `human`
+- BUT: it really boils down to a very very big whatsapp next-word predictor
+- WE CAN BREAK THE MODEL LOGIC
+
+## Repeated sampling Penalty
+- Generative language models have a tendency to repeat themselves:
+    - Therefore the sampling algorithm receives a `repetition penalty`
+    - This can be exploited
+
+<iframe src="https://chat.openai.com/share/cfe864c6-4213-4be5-b70c-f66a8c55a3fd" class="iframe-chatgpt" style="width: 700px; height: 900px;" ></iframe>
+
+## Glitch Tokens
+- Some tokens identified by BPE only appear in `useless` context
+    - Such as /r/counting
+    - usernames get very high frequency and get their own tokens
+
+:::{.columns}
+
+:::{.column width="40%"}
+
+<iframe src="https://chat.openai.com/share/f4a8c854-e3ff-4032-8683-40b31f1444e2" class="iframe-chatgpt"></iframe>
+
+:::
+
+:::{.column width="60%"}
+
+<iframe width="768px" height="480px" src="https://www.youtube.com/embed/WO2X3oZEJOA?si=Cz6-j5f_Yvr4zvyC&amp;clip=UgkxQwEYjoJKAiZBm9KEcOIswK1XsixP9nJ0&amp;clipt=EAAY758C" frameborder="12px" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture;" allowfullscreen></iframe>
+
+:::
+
+:::
+
 
 ## Overview
 - A brief history of LLMs
@@ -448,3 +513,9 @@ A Large Language Model is a foundational language model with typically billions 
 - <span class="highlighted-text">Real-world applications of ChatGPT </span>
 
 # Real world applications of ChatGPT
+
+- Pair Programming
+- Language Modeling Tasks
+- Text Generation
+- Inspiration
+- Explanation
