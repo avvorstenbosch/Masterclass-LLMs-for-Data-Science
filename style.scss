@@ -63,3 +63,12 @@ h1.title {
   padding-left: 10px;
   padding-top: 4px;
 }
+
+.sourceCode {
+  background-color: #000000 !important; /* This sets the background to a light gray color */
+  border-radius: 12px !important;
+}
+
+.reveal pre.sourceCode code{
+  max-height: 800px;
+}

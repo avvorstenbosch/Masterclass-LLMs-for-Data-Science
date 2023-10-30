@@ -159,9 +159,13 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 
-# Ignore Quarto build files 
+# Ignore Quarto build files
 *_files
 # Ignore figures
 figures
 # Ignore jupyter cache
 *.jupyter_cache
+/.quarto/
+
+# Ignore the slides
+_slides
