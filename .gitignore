@@ -169,3 +169,6 @@ figures
 
 # Ignore the slides
 _slides
+
+# ignore sectrets
+credentials.yml
