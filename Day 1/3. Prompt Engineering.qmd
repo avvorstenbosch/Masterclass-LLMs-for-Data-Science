@@ -71,11 +71,12 @@ Duration: Days
 #| eval: false
 #| echo: true
 #| output: false
+#| code-line-numbers: "|2|3|4|5"
 f"""
 ROLE: {ROLE}
 TASK: {TASK_DESCRIPTION}
       {TASK_SPECIFICATION}
-      {FORMAT_OUTPUT}
+      {FORMAT_OUTPUT} 
 """
 ```
 
@@ -170,7 +171,6 @@ DOCUMENT:
 '''
 {DOCUMENT}
 '''
-
 """
 ```
 
@@ -181,6 +181,7 @@ DOCUMENT:
 #| eval: false
 #| echo: true
 #| output: false
+#| code-line-numbers: "|6-9"
 f"""
 ROLE: {ROLE}
 TASK: {TASK_DESCRIPTION}
@@ -189,7 +190,7 @@ TASK: {TASK_DESCRIPTION}
       If the document does not contain the information needed to answer this question 
       then simply write: 
         'Insufficient information.' 
-      If an answer to the  question is provided, it must be annotated with a citation. 
+      If an answer to the question is provided, it must be annotated with a citation. 
       Use the following format to cite relevant passages ({'citation' : …}).
       {FORMAT_OUTPUT}
 
@@ -197,7 +198,6 @@ DOCUMENT:
 '''
 {DOCUMENT}
 '''
-
 """
 ```
 
