@@ -1,0 +1,223 @@
+---
+title: "Programming with GPT"
+subtitle: "*Time to Pair up*"
+author: "Alex van Vorstenbosch"
+footer: "Pair-programming with LLMs"
+title-slide-attributes:
+    data-background-image: "./figures/pair-programming-with-llms.webp"
+    data-background-opacity: "0.5"
+
+date: "11-17-2023"
+---
+
+## Overview
+- Introduction to the OpenAI API
+- Pair-programming with LLM's
+
+## Overview
+- <span class="highlighted-text">Introduction to the OpenAI API</span>
+- Pair-programming with LLM's
+
+# Introduction to the OpenAI API
+
+## Introduction to the OpenAI API - Python
+- We'll be calling the API directly from Python or R
+```{.python code-line-numbers="|1-6|8-10|12-25|15|16-21|22|23|24|"}
+# Specify the path to your API-credentials file
+import yaml
+import openai
+file_path = "credentials.yml"
+with open(file_path, 'r') as yaml_file:
+    credentials = yaml.safe_load(yaml_file)
+openai.api_key = credentials["OPENAI_API_KEY"]
+
+# You can also use an .env file
+import os
+openai.api_key = os.getenv("OPENAI_API_KEY")
+
+# Get a model response
+response = openai.ChatCompletion.create(
+    model="gpt-3.5-turbo", 
+    messages=[
+        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "user", "content": "Who are you?"},
+        {"role": "assistant", "content": "Hello! I'm ChatGPT. How can I assist you today?"},
+        {"role": "user", "content": "What can the OpenAI API do?"}
+    ],
+    temperature=1,     # The randomness setting of the model: 0 is deterministic, 2 is most random
+    n = 1,             # How many completions do we want the model to generate
+    max_tokens=None    # How many tokens is the model allowed to use
+)
+```
+
+## Introduction to the OpenAI API - R
+- We'll be calling the API directly from Python or R
+```{.R code-line-numbers="|2|1-6|7-9|10-34|13|12-29|31-33|"}
+# Specify the path to your API-credentials file
+library(openai) # open-source, not official implementation!
+library(yaml)
+file_path <- "credentials.yml"
+credentials <- yaml.load_file(file_path)
+OPENAI_API_KEY <- credentials$OPENAI_API_KEY
+
+# You can also use you .Renvironment
+OPENAI_API_KEY <- Sys.getenv["OPENAI_API_KEY"]
+
+# Get a model response
+response <- create_chat_completion(
+    model = "gpt-3.5-turbo",
+    messages = list(
+        list(
+            "role" = "system",
+            "content" = "You are a helpful assistant."
+        ),
+        list(
+            "role" = "user",
+            "content" = "Who are you?"
+        ),
+        list(
+            "role" = "assistant",
+            "content" = "Hello! I'm ChatGPT. How can I assist you today?"
+        ),
+        list(
+            "role" = "user",
+            "content" = "What can the OpenAI API do?"
+        )
+    )
+    temperature = 1,     # The randomness setting of the model: 0 is deterministic, 2 is most random
+    n = 1,               # How many completions do we want the model to generate
+    max_tokens = NULL    # How many tokens is the model allowed to use
+)
+```
+```{python}
+#| eval: true
+#| echo: false
+#| output: false
+import yaml
+import openai
+file_path = "../credentials.yml"
+with open(file_path, 'r') as yaml_file:
+    credentials = yaml.safe_load(yaml_file)
+openai.api_key = credentials["OPENAI_API_KEY"]
+```
+
+## Let's try it out!
+- Run prompts with temperature 0 to make them reproducible!
+
+```{python}
+#| echo: true
+response = openai.ChatCompletion.create(
+    model="gpt-3.5-turbo", 
+    messages=[
+        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "user", "content": "Who are you?"},
+        {"role": "assistant", "content": "Hello! I'm ChatGPT. How can I assist you today?"},
+        {"role": "user", "content": "What can the OpenAI API do?"}
+    ],
+    temperature=0,     # The randomness setting of the model: 0 is deterministic, 2 is most random
+    n = 1,             # How many completions do we want the model to generate
+    max_tokens=None  # How many tokens is the model allowed to use
+)
+print(response.choices[0].message.content)
+```
+
+## Let's try it out!
+- Run prompts with temperature 0 to make them reproducible!
+
+```{python}
+#| eval: false
+#| echo: true
+#| output: false
+response = openai.ChatCompletion.create(
+    model="gpt-3.5-turbo", 
+    messages=[
+        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "user", "content": "Who are you?"},
+        {"role": "assistant", "content": "Hello! I'm ChatGPT. How can I assist you today?"},
+        {"role": "user", "content": "What can the OpenAI API do?"}
+    ],
+    temperature=0,     # The randomness setting of the model: 0 is deterministic, 2 is most random
+    n = 1,             # How many completions do we want the model to generate
+    max_tokens=None  # How many tokens is the model allowed to use
+)
+
+```
+```{python}
+#| echo: false
+print(response)
+```
+
+## What if we want to see the number of tokens before sending a request?
+- Use the `tiktoken` package
+
+```{python}
+#| echo: true
+import tiktoken
+encoding = tiktoken.encoding_for_model("gpt-3.5-turbo")
+encoding = encoding.encode("I wonder how many tokens are used for this line?")
+print(encoding)
+print(f"The numer of tokens used was: {len(encoding)}")
+```
+
+
+```{python}
+#| output: false
+#| echo: false
+def num_tokens_from_messages(messages, model="gpt-3.5-turbo-0613"):
+    """Return the number of tokens used by a list of messages."""
+    try:
+        encoding = tiktoken.encoding_for_model(model)
+    except KeyError:
+        print("Warning: model not found. Using cl100k_base encoding.")
+        encoding = tiktoken.get_encoding("cl100k_base")
+    if model in {
+        "gpt-3.5-turbo-0613",
+        "gpt-3.5-turbo-16k-0613",
+        "gpt-4-0314",
+        "gpt-4-32k-0314",
+        "gpt-4-0613",
+        "gpt-4-32k-0613",
+        }:
+        tokens_per_message = 3
+        tokens_per_name = 1
+    elif model == "gpt-3.5-turbo-0301":
+        tokens_per_message = 4  # every message follows <|start|>{role/name}\n{content}<|end|>\n
+        tokens_per_name = -1  # if there's a name, the role is omitted
+    elif "gpt-3.5-turbo" in model:
+        print("Warning: gpt-3.5-turbo may update over time. Returning num tokens assuming gpt-3.5-turbo-0613.")
+        return num_tokens_from_messages(messages, model="gpt-3.5-turbo-0613")
+    elif "gpt-4" in model:
+        print("Warning: gpt-4 may update over time. Returning num tokens assuming gpt-4-0613.")
+        return num_tokens_from_messages(messages, model="gpt-4-0613")
+    else:
+        raise NotImplementedError(
+            f"""num_tokens_from_messages() is not implemented for model {model}. See https://github.com/openai/openai-python/blob/main/chatml.md for information on how messages are converted to tokens."""
+        )
+    num_tokens = 0
+    for message in messages:
+        num_tokens += tokens_per_message
+        for key, value in message.items():
+            num_tokens += len(encoding.encode(value))
+            if key == "name":
+                num_tokens += tokens_per_name
+    num_tokens += 3  # every reply is primed with <|start|>assistant<|message|>
+    return num_tokens
+```
+
+## What if we want to see the number of tokens before sending a request?
+- Check the [openai-cookbook-tiktoken](https://cookbook.openai.com/examples/how_to_count_tokens_with_tiktoken) page for function for our message structure
+
+```{python}
+#| echo: true
+messages=[
+    {"role": "system", "content": "You are a helpful assistant."},
+    {"role": "user", "content": "Who are you?"},
+    {"role": "assistant", "content": "Hello! I'm ChatGPT. How can I assist you today?"},
+    {"role": "user", "content": "What can the OpenAI API do?"}
+]
+tiktoken_count = num_tokens_from_messages(messages)
+API_count = response.usage.prompt_tokens
+print(f"Tiktoken counted {tiktoken_count} tokens.\nThe API counted {API_count} tokens.")
+if tiktoken_count == API_count:
+    print("Hurray! It's a match!")
+```
