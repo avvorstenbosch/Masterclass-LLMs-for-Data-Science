@@ -24,3 +24,4 @@ execute:
     warning: false
     error: false
     cache: true
+jupyter: openai
