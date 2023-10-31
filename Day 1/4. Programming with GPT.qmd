@@ -12,11 +12,11 @@ date: "11-17-2023"
 
 ## Overview
 - Introduction to the OpenAI API
-- Pair-programming with LLM's
+- Pair-programming with LLMs
 
 ## Overview
 - <span class="highlighted-text">Introduction to the OpenAI API</span>
-- Pair-programming with LLM's
+- Pair-programming with LLMs
 
 # Introduction to the OpenAI API
 
@@ -221,3 +221,52 @@ print(f"Tiktoken counted {tiktoken_count} tokens.\nThe API counted {API_count} t
 if tiktoken_count == API_count:
     print("Hurray! It's a match!")
 ```
+
+## Overview
+- <span class="highlighted-text">Introduction to the OpenAI API</span>
+- Pair-programming with LLMs
+
+## Overview
+- Introduction to the OpenAI API
+- <span class="highlighted-text">Pair-programming with LLMs</span>
+
+# Pair-programming with LLMs
+
+## What can ChatGPT mean for you?
+
+- Writing code: 
+    - Think low complexity, but not complicated: 
+        - Regex patterns
+        - SQL queries
+- Translation between code-languages
+- Writing boilerplate-code
+- Documenting code
+- Writing unittests 
+- Explainig code
+- Improving/Optimising code
+- Debugging code
+- Reviewing code
+
+## Writing code
+
+:::{style="text-align:center"}
+*“What I love is that it will come out of left field with methods I didn't even know existed. Of course in some cases those methods actually don't exist...”*
+:::
+- Example of a task where, in my personal experience, there is a big difference between GPT3.5 and GPT4:
+    - Can handle both more complicated and more complex code
+
+::: {.columns}
+
+::: {.column width="33%"}
+:::
+
+::: {.column width="34%"}
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">I placed 2nd (out of ~100,000) in <a href="https://twitter.com/hashtag/AdventOfCode?src=hash&amp;ref_src=twsrc%5Etfw">#AdventOfCode</a> Part 1 today, by having <a href="https://twitter.com/OpenAI?ref_src=twsrc%5Etfw">@OpenAI</a>&#39;s GPT-3 write the code<a href="https://twitter.com/ostwilkens?ref_src=twsrc%5Etfw">@ostwilkens</a> placed 1st, and did the same<br><br>Lots more competitions are going to become like chess competitions — humans striving to emulate a computer <a href="https://t.co/aH0ZlX1b09">pic.twitter.com/aH0ZlX1b09</a></p>&mdash; Max (@max_sixty) <a href="https://twitter.com/max_sixty/status/1598924237947154433?ref_src=twsrc%5Etfw">December 3, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+:::
+
+::: {.column width="33%"}
+
+:::
+
+::: 
