@@ -33,16 +33,53 @@ date: "11-17-2023"
 - Fascinated by Deep Learning during astronomy study
 - Mostly experience with Convolutional networks (and a bit with GAN's)
 - Pivoted to NLP (Very relevant within government)
-- Great resources available for free [^1]
+- Great resources available for free ^[C. Manning and J. Hewwit, “Natural language processing with deep learning,” cs224n. Available: [https://web.stanford.edu/class/cs224n/]()]
 :::
 :::
 ::: {.column width="30%"}
 ![](figures/that's-me.jpg)
 :::
 :::
-[^1]: C. Manning and J. Hewwit, “Natural language processing with deep learning,” cs224n. Available: [https://web.stanford.edu/class/cs224n/]() 
 
-## Why are you here today? {}
+## The fast rise of ChatGPT
+::: {.columns}
+::: {.column width="50%"}
+
+::: {.incremental}
+- Released on 30 November 2022
+- Took the world by storm
+- Everybody has heard of it, but...
+:::
+
+:::
+::: {.column width="50%"}
+  ![](./figures/growth-chatgpt.webp){width=80%}
+:::
+:::
+
+
+## The adoption of ChatGPT
+
+::: {.columns}
+::: {.column width="50%"}
+
+::: {.incremental}
+- Has not been widely adopted
+- Are not used often by those who have adopted them
+- Are mostly used for writing, coding and finding information
+:::
+
+:::
+
+::: {.column width="50%"}
+  ![](./figures/nature-survey.png){width=80%}
+:::
+:::
+::: {.aside}
+"How ChatGPT is transforming the postdoc experience", Nature, 16-10-2023: [https://www.nature.com/articles/d41586-023-03235-8]()
+:::
+
+## Why are you here today? 
 - Who are you?
 - What is your occupation?
 - What do you hope to get out of this course?
