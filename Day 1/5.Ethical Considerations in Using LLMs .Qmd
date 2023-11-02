@@ -1,6 +1,6 @@
 ---
 title: "Ethical Considerations in Using LLMs"
-subtitle: "*The good, the bad, and the ugly*"
+subtitle: "*The good, the Bad, and the Ugly*"
 author: "Alex van Vorstenbosch"
 footer: "Ethics and LLMs"
 title-slide-attributes:
@@ -24,14 +24,6 @@ Form your own opinions, and openly discuss these issues.
 
 # Biases and Misinformation
 
-## Moderation of your GPT application with the OpenAI moderation API
-- Make sure no `bad` content is processed via your API-key
-- The moderation endpoint is free to use when monitoring the inputs and outputs of OpenAI APIs. 
-- [OpenAI Moderation API](https://platform.openai.com/docs/guides/moderation/overview)
-```{.python}
-moderation_resp = openai.Moderation.create(input="Am I breaking any of the rules here?")
-``` 
-
 ## Biases
 - LLMs can strengthen negative stereotypes
 - LLMs can might strengten the views of users via confirmation bias:
@@ -40,7 +32,26 @@ moderation_resp = openai.Moderation.create(input="Am I breaking any of the rules
 - LLMs are 'skewed' to the trainingset majority:
   - English Western views 
 
+## Hallucinating false information
+- What are <span class="highlighted-text">Hallucinations</span>? 
+  - It's when LLMs generates incorrect, nonsensical, or unverifiable information presented as fact.
+  - Might also be answers that are not supported by the provided context
+  - Can be hard to spot as the model is a great 'bluffer'
+    - Doesn't know that the information is wrong
+    - self-reflection does help however
+
+## Hallucinating false information
+
+
 # The Dark Side of LLMs(?)
+
+## Moderation of your GPT application with the OpenAI moderation API
+- Make sure no `bad` content is processed via your API-key
+- The moderation endpoint is free to use when monitoring the inputs and outputs of OpenAI APIs. 
+- [OpenAI Moderation API](https://platform.openai.com/docs/guides/moderation/overview)
+```{.python}
+moderation_resp = openai.Moderation.create(input="Am I breaking any of the rules here?")
+``` 
 
 ## Copyright issues and LLMs
 - Can the output be copywrighted?
