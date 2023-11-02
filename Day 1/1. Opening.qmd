@@ -65,8 +65,8 @@ date: "11-17-2023"
 
 ::: {.incremental}
 - Has not been widely adopted
-- Are not used often by those who have adopted them
-- Are mostly used for writing, coding and finding information
+- Is not used that often by those who have adopted it
+- is mostly used for writing, coding and finding information
 :::
 
 :::
@@ -84,20 +84,20 @@ date: "11-17-2023"
 - What is your occupation?
 - What do you hope to get out of this course?
 
-## The Planning {.smaller}
+## The Planning {.smaller-2}
 :::{.panel-tabset}
 ## Day 1
 | Time              	| Title                                       	|        Discription                                                                      	|
 |-------------------	|---------------------------------------------	|------------------------------------------------------------------------------	|
-| 09:00 – 09:30 uur 	| Introduction and Getting to Know Each Other 	|                                                                              	|
-| 09:30 – 10:30 uur 	| Introduction to LLM's and ChatGPT           	| NLP and development of LLMs Capabilities of ChatGPT Real world applications  	|
+| 09:00 – 09:30 uur 	| Introduction 	|                                                                              	|
+| 09:30 – 10:30 uur 	| Introduction to LLM's and ChatGPT           	| NLP and development of LLMs<br>Capabilities of ChatGPT<br>Real world applications  	|
 | 10:30 – 10:45 uur 	| Break                                       	|                                                                              	|
-| 10:45 – 12:00 uur 	| Prompt Engineering                          	| Introduction to prompting Best practices for prompting Hands-on excercises   	|
+| 10:45 – 12:00 uur 	| Prompt Engineering                          	| Introduction to prompting<br> Best practices for prompting<br>Hands-on excercises   	|
 | 12:00 – 13:00 uur 	| Lunch                                       	|                                                                              	|
-| 13:00 – 13:45 uur 	| Programming with GPT                        	| Introduction to the OpenAI API Hands-on excercises                           	|
-| 13:45 – 14:45 uur 	| Ethical Considerations in Using LLMs        	| Biases and Misinformation The Dark Side of LLMs Privacy and Legal Challenges 	|
+| 13:00 – 13:45 uur 	| Programming with GPT                        	| Introduction to the OpenAI API<br>Hands-on excercises                           	|
+| 13:45 – 14:45 uur 	| Ethical Considerations in Using LLMs        	| Biases and Misinformation<br>The Dark Side of LLMs<br>Privacy and Legal Challenges 	|
 | 14:45 - 15:00 uur 	| Break                                       	|                                                                              	|
-| 15:00 - 16:00     	| Programming with GPT                        	| Pairprogramming with LLMs Hands-on excercises                                	|
+| 15:00 - 16:00     	| Programming with GPT                        	| Pair-programming with LLMs<br>Hands-on excercises                                	|
 | 16:00– 16:45 uur  	| Improved efficiëncy with ChatGPT            	| Examples of real implementations of ChatGPT in a workflow                    	|
 | 16:45 – 17:00 uur 	| Summary, Evaluation and Conclusion of Day 1 	|                                                                              	|
 
@@ -105,9 +105,9 @@ date: "11-17-2023"
 | Time              	| Title                                                                 	| Discription                                                             	|
 |-------------------	|-----------------------------------------------------------------------	|-------------------------------------------------------------------------	|
 | 09:00 – 09:20 uur 	| Opening and Discussion of the Day's Agenda                            	|                                                                         	|
-| 09:20 – 10:45 uur 	| Text Analysis with LLMs                                               	| Foundation models for NLP Evaluation of performance Hands-on Excercises 	|
+| 09:20 – 10:45 uur 	| Text Analysis with LLMs                                               	| Foundation models for NLP<br>Evaluation of performance<br>Hands-on Excercises 	|
 | 10:45 – 11:00 uur 	| Break                                                                 	|                                                                         	|
-| 11:00 – 12:30 uur 	| Retrieval Augmented Generation (RAG), open-source, and next steps(?)  	| LLMs versus Search Engines How to host your own LLM Next-steps?         	|
+| 11:00 – 12:30 uur 	| Retrieval Augmented Generation (RAG), open-source, and next steps(?)  	| LLMs versus Search Engines<br>How to host your own LLM<br>Next-steps?         	|
 | 12:30 – 13:30 uur 	| Lunch                                                                 	|                                                                         	|
 | 13:30 - 16:30 uur 	| Extended Practical Assignment                                         	|                                                                         	|
 | 16:30 - 17:00 uur 	| Summary, Evaluation, and Conclusion                                   	|                                                                         	|
