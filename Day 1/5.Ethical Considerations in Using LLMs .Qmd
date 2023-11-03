@@ -41,7 +41,22 @@ Form your own opinions, and openly discuss these issues.
     - self-reflection does help however
 
 ## Hallucinating false information
+- What are <span class="highlighted-text">Hallucinations</span>? 
+  - It's when LLMs generates incorrect, nonsensical, or unverifiable information presented as fact.
 
+::: {.columns}
+
+::: {.column width="50%"}
+ <iframe src="https://chat.openai.com/share/e8826676-81ad-40b9-a9ad-a27dc22f9151" class="iframe-chatgpt"></iframe>
+
+:::
+
+::: {.column width="50%"}
+ <iframe src="https://chat.openai.com/share/49872740-604f-4b27-a844-002eff6743a9" class="iframe-chatgpt"></iframe>
+
+:::
+
+:::
 
 # The Dark Side of LLMs(?)
 
