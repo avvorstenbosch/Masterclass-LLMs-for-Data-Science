@@ -446,9 +446,10 @@ Foundational language model that:
 - Limited input window (4096 tokens)
 - It has no memory
 - It can only predict next tokens, nothing else:
-    - It cannot perform tasks while
-- It cannot think in multiple directions like we do
+    - It cannot perform tasks while you wait!
+- It cannot think in multiple directions like we do!
 - It doesn't understand it's own internal model!
+- It doesn't know truth and what is not
 
 ## How you should not think of ChatGPT
 
