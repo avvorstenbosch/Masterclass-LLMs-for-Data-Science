@@ -67,7 +67,6 @@ Form your own opinions, and openly discuss these issues.
 ```{.python}
 moderation_resp = openai.Moderation.create(input="Am I breaking any of the rules here?")
 ``` 
-
 ## Copyright issues and LLMs
 - Can the output be copywrighted?
 - Can they be trained on copywrighted materials?
@@ -91,6 +90,29 @@ moderation_resp = openai.Moderation.create(input="Am I breaking any of the rules
 - How can we prevent the automated generation of misinformation at scale?
 - How can we prevent the use of these techniques for spam, identity fraud, and worse?
 - Who should decide what misuse of LLMs means?
+
+## Climate impact of large language models
+- These models are very compute intensive:
+  - In the training process
+  - But also during inference!
+- How can we justify this (inefficient) use of technology?
+
+## Training the model via RLHF
+
+::: {.columns}
+
+::: {.column width="50%"}
+
+- Low-wage workers in Kenia were paid to help collect data for the 'moderation' tool: 
+  - Traumatising work
+:::
+
+::: {.column width="50%"}
+![](./figures/times-sama-2dollar.png)
+[Time: Exclusive: OpenAI Used Kenyan Workers on Less Than $2 Per Hour to Make ChatGPT Less Toxic]("https://time.com/6247678/openai-chatgpt-kenya-workers/")
+:::
+
+:::
 
 ## Use of LLMs for essays, homework, etc. cannot be reliably detected.
 ::: {.columns}
