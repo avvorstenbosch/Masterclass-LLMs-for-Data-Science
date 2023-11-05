@@ -29,12 +29,15 @@ date: "11-17-2023"
 
 ## NLP-lifecycle on it's head
 
+\
 Regular ML:
-Problem -> Idea -> Gather data -> Train Model -> Evaluate Model -> `Repeat if neccessary` -> deploy
-Duration: Months
+Problem -> Idea -> Gather data -> Train Model -> Evaluate Model -> `Repeat if neccessary` -> deploy\
+Duration: Months\
+\
+\
 
 Prompting workflow:
-Problem -> Idea -> Gather data -> Finetune prompt -> Evaluate Model -> `Repeat if neccessary` -> deploy
+Problem -> Idea -> Gather data -> Finetune prompt -> Evaluate Model -> `Repeat if neccessary` -> deploy\
 Duration: Days
 
 

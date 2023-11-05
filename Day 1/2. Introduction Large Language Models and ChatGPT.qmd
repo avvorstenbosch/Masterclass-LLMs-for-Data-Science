@@ -432,9 +432,9 @@ tune the model towards higher quality responses.
 
 Foundational language model that:
 
-- Understands language conventions (syntax, grammer, etc.)
-- can answer questions (Has internal knowledge base)
-- can code
+- *'Understands'* language conventions (syntax, grammer, etc.)
+- Can answer questions (has internal knowledge base)
+- Can code
 - Can write just like humans
 - Can do some basic arithmatic
 - Can understand *deep* elements of writing: sentiment, style, etc.
@@ -443,20 +443,20 @@ Foundational language model that:
 
 ## Weaknesses of LLMs
 
-- Limited input window (4096 tokens)
+- Limited input window (4096 tokens for base model)
 - It has no memory
 - It can only predict next tokens, nothing else:
     - It cannot perform tasks while you wait!
 - It cannot think in multiple directions like we do!
 - It doesn't understand it's own internal model!
-- It doesn't know truth and what is not
+- It doesn't know what the truth is and what it is not
 
 ## How you should not think of ChatGPT
 
 - We tend to feel empathy for ChatGPT
     - People like to say thank you to ChatGPT
-    - It feels very `human`
-- BUT: it really boils down to a very very big whatsapp next-word predictor
+    - It feels very `human` to interact with
+- BUT: it really boils down to a very very big autocomplete next-word predictor
 - WE CAN BREAK THE MODEL LOGIC
 
 ## Repeated sampling Penalty
