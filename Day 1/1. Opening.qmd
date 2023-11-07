@@ -79,6 +79,10 @@ date: "11-17-2023"
 "How ChatGPT is transforming the postdoc experience", Nature, 16-10-2023: [https://www.nature.com/articles/d41586-023-03235-8]()
 :::
 
+## What are your expectations of the course?
+
+- PLACEHOLDER FOR IMAGES SENT BY PARTICIPANTS
+
 ## Why are you here today? 
 - Who are you?
 - What is your occupation?
