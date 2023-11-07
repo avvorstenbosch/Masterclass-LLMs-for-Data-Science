@@ -1,0 +1,29 @@
+---
+title: "Prompt Engineering Exercises" 
+author: "**Fill in your name**"
+date: "11-17-2023"
+---
+
+# Exercise: Create a Basic Prompt 
+Using the general prompting template provided in the slides, create a prompt that asks the language model to act a personal tutor for you. Make the model explain to you what a transformer is. Specify the ROLE, TASK_DESCRIPTION, TASK_SPECIFICATION, and FORMAT_OUTPUT.
+
+## Exercise
+What happens when you run the same prompt, but remove the ROLE specification.
+
+# Exercise: Order of Operations
+## Answer first
+Give ChatGPT the task to multiply 3 numbers together, which are at least 3 digits in length.
+Specify the output such that ChatGPT first gives you the result of the multiplication, and only then it gives you the 3 numbers.
+What do you see happening?
+
+## Answer last
+Do the same, but now reverse the order. Make sure ChatGPT first gives you the 3 numbers, and then make it calculate the multiplication. Is anything different, why?
+
+# Exercise: Spelling
+1. Ask the model the reverse the word: "congratulations".
+2. Ask the model to reverse the word and spell it out letter-by-letter.
+What do you see? Why do you think this happens.
+
+## A closer look
+Use the [openai-tokenizer](https://platform.openai.com/tokenizer) to look at the words? What do you see?
+
