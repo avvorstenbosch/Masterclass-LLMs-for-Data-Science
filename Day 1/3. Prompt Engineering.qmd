@@ -205,7 +205,8 @@ DOCUMENT:
 ```
 
 ## Give models time-to-think {.smaller}
-
+```python
+f"""
 Determine if my answer below is correct.
 
 I'm trying to figure out how expensive my prompting of the GPT4 API will be in total.
@@ -217,9 +218,14 @@ $0.03/1k prompt tokens.
 $0.06/1k sampled tokens.
 
 We can assume that 1 token is on average 3/4th of a single word. 
-What
 
+I found the following answer:
+18 dollars.
+"""
+```
 
+```python
+f"""
 First work out your own solution to the problem. Then compare your solution to the given solution and evaluate if the given solution is correct or not. Don't decide if the student's solution is correct until you have done the problem yourself.
 
 I'm trying to figure out how expensive my prompting of the GPT4 API will be in total.
@@ -231,10 +237,12 @@ $0.03/1k prompt tokens.
 $0.06/1k sampled tokens.
 
 We can assume that 1 token is on average 3/4th of a single word. 
-What
 
 I found the following answer:
 18 dollars.
+"""
+```
+
 
 ## Take into account the order-of-operations {.smaller}
 - First give calculation steps, then give the answer.
