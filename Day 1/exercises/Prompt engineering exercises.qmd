@@ -1,16 +1,23 @@
 ---
 title: "Prompt Engineering Exercises" 
-author: "**Fill in your name**"
 date: "11-17-2023"
+format: 
+    pdf:
+        number-sections: true
 ---
 
 # Exercise: Create a Basic Prompt 
-Using the general prompting template provided in the slides, create a prompt that asks the language model to act a personal tutor for you. Make the model explain to you what a transformer is. Specify the ROLE, TASK_DESCRIPTION, TASK_SPECIFICATION, and FORMAT_OUTPUT.
+Using the general prompting template provided in the slides, create a prompt that asks the language model to act a personal tutor for you. Make the model explain to you what a transformer is. Specify the:
 
-## Exercise
-What happens when you run the same prompt, but remove the ROLE specification.
+- ROLE, 
+- TASK_DESCRIPTION,
+- TASK_SPECIFICATION,
+- and FORMAT_OUTPUT.
 
-# Exercise: Order of Operations
+## try some variations
+Try experimenting with some variations of this yourself. Change the role, task, and output format. How does the model respond to these changes? 
+
+# Exercise: Order of Operations *(patched?)*
 ## Answer first
 Give ChatGPT the task to multiply 3 numbers together, which are at least 3 digits in length.
 Specify the output such that ChatGPT first gives you the result of the multiplication, and only then it gives you the 3 numbers.
@@ -19,6 +26,34 @@ What do you see happening?
 ## Answer last
 Do the same, but now reverse the order. Make sure ChatGPT first gives you the 3 numbers, and then make it calculate the multiplication. Is anything different, why?
 
+# Exercise: Order of Operations + room to think
+## Answer first
+Let the model check the answer below. First, only allow the model to answer with the verdict correct or incorrect. Then ask for the explanation in the next message.
+```python
+f"""
+Determine if my answer below is correct.
+
+I'm trying to figure out how expensive my prompting of the GPT4 API will be in total.
+I'm going to run around 1000 prompts. For these prompts, the average prompt-lengt is 250 words.
+The average response length of the model for these prompts is 300 words. 
+
+The API pricing is as follows:
+$0.03/1k prompt tokens.
+$0.06/1k sampled tokens.
+
+We can assume that 1 token is on average 3/4th of a single word. 
+
+I found the following answer:
+18 dollars.
+"""
+```
+
+## Answer last
+Now do the same, but instruct the model to first work through the problem itself. Ask it to **think step by step**.
+
+## Reflection
+Why would it help language models to work step-by-step?
+
 # Exercise: Spelling
 1. Ask the model the reverse the word: "congratulations".
 2. Ask the model to reverse the word and spell it out letter-by-letter.
@@ -26,4 +61,18 @@ What do you see? Why do you think this happens.
 
 ## A closer look
 Use the [openai-tokenizer](https://platform.openai.com/tokenizer) to look at the words? What do you see?
+
+## Self-reflection
+Ask the model whether the answer it gave was correct, what happens? Why do you think this is the case?
+
+### Self-reflection on the API-costs questions
+If the answer given was incorrect, see how it responds if you ask it to reflect on the answer given.
+
+# Few-shot prompting + Chain-of-thoughts
+One simple but time consuming task you might often do is to take notes during a meeting, then type these out into a mail to send to the team. However, how you take notes is very specific to you, just like how you want and need the mail to look.
+
+We can guide the model by giving it a few examples of our task, this is called *Few-shot prompting.* Also, I want you to take into consideration the order of operations and how to go from meeting notes to this email. 
+
+**\textcolor{red}{Please don't send any private or proprietary information to third parties.}** 
+You can use ficticious meeting notes if you'd like. 
 
