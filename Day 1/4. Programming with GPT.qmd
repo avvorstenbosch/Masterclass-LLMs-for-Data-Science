@@ -83,10 +83,11 @@ response <- create_chat_completion(
             "role" = "user",
             "content" = "What can the OpenAI API do?"
         )
-    )
+    ),
     temperature = 1,     # The randomness setting of the model: 0 is deterministic, 2 is most random
     n = 1,               # How many completions do we want the model to generate
-    max_tokens = NULL    # How many tokens is the model allowed to use
+    max_tokens = NULL,   # How many tokens is the model allowed to use
+    openai_api_key = OPENAI_API_KEY # Your secret key to the API
 )
 ```
 ```{python}
