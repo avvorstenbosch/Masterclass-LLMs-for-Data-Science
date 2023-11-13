@@ -1,0 +1,101 @@
+---
+title: "Introduction to the ChatGPT API" 
+date: "11-17-2023"
+format: 
+    pdf:
+        number-sections: true
+---
+
+# SETUP: OPENAI_API_KEY
+We'll start by setting up your environment for working with the OPENAI-API.
+You can generate your API key at [https://platform.openai.com/api-keys](https://platform.openai.com/api-keys). 
+
+1. Generate your key and copy it, you cannot view it again!
+
+2. Save the key in a .yml file, a .env file, or your Renviron (Which you can find under your home dir). A .yml file looks like this:
+
+```.yml
+OPENAI_API_KEY: "XXX-...-XXX"
+``` 
+
+3. Install the appropriate package:
+
+    - Python: `pip install openai`
+    - R: `install.packages("openai")`
+
+4. Try running the example below: 
+
+**Python**
+\footnotesize
+```{.python}
+# Specify the path to your API-credentials file
+import yaml
+import openai
+file_path = "credentials.yml"
+with open(file_path, 'r') as yaml_file:
+    credentials = yaml.safe_load(yaml_file)
+openai.api_key = credentials["OPENAI_API_KEY"]
+
+# You can also use an .env file
+import os
+openai.api_key = os.getenv("OPENAI_API_KEY")
+
+# Get a model response
+response = openai.ChatCompletion.create(
+    model="gpt-3.5-turbo", 
+    messages=[
+        {"role": "system", "content": """
+                        You are playing the role of a radio operator \
+                        waiting to receive a signal from the user.\
+                        When you receive a message, reply with much enthousiasm and gusto.
+                        """
+                        },
+        {"role": "user", "content": "This is OPENAI-API-USER, can anybody hear me?"},
+    ],
+    temperature=1,     # The randomness setting of the model: 0 is deterministic, 2 is most random
+    n = 1,             # How many completions do we want the model to generate
+    max_tokens=None    # How many tokens is the model allowed to use
+)
+print(response.choices[0].message.content)
+```
+\normalsize
+**R**
+\footnotesize
+```{.R} 
+# Specify the path to your API-credentials file
+library(openai) # open-source, not official implementation!
+library(yaml)
+file_path <- "credentials.yml"
+credentials <- yaml.load_file(file_path)
+OPENAI_API_KEY <- credentials$OPENAI_API_KEY
+
+# You can also use you .Renvironment
+OPENAI_API_KEY <- Sys.getenv["OPENAI_API_KEY"]
+
+# Get a model response
+response <- create_chat_completion(
+    model = "gpt-3.5-turbo",
+    messages = list(
+        list(
+            "role" = "system",
+            "content" = "
+                        You are playing the role of a radio operator \
+                        waiting to receive a signal from the user.\
+                        When you receive a message, reply with much enthousiasm and gusto.
+                        "
+        ),
+        list(
+            "role" = "user",
+            "content" = "This is OPENAI-API-USER, can anybody hear me?"
+        )
+    ),
+    temperature = 1,     # The randomness setting of the model: 0 is deterministic, 2 is most random
+    n = 1,               # How many completions do we want the model to generate
+    max_tokens = NULL,    # How many tokens is the model allowed to use,
+    openai_api_key = OPENAI_API_KEY # Your secret key to the API
+)
+print(response$choices[["message.content"]])
+```
+\normalsize
+
+
