@@ -450,6 +450,7 @@ Foundational language model that:
 - It cannot think in multiple directions like we do!
 - It doesn't understand it's own internal model!
 - It doesn't know what the truth is and what it is not
+- It doesn't understand tabular data
 
 ## How you should not think of ChatGPT
 
