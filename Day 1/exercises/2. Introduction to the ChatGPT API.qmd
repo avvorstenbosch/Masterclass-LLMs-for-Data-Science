@@ -98,4 +98,138 @@ print(response$choices[["message.content"]])
 ```
 \normalsize
 
+# Exercise: Getting to know the chat completion API
+Experiment with the various parameters of the chat completion API:
 
+-   What happens when you adjust temperature?
+-   What happens when you adjust n? Set it to 3 for example. \textcolor{red}{Don't set this value high as a component of the API cost scales lineairly with this parameter!}
+-   What happens when you adjust max_tokens? 
+
+# Exercise: Iterative prompt development on a movie review
+Now that we have acces to the API, it becomes a lot easier to craft better prompts. We can set the temperature for our chat completion to 0, which ensures that the same prompt will gave the same result every time.
+
+For each of the tasks below, finetune your prompt untill you are happy with the result
+
+## Load the review
+It can be found under `./Day 1/exercises/data/movie-review-1.txt`
+
+## Task: Provide a synopsis of the review
+
+## Task: Make sure the synopsis of the review is at most 3 sentences long
+
+## Task: extract the movie title, genre, year, director and actors from the review. Place this information at the top of the review.
+
+## Task: Extract a list of tips and tops of the movie, using only keywords
+
+## Task: Make the model return these fields in a nicely structured (and valid) .json format
+
+## Task: Review number 2
+Now apply the prompt you've crafted to the second movie review: `./Day 1/exercises/data/movie-review-2.txt`. Does it work?
+
+
+# Exercise: Estimate token usage before sending your prompts
+Before you send messages to the OpenAI API, you may want to check how long they are, you can do this using the functions below:
+
+**Python**\
+For Python the function is exact, as we have direct acces to the tokenizer used by OpenAI:
+\footnotesize
+```{.python}
+import tiktoken
+def num_tokens_from_messages(messages, model="gpt-3.5-turbo-0613"):
+    """Return the number of tokens used by a list of messages."""
+    try:
+        encoding = tiktoken.encoding_for_model(model)
+    except KeyError:
+        print("Warning: model not found. Using cl100k_base encoding.")
+        encoding = tiktoken.get_encoding("cl100k_base")
+    if model in {
+        "gpt-3.5-turbo-0613",
+        "gpt-3.5-turbo-16k-0613",
+        "gpt-4-0314",
+        "gpt-4-32k-0314",
+        "gpt-4-0613",
+        "gpt-4-32k-0613",
+        }:
+        tokens_per_message = 3
+        tokens_per_name = 1
+    elif model == "gpt-3.5-turbo-0301":
+        tokens_per_message = 4  # every message follows <|start|>{role/name}\n{content}<|end|>\n
+        tokens_per_name = -1  # if there's a name, the role is omitted
+    elif "gpt-3.5-turbo" in model:
+        print("Warning: gpt-3.5-turbo may update over time. Returning num tokens assuming gpt-3.5-turbo-0613.")
+        return num_tokens_from_messages(messages, model="gpt-3.5-turbo-0613")
+    elif "gpt-4" in model:
+        print("Warning: gpt-4 may update over time. Returning num tokens assuming gpt-4-0613.")
+        return num_tokens_from_messages(messages, model="gpt-4-0613")
+    else:
+        print("Warning: the selected model is not known. Returning num tokens assuming gpt-3.5-turbo-0613.")
+        return num_tokens_from_messages(messages, model="gpt-3.5-turbo-0613")
+    num_tokens = 0
+    for message in messages:
+        num_tokens += tokens_per_message
+        for key, value in message.items():
+            num_tokens += len(encoding.encode(value))
+            if key == "name":
+                num_tokens += tokens_per_name
+    num_tokens += 3  # every reply is primed with <|start|>assistant<|message|>
+    return num_tokens
+```
+\normalsize
+**R**\
+For R, we need to make an estimate, as the tokenizer has no R implementation. 
+We use the rule of thumb that a single word is $\frac{4}{3}$ of a token. In practice this works quite well. In a few test cases the value returned was typically within 5 percent of the true value.
+\footnotesize
+```{.R}
+library(re)
+num_tokens_from_messages <- function(messages, model="gpt-3.5-turbo-0613") {
+    tokens_per_message <- 0
+    tokens_per_name <- 0
+
+    if (model %in% c("gpt-3.5-turbo-0613", "gpt-3.5-turbo-16k-0613", "gpt-4-0314", 
+                    "gpt-4-32k-0314", "gpt-4-0613", "gpt-4-32k-0613")) {
+        tokens_per_message <- 3
+        tokens_per_name <- 1
+    } else if (model == "gpt-3.5-turbo-0301") {
+        tokens_per_message <- 4
+        tokens_per_name <- -1
+    } else if (grepl("gpt-3.5-turbo", model)) {
+        message("Warning: gpt-3.5-turbo may update over time. Returning num tokens assuming gpt-3.5-turbo-0613.")
+        return(num_tokens_from_messages(messages, model="gpt-3.5-turbo-0613"))
+    } else if (grepl("gpt-4", model)) {
+        message("Warning: gpt-4 may update over time. Returning num tokens assuming gpt-4-0613.")
+        return(num_tokens_from_messages(messages, model="gpt-4-0613"))
+    } else {
+        stop(sprintf("num_tokens_from_messages() is not implemented for model %s. See https://github.com/openai/openai-python/blob/main/chatml.md for information on how messages are converted to tokens.", model))
+    }
+
+    num_tokens <- 0
+
+    for (message in messages) {
+        num_tokens <- num_tokens + tokens_per_message
+        for (key in names(message)) {
+            value <- message[[key]]
+            # Count multiple spaces as a single space. 
+            value <- gsub(" +", " ", value)
+            # Calculate tokens for each word, assuming each word is 4/3 tokens
+            num_tokens <- num_tokens + (length(strsplit(value, " ")[[1]]) * 4/3)
+            if (key == "name") {
+                num_tokens <- num_tokens + tokens_per_name
+            }
+        }
+    }
+
+    num_tokens <- num_tokens + 3 # every reply is primed with assistant
+    return(num_tokens)
+}
+```
+\normalsize
+
+compare the output of the functions below with the information returned in the response object from the previous exercise. 
+
+## API-costs
+We are not just interested in how many tokens we use, we are interested in how many cents we spend on a prompt. Write a function that uses the function above to calculate the cost of a prompt. Return 2 values:
+
+- The estimated cost of the prompt input
+- The estimated cost of the prompt output
+
+For this exercise you may assume that the output is 4/5 of the length of the input. 
