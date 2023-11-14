@@ -1,0 +1,24 @@
+---
+title: "Pair-programming with LLMs"
+date: "11-17-2023"
+format: 
+    pdf:
+        number-sections: true
+---
+
+# Exercise: Generating code snippets
+
+For example advent of code or leetcode
+
+# Exercise: Translation between code languages
+
+# Exercise: Explaining code
+Check out the code under `./data/code.py`
+\rotatebox{180}{\href{https://adventofcode.com/2021/day/4}{This code is a solution to a Bingo puzzle on Advent of Code 2021 - day 4}}
+
+# Exercise: Document code
+
+
+# Exercise: Write unittest for the code
+
+# 
