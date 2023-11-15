@@ -12,13 +12,13 @@ For this exercise, please begin by deciding which coding language you are most p
 
 -   If you chose \texttt{R}:
 
-    Check out the code under `./data/code.py`, and the data under `./data/data-puzzle.txt`
+    Check out the code under `./data/code.py`, and the data under `./data/input-data-script.txt`
     Can you figure out what is going on here, what is the code doing?
     Use either the API or the Browser version of ChatGPT to help you figure out what the code is doing. 
 
 -   If you chose \texttt{Python}:
 
-    Check out the code under `./data/code.R`, and the data under `./data/data-puzzle.txt`
+    Check out the code under `./data/code.R`, and the data under `./data/input-data-script.txt`
     Can you figure out what is going on here, what is the code doing?
     Use either the API or the Browser version of ChatGPT to help you figure out what the code is doing. 
 
@@ -47,12 +47,28 @@ Tips:
 
 - You already know what answer it should generate, use this as your unit-test!
 
-# Exercise: (Challenging) Generating code 
+# Exercise (optional): Generate unit-test
+We are gong to optimize the code you translated from language A to language B.
+Here we need to be a bit more carefull if nothing breaks by editing the code. 
+Use ChatGPT to write unittests for the following:
+
+- Does reading the data give the expected result?
+- Does drawing a number do what we expect? 
+- Does return_winner detect a win?
+
+# Exercise (optional): Optimize the code
+Use ChatGPT to see if there are any parts of your code that can be optimized.
+I suggest doing this per section to make sure the LLM remains focussed on the relevant parts. 
+
+
+# Exercise: (Challenge) Generating code 
 Try to solve part 2 of the puzzle on:
 \rotatebox{180}{\href{https://adventofcode.com/2021/day/4}{https://adventofcode.com/2021/day/4}}
 
 **Answer**
-\rotatebox{180}{The answer to the second part of the puzzle for our input should be 2776.}
+\rotatebox{180}{The answer to the second part of the puzzle for our input should be 2776 with board 34.}
 
 Your code should now solve for the puzzle inputs of Advent-of-Code day 4 2021 as a second check.
  
+# Exercise: (Challenge) Generating code
+See if you can also get the solution to the second part for the language that wasn't your first choice!
