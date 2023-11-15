@@ -66,6 +66,17 @@ Form your own opinions, and openly discuss these issues.
 
 :::
 
+## Who is responsible when AI makes a mistake?
+
+- [First recorded death of driver of self-driving car](https://en.wikipedia.org/wiki/History_of_self-driving_cars#:~:text=The%20first%20known%20fatal%20accident,18%2Dwheel%20tractor%2Dtrailer.)
+-  [First recorded fatility of pedestrian by self-driving car](https://en.wikipedia.org/wiki/Death_of_Elaine_Herzberg)
+
+:::{.notes}
+The first known fatal accident involving a vehicle being driven by itself took place in Williston, Florida on 7 May 2016 while a Tesla Model S electric car was engaged in Autopilot mode. The driver was killed in a crash with a large 18-wheel tractor-trailer.
+
+First pedestrian was pushing a bike with shoping bags accross the road.
+:::
+
 # The Dark Side of LLMs(?)
 
 ## Moderation of your GPT application with the OpenAI moderation API
@@ -103,6 +114,47 @@ moderation_resp = openai.Moderation.create(input="Am I breaking any of the rules
 
 ![](./figures/spamspamspam.jpg){fig-aling=center}
 
+## Are these AI developments safe?
+ 
+:::{.columns}
+
+:::{.column width="33%"}
+
+<iframe width="500px" height="400" frameborder="0" src="https://www.bbc.com/news/av-embeds/65452940/vpid/p0fkvt9j"></iframe>
+
+[BBC: AI 'godfather' Geoffrey Hinton tells the BBC of AI dangers after he quits Google](https://www.bbc.com/news/av/world-us-canada-65453192)
+
+:::
+
+:::{.column width="33%"}
+
+<iframe width="500px" height="400" frameborder="0" src="https://www.bbc.com/news/av-embeds/65760449/vpid/p0frhhp3"></iframe>
+
+[BBC: AI 'godfather' Yoshua Bengio feels 'lost' over life's work](https://www.bbc.com/news/technology-65760449)
+:::
+
+:::{.column width="33%"}
+
+<div style="height:435px">
+
+![](./figures/yann-lecun-safety.webp){width=500px}
+
+</div>
+
+[BBC: Meta scientist Yann LeCun says AI won't destroy jobs forever](https://www.bbc.com/news/technology-65886125)
+::: 
+
+:::
+
+:::{.notes}
+Geoffrey E. Hinton is internationally distinguished for his work on artificial neural nets, especially how they can be designed to learn without the aid of a human teacher. This may well be the start of autonomous intelligent brain-like machines. 
+
+Geoffrey Hinton, Yann LeCun, and Joshua Bengio won the 2018 Turing Award. Highest distinction in computer science.  
+:::
+
+## The economic impact of Generative AIc
+- Will they take over many jobs?
+- Or will they just make us more efficient?
 
 ## Climate impact of large language models
 - These models are very compute intensive:
