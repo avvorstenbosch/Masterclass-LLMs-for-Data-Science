@@ -172,3 +172,7 @@ _slides
 
 # ignore sectrets
 credentials.yml
+
+# Ignore solutions of exercises
+*-solution*
+*create_exercise*
