@@ -10,7 +10,7 @@ format:
 We'll start by setting up your environment for working with the OPENAI-API.
 You can generate your API key at [https://platform.openai.com/api-keys](https://platform.openai.com/api-keys). 
 
-1. Generate your key and copy it, you cannot view it again!
+1. Generate your key and copy it, \textcolor{red}{you cannot view it again!}
 
 2. Save the key in a .yml file, a .env file, or your Renviron (Which you can find under your home dir). A .yml file looks like this:
 
@@ -117,14 +117,16 @@ It can be found under `./Day 1/exercises/data/movie-review-1.txt`
 
 ## Task: Make sure the synopsis of the review is at most 3 sentences long
 
-## Task: extract the movie title, genre, year, director and actors from the review. Place this information at the top of the review.
+## Task: Extract the movie title, genre, year, director and actors from the review. Place this information at the top of the review.
 
 ## Task: Extract a list of tips and tops of the movie, using only keywords
 
 ## Task: Make the model return these fields in a nicely structured (and valid) .json format
 
 ## Task: Review number 2
-Now apply the prompt you've crafted to the second movie review: `./Day 1/exercises/data/movie-review-2.txt`. Does it work?
+Now apply the prompt you've crafted to the second movie review:\
+`./Day 1/exercises/data/movie-review-2.txt`\
+Does it work?
 
 
 # Exercise: Estimate token usage before sending your prompts
@@ -181,7 +183,7 @@ We use the rule of thumb that a single word is $\frac{4}{3}$ of a token. In prac
 \footnotesize
 ```{.R}
 library(re)
-num_tokens_from_messages <- function(messages, model="gpt-3.5-turbo-0613") {
+num_tokens_from_messages <- function(messages, model="gpt-3.5-turbo-0613", tokens-per-word=4/3) {
     tokens_per_message <- 0
     tokens_per_name <- 0
 
@@ -210,8 +212,8 @@ num_tokens_from_messages <- function(messages, model="gpt-3.5-turbo-0613") {
             value <- message[[key]]
             # Count multiple spaces as a single space. 
             value <- gsub(" +", " ", value)
-            # Calculate tokens for each word, assuming each word is 4/3 tokens
-            num_tokens <- num_tokens + (length(strsplit(value, " ")[[1]]) * 4/3)
+            # Calculate tokens for each word, assuming each word is 4/3 tokens for English
+            num_tokens <- num_tokens + (length(strsplit(value, " ")[[1]]) * tokens-per-word)
             if (key == "name") {
                 num_tokens <- num_tokens + tokens_per_name
             }
