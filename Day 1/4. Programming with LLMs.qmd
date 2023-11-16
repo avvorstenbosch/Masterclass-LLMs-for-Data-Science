@@ -1,5 +1,5 @@
 ---
-title: "Programming with GPT"
+title: "Programming with LLMs"
 subtitle: "*Time to Pair up*"
 author: "Alex van Vorstenbosch"
 footer: "Pair-programming with LLMs"
@@ -20,9 +20,23 @@ date: "11-17-2023"
 
 # Introduction to the OpenAI API
 
+## Introduction to the OpenAI API
+
+- The website/app is nice and sleek
+
+- But...
+
+    - It is a workflow that cannot be scaled!
+    - You don't have a lot of control as a user!
+
+- Therefore we want to get to know the API:
+
+    - Allows interaction from your programming language of choice
+    - Allows (more) acces to options to control model output
+
 ## Introduction to the OpenAI API - Python
 - We'll be calling the API directly from Python or R
-```{.python code-line-numbers="|1-6|8-10|12-25|15|16-21|22|23|24|"}
+```{.python code-line-numbers="|1-6|8-11|13-25|15|16-21|22|23|24|"}
 # Specify the path to your API-credentials file
 import yaml
 import openai
@@ -52,7 +66,7 @@ response = openai.ChatCompletion.create(
 
 ## Introduction to the OpenAI API - R
 - We'll be calling the API directly from Python or R
-```{.R code-line-numbers="|2|1-6|7-9|10-34|13|12-29|31-33|"}
+```{.R code-line-numbers="|2|1-6|8-9|11-35|13|14-31|32-34|35|"}
 # Specify the path to your API-credentials file
 library(openai) # open-source, not official implementation!
 library(yaml)
@@ -87,7 +101,7 @@ response <- create_chat_completion(
     temperature = 1,     # The randomness setting of the model: 0 is deterministic, 2 is most random
     n = 1,               # How many completions do we want the model to generate
     max_tokens = NULL,   # How many tokens is the model allowed to use
-    openai_api_key = OPENAI_API_KEY # Your secret key to the API
+    openai_api_key = OPENAI_API_KEY # Required if it was not stored in your .Renviron
 )
 ```
 ```{python}
@@ -102,7 +116,7 @@ with open(file_path, 'r') as yaml_file:
 openai.api_key = credentials["OPENAI_API_KEY"]
 ```
 
-## Let's try it out!
+## Let's try it out! {.smaller}
 - Run prompts with temperature 0 to make them reproducible!
 
 ```{python}
@@ -121,8 +135,30 @@ response = openai.ChatCompletion.create(
 )
 print(response.choices[0].message.content)
 ```
+:::{.panel-tabset}
 
-## Let's try it out!
+## T = 1 (normal)
+
+![](./figures/ptoken-t1.png){fig-aling=center}
+
+## T = 0.5 
+
+![](./figures/ptoken-t05.png){fig-aling=center}
+
+
+## T = 2
+
+![](./figures/ptoken-t2.png){fig-aling=center}
+
+
+## T = 0
+
+![](./figures/ptoken-t0.png){fig-aling=center}
+
+:::
+
+
+## Let's try it out! {.smaller}
 - Run prompts with temperature 0 to make them reproducible!
 
 ```{python}
@@ -148,8 +184,48 @@ response = openai.ChatCompletion.create(
 print(response)
 ```
 
+## Experiment - random number generation using N setting{.smaller}
+
+```{.python}
+response = openai.ChatCompletion.create(
+    model="gpt-3.5-turbo", 
+    messages=[
+        {"role": "system", "content": "You are a helpful assistant. You will answer only in .json formatted responses"},
+        {"role": "user", "content": """Choose an integer number between 0 and 1000. Only return the following json format, don't say anything else:
+                                            {"number":number}"""},
+    ],
+    temperature=1,   # The randomness setting of the model: 0 is deterministic, 2 is most random
+    n = 128,         # How many completions do we want the model to generate
+    max_tokens=None  # How many tokens is the model allowed to use
+)
+```
+
+:::{.panel-tabset}
+
+## Real (pseudo-)random numbers
+
+![](./figures/real_random_number_generator.png){fig-aling=center}
+
+## ChatGPT random numbers - "Pick"
+
+![](./figures/bad-random-number-generator.png){fig-aling=center}
+
+
+## ChatGPT random numbers - "Choose"
+
+![](./figures/bad-random-number-generator2.png){fig-aling=center}
+
+:::
+
+## Check out the official documentation
+
+- More info can be found on the official pages
+- Developments are going fast, be sure to check in frequently:
+    - [API-reference chat completions](https://platform.openai.com/docs/api-reference/chat)
+    - [Text generation models guide](https://platform.openai.com/docs/guides/text-generation)
+
 ## What if we want to see the number of tokens before sending a request?
-- Use the `tiktoken` package
+- Use the `tiktoken` package (only for `Python`)
 
 ```{python}
 #| echo: true
@@ -157,7 +233,7 @@ import tiktoken
 encoding = tiktoken.encoding_for_model("gpt-3.5-turbo")
 encoding = encoding.encode("I wonder how many tokens are used for this line?")
 print(encoding)
-print(f"The numer of tokens used was: {len(encoding)}")
+print(f"The number of tokens used was: {len(encoding)}")
 ```
 
 
@@ -223,6 +299,13 @@ if tiktoken_count == API_count:
     print("Hurray! It's a match!")
 ```
 
+## ... But i'm not a Python user
+- Worry not!
+    - In the assignments I've written a helper function to help you make estimates
+        - For English: we can assume ~ $\frac{3}{4}$ words-per-token
+        - For Dutch: we can assume ~ $\frac{2}{4}$ words-per-token
+
+
 ## Overview
 - <span class="highlighted-text">Introduction to the OpenAI API</span>
 - Pair-programming with LLMs
@@ -271,3 +354,45 @@ if tiktoken_count == API_count:
 :::
 
 ::: 
+
+## Writing code - SQL queries
+
+<iframe class="iframe-chatgpt" src="https://chat.openai.com/share/bda13f05-fcd0-40e3-b37e-88eea6ab1e3b" style="height: 800px; width:800px"></iframe>
+
+## Writing code - Pong in Python
+
+<iframe class="iframe-chatgpt" src="https://chat.openai.com/share/f809290f-eb39-44f9-95b8-80f13f12bda6" style="height: 800px; width:800px"></iframe>
+
+## {background-video="./figures/pong-demo.mp4"}
+
+
+
+## Writing code - Pong in R
+
+- Could not get this to work... :(
+    - Keeps trying to use functions that don't exist
+    - When called out, apologizes, and then does it agian. 
+- Simple explanation: R as a language is not written to support this type of code.
+    - It's not impossible, but it is not part of the base functionality
+    - R is very focussed on data wrangling and statistics
+    - Python is much more generalized
+
+## Translation between code-languages {.smaller}
+
+- Remember this function from the exercises :)
+
+<iframe class="iframe-chatgpt" src="https://chat.openai.com/share/69ebe8b5-4f0b-456e-b70d-33cac76110a9" style="height: 800px; width:800px"></iframe>
+
+## Documenting code
+
+<iframe class="iframe-chatgpt" src="https://chat.openai.com/share/dbae088e-3e9d-4348-a42c-79bc60b843c0" style="height: 800px; width:800px"></iframe>
+
+
+## Explaining code
+
+<iframe class="iframe-chatgpt" src="https://chat.openai.com/share/a0225e04-11a8-443b-be8b-59c3c99640a4" style="height: 800px; width:800px"></iframe>
+
+## Improving/Optimising/Reviewing code
+
+<iframe class="iframe-chatgpt" src="https://chat.openai.com/share/01ef4e08-eb08-4692-88b7-8e92624a45d5" style="height: 800px; width:800px"></iframe>
+
