@@ -17,7 +17,7 @@ Using the general prompting template provided in the slides, create a prompt tha
 ## try some variations
 Try experimenting with some variations of this yourself. Change the role, task, and output format. How does the model respond to these changes? 
 
-# Exercise: Order of Operations *(patched?)*
+# Exercise: Order of Operations 
 ## Answer first
 Give ChatGPT the task to multiply 3 numbers together, which are at least 3 digits in length.
 Specify the output such that ChatGPT first gives you the result of the multiplication, and only then it gives you the 3 numbers.
@@ -74,5 +74,17 @@ One simple but time consuming task you might often do is to take notes during a 
 We can guide the model by giving it a few examples of our task, this is called *Few-shot prompting.* Also, I want you to take into consideration the order of operations and how to go from meeting notes to this email. 
 
 **\textcolor{red}{Please don't send any private or proprietary information to third parties.}**\
-You can use ficticious meeting notes if you'd like. 
+You can use your notes for this Masterclass if you like.
 
+# (Optional) Generating movie reviews
+
+One of the areas where these models really shine is content generation. Or at least, getting you started with written content.
+
+For one of the later exercises we will use these models to analyse movie reviews. In preperation for this exercise, have the model generate a review of a movie of your own choice. Make use of the following rules:
+
+- from the review, the sentiment regarding the movie should be slightly ambigous. 
+- Make clear what the 'reviewer' liked about the movie, and what it didn't like. 
+- Begin the movie review with some general information about the movie: such as the director, star actors/actresses, runtime and other such information. 
+- Make sure the model mentions at least 3 other related movies in the review.
+- Don't include a star rating or other numeric rating within this review. 
+- The review should be around 500 words long. 
