@@ -73,6 +73,6 @@ One simple but time consuming task you might often do is to take notes during a 
 
 We can guide the model by giving it a few examples of our task, this is called *Few-shot prompting.* Also, I want you to take into consideration the order of operations and how to go from meeting notes to this email. 
 
-**\textcolor{red}{Please don't send any private or proprietary information to third parties.}** 
+**\textcolor{red}{Please don't send any private or proprietary information to third parties.}**\
 You can use ficticious meeting notes if you'd like. 
 
