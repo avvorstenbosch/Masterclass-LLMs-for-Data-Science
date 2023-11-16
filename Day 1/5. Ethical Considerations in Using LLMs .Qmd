@@ -281,3 +281,7 @@ Estimated training cost of a single ChatGPT instance is 500 tonnes of C02. A 100
 
 
 3. Should LLMs be trusted for any usecase, when 'hallucinations' are inherit to their design? 
+
+:::{style="font-size:30px"}
+Discuss within your group for <span class="highlighted-text"> 5 minutes </span>, and then we will discuss the results in a plenary session.
+:::
