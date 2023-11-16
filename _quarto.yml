@@ -19,6 +19,7 @@ format:
         css: style.scss
         highlight-style: oblivion
         code-copy: true
+        incremental: true  
         
 execute:
     warning: false

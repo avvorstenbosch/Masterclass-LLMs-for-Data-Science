@@ -11,12 +11,18 @@ date: "11-17-2023"
 ---
 
 ## Overview
+
+:::{.nonincremental}
 - Introduction to the OpenAI API
 - Pair-programming with LLMs
+:::
 
 ## Overview
+
+:::{.nonincremental}
 - <span class="highlighted-text">Introduction to the OpenAI API</span>
 - Pair-programming with LLMs
+:::
 
 # Introduction to the OpenAI API
 
@@ -223,6 +229,8 @@ response = openai.ChatCompletion.create(
 - Developments are going fast, be sure to check in frequently:
     - [API-reference chat completions](https://platform.openai.com/docs/api-reference/chat)
     - [Text generation models guide](https://platform.openai.com/docs/guides/text-generation)
+    - [Prompting examples](https://platform.openai.com/examples)
+    - [API pricing](https://openai.com/pricing)
 
 ## What if we want to see the number of tokens before sending a request?
 - Use the `tiktoken` package (only for `Python`)
@@ -307,12 +315,18 @@ if tiktoken_count == API_count:
 
 
 ## Overview
+
+:::{.nonincremental}
 - <span class="highlighted-text">Introduction to the OpenAI API</span>
 - Pair-programming with LLMs
+:::
 
 ## Overview
+
+:::{.nonincremental}
 - Introduction to the OpenAI API
 - <span class="highlighted-text">Pair-programming with LLMs</span>
+:::
 
 # Pair-programming with LLMs
 

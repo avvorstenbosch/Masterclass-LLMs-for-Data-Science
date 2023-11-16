@@ -11,42 +11,53 @@ date: "11-17-2023"
 ---
 
 ## Overview
+::: {.nonincremental}
 - Introduction to Prompting
 - Best techniques for prompting
+:::
 
 ## Overview
+::: {.nonincremental}
 - <span class="highlighted-text">Introduction to Prompting</span>
 - Best techniques for prompting
+:::
 
 # Introduction to prompting
 
 ## Introduction to prompting
-- Prompts are a `natural (language)` way to interact with language models
+- Prompts are a <span class="highlighted-text">natural (language)</span> way to interact with language models
     - very easy to understand
     - anybody can do it
-- Enables `Semantic coding` instead of `logical coding`
-- This makes it very easy and very fast to itterate
+    - it makes the interaction feel <span class="highlighted-text"> human </span>
+- Enables <span class="highlighted-text">Semantic coding</span> instead of <span class="highlighted-text">logical coding</span>
+- This makes it very easy and very fast to iterate
 
 ## NLP-lifecycle on it's head
 
 \
-Regular ML:
-Problem -> Idea -> Gather data -> Train Model -> Evaluate Model -> `Repeat if neccessary` -> deploy\
+Regular ML:\
+Problem &rarr; Idea &rarr; Gather data &rarr; Train Model &rarr; Evaluate Model &rarr;\
+<span class="highlighted-text">Repeat if neccessary</span> &rarr; deploy\
 Duration: Months\
 \
 \
 
-Prompting workflow:
-Problem -> Idea -> Gather data -> Finetune prompt -> Evaluate Model -> `Repeat if neccessary` -> deploy\
+Prompting workflow:\
+Problem &rarr; Idea &rarr; Gather (less) data &rarr; Finetune prompt &rarr; Evaluate Model &rarr;\
+<span class="highlighted-text">Repeat if neccessary</span> &rarr; already deployed\
 Duration: Days
 
 ## Overview
+::: {.nonincremental}
 - <span class="highlighted-text">Introduction to Prompting</span>
 - Best techniques for prompting
+:::
 
 ## Overview
+::: {.nonincremental}
 - Introduction to Prompting
 - <span class="highlighted-text">Best techniques for prompting</span>
+:::
 
 # Best techniques for prompting
 
@@ -267,17 +278,42 @@ I found the following answer:
 
 :::
 
-## Chain-of-thought prompting
+## Chain-of-thought prompting {.smaller}
 
 - Some tasks are complicated for a LLM, based on just the prompt
 - Give the model room to think with Chain-of-Thought prompting
-- Chain-of-Thought prompting is essentially single or few-shot prompting for reasoning:
-EXAMPLE: FEW_SHOT_LEARNING
-- Even zero-shot chain-of-thought prompting works *Let's think step by step*
+- Chain-of-Thought prompting is essentially single or few-shot prompting for reasoning.
+- What was few-shot prompting again?
+
+**Input**\
+*Poor English input: I eated the purple berries.*\
+*Good English output: I ate the purple berries.*\
+*Poor English input: Thank you for picking me as your designer. I’d appreciate it.*\
+*Good English output: Thank you for choosing me as your designer. I appreciate it.*\
+*Poor English input: The mentioned changes have done. or I did the alteration that you*\
+*requested. or I changed things you wanted and did the modifications.*\
+*Good English output:*\
+**output**\
+The requested changes have been made. or I made the alteration that you*
+*requested. or I changed things you wanted and made the modifications.^[Language Models are Few-Shot Learners: [https://arxiv.org/pdf/2005.14165.pdf](https://arxiv.org/pdf/2005.14165.pdf)]
+
 - That this works, is one of the emergent properties of LLMs
 
-## Chain-of-thought prompting
-You can already improve performance by just adding:
-"Let's think step by step." at the end of a prompt
+## Chain-of-thought prompting {.smaller}
+
+- Some tasks are complicated for a LLM, based on just the prompt
+- Give the model room to think with Chain-of-Thought prompting
+- Chain-of-Thought prompting is essentially single or few-shot prompting for reasoning.
+- Chain-of-Thought prompting demonstrates how to reason^[Chain-of-Thought Prompting Elicits Reasoning
+in Large Language Models[https://arxiv.org/pdf/2201.11903.pdf
+](https://arxiv.org/pdf/2201.11903.pdf
+)]:
+
+![](./figures/chain-of-thought-prompting.png)
+
+## 0-shot Chain-of-thought prompting
+You can already improve performance by just adding:\
+<span class="highlighted-text"> "Let's think step by step." </span>\
+at the end of a prompt^[Large Language Models are Zero-Shot Reasoners[https://arxiv.org/pdf/2205.11916.pdf](https://arxiv.org/pdf/2205.11916.pdf)]
 
 

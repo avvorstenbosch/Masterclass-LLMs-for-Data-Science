@@ -22,7 +22,9 @@ date: "11-17-2023"
 - Graciously provided for this MC by Dr. Nick Koning
 - Accesible yet innovative usecase
 
+:::{.fragment}
 Context:
+:::
 
 - Introduction to Programming Course - Java
 - 16 TAs to help with grading
@@ -194,7 +196,7 @@ Suggestions for next steps:
 
 ## Khanmigo as a socratic super tutor
 
-<iframe width="1000" height="500" src="https://www.youtube.com/embed/hJP5GqnTrNo?si=LsAmn-U_1rAqkOqy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="1250" height="750" src="https://www.youtube.com/embed/hJP5GqnTrNo? si=LsAmn-U_1rAqkOqy" style="display: block; margin-left: auto; margin-right: auto;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ## Khanmigo as a socratic super tutor
 - Get personalised help over a wide range of topics

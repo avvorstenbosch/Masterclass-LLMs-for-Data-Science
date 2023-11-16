@@ -18,9 +18,11 @@ It is important to be aware of these topics.\
 Form your own opinions, and openly discuss these issues.
 
 ## Overview
+:::{.nonincremental}
 - <span class="highlighted-text">Biases and Misinformation</span>
 - The Dark Side of LLMs
-- Privacy and Legal Challenges
+- Group discussion
+:::
 
 # Biases and Misinformation
 
@@ -116,8 +118,21 @@ First pedestrian was pushing a bike with shoping bags accross the road.
 ```{.python}
 moderation_resp = openai.Moderation.create(input="Am I breaking any of the rules here?")
 ``` 
+## Overview
+:::{.nonincremental}
+- <span class="highlighted-text">Biases and Misinformation</span>
+- The Dark Side of LLMs
+- Group discussion
+:::
 
-# The Dark Side of LLMs(?)
+## Overview
+:::{.nonincremental}
+- Biases and Misinformation
+- <span class="highlighted-text">The Dark Side of LLMs</span>
+- Group discussion
+:::
+
+# The Dark Side of LLMs
 
 ## Copyright issues and LLMs
 - Can the output be copyrighted?
@@ -214,6 +229,38 @@ Geoffrey E. Hinton is internationally distinguished for his work on artificial n
 Geoffrey Hinton, Yann LeCun, and Joshua Bengio won the 2018 Turing Award. Highest distinction in computer science.  
 :::
 
+## Are these AI developments safe?
+:::{.columns}
+
+:::{.column width="50%"}
+
+<div style="height:600px">
+
+![](./figures/yann-lecun-markets.png){width=650px}
+
+</div>
+
+[BI: AI one-percenters seizing power forever is the real doomsday scenario, warns AI godfather](https://www.businessinsider.com/sam-altman-and-demis-hassabis-just-want-to-control-ai-2023-10?international=true&r=US&IR=T)
+::: 
+
+:::{.column width="50%"}
+
+<div style="height:600px">
+
+![](./figures/andrew-ng-markets.png){width=500px}
+
+</div>
+
+[BI: Google Brain cofounder says Big Tech companies are inflating fears about the risks of AI wiping out humanity because they want to dominate the market](https://www.bbc.com/news/technology-65886125)
+
+:::
+
+::: 
+
+:::{.notes}
+Andrew NG: head of Google Brain and was the former Chief Scientist at Baidu, Stanford professor
+:::
+
 ## Should there be governmental oversight on AI {.smaller}
 - [22 march 2023 - Call for pause on giant AI development](https://futureoflife.org/open-letter/pause-giant-ai-experiments/)
   - 6 months
@@ -224,9 +271,10 @@ Geoffrey Hinton, Yann LeCun, and Joshua Bengio won the 2018 Turing Award. Highes
 
 <iframe width="800" height="500" style="display: block; margin-left: auto; margin-right: auto;" src="https://www.youtube.com/embed/IB0y2jidZIk?si=-JfIWbC0-IwFg6fx&amp;controls=0&amp;start=7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-## The economic impact of Generative AIc
-- Will they take over many jobs?
-- Or will they just make us more efficient?
+## The economic impact of AI
+- Will it take (many of) our jobs?
+- Will it create jobs?
+- Or will it just make us more efficient at our current job?
 
 ## Climate impact of large language models
 - These models are very compute intensive:
@@ -272,7 +320,21 @@ Estimated training cost of a single ChatGPT instance is 500 tonnes of C02. A 100
 
 :::
 
-## Group discussion questions?
+## Overview
+:::{.nonincremental}
+- Biases and Misinformation
+- <span class="highlighted-text">The Dark Side of LLMs</span>
+- Group discussion
+:::
+
+## Overview
+:::{.nonincremental}
+- Biases and Misinformation
+- The Dark Side of LLMs
+- <span class="highlighted-text">Group discussion</span>
+:::
+
+# Group discussion
 
 1. Should LLMs be placed under regulatory oversight?
 
@@ -282,6 +344,6 @@ Estimated training cost of a single ChatGPT instance is 500 tonnes of C02. A 100
 
 3. Should LLMs be trusted for any usecase, when 'hallucinations' are inherit to their design? 
 
-:::{style="font-size:30px"}
-Discuss within your group for <span class="highlighted-text"> 5 minutes </span>, and then we will discuss the results in a plenary session.
+:::{.fragment style="font-size:30px"}
+Discuss within your group for <span class="highlighted-text"> 5-10 minutes </span>, and then we will discuss the results in a plenary session.
 :::

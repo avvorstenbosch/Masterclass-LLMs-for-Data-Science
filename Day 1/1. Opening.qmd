@@ -79,6 +79,10 @@ date: "11-17-2023"
 "How ChatGPT is transforming the postdoc experience", Nature, 16-10-2023: [https://www.nature.com/articles/d41586-023-03235-8]()
 :::
 
+:::{.notes}
+ we hoeven niet te wachten totdat de computer kan schrijven als Vestdijk en schilderen als Vermeer, maar moeten nu beginnen met het toepassen en gebruiken ervan. Zeker op het werk.
+:::
+
 
 ## {.full-bg-slide background-image="./figures/overview_of_the_course.png"} 
 <div style="text-align: center; ">

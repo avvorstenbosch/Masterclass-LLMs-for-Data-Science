@@ -21,7 +21,7 @@ date: "11-17-2023"
     - *Extremely* impressive Chatbot capabilities
     - *Much* better interaction and
     - *Much* better language understanding while also 
-    - *Accessible* to use for **Anybody**
+    - *Accessible* to use for <span class="highlighted-text">Anybody</span>
 :::
 ::: {.column width="40%"}
 <iframe src="https://chat.openai.com/share/7c278d44-48bd-47c7-8523-ce080b4d4ee1" class="iframe-chatgpt"></iframe>
@@ -31,12 +31,10 @@ date: "11-17-2023"
 ## Overview
 - A brief history of LLMs
 - Capabilities of ChatGPT
-- Real-world applications of ChatGPT
 
 ## Overview
 - <span class="highlighted-text">A brief history of LLMs</span>
 - Capabilities of ChatGPT
-- Real-world applications of ChatGPT
 
 # A brief history of LLMs
 ## Next-word prediction machine
@@ -175,7 +173,11 @@ Queen
 ::::
 :::{.incremental}
 - These embeddings marked the start of the new NLP era ^[*2013 - Efficient Estimation of Word Representations in
-Vector Space[https://arxiv.org/pdf/1301.3781.pdf](https://arxiv.org/pdf/1301.3781.pdf)*] 
+Vector Space: [https://arxiv.org/pdf/1301.3781.pdf](https://arxiv.org/pdf/1301.3781.pdf)*] 
+- Generated using shallow networks to:
+    1. Predict middle word from context
+    2. Predict context from middle word
+- Tuning via Backpropegation and gradient descent
 - This still has some issues...
 :::
 
@@ -216,9 +218,9 @@ $$
 - Dense vectors
 - Latent embedding ![](./figures/word-embeddings.png){.absolute left="65%" top="55%" width="auto" height="400px"}
 - The numbers are now informative to qualities of the token
-- Semantiscly-meaningfull: 
+- Semanticly-meaningfull: 
 
-:::{style="text-align: center"}
+:::{.fragment style="margin-left: 25%; text-align: center; display: flex"}
 King - Man + Woman = Queen 
 :::
  
@@ -265,10 +267,10 @@ $$
 - The start of the new age of NLP ^[*2017 - Attention is all you need [https://arxiv.org/abs/1706.03762](https://arxiv.org/abs/1706.03762)*]
 :::
 
-## What Does self-attention look like {auto-animate="true"}
+## What does self-attention look like {auto-animate="true"}
 ![](figures/fully_connected.png){fig-align="center"}
 
-## What Does self-attention look like {auto-animate="true"}
+## What does self-attention look like {auto-animate="true"}
 
 ![](figures/fully_connected.png){.absolute left="70%" top="70%" width="auto" height="250px"}
 $$
@@ -280,6 +282,22 @@ $$
     - Query: I have a *Noun*, I need a Subject!
     - Key: I have a *Subject* here. 
 :::
+
+## What does self-attention look like 
+
+![](figures/fully_connected.png){.absolute left="70%" top="70%" width="auto" height="250px"}
+$$
+\mathrm{Output\ embedding} \sim \mathrm{Softmax}( Query \cdot Key^{T}) Value
+$$
+
+:::{.nonincremental}
+- Conceptual Interpretation:
+    - Query: I have a *Noun*, I need a Subject!
+    - Key: I have a *Subject* here. 
+:::
+- Data-dependent aggregation of information
+
+
 
 ## What does self-attention look like
 
@@ -299,7 +317,7 @@ $$
 :::
 
 ## Sampling output tokens
-- Output is sampled, and therefore a stochastic:
+- Output is sampled, and therefore a stochastic variable:
     - **Running the same prompt twice will give 2 different results**
 $$
 P_i = \frac{e^{\frac{y_i}{T}}}{\sum_i^n e^{\frac{y_i}{T}}} = \frac{(e^{y_i})^\frac{1}{T}}{\sum_i^n (e^{y_i})^\frac{1}{T}}
@@ -327,6 +345,7 @@ $$
 
 :::
 
+## {.full-bg-slide background-image="./figures/slide-chatpgtinternals.png"}
 
 ## Attention and BERT
 - [BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding](https://arxiv.org/abs/1810.04805)
@@ -370,7 +389,7 @@ Models just kept on growing, credit: [Julien Simon, Huggingface](https://hugging
 - Can perform **In-context learning**:
     - Given a few examples, learn how to perform task
     - *No model parameters are adjusted at any point*
-    - `Emergent property` of LLMs
+    - <span class="highlighted-text"> Emergent property </span> of LLMs
 
 ## 
 ![[Andrej Karpathy, Microsoft - State of GPT](https://karpathy.ai/stateofgpt.pdf)](./figures/stateofgpt.png)
@@ -378,7 +397,7 @@ Models just kept on growing, credit: [Julien Simon, Huggingface](https://hugging
 ## Instruction tuning (finetuning)
 
 - The models just predict likely continuations of text.
-- This does not match with the behaviour we seek
+- This does not match with the behaviour we seek (alignment)
 
 :::{.panel-tabset}
 ## Base model
@@ -416,16 +435,17 @@ tune the model towards higher quality responses.
 
 <iframe src="https://chat.openai.com/share/36173d8f-2a3e-4994-8a6a-04cc5188d97f" class="iframe-chatgpt"></iframe>
 
-## Overview
+## Overview 
+::: {.nonincremental}
 - <span class="highlighted-text">A brief history of LLMs</span>
 - Capabilities of ChatGPT
-- Real-world applications of ChatGPT
+:::
 
-## Overview
+## Overview 
+::: {.nonincremental}
 - A brief history of LLMs
 - <span class="highlighted-text">Capabilities of ChatGPT</span>
-- Real-world applications of ChatGPT
-
+:::
 # Capabilities of ChatGPT
 
 ## Strenghts of LLMs
@@ -456,19 +476,19 @@ Foundational language model that:
 
 - We tend to feel empathy for ChatGPT
     - People like to say thank you to ChatGPT
-    - It feels very `human` to interact with
+    - It feels very <span class="highlighted-text">human</span> to interact with
 - BUT: it really boils down to a very very big autocomplete next-word predictor
 - WE CAN BREAK THE MODEL LOGIC
 
 ## Repeated sampling Penalty
 - Generative language models have a tendency to repeat themselves:
-    - Therefore the sampling algorithm receives a `repetition penalty`
+    - Therefore the sampling algorithm receives a <span class="highlighted-text">repetition penalty</span>
     - This can be exploited
 
 <iframe src="https://chat.openai.com/share/cfe864c6-4213-4be5-b70c-f66a8c55a3fd" class="iframe-chatgpt" style="width: 700px; height: 900px;" ></iframe>
 
 ## Glitch Tokens
-- Some tokens identified by BPE only appear in `useless` context
+- Some tokens identified by BPE only appear in <span class="highlighted-text">useless</span> context
     - Such as /r/counting
     - usernames get very high frequency and get their own tokens
 
@@ -488,21 +508,12 @@ Foundational language model that:
 
 :::
 
-
-## Overview
-- A brief history of LLMs
-- <span class="highlighted-text">Capabilities of ChatGPT</span>
-- Real-world applications of ChatGPT
-
-## Overview
-- A brief history of LLMs
-- Capabilities of ChatGPT
-- <span class="highlighted-text">Real-world applications of ChatGPT </span>
-
 # Real world applications of ChatGPT
 
 - Pair Programming
 - Language Modeling Tasks
 - Text Generation
-- Inspiration
-- Explanation
+- Data Synthesis
+- Inspiration/creativity
+- Explanation/education
+- Knowledge retrieval
