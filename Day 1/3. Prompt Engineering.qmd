@@ -40,9 +40,6 @@ Prompting workflow:
 Problem -> Idea -> Gather data -> Finetune prompt -> Evaluate Model -> `Repeat if neccessary` -> deploy\
 Duration: Days
 
-
-# Best techniques for prompting
-
 ## Overview
 - <span class="highlighted-text">Introduction to Prompting</span>
 - Best techniques for prompting
@@ -50,6 +47,8 @@ Duration: Days
 ## Overview
 - Introduction to Prompting
 - <span class="highlighted-text">Best techniques for prompting</span>
+
+# Best techniques for prompting
 
 ## Best techniques for prompting
 
@@ -205,7 +204,7 @@ DOCUMENT:
 ```
 
 ## Give models time-to-think {.smaller}
-```python
+```{.python}
 f"""
 Determine if my answer below is correct.
 
@@ -224,9 +223,11 @@ I found the following answer:
 """
 ```
 
-```python
+```{.python code-line-numbers="|2-4"}
 f"""
-First work out your own solution to the problem. Then compare your solution to the given solution and evaluate if the given solution is correct or not. Don't decide if the student's solution is correct until you have done the problem yourself.
+First work out your own solution to the problem. 
+Then compare your solution to the given solution and evaluate if the given solution is correct or not. 
+Don't decide if the student's solution is correct until you have done the problem yourself.
 
 I'm trying to figure out how expensive my prompting of the GPT4 API will be in total.
 I'm going to run around 1000 prompts. For these prompts, the average prompt-lengt is 250 words.
