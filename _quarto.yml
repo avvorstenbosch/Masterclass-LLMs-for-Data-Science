@@ -20,7 +20,13 @@ format:
         highlight-style: oblivion
         code-copy: true
         incremental: true  
-        
+    html:
+        css: style.scss
+        highlight-style: oblivion
+        code-copy: true
+        theme:
+          light: flatly
+          dark: darkly
 execute:
     warning: false
     error: false

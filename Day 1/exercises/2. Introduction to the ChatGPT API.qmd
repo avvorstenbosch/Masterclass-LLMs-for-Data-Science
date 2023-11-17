@@ -117,7 +117,7 @@ It can be found under `./Day 1/exercises/data/movie-review-1.txt`
 
 ## Task: Make sure the synopsis of the review is at most 3 sentences long
 
-## Task: Extract the movie title, genre, year, director and actors from the review. Place this information at the top of the review.
+## Task: Extract the movie title, genre, year, director and actors from the review. Place this information at the top of the response.
 
 ## Task: Extract a list of tips and tops of the movie, using only keywords
 
@@ -182,8 +182,7 @@ For R, we need to make an estimate, as the tokenizer has no R implementation.
 We use the rule of thumb that a single word is $\frac{4}{3}$ of a token. In practice this works quite well. In a few test cases the value returned was typically within 5 percent of the true value.
 \footnotesize
 ```{.R}
-library(re)
-num_tokens_from_messages <- function(messages, model="gpt-3.5-turbo-0613", tokens-per-word=4/3) {
+num_tokens_from_messages <- function(messages, model="gpt-3.5-turbo-0613", tokens_per_word=4/3) {
     tokens_per_message <- 0
     tokens_per_name <- 0
 
@@ -213,7 +212,7 @@ num_tokens_from_messages <- function(messages, model="gpt-3.5-turbo-0613", token
             # Count multiple spaces as a single space. 
             value <- gsub(" +", " ", value)
             # Calculate tokens for each word, assuming each word is 4/3 tokens for English
-            num_tokens <- num_tokens + (length(strsplit(value, " ")[[1]]) * tokens-per-word)
+            num_tokens <- num_tokens + (length(strsplit(value, " ")[[1]]) * tokens_per_word)
             if (key == "name") {
                 num_tokens <- num_tokens + tokens_per_name
             }
@@ -234,4 +233,4 @@ We are not just interested in how many tokens we use, we are interested in how m
 - The estimated cost of the prompt input
 - The estimated cost of the prompt output
 
-For this exercise you may assume that the output is 4/5 of the length of the input. 
+For this exercise you may assume that the output is 4/5 of the length of the input. This value is an arbitrary value chosen for this exercise. You can find the API pricing here: [https://openai.com/pricing](https://openai.com/pricing)
