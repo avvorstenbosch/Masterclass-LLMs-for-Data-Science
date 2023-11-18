@@ -45,7 +45,7 @@ Tips:
 
 - Doing this per section of the code makes it easier
 
-- You already know what answer it should generate, use this as your unit-test!
+- The answer it should generate is `The winner is board 7 with a score of 53217!`, use this as your unit-test!
 
 # Exercise (optional): Generate unit-test
 We are gong to optimize the code you translated from language A to language B.

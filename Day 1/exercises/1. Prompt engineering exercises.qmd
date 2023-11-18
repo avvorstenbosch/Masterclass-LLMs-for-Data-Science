@@ -68,7 +68,7 @@ Ask the model whether the answer it gave was correct, what happens? Why do you t
 ### Self-reflection on the API-costs questions
 If the answer given was incorrect, see how it responds if you ask it to reflect on the answer given.
 
-# Few-shot prompting + Chain-of-thoughts
+# (Optional) Few-shot prompting + Chain-of-thoughts
 One simple but time consuming task you might often do is to take notes during a meeting, then type these out into a mail to send to the team. However, how you take notes is very specific to you, just like how you want and need the mail to look.
 
 We can guide the model by giving it a few examples of our task, this is called *Few-shot prompting.* Also, I want you to take into consideration the order of operations and how to go from meeting notes to this email. 
