@@ -1,0 +1,572 @@
+---
+title: "Pair-programming with LLMs"
+date: "11-17-2023"
+format: 
+    html:
+        number-sections: true
+        page-layout: full
+        title-block-banner: true
+        self-contained: true
+include-in-header:
+  - text: |
+      <style>
+      .cell-output-stdout code {
+        word-break: break-wor !important;
+        white-space: pre-wrap !important;
+      }
+      </style>
+---
+# Exercise: Explaining code
+
+For this exercise, please begin by deciding which coding language you are most proficient in \texttt{Python} or \texttt{R}, so you can work with the other one:
+
+-   If you chose `R`:
+
+    Check out the code under `./data/code.py`, and the data under `./data/input-data-script.txt`
+    Can you figure out what is going on here, what is the code doing?
+    Use either the API or the Browser version of ChatGPT to help you figure out what the code is doing. 
+
+-   If you chose `Python`:
+
+    Check out the code under `./data/code.R`, and the data under `./data/input-data-script.txt`
+    Can you figure out what is going on here, what is the code doing?
+    Use either the API or the Browser version of ChatGPT to help you figure out what the code is doing. 
+
+This is an example of a complex task where GPT-4 works a lot better than GPT-3.5. Do note however that at the time of writing GPT4-base (in: $0.03 / 1K tokens, out: $0.06 / 1K tokens) is ~30 times more expensive than GPT-3.5 (in: $0.0010 / 1K tokens, out: $0.0020 / 1K tokens). GPT4-turbo (in: $0.01 / 1K tokens, out: $0.03/1K tokens) is ~10 times more expensive than GPT-3.5.
+
+```{r}
+# Specify the path to your API-credentials file
+library(openai) # open-source, not official implementation!
+library(yaml) # For parsing the API key
+library(glue) # For easy prompt formating
+library(jsonlite) # For parsing .json formatted responses
+file_path <- "../../../credentials.yml"
+credentials <- yaml.load_file(file_path)
+OPENAI_API_KEY <- credentials$OPENAI_API_KEY
+```
+
+```{r}
+# some helper functions for the api call below
+#-------------------------------------------------------------------------------
+
+value_between <- function(x, lower, upper) {
+    x >= lower && x <= upper
+}
+
+assertthat::on_failure(value_between) <- function(call, env) {
+    paste0(
+        deparse(call$x),
+        " is not between ",
+        deparse(call$lower),
+        " and ",
+        deparse(call$upper)
+    )
+}
+
+#-------------------------------------------------------------------------------
+
+both_specified <- function(x, y) {
+    x != 1 && y != 1
+}
+
+#-------------------------------------------------------------------------------
+
+length_between <- function(x, lower, upper) {
+    length(x) >= lower && length(x) <= upper
+}
+
+assertthat::on_failure(length_between) <- function(call, env) {
+    paste0(
+        "Length of ",
+        deparse(call$x),
+        " is not between ",
+        deparse(call$lower),
+        " and ",
+        deparse(call$upper)
+    )
+}
+
+#-------------------------------------------------------------------------------
+
+n_characters_between <- function(x, lower, upper) {
+    nchar(x) >= lower && nchar(x) <= upper
+}
+
+assertthat::on_failure(n_characters_between) <- function(call, env) {
+    paste0(
+        "Number of characters of ",
+        deparse(call$x),
+        " is not between ",
+        deparse(call$lower),
+        " and ",
+        deparse(call$upper)
+    )
+}
+
+#-------------------------------------------------------------------------------
+
+is_false <- function(x) {
+    !x
+}
+
+assertthat::on_failure(is_false) <- function(call, env) {
+    paste0(deparse(call$x), " is not yet implemented.")
+}
+
+#-------------------------------------------------------------------------------
+
+is_null <- function(x) {
+    is.null(x)
+}
+
+assertthat::on_failure(is_null) <- function(call, env) {
+    paste0(deparse(call$x), " is not yet implemented.")
+}
+```
+
+
+```{r}
+create_chat_completion <- function(model,
+                                   messages = NULL,
+                                   temperature = 1,
+                                   top_p = 1,
+                                   n = 1,
+                                   stream = FALSE,
+                                   stop = NULL,
+                                   max_tokens = NULL,
+                                   presence_penalty = 0,
+                                   frequency_penalty = 0,
+                                   logit_bias = NULL,
+                                   user = NULL,
+                                   format = NULL,
+                                   openai_api_key = Sys.getenv("OPENAI_API_KEY"),
+                                   openai_organization = NULL) {
+  #---------------------------------------------------------------------------
+  # Validate arguments
+
+  assertthat::assert_that(
+    assertthat::is.string(model),
+    assertthat::noNA(model)
+  )
+
+  if (!is.null(messages)) {
+    assertthat::assert_that(
+      is.list(messages)
+    )
+  }
+  if (!is.null(format)) {
+    assertthat::assert_that(
+      is.list(format)
+    )
+  }
+
+  assertthat::assert_that(
+    assertthat::is.number(temperature),
+    assertthat::noNA(temperature),
+    value_between(temperature, 0, 2)
+  )
+
+  assertthat::assert_that(
+    assertthat::is.number(top_p),
+    assertthat::noNA(top_p),
+    value_between(top_p, 0, 1)
+  )
+
+  if (both_specified(temperature, top_p)) {
+    warning(
+      "It is recommended NOT to specify temperature and top_p at a time."
+    )
+  }
+
+  assertthat::assert_that(
+    assertthat::is.count(n)
+  )
+
+  assertthat::assert_that(
+    assertthat::is.flag(stream),
+    assertthat::noNA(stream),
+    is_false(stream)
+  )
+
+  if (!is.null(stop)) {
+    assertthat::assert_that(
+      is.character(stop),
+      assertthat::noNA(stop),
+      length_between(stop, 1, 4)
+    )
+  }
+
+
+  if (!is.null(max_tokens)) {
+    assertthat::assert_that(
+      assertthat::is.count(max_tokens)
+    )
+  }
+
+  assertthat::assert_that(
+    assertthat::is.number(presence_penalty),
+    assertthat::noNA(presence_penalty),
+    value_between(presence_penalty, -2, 2)
+  )
+
+  assertthat::assert_that(
+    assertthat::is.number(frequency_penalty),
+    assertthat::noNA(frequency_penalty),
+    value_between(frequency_penalty, -2, 2)
+  )
+
+  if (!is.null(logit_bias)) {
+    assertthat::assert_that(
+      is.list(logit_bias)
+    )
+  }
+
+  if (!is.null(user)) {
+    assertthat::assert_that(
+      assertthat::is.string(user),
+      assertthat::noNA(user)
+    )
+  }
+
+  assertthat::assert_that(
+    assertthat::is.string(openai_api_key),
+    assertthat::noNA(openai_api_key)
+  )
+
+  if (!is.null(openai_organization)) {
+    assertthat::assert_that(
+      assertthat::is.string(openai_organization),
+      assertthat::noNA(openai_organization)
+    )
+  }
+
+  #---------------------------------------------------------------------------
+  # Build path parameters
+
+  task <- "chat/completions"
+
+  base_url <- glue::glue("https://api.openai.com/v1/{task}")
+
+  headers <- c(
+    "Authorization" = paste("Bearer", openai_api_key),
+    "Content-Type" = "application/json"
+  )
+
+  if (!is.null(openai_organization)) {
+    headers["OpenAI-Organization"] <- openai_organization
+  }
+
+  #---------------------------------------------------------------------------
+  # Build request body
+
+  body <- list()
+  body[["model"]] <- model
+  body[["messages"]] <- messages
+  body[["response_format"]] <- format
+  body[["temperature"]] <- temperature
+  body[["top_p"]] <- top_p
+  body[["n"]] <- n
+  body[["stream"]] <- stream
+  body[["stop"]] <- stop
+  body[["max_tokens"]] <- max_tokens
+  body[["presence_penalty"]] <- presence_penalty
+  body[["frequency_penalty"]] <- frequency_penalty
+  body[["logit_bias"]] <- logit_bias
+  body[["user"]] <- user
+
+  #---------------------------------------------------------------------------
+  # Make a request and parse it
+
+  response <- httr::POST(
+    url = base_url,
+    httr::add_headers(.headers = headers),
+    body = body,
+    encode = "json"
+  )
+
+  parsed <- response %>%
+    httr::content(as = "text", encoding = "UTF-8") %>%
+    jsonlite::fromJSON(flatten = TRUE)
+
+  #---------------------------------------------------------------------------
+  # Check whether request failed and return parsed
+
+  if (httr::http_error(response)) {
+    paste0(
+      "OpenAI API request failed [",
+      httr::status_code(response),
+      "]:\n\n",
+      parsed$error$message
+    ) %>%
+      stop(call. = FALSE)
+  }
+
+  parsed
+}
+
+generate_completion <- function(system = system_prompt,
+                                prompt = user_prompt,
+                                t = 1,
+                                n = 1,
+                                max_tokens = 500,
+                                model = "gpt-3.5-turbo",
+                                format = NULL,
+                                openai_api_key = OPENAI_API_KEY) {
+  #' Flexible API Request Function with Integrated Glue Functionality
+  #'
+  #' This function sends a request to a specified API, integrating the 'glue' function to allow
+  #' dynamic insertion of context documents into the user_prompt.
+  #'
+  #' @param system the system prompt provided to the model The URL of the API to which the request is being sent, defaults to system_prompt object
+  #' @param prompt the user prompt provided to the model, defaults to user_prompt object
+  #' @param t the temperature setting for the mode, defaults to 1
+  #' @param n the number of completions to generate, defaults to 1
+  #' @param max_tokens the maximum model response length, defaults to 500 tokens
+  #'
+  #' @return
+  #' The response object from the chat_completion api
+  response <- create_chat_completion(
+    model = model,
+    messages = list(
+      list(
+        "role" = "system",
+        "content" = system_prompt
+      ),
+      list(
+        "role" = "user",
+        "content" = glue(user_prompt)
+      )
+    ),
+    format = format, # Set the response format for JSON mode
+    temperature = t, # The randomness setting of the model: 0 is deterministic, 2 is most random
+    n = n, # How many completions do we want the model to generate
+    max_tokens = max_tokens, # How many tokens is the model allowed to use,
+    openai_api_key = openai_api_key # Your secret key to the API
+  )
+  for (choice_num in 1:length(response$choice[["index"]])) {
+    cat(glue('**Response {choice_num}**:\n\n {response$choices[[choice_num, "message.content"]]}\n\n\n\n'))
+  }
+  return(response)
+}
+
+read_txt <- function(file_path) {
+  # Read the file
+  file <- readLines(file_path, warn = FALSE)
+
+  # Combine the seperate lines into a single line
+  file <- paste(file, collapse = "\n")
+
+  return(file)
+}
+```
+
+```{r}
+python_script <- read_txt("../data/code.py")
+cat(python_script)
+```
+
+
+```{r}
+system_prompt <- "Role: You're a senior developer who is proficient in both R and Python."
+user_prompt <- "
+Task: Your task is to figure out and explain the purpose of the python script below.
+First, explain what each section of the code does. Keep the description general, don't explain specific lines of code.
+At the end, give a final verdict of what the purpose is of this code.
+Keep in mind, the user is not familiar with Python, but is familiar with R.
+
+Python:
+###
+{python_script}
+###
+"
+response <- generate_completion(system_prompt, user_prompt, t = 1, n = 1)
+```
+*Now we can also check what GPT-4 will say.*
+```{r}
+response <- generate_completion(system_prompt, user_prompt, t = 1, n = 1, max_tokens = NULL, model = "gpt-4-1106-preview")
+```
+**Answer**
+\href{https://adventofcode.com/2021/day/4 This code is a solution to a Bingo puzzle on Advent of Code 2021 - day 4
+*As we can see, both GPT's had a decent understanding of the code. GPT3 could figure out the general purpose, but didn't connect the dots.*
+*GPT4 was able to deduce that the puzzle is a Bingo game, and fully understood what each section does.*
+*It also gives feedback on how the code could be improved, and how an R user might implement this.*
+
+In the next sections we are going to keep working with this code
+
+# Exercise: Document code
+Part of the reason why this code was so hard to read was that it was written without documentation.
+We're going to fix that. Use ChatGPT to help you write decent documentation for your file of choice. 
+Adjust the file accordingly, this will be needed for the next section.
+
+*We want the code to be in a .json format. There have been some API changes that the R-package has not introduces, so we will modify the function ourselves*
+*So we can introduce these changes.*
+*You set the json format by requesting json in the prompt, and setting format=list() *
+
+```{r}
+system_prompt <- "Role: You're a senior developer who is proficient in both R and Python."
+user_prompt <- "
+Task: Your task is to add clear and concise documentation for the python script as provided below.
+Don't change the code. Include all of the code in your answer with added comments to clarify the purpose of sections of the code.
+For functions, add docstrings in numpy-style.
+Output: Your response should only be in a .json format with a single entry called 'SCRIPT' which contains the documented code, nothing else.
+
+###
+{python_script}
+###
+"
+
+response <- generate_completion(system_prompt, user_prompt, t = 1, n = 1, max_tokens = 1400, model = "gpt-4-1106-preview", format = list("type" = "json_object"))
+```
+```{r}
+parsed_response <- fromJSON(response$choices$message.content)
+cat(parsed_response$SCRIPT)
+python_script_documented <- parsed_response$SCRIPT
+```
+
+
+# Exercise: Translation between code languages
+While it is fun to work in a different language, we prefer to work in the language we know best. 
+Use ChatGPT to help you translate the code to your language of choice. 
+
+\textcolor{red}{Don't blindly run code generated by LLMs, make sure you understand what is going on!}
+For this toy example the risks are very low, but it's best to make this a habit from the start. 
+
+Tips:
+
+- Doing this per section of the code makes it easier
+
+- The answer it should generate is `The winner is board 7 with a score of 53217!`, use this as your unit-test!
+
+```{r}
+data <- read_txt("../data/input-data-script.txt")
+
+# Splitting the string into lines
+data_lines <- strsplit(data, "\n")[[1]]
+
+# Selecting the first 2 boards
+first_data_lines <- paste(data_lines[1:14], collapse = "\n")
+cat(first_data_lines)
+```
+
+
+```{r}
+system_prompt <- "Role: You're a senior developer who is an expert in both R and Python."
+user_prompt <- "
+Task: Your task is to translate the Python code below to R code.
+Try to reproduce the workings of the Python code as closely as possible. 
+At the end, an example of the first lines of the data in 'input-data-script.txt' is provided. 
+The data starts with a list of numbers, followed by many 5x5 bingo boards.
+Make sure to read this data correctly. Each line should be trimmed of whitespaces to prevent parsing issues. 
+Output: Your response should only be in a .json format with a single entry called 'R-SCRIPT' which contains the documented code.
+
+The code:
+###
+{python_script_documented}
+###
+
+Example of the data:
+###
+{first_data_lines}
+###
+"
+
+response <- generate_completion(system_prompt, user_prompt, t = 1, n = 1, max_tokens = NULL, model = "gpt-4-1106-preview", format = list("type" = "json_object"))
+```
+```{r}
+parsed_response <- fromJSON(response$choices$message.content)
+cat(parsed_response$`R-SCRIPT`)
+R_script <- parsed_response$`R-SCRIPT`
+```
+
+*Let's try it!*
+*The code is far from perfect, for example:*
+
+- *Even though we explicitly said so, it still forgets to trim the whitespaces around lines of data*
+
+- *It removes empty lines, but this means it should also adjust the reading sequence for the individual boards*
+
+- *We adjust these lines to fix the code*
+```{r}
+# Read game data from a text file and find the winning board and its score.
+
+read_data <- function() {
+  data <- readLines('../data/input-data-script.txt')
+  data <- data[nzchar(data)] # Remove empty lines
+  numbers <- as.integer(strsplit(data[1], ',')[[1]]) # Extract numbers from the first line
+  boards <- list()
+  board <- NULL
+  # Read individual boards
+  for (i in seq(2, length(data), by=5)) {
+    board <- matrix(
+      as.numeric(unlist(strsplit(trimws(data[i:(i+4)]), '\\s+'))),
+      nrow = 5,
+      byrow = TRUE
+    )
+    boards[[length(boards) + 1]] <- board
+  }
+  return(list("numbers" = numbers, "boards" = boards))
+}
+
+mark_number <- function(boards, num) {
+  lapply(boards, function(board) {
+    board[board == num] <- NA # mark the number
+    board
+  })
+}
+
+return_winner <- function(boards) {
+  for (idx in seq_along(boards)) {
+    board <- boards[[idx]]
+    if (any(rowSums(is.na(board)) == 5) || any(colSums(is.na(board)) == 5)) {
+      return(idx)
+    }
+  }
+  return(NULL)
+}
+
+game_data <- read_data()
+numbers <- game_data$numbers
+boards <- game_data$boards
+winner <- NULL
+for (num in numbers) {
+  boards <- mark_number(boards, num)
+  winner <- return_winner(boards)
+  if (!is.null(winner)) {
+    break
+  }
+}
+
+if (!is.null(winner)) {
+  board <- boards[[winner]]
+  unmarked <- !is.na(board)
+  answer <- sum(board[unmarked]) * num
+  cat(paste0('The winner is board ', winner, ' with a score of ', answer, '!\n'))
+}
+```
+
+
+# Exercise (optional): Generate unit-test
+We are gong to optimize the code you translated from language A to language B.
+Here we need to be a bit more carefull if nothing breaks by editing the code. 
+Use ChatGPT to write unittests for the following:
+
+- Does reading the data give the expected result?
+- Does drawing a number do what we expect? 
+- Does return_winner detect a win?
+
+# Exercise (optional): Optimize the code
+Use ChatGPT to see if there are any parts of your code that can be optimized.
+I suggest doing this per section to make sure the LLM remains focussed on the relevant parts. 
+
+
+# Exercise: (Challenge) Generating code 
+Try to solve part 2 of the puzzle on:
+\rotatebox{180}{\href{https://adventofcode.com/2021/day/4}{https://adventofcode.com/2021/day/4}}
+
+**Answer**
+The answer to the second part of the puzzle for our input should be 2776 with board 34.
+
+Your code should now solve for the puzzle inputs of Advent-of-Code day 4 2021 as a second check.
+ 
+# Exercise: (Challenge) Generating code
+See if you can also get the solution to the second part for the language that wasn't your first choice!
