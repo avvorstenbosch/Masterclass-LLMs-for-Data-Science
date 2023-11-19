@@ -39,10 +39,20 @@ Duration: Days
 - Classification
 - Topic modeling
 
-## Jack of all trades, master of none
+## Jack of all trades, master of none...
 - LLMs are great at a wide range of tasks...
-- ... but they aren't state-of-the-art for any specific task
-- (might also be due to allignment problem between benchmarks and human-eval.)
+- ... but they aren't state-of-the-art for specific tasks
+- (might also be skewed due to allignment problem between benchmarks and human-eval in some)
+
+## ... Except for QA and Reasoning
+- They are [SOTA](https://arxiv.org/pdf/2305.10403v3.pdf) for <span class="highlighted-text">Question Answering</span> and <span class="highlighted-text">Reasoning</span> 
+- Might fit into the Jack of all trades analogy.
+- Will score great on any subject overall, but not the best in class in any single subject
+
+
+## Sentiment analysis
+
+![[Is ChatGPT a Good Sentiment Analyzer? A Preliminary Study](https://arxiv.org/pdf/2304.04339.pdf)](./figures/ChatGPT-generalizes-better.png)
 
 ## Papers with Code
 - For an overview of the current best model for your task:
@@ -53,13 +63,14 @@ Duration: Days
     - The service was great but the food was terrible
         - service: positive
         - food: negative
-![](./figures/absc-chatgpt.png)
+![[Is ChatGPT a Good Sentiment Analyzer? A Preliminary Study](https://arxiv.org/pdf/2304.04339.pdf)](./figures/absc-chatgpt.png)
 
 ## But not state-of-the-art for others
 - Aspect Based Sentiment Analysis. 
     - The service was great but the food was terrible
         - service: positive
         - food: negative
-![](./figures/ChatGPT-generalizes-better.png)
+![[Is ChatGPT a Good Sentiment Analyzer? A Preliminary Study](https://arxiv.org/pdf/2304.04339.pdf)](./figures/ChatGPT-generalizes-better.png)
 
-## 
+## ChatGPT for summarization
+![[Extractive Summarization via ChatGPT for Faithful Summary Generation](https://arxiv.org/pdf/2304.04193.pdf)](./figures/chatgpt-for-summarization.png)
