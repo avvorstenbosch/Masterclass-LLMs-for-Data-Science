@@ -1,0 +1,65 @@
+---
+title: "NLP with Large Language Models" 
+subtitle: ""
+author: "Alex van Vorstenbosch"
+footer: "NLP with LLMs"
+title-slide-attributes:
+    data-background-image: "./figures/llm_for_nlp.png"
+    data-background-opacity: "0.5"
+
+date: "24-17-2023"
+---
+
+## NLP-lifecycle on it's head
+
+\
+Regular ML:\
+Problem &rarr; Idea &rarr; Gather data &rarr; Train Model &rarr; Evaluate Model &rarr;\
+<span class="highlighted-text">Repeat if neccessary</span> &rarr; deploy\
+Duration: Months\
+\
+\
+
+Prompting workflow:\
+Problem &rarr; Idea &rarr; Gather (less) data &rarr; Finetune prompt &rarr; Evaluate Model &rarr;\
+<span class="highlighted-text">Repeat if neccessary</span> &rarr; already deployed\
+Duration: Days
+
+## NLP-tasks
+
+- Sentiment analysis
+- Named entity recognition
+- Natural language generation
+- Speech recognition
+- Speech synthesis
+- Ontology population
+- Question answering
+- Machine translation
+- Summarisation
+- Classification
+- Topic modeling
+
+## Jack of all trades, master of none
+- LLMs are great at a wide range of tasks...
+- ... but they aren't state-of-the-art for any specific task
+- (might also be due to allignment problem between benchmarks and human-eval.)
+
+## Papers with Code
+- For an overview of the current best model for your task:
+[paperswithcode/Natural-Language-Processing](https://paperswithcode.com/area/natural-language-processing)
+
+## But not state-of-the-art for others
+- Aspect Based Sentiment Analysis. 
+    - The service was great but the food was terrible
+        - service: positive
+        - food: negative
+![](./figures/absc-chatgpt.png)
+
+## But not state-of-the-art for others
+- Aspect Based Sentiment Analysis. 
+    - The service was great but the food was terrible
+        - service: positive
+        - food: negative
+![](./figures/ChatGPT-generalizes-better.png)
+
+## 
