@@ -17,47 +17,67 @@ include-in-header:
       </style>
 ---
 
-This is where we bring it all together. The past days we've learned about:
+This is where we bring it all together.
+The past days we've learned about:
 
-- Large Language Models
-- Their strengths and weaknesses
-- Embeddings
-- Prompting
+-   Large Language Models
+-   Their strengths and weaknesses
+-   Embeddings
+-   Prompting
 
 We will bring this all together in this supercharged tutorial/exercise set.
 
 # Search + Generation
-Large Language Models have a vast amount of internal knowledge (parametric knowledge). This constitutes the general linguistic knowledge these models have,
-as well as the factual knowledge they have about the world. However, this parametric knowledge is far from flawless. These models tend to hallucinate more, the more detailed your requests become. Furthermore, you may have questions about:
 
-- Recent events
-- Proprietary documents
-- Private documents
+Large Language Models have a vast amount of internal knowledge (parametric knowledge).
+This constitutes the general linguistic knowledge these models have, as well as the factual knowledge they have about the world.
+However, this parametric knowledge is far from flawless.
+These models tend to hallucinate more, the more detailed your requests become.
+Furthermore, you may have questions about:
 
-That were not included in the training data. In this case, we need to feed the model with our own knowledge base such that it may have the ability to answer our questions. You may liken this to an open book exam: Long term memory is flawed (also in humans) but by providing the model with direct reference texts we can supercharge the question answering capabiities, while allowing ourselfs to make the exam (our questions) more specific and more difficult to answer. 
+-   Recent events
+-   Proprietary documents
+-   Private documents
+
+That were not included in the training data.
+In this case, we need to feed the model with our own knowledge base such that it may have the ability to answer our questions.
+You may liken this to an open book exam: Long term memory is flawed (also in humans) but by providing the model with direct reference texts we can supercharge the question answering capabilities, while allowing ourselves to make the exam (our questions) more specific and more difficult to answer.
 
 # Dataset
 
-For this assignment we will be working with a wikipedia dataset that covers the category: ["Natural Language Processing"](https://en.wikipedia.org/wiki/Category:Natural_language_processing). From this wikipedia category a grand total of 964 articles have been extracted and parsed into plain-text. The sections per page were filtered such that we should have retained only the most informative sections per article. This means we filtered out:
+For this assignment we will be working with a Wikipedia dataset that covers the category: ["Natural Language Processing"](https://en.wikipedia.org/wiki/Category:Natural_language_processing).
+From this wikipedia category a grand total of 964 articles have been extracted and parsed into plain-text.
+The sections per page were filtered such that we should have retained only the most informative sections per article.
+This means we filtered out the sections:
 
-- See also
-- References
-- External links
-- Further reading
-- Footnotes
-- Bibliography
-- Sources
-- Citations
-- etc.
+-   See also
+-   References
+-   External links
+-   Further reading
+-   Footnotes
+-   Bibliography
+-   Sources
+-   Citations
+-   etc.
 
-This left us with 4856 usable sections spread across 964 wikipedia pages. These sections were also slightly cleaned by removing whitespaces and wikipedia specific markup elements from their articles.
+This left us with 4856 usable sections spread across 964 wikipedia pages.
+These sections were also slightly cleaned by removing whitespaces and wikipedia specific markup elements from their articles.
 
-Each article was processed in so-called chunks of roughly 1600 tokens. These chunks are what will become our searchable and retrievable elements. If possible, chunks are made to be a single section of an article. In some cases, this was not possible and a single section is split into multiple chunks. For each chunk an corresponding embedding is generating using the API. we can compare the embeddings of our chunks, looking for the embedding or the embeddings that most closely resemble our question. Using this we can select the chunks that will be shared with our LLM during inference as the context that might answer our question. Of course, it might also be that there are no chunks that are relevant to our question. 
+Each article was processed in so-called chunks of roughly 1600 tokens.
+These chunks are what will become our searchable and retrievable elements.
+If possible, chunks are made to be a single section of an article.
+In some cases, this was not possible and a single section is split into multiple chunks.
+For each chunk an corresponding embedding is generating using the API.
+we can compare the embeddings of our chunks, looking for the embedding or the embeddings that most closely resemble our question.
+Using this we can select the chunks that will be shared with our LLM during inference as the context that might answer our question.
+Of course, it might also be that there are no chunks that are relevant to our question.
 
 This dataset can be found under: `./data/WIKIPEDIA_natural_language_processing.csv`.
 
 # Setup of the problem
-Run the code below to get your environment started, make sure you have your API-key inside the credentials.yml, or import it in any other way how you see fit. Install the packages below that fail to load.
+
+Run the code below to get your environment started, make sure you have your API-key inside the credentials.yml, or import it in any other way how you see fit.
+Install the packages below that fail to load.
 
 ```{r}
 library(yaml) # For parsing the API key
@@ -77,6 +97,7 @@ OPENAI_API_KEY <- credentials$OPENAI_API_KEY
 ```
 
 We will also load some utility functions I have written for you so you don't have to:
+
 ```{r}
 utils_dir <- "./utils/"
 for (file in list.files(utils_dir)) {
@@ -84,7 +105,8 @@ for (file in list.files(utils_dir)) {
 }
 ```
 
-One of these functions is called `get_embeddings`, which will retrieve embeddings for you. These are the cheapest response object from the OpenAI-api at roughly 3000 pages per dollar.
+One of these functions is called `get_embeddings`, which will retrieve embeddings for you.
+These are the cheapest response object from the OpenAI-api at roughly 3000 pages per dollar.
 
 ```{r}
 embedding <- get_embedding(string = "What will this look like?")
@@ -93,11 +115,16 @@ embedding <- get_embedding(string = "What will this look like?")
 ## A question ChatGPT cannot answer
 
 During the Masterclass we talked about the famous Lawsuit where lawyers got into trouble because they used ChatGPT.
-They cited precedents that were hallucinated by ChatGPT. This event took place in May 2023. ChatGPT should not be aware of these events as they happened past the cutoff date. Let us give it a try. Write a query asking ChatGPT what it knows about this case. 
-- Don't make your user prompt too short, as this will be detrimental to the content retrieval later on. Use at least 5 sentences. 
-- You don't have to supply any specifics, but paint the general picture of the story.
-- Ask ChatGPT what ended up being the consequences for the lawyers in this court case.
-- This is the user prompt we will use throughout this notebook, you will not change it after this point.
+They cited precedents that were hallucinated by ChatGPT.
+This event took place in May 2023.
+ChatGPT should not be aware of these events as they happened past the cutoff date.
+Let us give it a try.
+Write a query asking ChatGPT what it knows about this case.
+
+-   Don't make your user prompt too short, as this will be detrimental to the content retrieval later on. Use at least 5 sentences.
+-   You don't have to supply any specifics, but paint the general picture of the story.
+-   Ask ChatGPT what ended up being the consequences for the lawyers in this court case.
+-   This is the user prompt we will use throughout this notebook, you will not change it after this point.
 
 ```{r}
 system_prompt <- "You are a helpful assistant who answers truthfully and factually. If you do not know the answer, say so."
@@ -106,10 +133,15 @@ Can you tell me about what happend to the lawyers of this famous court case. In 
 "
 response <- generate_completion(system_prompt, user_prompt, model = "gpt-4-1106-preview", t = 0)
 ```
-As you can see, ChatGPT does not know of what case we speak. For our exercise, that is good news. As we are going to prove that given the right technique, we can get ChatGPT to tells us about this anyways.
+
+As you can see, ChatGPT does not know of what case we speak.
+For our exercise, that is good news.
+As we are going to prove that given the right technique, we can get ChatGPT to tells us about this anyways.
 
 ## Retrieve the data, what does it look like?
+
 Load the dataset and explore a little, what does the data look like?
+
 ```{r}
 # load the dataset
 data <- read.csv2("./data/WIKIPEDIA_natural_language_processing.csv", sep = ",")
@@ -125,14 +157,14 @@ data <- data %>%
 
 ```{r}
 set.seed(1234)
-data %>% sample_n(10)
+data %>% sample_n(2)
 ```
 
-# PLaying with embeddings
+# Playing with embeddings
 
 In order to find the correct contextual information, we will need to embed our `user_prompt`, as it will be the key to our search algorithm.
 Go ahead and create an embedding of your user prompt, use the `get_embedding` function as defined in `./utils/`.
-Is has already been loaded into your environment so you can use it straight away. 
+Is has already been loaded into your environment so you can use it straight away.
 
 ```{r}
 prompt_embedding <- get_embedding(user_prompt)
@@ -142,19 +174,21 @@ What are the number of dimensions, and the length, of the embedding?
 Round the result to 3 decimal places.
 
 ```{r}
-glue("The embeddings has {length(prompt_embedding)} dimensions and has a length of {round(prompt_embedding%*%prompt_embedding,3)}.")
+glue("The embeddings has {length(prompt_embedding)} dimensions and has a length of {sqrt(round(prompt_embedding%*%prompt_embedding,3))}.")
 ```
 
-With such a high number of dimensions, there is a lot of information about prompt that is encoded in this vector. 
-These embeddings have been normalised. Because of this, the only quality of the embedding that is informative to us is the pointing direction. 
-This direction says a lot about the meaning of the embedded text:
-- Chunks with more similair meaning have more similair embeddings,
-- Chunks with more different meaning have more different embeddings. 
+With such a high number of dimensions, there is a lot of information about prompt that is encoded in this vector.
+These embeddings have been normalised.
+Because of this, the only quality of the embedding that is informative to us is the pointing direction.
+This direction says a lot about the meaning of the embedded text: - Chunks with more similair meaning have more similair embeddings, - Chunks with more different meaning have more different embeddings.
 
 ## Visualising our embedding space
-We can make some interesting visualisations from our embeddings. 
-Here we will project our high-dimensional embeddings onto 2 dimensions. This creates a huge loss of information, but allows us to plot our data. 
-The embeddings teps have been performed for you:
+
+We can make some interesting visualisations from our embeddings.
+Here we will project our high-dimensional embeddings onto 2 dimensions using the umap algorithm.
+These projections lose a lot of the original information, but allow us to plot our data.
+The projection steps have been performed for you in this cell:
+
 ```{r}
 embedding_matrix <- data$embedding
 embedding_matrix <- do.call(rbind, embedding_matrix)
@@ -162,8 +196,13 @@ umap_embeddings <- umap(embedding_matrix)
 ```
 
 It is best to play with the value for n_pages a bit, as well as the text size.
-Open the figure in full screen. Explain, what do you see?
+Open the figure in full screen.
+Explain, what do you see?
+
 ```{r}
+#| fig-dpi: 100
+#| fig-width: 18
+#| fig-height: 12
 set.seed(1234)
 n_pages <- 600
 data_plot <- data %>%
@@ -195,34 +234,46 @@ ggplot(data_plot) +
     axis.text.y = element_text(size = 4) # Smaller y-axis text
   )
 ```
-You should see all kinds of clusters appear:
-- Virtual assistants
-- NLP researchers
-- Language models
-- NLP datasets (corpera)
-- Translation models
-- OCR
-- Chatbots
 
-You can see the effect of the embeddings. It is clearly visible that these have embedded some of the meaning of the articles into their
-numeric representations. 
+You should see all kinds of clusters appear:
+
+-   Virtual assistants
+
+-   NLP researchers
+
+-   Language models
+
+-   NLP datasets (corpera)
+
+-   Translation models
+
+-   OCR
+
+-   Chatbots
+
+-   Etc.
+
+You can see the effect of the embeddings.
+It is clearly visible that these have embedded some of the meaning of the articles into their numeric representations.
 
 ## Performing similarity search using our embeddings - euclidean distance
 
-Now we want to start comparing our embeddings to one another. One might think of just calculating a regular distance
-metric like euclidean distance for our embeddings, after all our vectors represent a single point in space.
+Now we want to start comparing our embeddings to one another.
+One might think of just calculating a regular distance metric like euclidean distance for our embeddings, after all our vectors represent a single point in space.
 So we could just look to see which ones are the closest together.
-However, in practice that will not work. Can you think of a reason why not?
+However, in practice that will not work.
+Can you think of a reason why not?
 
-The curse of dimensionality comes into play for our embeddings. At such high numbers of dimensions, 
-our real life intuition on distances is no longer correct. We are trying to work with a `r length(prompt_embedding)` dimensional space.
-In such a space any point is located on the surface of a hypersphere, and all points are approximately the same distance from one another. 
+The curse of dimensionality comes into play for our embeddings.
+At such high numbers of dimensions, our real life intuition on distances is no longer correct.
+We are trying to work with a `r length(prompt_embedding)` dimensional space.
+In such a space any point is located on the surface of a hypersphere, and all points are approximately the same distance from one another.
 
 ## Performing similarity search using our embeddings - cosine distance
 
-The easiest way to to compare our embeddings is through the metric called `cosine similarity`. Because our vectors are already normalised,
-we can use take the dot-product or inner product between 2 vectors to directly calculate the angle between them, this is the cosine distance. 
-I've implemented a utility function for this `cosine_similarity` that has been loaded into your environment. 
+The easiest way to to compare our embeddings is through the metric called `cosine similarity`.
+Because our vectors are already normalised, we can use take the dot-product or inner product between 2 vectors to directly calculate the angle between them, this is the cosine distance.
+I've implemented a utility function for this `cosine_similarity` that has been loaded into your environment.
 
 Calculate the cosine similarity between our prompt_embedding and all embeddings in the dataset, store this value in the column `similarity score`.
 
@@ -233,7 +284,81 @@ data_similarity <- data %>%
   arrange(desc(similarity_score))
 ```
 
-Retrieve the 3 values with the highest similarity_score, and store them in a table called `context`.
+Plot the distribution of similarity scores:
+```{r}
+#| fig-dpi: 100
+#| fig-width: 18
+#| fig-height: 12
+
+ggplot(data_similarity) +
+  geom_histogram(aes(x = similarity_score), breaks = seq(-1, 1, length.out = 101), alpha = 0.8) +
+  xlim(-1, 1) +
+  labs(title = "Distribution cosine similarity user prompt and Wikipedia embeddings")
+```
+It is somewhat suprising what you see in this plot. You'd expect there to be a very large range from -1 to 1, but instead the values are concentrated around 0.7.
+
+To see what is going on, we will make another figure. 
+Make another plot showing the distribution for embeddings of the user prompt, together with the following 3 input prompts:
+
+-   label: "Movies" - prompt:"The estuaries of the rivers Rhine, Meuse and Schelde have been subject to flooding over the centuries. After building the Afsluitdijk (1927 – 1932), the Dutch started studying the damming of the Rhine-Meuse Delta. Plans were developed to shorten the coastline and turn the delta into a group of freshwater coastal lakes. By shortening the coastline, fewer dikes would have to be reinforced. Due to indecision and the Second World War, little action was taken. In 1950 two small estuary mouths, the Brielse Gat near Brielle and the Botlek near Vlaardingen were dammed. After the North Sea flood of 1953, a Delta Works Commission was installed to research the causes and develop measures to prevent such disasters in future. They revised some of the old plans and came up with the 'Deltaplan'."
+-   label: "Baking" - prompt:"What is the best recipe for baking a carrot cake? I prefer them with not too many spices. The icing should be made with cream cheese of course"
+-   label: "Astronomy" - prompt:"A few years ago I remember seeing newspaper articles about astronomers imaging the black hole in our own milky way, how did they achieve this?"
+
+Use these labels to add fill color to your histogram:
+
+```{r}
+#| fig-dpi: 100
+#| fig-width: 18
+#| fig-height: 12
+results <- list()
+prompts <- c(
+  "The estuaries of the rivers Rhine, Meuse and Schelde have been subject to flooding over the centuries. After building the Afsluitdijk (1927 – 1932), the Dutch started studying the damming of the Rhine-Meuse Delta. Plans were developed to shorten the coastline and turn the delta into a group of freshwater coastal lakes. By shortening the coastline, fewer dikes would have to be reinforced. Due to indecision and the Second World War, little action was taken. In 1950 two small estuary mouths, the Brielse Gat near Brielle and the Botlek near Vlaardingen were dammed. After the North Sea flood of 1953, a Delta Works Commission was installed to research the causes and develop measures to prevent such disasters in future. They revised some of the old plans and came up with the 'Deltaplan'.",
+  "What is the best recipe for baking a carrot cake? I prefer them with not too many spices. The icing should be made with cream cheese of course",
+  "A few years ago I remember seeing newspaper articles about astronomers imaging the black hole in our own milky way, how did they achieve this?"
+)
+
+labels <- c(
+  "Deltaplan",
+  "Baking",
+  "Astronomy"
+)
+
+# Add the embedding matrix to the results lists
+for (i in seq_along(prompts)){
+  embedding_tmp <- get_embedding(prompts[[i]])
+  data_similarity_tmp <- data %>%
+    rowwise() %>%
+    mutate(similarity_score = cosine_similarity(embedding, embedding_tmp)) %>%
+    ungroup() %>%
+    mutate(label=labels[[i]]) %>%
+    arrange(desc(similarity_score))
+  
+  results[[i]] <- data_similarity_tmp
+}
+
+results[[i+1]] <- data_similarity %>% mutate(label="user_prompt")
+
+# Combine the 3 lists with do.call and rbind so we can plot them
+result <- do.call(rbind, results)
+
+ggplot(result) +
+  geom_histogram(aes(x = similarity_score, fill=label), breaks = seq(0.5, 1, length.out = 101), alpha = 0.7, position="identity") +
+  xlim(0.5, 1) +
+  labs(title = "Distribution cosine similarity of various prompts with the Wikipedia embeddings")
+```
+What do you see?
+
+You can see the following:
+
+- The embeddings of `text-embedding-ada-002` have a very small dynamic range. 
+
+- This in itself is not a big issue. We still see that the prompt on AI got the highest similarity with the dataset, while the prompt on baking got the lowest similarity with the dataset. 
+
+- This does mean that in practice we cannot set a reasonable cut-off for cosine similarity as one can do with BERT-embeddings. 
+
+## Collect best matches
+
+Retrieve the 3 values with the highest similarity_score with our original user prompt, and store them in a table called `context`.
 
 ```{r}
 context <- data_similarity %>% head(3)
@@ -241,11 +366,13 @@ context <- data_similarity %>% head(3)
 
 # Retrieval Augmented Generation
 
-Now we have all the steps to perform retrieval augmented generation. Let's get going!
+Now we have all the steps to perform retrieval augmented generation.
+Let's get going!
 
 ## First try
-We've kept the user_prompt from the beginning, which we will not touch. Instead, change the system prompt to achieve the following:
-- It should only answer, if the context provides an answer.
+
+We've kept the user_prompt from the beginning, which we will not touch.
+Instead, change the system prompt to achieve the following: - It should only answer, if the context provides an answer.
 - The answer should only be based on the context, nothing else.
 - The answer should be as detailed as possible.
 
@@ -270,17 +397,28 @@ Your answer should be as detailed as possible given this context.
 response <- generate_completion(system_prompt, user_prompt, t = 0, max_tokens = NULL, model = "gpt-4-1106-preview")
 ```
 
-Yeah! Now we are getting answers. However, we are not quite there yet. Now we have an answer, but how can we know it is true?
-It could still be making this up. We need to find a better solution.
+Yeah!
+Now we are getting answers.
+However, we are not quite there yet.
+Now we have an answer, but how can we know it is true?
+It could still be making this up.
+For a single example we can of course fact-check the sources ourselves.
+But automation is the name of the game: we need to find a better solution.
 
-## Making our work verifyable 
-Once again, we are going to pass text content to our system prompt. This time, it will be very important 
-that the model only answers using direct quotes from the context-chunks:
-- It should only answer in the format: (\`Wikipedia article: name\`) "quoted text"
-- It should only answer, if the context provides an answer.
-- Quotes should only be direct, no paraphrasing.
-- It is not allowed to use ellipses to shorten a quote.
-- The answer should be as detailed as possible.
+## Making responses (more) verifiable 
+
+Once again, we are going to pass text content to our system prompt.
+This time, it will be very important that the model only answers using direct quotes from the context-chunks:
+
+-   It should only answer in the format: (\`Wikipedia article: name\`) "quoted text"
+
+-   It should only answer, if the context provides an answer.
+
+-    Quotes should only be direct, no paraphrasing.
+
+-   It is not allowed to use ellipses to shorten a quote.
+
+-   The answer should be as detailed as possible.
 
 ```{r}
 system_prompt <- "
@@ -311,10 +449,16 @@ source 3 - 'Wikipedia article: {context$page[[3]]}'
 response <- generate_completion(system_prompt, user_prompt, t = 0, max_tokens = NULL, model = "gpt-4-1106-preview")
 ```
 
+Hooray!
+You can see that the model is mostly doing what we want.
+It is quoting directly.
+It is giving some extra reasoning around these quotes, but that is not an issue.
+
 ## Is our LLM quoting correctly?
-Now we want to verify the information provided by our LLM. 
-We can use simple regex to extract the sources from the response, as well as the quotes. 
-We can check if these quotes are indeed present in the context we provided. 
+
+Now we want to verify the information provided by our LLM.
+We can use simple `regular expressions` to extract the sources from the response, as well as the quotes.
+We can check if these quotes are indeed present in the context we provided.
 
 ```{r}
 answer <- response$choices$message.content
@@ -341,19 +485,20 @@ quotes <- lapply(quotes, function(x) x[, 2])[[1]]
 ```
 
 Now the question is, how do we check if these quotes are present in the text.
-We cannot use: `A %in% B` syntax. If our model changes a single character, it won't work. 
-Instead, we will use a clever solution called Levenshtein distance. Please look up what Levenshtein distance is, what does it calculate?
+We cannot use: `A %in% B` syntax.
+If our model changes a single character, it won't work.
+Instead, we will use a clever solution called Levenshtein distance.
+Please look up what Levenshtein distance is, what does it calculate?
 
 It calculates the minimal number of edits (insertions, deletions, or substitions) that are needed to go from string A to string B.
 
 We will make use of the function `adist(x,y)`.
-`adist` will look for the best location to match susbtring_x to a piece of string y, and then calculate the Levenshtein distance. 
-For each quote found in the model answer above:
-- Calculate the Levensthein distance.
+`adist` will look for the best location to match susbtring_x to a piece of string y, and then calculate the Levenshtein distance.
+For each quote found in the model answer above: - Calculate the Levensthein distance.
 - Make sure that you don't take into account the casing of the letters (upper or lower).
-- `incorrectness_quote`: Calculate the normalized Levensthein distance by dividing over the maximum edit distance possible for your quote. 
-- `correct_quote`: Check if the incorrectness value stays below 5%. If this is the case, correct_quote should read `TRUE`
-- It can happen that the same article (wikipedia page) is passed multiple times as context, take this into account in the function below in the group_by.
+- `incorrectness_quote`: Calculate the normalized Levensthein distance by dividing over the maximum edit distance possible for your quote.
+- `correct_quote`: Check if the incorrectness value stays below 5%.
+If this is the case, correct_quote should read `TRUE` - It can happen that the same article (wikipedia page) is passed multiple times as context, take this into account in the function below in the group_by.
 
 ```{r}
 for (i in 1:length(quotes)) {
@@ -380,9 +525,7 @@ for (i in 1:length(quotes)) {
 
 ## Bringing it together
 
-Now that we have a way of checking whether the quotes are not hallucinations, we can adjust our prompting function to do these calculations for us:
-- Fill out all the helper function
-- Then fill in the main `RAG_completion` function:
+Now that we have a way of checking whether the quotes are not hallucinations, we can adjust our prompting function to do these calculations for us: - Fill out all the helper function - Then fill in the main `RAG_completion` function:
 
 ```{r}
 # A helper function to isolate article sources from the model response
@@ -448,7 +591,6 @@ check_quotes <- function(context, sources, quotes) {
 }
 ```
 
-
 ```{r}
 # Our RAG_completion main function
 RAG_completion <- function(system = system_prompt,
@@ -503,14 +645,14 @@ RAG_completion <- function(system = system_prompt,
   for (choice_num in 1:length(response$choice[["index"]])) {
     # Extract the model answer
     answer <- response$choices[[choice_num, "message.content"]]
-    
+
     # Pretty print the answer with cat
-    cat(glue('**Response {choice_num}**:\n\n {answer}\n\n\n\n'))
-  
+    cat(glue("**Response {choice_num}**:\n\n {answer}\n\n\n\n"))
+
     # extract the sources and quotes
     sources <- get_sources(answer)
     quotes <- get_quotes(answer)
-  
+
     # Verify the model quotes. Raise a warning if a quote does not reach the standard
     check_quotes(context, sources, quotes)
   }
@@ -519,22 +661,23 @@ RAG_completion <- function(system = system_prompt,
 }
 ```
 
-
 ```{r}
-response <- RAG_completion(system_prompt, user_prompt, t=0)
+response <- RAG_completion(system_prompt, user_prompt, t = 0)
 ```
 
 ## Congratulations, try it out for other questions!
+
 ```{r}
 user_prompt <- "
 Who is Andrew NG, and why do I see so many of his Deep Learning content videos online?
 "
 
-response <- RAG_completion(system_prompt, user_prompt, t=0)
+response <- RAG_completion(system_prompt, user_prompt, t = 0)
 ```
 
-## (Optional) It's LLMs all the way down. 
+## (Optional) It's LLMs all the way down.
+
 What if you pass the output answer from `RAG_completion` to a new chat, along with the context.
 Can you get another chat with the LLM to verify whether the answer is correct given the content and the quote checks?
-
-
+Use `gpt-3.5-turbo-1106` before returning the answer to the user, to perform a check whether the answer can be verified 
+based on the context. Include the quote-correctness in the new user prompt. 
