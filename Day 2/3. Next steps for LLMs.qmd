@@ -22,20 +22,38 @@ date: "11-24-2023"
     - 20B parameters
     - Deemed likely by experts due to model response speed
     - Open source models at 13b appear to be somewhat comparable 
+- OpenAI appears to be shifting towards smaller faster models
 
 ## A case for small large language models
-- [Deepmind: Training Compute-Optimal Large Language Models](https://arxiv.org/pdf/2203.15556.pdf)
+- [Deepmind 2022: Training Compute-Optimal Large Language Models](https://arxiv.org/pdf/2203.15556.pdf)
 
 ![](./figures/isoloss-contours-deepmind.png){fig-align="center"}
 
-- The road to improvement has become more data, not more parameters
+- The road to improvement has become more data, not more parameters.
 - Data may now be the bottleneck, even given the incredibly large datasets.
 - Most papers are rather vague on their data collection...
 
+## A case for small large language models
+
+- Smaller language models:
+    - Are faster
+    - Less expensive
+- Wouldn't require gpu-clusters 
+- Could lead to more personalised AI in the long run...
+- ... Everybody has their own small-LLM as a personal assistant
+
+## A case for small large language models
+- Retracted [CodeFusion: A Pre-trained Diffusion Model for Code Generation](https://arxiv.org/abs/2310.17680) possible leaked size of ChatGPT-3.5-Turbo:
+    - 20B parameters is still 40GB of VRAM:
+        - Most companies don't have the hardware to run these models
+        - Consumers especially don't have the hardware to run this
+    - You want to get them even smaller 
+- The open source community already figured out how to do just that.
+
 # open source
 
-
 ## A case for open source
+
 - [Google "We Have No Moat, And Neither Does OpenAI"](https://www.semianalysis.com/p/google-we-have-no-moat-and-neither) 
 - open source is “faster, more customizable, more private, and pound-for-pound more capable.”
 - Researcher claims open source will outpace Google, Openai
@@ -43,18 +61,21 @@ date: "11-24-2023"
 ![](./figures/we-have-no-moat.webp)
 
 ## A case for open source
-- Open source developments on LLama Models
+
+- Open source developments on LLama Models as released by Meta:
     - LORA finetuning of models on consumer laptop.
     - Quantisation makes LLama run at usable tokens/second on consumer laptop.
     - [Achieved parity with 5 million dollar models with 600 dollars](https://crfm.stanford.edu/2023/03/13/alpaca.html)
 
 ## Why is open source interesting for you?
+
 - <span class="highlighted-text"> No third party = No need to share private/proprietary data </span>
 - Cheaper to use
 - Full control to make your own domain specific model (hard)
 - You can add your own improvements in the open source ecosystem
 
 ## Why open source might be less interesting for you
+
 - Does require specialised (expensive) hardware for best performance
 - Depending on usecase, need to deploy the model somewhere
 - No quick and easy API anymore
@@ -71,12 +92,14 @@ Most models are released in half-precision (16 bit):
 - How to run these huge models?
 
 ## Quantization to the rescue
+
 - Smart algorithms to reduce the weights to 8-bit, 4-bit format with minimal reduction in model performance.
     - 7B parameters at 4 bit ~ 3.4 GB of (V)RAM
     - 13B parameters ~ 7.8 GB of (V)RAM
     - 70B parameters ~ 42 GB of (V)RAM 
 
 ## Quantization rules of thumb
+
 - For best performance:
     - Biggest model with biggest quantization that fits into (GPU-)memory
     - model-size > quantization: 13B at 8bit is better than 7B at full size.
@@ -107,12 +130,53 @@ Most models are released in half-precision (16 bit):
 
 ## {background-video="./figures/autogpt-code-improvement.mp4"}
 
+## Tips and Tricks AutoGPT
+- For long conversations:
+    - memory management by:
+        - Offloading long term memory to local storage
+        - Keeping track of the short term memory via summarization
+- Have the model write is own CoT-prompting commands
+- Have the model criticise it's own plans (self-reflection)
+- Allowing the model to interact with many different API-endpoints (as well as OS)
 
 # Retrieval Augmented Generation
 
 ## {.full-bg-slide background-image="./figures/retrieval-augmented-generation.png"}
 
 ## {.full-bg-slide background-image="./figures/retrieval-augmented-generation2.png"}
+
+## GPT store
+
+:::{.columns}
+
+:::{.column width="20%"}
+- ChatGPT
+- \+ API function calling
+- \+ RAG
+:::
+
+:::{.column width="80%"}
+![](./figures/introducing-gpts.avif)
+:::
+
+:::
+
+## GPT store
+
+:::{.columns}
+
+:::{.column width="40%"}
+- ChatGPT
+- \+ API function calling: connect ChatGPT to any external API
+- \+ RAG: Add knowledge base to model
+- Smart way to get acces to more training data
+:::
+
+:::{.column width="60%"}
+![](./figures/introducing-gpts.avif)
+:::
+
+:::
 
 # What will come next?
 
