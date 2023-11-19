@@ -177,6 +177,9 @@ credentials.yml
 *-solution*
 *create_exercise*
 
+# Ignore data
+*.csv
+
 #-------------------------------------------------------------------
 
 # Ignore R files
