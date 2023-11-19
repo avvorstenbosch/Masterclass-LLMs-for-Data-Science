@@ -41,7 +41,7 @@ install.packages("openai")
 
 ```{R}
 # Specify the path to your API-credentials file
-library(openai) # open-source, not official implementation!
+library(openai) # open source, not official implementation!
 library(yaml) # For parsing the API key
 library(glue) # For easy prompt formating
 library(jsonlite) # For parsing .json formatted responses

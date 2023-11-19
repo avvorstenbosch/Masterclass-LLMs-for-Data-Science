@@ -74,7 +74,7 @@ response = openai.ChatCompletion.create(
 - We'll be calling the API directly from Python or R
 ```{.R code-line-numbers="|2|1-6|8-9|11-35|13|14-31|32-34|35|"}
 # Specify the path to your API-credentials file
-library(openai) # open-source, not official implementation!
+library(openai) # open source, not official implementation!
 library(yaml)
 file_path <- "credentials.yml"
 credentials <- yaml.load_file(file_path)

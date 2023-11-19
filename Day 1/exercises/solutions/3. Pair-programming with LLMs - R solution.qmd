@@ -36,7 +36,7 @@ This is an example of a complex task where GPT-4 works a lot better than GPT-3.5
 
 ```{r}
 # Specify the path to your API-credentials file
-library(openai) # open-source, not official implementation!
+library(openai) # open source, not official implementation!
 library(yaml) # For parsing the API key
 library(glue) # For easy prompt formating
 library(jsonlite) # For parsing .json formatted responses

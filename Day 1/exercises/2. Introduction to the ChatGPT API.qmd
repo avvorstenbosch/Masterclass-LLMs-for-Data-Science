@@ -63,7 +63,7 @@ print(response.choices[0].message.content)
 \footnotesize
 ```{.R} 
 # Specify the path to your API-credentials file
-library(openai) # open-source, not official implementation!
+library(openai) # open source, not official implementation!
 library(yaml)
 file_path <- "credentials.yml"
 credentials <- yaml.load_file(file_path)

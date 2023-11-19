@@ -1,6 +1,6 @@
 ---
 title: "Next steps for LLMs" 
-subtitle: "RAG, open-source, AutoGPT, and more..."
+subtitle: "RAG, open source, AutoGPT, and more..."
 author: "Alex van Vorstenbosch"
 footer: "Next steps for LLMs"
 title-slide-attributes:
@@ -9,12 +9,13 @@ title-slide-attributes:
 date: "11-24-2023"
 ---
 
-## Retrieval Augmented Generation
+# medium-large language models
 
-## A case for small large language models
+## With Large models come large bills
 - [Big Tech Struggles to Turn AI Hype Into Profits](https://www.wsj.com/tech/ai/ais-costly-buildup-could-make-early-products-a-hard-sell-bdd29b9f)
 - Microsoft reportedly makes a loss of 20 dollars per month on average, for every Github Copilot user with a 10 dollar subscription.
-- Numbers for OpenAI might be similair for ChatGPT + users.
+- Numbers for OpenAI might be similair for ChatGPT+ users.
+- Running LLMs is a very costly endeavour
 
 ## A case for small large language models
 - Retracted [CodeFusion: A Pre-trained Diffusion Model for Code Generation](https://arxiv.org/abs/2310.17680) possible leaked size of ChatGPT-3.5-Turbo:
@@ -30,6 +31,9 @@ date: "11-24-2023"
 - The road to improvement has become more data, not more parameters
 - Data may now be the bottleneck, even given the incredibly large datasets.
 - Most papers are rather vague on their data collection...
+
+# open source
+
 
 ## A case for open source
 - [Google "We Have No Moat, And Neither Does OpenAI"](https://www.semianalysis.com/p/google-we-have-no-moat-and-neither) 
@@ -102,6 +106,15 @@ Most models are released in half-precision (16 bit):
 :::
 
 ## {background-video="./figures/autogpt-code-improvement.mp4"}
+
+
+# Retrieval Augmented Generation
+
+## {.full-bg-slide background-image="./figures/retrieval-augmented-generation.png"}
+
+## {.full-bg-slide background-image="./figures/retrieval-augmented-generation2.png"}
+
+# What will come next?
 
 ## Sparks of AGI? {.full-bg-slide background-image="./figures/an-uncertain-future.webp"} 
 

@@ -117,7 +117,7 @@ date: "11-17-2023"
 | 09:00 – 09:20 uur 	| Opening and Discussion of the Day's Agenda                            	|                                                                         	|
 | 09:20 – 10:45 uur 	| Text Analysis with LLMs                                               	| Foundation models for NLP<br>Evaluation of performance<br>Hands-on Excercises 	|
 | 10:45 – 11:00 uur 	| Break                                                                 	|                                                                         	|
-| 11:00 – 12:30 uur 	| Retrieval Augmented Generation (RAG), open-source, and next steps(?)  	| LLMs versus Search Engines<br>How to host your own LLM<br>Next-steps?         	|
+| 11:00 – 12:30 uur 	| Retrieval Augmented Generation (RAG), open source, and next steps(?)  	| LLMs versus Search Engines<br>How to host your own LLM<br>Next-steps?         	|
 | 12:30 – 13:30 uur 	| Lunch                                                                 	|                                                                         	|
 | 13:30 - 16:30 uur 	| Extended Practical Assignment                                         	|                                                                         	|
 | 16:30 - 17:00 uur 	| Summary, Evaluation, and Conclusion                                   	|                                                                         	|
