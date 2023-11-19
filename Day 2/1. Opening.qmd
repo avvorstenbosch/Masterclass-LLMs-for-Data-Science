@@ -1,0 +1,53 @@
+---
+title: "Welcome" 
+subtitle: ""
+author: "Alex van Vorstenbosch"
+footer: "ChatGPT for Data Science"
+title-slide-attributes:
+  data-background-image: "./figures/ds-with-llm.png"
+  data-background-opacity: "0.5"
+
+date: "11-24-2023"
+---
+
+## The exercises
+
+- How did they go?
+- Where there any issues?
+
+
+## The Planning {.smaller-2}
+:::{.panel-tabset}
+## Day 1
+| Time              	| Title                                       	|        Discription                                                                      	|
+|-------------------	|---------------------------------------------	|------------------------------------------------------------------------------	|
+| 09:00 – 09:30 uur 	| Introduction 	|                                                                              	|
+| 09:30 – 10:45 uur 	| Introduction to LLM's and ChatGPT           	| NLP and development of LLMs<br>Capabilities of ChatGPT<br>Real world applications  	|
+| 10:45 – 11:00 uur 	| Break                                       	|                                                                              	|
+| 11:00 – 12:00 uur 	| Prompt Engineering                          	| Introduction to prompting<br> Best practices for prompting<br>Hands-on excercises   	|
+| 12:00 – 13:00 uur 	| Lunch                                       	|                                                                              	|
+| 13:00 – 13:45 uur 	| Programming with GPT                        	| Introduction to the OpenAI API<br>Hands-on excercises                           	|
+| 13:45 – 14:45 uur 	| Ethical Considerations in Using LLMs        	| Biases and Misinformation<br>The Dark Side of LLMs<br>Privacy and Legal Challenges 	|
+| 14:45 - 15:00 uur 	| Break                                       	|                                                                              	|
+| 15:00 - 16:00     	| Programming with GPT                        	| Pair-programming with LLMs<br>Hands-on excercises                                	|
+| 16:00– 16:45 uur  	| Improved efficiëncy with ChatGPT            	| Examples of real implementations of ChatGPT in a workflow                    	|
+| 16:45 – 17:00 uur 	| Summary, Evaluation and Conclusion of Day 1 	|                                                                              	|
+
+## Day 2
+| Time              	| Title                                                                 	| Discription                                                             	|
+|-------------------	|-----------------------------------------------------------------------	|-------------------------------------------------------------------------	|
+| 09:00 – 09:20 uur 	| Opening and Discussion of the Day's Agenda                            	|                                                                         	|
+| 09:20 – 10:45 uur 	| Text Analysis with LLMs                                               	| Foundation models for NLP<br>Evaluation of performance<br>Hands-on Excercises 	|
+| 10:45 – 11:00 uur 	| Break                                                                 	|                                                                         	|
+| 11:00 – 12:30 uur 	| Retrieval Augmented Generation (RAG), open-source, and next steps(?)  	| LLMs versus Search Engines<br>How to host your own LLM<br>Next-steps?         	|
+| 12:30 – 13:30 uur 	| Lunch                                                                 	|                                                                         	|
+| 13:30 - 16:30 uur 	| Extended Practical Assignment                                         	|                                                                         	|
+| 16:30 - 17:00 uur 	| Summary, Evaluation, and Conclusion                                   	|                                                                         	|
+:::
+
+## Practical Points
+- Please feel free to ask questions during the presentations!
+- [Slides will be shared and published online](https://github.com/avvorstenbosch/MC_LLMs_for_DS)
+- Make sure you have acces to an environment with coding notebooks:
+    - Python: [Jupyter](https://jupyter.org/) or [VScode](https://code.visualstudio.com/) and/or [Quarto](https://quarto.org/) 
+    - R: [Rstudio](https://posit.co/download/rstudio-desktop/) with [Quarto](https://quarto.org/)
