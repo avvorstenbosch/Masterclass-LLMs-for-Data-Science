@@ -260,17 +260,22 @@ generate_completion <- function(system = system_prompt,
                                 max_tokens = NULL,
                                 model = "gpt-3.5-turbo-1106",
                                 format = NULL,
-                                openai_api_key = OPENAI_API_KEY) {
+                                openai_api_key = OPENAI_API_KEY,
+                                verbose=TRUE) {
   #' Flexible API Request Function with Integrated Glue Functionality
   #'
   #' This function sends a request to a specified API, integrating the 'glue' function to allow
   #' dynamic insertion of context documents into the user_prompt.
   #'
-  #' @param system the system prompt provided to the model The URL of the API to which the request is being sent, defaults to system_prompt object
-  #' @param prompt the user prompt provided to the model, defaults to user_prompt object
-  #' @param t the temperature setting for the mode, defaults to 1
-  #' @param n the number of completions to generate, defaults to 1
-  #' @param max_tokens the maximum model response length, defaults to 500 tokens
+  #' @param system the system prompt provided to the model The URL of the API to which the request is being sent, defaults to system_prompt object.
+  #' @param prompt the user prompt provided to the model, defaults to user_prompt object.
+  #' @param t the temperature setting for the mode, defaults to 1.
+  #' @param n the number of completions to generate, defaults to 1.
+  #' @param max_tokens the maximum model response length, defaults to 500 tokens.
+  #' @param model the model to invoke for chat completion.
+  #' @param format specification of the output format for Json mode. 
+  #' @param openai_api_key your private API key.
+  #' @param verbose if FALSE, the model will not print outputs.
   #'
   #' @return
   #' The response object from the chat_completion api
