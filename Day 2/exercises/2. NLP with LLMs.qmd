@@ -1,0 +1,52 @@
+---
+title: "NLP with LLMs" 
+date: "11-24-2023"
+format: 
+    html:
+        number-sections: true
+        page-layout: full
+        title-block-banner: true
+        self-contained: true
+include-in-header:
+  - text: |
+      <style>
+      .cell-output-stdout code {
+        word-break: break-wor !important;
+        white-space: pre-wrap !important;
+      }
+      </style>
+---
+
+# Sentiment Analysis
+
+In this Exercise set, we are going to use ChatGPT for a sentiment analysis problem. 
+
+## Environment setup
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+data_x <- read_csv2(sentences_data_final, "./data/semEval2014-restaurants-x.csv")
+data_y <- read_csv2(sentences_data_final, "./data/semEval2014-restaurants-y.csv")
+```
+
+
+```{r}
+user_prompt <- "
+  Given a review, extract the aspect term(s) and determine their corresponding sentiment polarity.
+  
+  Rules:
+  Aspect terms: Single or multiword terms naming particular aspects of the target entity. For example,
+  in “I liked the service and the staff, but not the food”, the aspect terms are “service”,
+  “staff” and “food”; in “The hard disk is very noisy” the only aspect term is “hard disk”.
+  Aspect term polarity: Each aspect term has to be assigned one of the following polarities based on the 
+  sentiment that is expressed in the sentence about it: positive, negative, conflict (both positive and negative sentiment), neutral (neither positive nor negative sentiment)
+
+  Format your output as a .json with single list results, which has all pairs of 'aspect':'polarity' detected in the sentence.
+  
+  Review: {sentence}
+"
+```
+
