@@ -49,6 +49,17 @@ Duration: Days
 - Might fit into the Jack of all trades analogy.
 - Will score great on any subject overall, but not the best in class in any single subject
 
+## Semantic versus Pragmatic
+- Semantic meaning: Literal
+- Pragmatic meaning: Context dependent
+
+:::{.fragment}
+> *"Wow, you really are an expert"*
+:::
+- Semantic: Compliment
+- Pragmatic: Sarcastic, Compliment, etc.
+ 
+![](./figures/chatgpt-versus-sota.jpg)
 
 ## Sentiment analysis
 
