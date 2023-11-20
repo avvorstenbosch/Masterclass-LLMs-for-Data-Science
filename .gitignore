@@ -178,7 +178,10 @@ credentials.yml
 *create_exercise*
 
 # Ignore data
+data
 *.csv
+*.xml
+*.zip
 
 #-------------------------------------------------------------------
 
