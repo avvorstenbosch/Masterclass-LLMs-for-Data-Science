@@ -255,6 +255,7 @@ create_chat_completion <- function(model,
 
 generate_completion <- function(system = system_prompt,
                                 prompt = user_prompt,
+                                messages = NULL,
                                 t = 1,
                                 n = 1,
                                 max_tokens = NULL,
@@ -269,6 +270,7 @@ generate_completion <- function(system = system_prompt,
   #'
   #' @param system the system prompt provided to the model The URL of the API to which the request is being sent, defaults to system_prompt object.
   #' @param prompt the user prompt provided to the model, defaults to user_prompt object.
+  #' @param messages the user provides a messages list directly, overrides system and prompt
   #' @param t the temperature setting for the mode, defaults to 1.
   #' @param n the number of completions to generate, defaults to 1.
   #' @param max_tokens the maximum model response length, defaults to 500 tokens.
@@ -279,8 +281,7 @@ generate_completion <- function(system = system_prompt,
   #'
   #' @return
   #' The response object from the chat_completion api
-  response <- create_chat_completion(
-    model = model,
+  if (is.null(messages)){
     messages = list(
       list(
         "role" = "system",
@@ -290,15 +291,21 @@ generate_completion <- function(system = system_prompt,
         "role" = "user",
         "content" = glue(prompt)
       )
-    ),
+    )
+  }
+  response <- create_chat_completion(
+    model = model,
+    messages = messages,
     format = format, # Set the response format for JSON mode
     temperature = t, # The randomness setting of the model: 0 is deterministic, 2 is most random
     n = n, # How many completions do we want the model to generate
     max_tokens = max_tokens, # How many tokens is the model allowed to use,
     openai_api_key = openai_api_key # Your secret key to the API
   )
-  for (choice_num in 1:length(response$choice[["index"]])) {
-    cat(glue('**Response {choice_num}**:\n\n {response$choices[[choice_num, "message.content"]]}\n\n\n\n'))
+  if (verbose){
+    for (choice_num in 1:length(response$choice[["index"]])) {
+      cat(glue('**Response {choice_num}**:\n\n {response$choices[[choice_num, "message.content"]]}\n\n\n\n'))
+    }
   }
   return(response)
 }
