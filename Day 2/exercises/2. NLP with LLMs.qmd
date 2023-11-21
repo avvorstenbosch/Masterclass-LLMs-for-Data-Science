@@ -28,52 +28,119 @@ library(tidyverse)
 library(caret)
 library(kableExtra)
 library(knitr)
+library(glue)
+library(yaml)
+library(jsonlite)
+
+# Loading the API_KEY
+file_path <- "../../credentials.yml"
+credentials <- yaml.load_file(file_path)
+OPENAI_API_KEY <- credentials$OPENAI_API_KEY
 ```
 
 We will also load some utility functions I have written for you so you don't have to:
 
 ```{r}
 utils_dir <- "./utils/"
+
+# Fetch utils from utils directory
 for (file in list.files(utils_dir)) {
   source(paste0(utils_dir, file))
 }
 ```
 
-Please check out the Documentation under `./utils/chat_completion.R` to get an overview of what the `generate_completion` function looks like. 
+Please check out the Documentation under `./utils/chat_completion.R` to get an overview of what the `generate_completion` function looks like.
+It is very similair to the function as provided by `library(openai)`, but offers the ability to call the format specifier which was a new feature 
+that has only been around since Dev-Day (November 6th 2023). It also offers some extra convenience with regards to building the prompts. 
+Internally, it uses glue so you don't have to! You can also specify whether the function should print the response or not.
 
 ## Read the data
-The dataset contains 500 samples of the SemEval2014-restaurants dataset. This is a dataset for ABSA:\
-Aspect Based Sentiment Analysis: Detect all relevant aspects in a text along with the sentiment expressed around them. 
+The dataset contains 500 sentences of the SemEval2014-restaurants dataset. This is a dataset for ABSA:\
+"Aspect Based Sentiment Analysis": Given all the aspects (red: relevant elements) detect the sentiment expressed about them. 
 
 There are 2 flavours of ABSA:
 
 - regular ABSA: Detect the sentiment for each aspect given. 
 - E2E-ABSA: Detect both the aspects and their sentiment. 
 
-E2E is significantly harder to achieve, and to a higher degree depends on the labeling quality of the dataset. 
+E2E is significantly harder to achieve, and to a higher degree depends on the labeling quality of the data set.
+For this exercise set, we will be performing regular ABSA using an LLM. 
 
 ```{r}
 data_x <- read_csv2("./data/semEval2014-restaurants-x.csv")
 data_y <- read_csv2("./data/semEval2014-restaurants-y.csv")
 
-# Not all sentences in the dataset have a y-label, as not all sentences have a sentiment expression in them
-# For now, we ignore this. 
-data_y <- data_y %>% drop_na()
-data <- data_x %>% inner_join(data_y, by="sentence_id")
+# Not all sentences in the dataset have a y-label in the original data set
+# in this cleaned sample they do
+data <- data_x %>% inner_join(data_y, by = "sentence_id")
+
+# DON'T TOUCH THIS CODE ---------------------##
+# We need everybodies data_test to be equal  ##
+#--------------------------------------------##
+data_train <- data %>%
+  group_by(sentence_id) %>%
+  mutate(new_id = cur_group_id()) %>%
+  ungroup() %>%
+  filter(new_id <= 400) %>%
+  select(-new_id)
+
+data_test <- data %>%
+  group_by(sentence_id) %>%
+  mutate(new_id = cur_group_id()) %>%
+  ungroup() %>%
+  filter(new_id > 400) %>%
+  select(-new_id)
+#--------------------------------------------##
 ```
+
+### Check out the data, what does it look like
+
+You can use `%>% kable() %>% kable_styling()` to get a nice looking table in the inline output. 
+
+```{r}
+data_train %>%
+  head(10) %>%
+  kable() %>%
+  kable_styling()
+```
+
+```{r}
+data_train %>%
+  group_by(polarity) %>%
+  summarize(count = n() / nrow(data) * 100) %>%
+  kable() %>%
+  kable_styling()
+```
+
 # ABSA
 
-## Zero-shot
+Here we will try our hand at sentiment analysis using an out-of-the-box LLM.
+IMPORTANT-RULE: You are allowed to do whatever you want with the training data.
+Play with it, experiment with it, etc. But you are only allowed to touch the test-data when we evaluate our model performance.
+If you need to alter the format of data_test for your pompt, that is allowed, but other than that, you cannot touch it!
 
-Let us start with classifying a single example. 
+## Zero-shot - Single
+
+At this point, we are going to try performing Zero-shot sentiment analysis. The rules are simple:
+
+- The model response should contain the prediction for all aspects in the same sentence at once.
+- You are not allowed to provide any sentiment analysis examples to the model.
+- You are allowed to describe the various sentiment polarities and their definition.
+- You are free to write this prompt as you see fit, just don't give examples.
+- You can decide how to distribute the prompt over the system_prompt and the user_prompt. 
+- Check out the labeling rules guide for SemEval: `./data/SemEval14_ABSA_AnnotationGuidelines.pdf`
+- Make it easy for yourself: use the json mode for easy extraction of the classifications!
+
+Let us start with classifying the sentiment for a single example sentence. 
+
 ```{r}
 system_prompt <- "
-  You are a sentiment labeling expert. You will be provided with a review along with a list of aspects. For each aspect, determine the sentiment polarity. 
+  You are a sentiment labeling expert. You will be provided with a review along with a list of aspects. For each aspect, determine the sentiment polarity.
   Rules:
-  Aspect term polarity: Each aspect term has to be assigned one of the following polarities based on the 
+  Aspect term polarity: Each aspect term has to be assigned one of the following polarities based on the
   sentiment that is expressed in the sentence: positive, negative, conflict (both positive and negative sentiment), neutral (neither positive nor negative sentiment)
-  
-  Format your output as a .json a polarity for each input aspect. Only return this json.
+
+  Format your output as a .json with a polarity for each input aspect. Only return this json.
 "
 
 user_prompt <- "
@@ -84,137 +151,305 @@ user_prompt <- "
 
 ```{r}
 i <- 1
-x_sentence_id <- data_x[[i,1]]
-target_sentence <- data_x[[i,2]]
+x_sentence_id <- data_train[[i, "sentence_id"]]
+target_sentence <- data_train[[i, "sentence_text"]]
 
-targets <- data_y %>% filter(sentence_id==sentence_id)
+targets <- data_train %>% filter(sentence_id == x_sentence_id)
 target_aspect_terms_combined <- paste(targets$aspect_term, collapse = ", ")
 ```
 
 ```{r}
 response <- generate_completion(system_prompt, user_prompt)
 ```
+### Check if the predictions where correct
 ```{r}
 results <- c()
+
+# Read classifications from response
 response_classifications <- fromJSON(response$choices$message.content)
-for (i in seq_along(response_classifications)){
-  result_i = response_classifications[[i]]==targets$polarity[targets$aspect_term==names(response_classifications)[[1]]]
-  results = c(results, result_i)
+
+# Check correctness for each prediction
+for (i in seq_along(response_classifications)) {
+  result_i <- response_classifications[[i]] == targets$polarity[targets$aspect_term == names(response_classifications)[[1]]]
+  results <- c(results, result_i)
 }
+print(results)
 ```
 
-### Multiple examples
-No we'll do a bigger test run. Below I've written some code that puts all the data of the first 25 sentences into a single
-dataframe. Finish the get_predicitions function to get predictions for every sentence in data_n
+## Zero-shot - Multiple examples
+
+Now we'll do a bigger trial run on the training data. Below I've written some code that puts all the data of the first 50 sentences into a single
+dataframe and runs predictions. You should finish the `get_predicitions` function to get predictions for every sentence in data_train
+
 ```{r}
 #| output: false
-n = 200
+n <- 50
 
-data_n <- data %>%
+data_train_50 <- data_train %>%
   group_by(sentence_id) %>%
   mutate(new_id = cur_group_id()) %>%
   ungroup() %>%
   filter(new_id <= n) %>%
   select(-new_id)
 
-predict_sentiment <- function(target_sentence, target_aspect_terms_combined, system_prompt=system_prompt, user_prompt=user_prompt){
-  response <- generate_completion(system_prompt, user_prompt, format = list("type" = "json_object"))
+predict_sentiment <- function(system_prompt = system_prompt, user_prompt = user_prompt, messages = NULL, verbose=TRUE) {
+  response <- generate_completion(system_prompt, user_prompt, messages = messages, format = list("type" = "json_object"), verbose=verbose)
   response_classifications <- fromJSON(response$choices$message.content)
   return(response_classifications)
 }
 
 # We're making predictions in a for loop, and appending them to a dataframe
-sentence_ids <- unique(data_n$sentence_id)
-predictions <- data.frame(sentence_id = integer(), aspect_term=character(), prediction=character())
-for (target_sentence_id in unique(data_n$sentence_id)){
-  targets <- data_n[data_n$sentence_id==target_sentence_id,]
+# Not elegant or vectorised, but easy to understand.
+# please note: running this takes a while to finish...
+sentence_ids <- unique(data_train_50$sentence_id)
+predictions_train <- data.frame(sentence_id = integer(), aspect_term = character(), prediction = character())
+for (target_sentence_id in unique(data_train_50$sentence_id)) {
+  targets <- data_train_50[data_train_50$sentence_id == target_sentence_id, ]
   target_sentence <- targets[[1, "sentence_text"]]
-  
+
   target_aspect_terms_combined <- paste(targets$aspect_term, collapse = ", ")
-  
-  prediction <- predict_sentiment(target_sentence, target_aspect_terms_combined, system_prompt, user_prompt)
-  for (j in seq_along(prediction)){
-    predictions <- rbind(predictions, data.frame(sentence_id=target_sentence_id, aspect_term = names(prediction)[[j]], polarity_prediction = prediction[[j]]))
+
+  prediction <- predict_sentiment(system_prompt, user_prompt, verbose=FALSE)
+  for (j in seq_along(prediction)) {
+    predictions_train <- rbind(predictions_train, data.frame(sentence_id = target_sentence_id, aspect_term = names(prediction)[[j]], polarity_prediction = prediction[[j]]))
   }
 }
 ```
 
 Bring them together so we can evaluate the accuracy
 ```{r}
-data_n_p <- data_n %>% full_join(predictions, by=c("sentence_id", "aspect_term"))
+data_train_p <- data_train_50 %>% left_join(predictions_train, by = c("sentence_id", "aspect_term"))
 ```
 
+### Evaluation Metrics
+
 ```{r}
-library(caret)
 # Create a confusion matrix
-conf_matrix <- confusionMatrix(factor(data_n_p$polarity_prediction,levels=c("negative", "neutral", "positive", "conflict")), 
-                               factor(data_n_p$polarity, levels=c("negative", "neutral", "positive", "conflict")))
+conf_matrix <- confusionMatrix(
+  factor(data_train_p$polarity_prediction, levels = c("negative", "neutral", "positive", "conflict")),
+  factor(data_train_p$polarity, levels = c("negative", "neutral", "positive", "conflict"))
+)
 
 # Extracting metrics
-accuracy <- conf_matrix$overall['Accuracy']
+accuracy <- conf_matrix$overall["Accuracy"]
 
+# Return the baseline a working model should at least beat in terms of accuracy.
+baseline_accuracy <- max((data_train %>% group_by(polarity) %>% summarize(count = n()))$count) / nrow(data_train)
 
 # Print the metrics
-baseline_accuracy <- max((data_n %>% group_by(polarity) %>% summarize(count=n()))$count)/nrow(data_n)
 print(glue("The baseline accuracy (predicting majority class): {round(baseline_accuracy,3)}"))
 print(glue("Micro Accuracy = Micro Precision = Micro Recall = Micro F1: {round(accuracy,3)}"))
-print(round(conf_matrix$byClass[,c("Precision", "Recall", "Specificity")],3))
+print(round(conf_matrix$byClass[, c("Precision", "Recall", "Specificity")], 3))
 ```
 
+### Confusion matrix
+
 ```{r}
-plot_confusion_matrix <- function(conf_matrix){
+plot_confusion_matrix <- function(conf_matrix) {
   # Convert to data frame for plotting
   matrix_df <- as.data.frame(conf_matrix$table)
   matrix_df$Prediction <- factor(matrix_df$Prediction, levels = rev(levels(matrix_df$Prediction)))
-  
+
   # Plot using ggplot2
   plot <- ggplot(data = matrix_df, aes(x = Reference, y = Prediction)) +
-      geom_tile(aes(fill = Freq), colour = "white") +
-      geom_text(aes(label = sprintf("%0.0f", Freq)), vjust = 1) +
-      scale_fill_gradient(low = "white", high = "steelblue") +
-      theme_minimal() +
-      xlab("True Label") +
-      ylab("Predicted Label") +
-      ggtitle("Confusion Matrix") + 
-      scale_x_discrete(position = "top") 
-  
+    geom_tile(aes(fill = Freq), colour = "white") +
+    geom_text(aes(label = sprintf("%0.0f", Freq)), vjust = 1) +
+    scale_fill_gradient(low = "white", high = "steelblue") +
+    theme_minimal() +
+    xlab("True Label") +
+    ylab("Predicted Label") +
+    ggtitle("Confusion Matrix") +
+    scale_x_discrete(position = "top")
+
   print(plot)
 }
 plot_confusion_matrix(conf_matrix)
 ```
 ```{r}
-data_n_p %>% filter(polarity != polarity_prediction) %>% select(sentence_text, aspect_term, polarity, polarity_prediction) %>% kable() %>% kable_styling()
+data_train_p %>%
+  group_by(sentence_id) %>%
+  filter(any(polarity != polarity_prediction)) %>%
+  ungroup() %>%
+  select(sentence_text, aspect_term, polarity, polarity_prediction) %>%
+  kable() %>%
+  kable_styling()
 ```
+
 ```{r}
-data_n_p %>% 
-  filter(sentence_id %in% (data_n_p %>% 
-                             filter(is.na(polarity)) %>% 
-                             pull(sentence_id)
-                           )
-         ) %>% arrange(sentence_id) %>% kable() %>% kable_styling()
+data_train_50 %>%
+  full_join(predictions_train, by = c("sentence_id", "aspect_term")) %>%
+  group_by(sentence_id) %>%
+  filter(any(is.na(polarity_prediction)) | any(is.na(polarity))) %>%
+  ungroup() %>%
+  arrange(sentence_id) %>%
+  kable() %>%
+  kable_styling()
 ```
 
-The model corrects missspelled words in the current version, and it sometimes splits terms into 2 or more terms where it shoudn't
 
-## Few-shot
-Now adjust your system prompt, use difficult examples to demonstrate how labels should be given. 
-Be sure that these are not labels you will test on later. 
+The model corrects misspelled words in the current version, and it sometimes splits terms into 2 or more terms where it shoudn't
 
-# E2E-ABSA
+## Zero-shot - Test
+You can still itterate over your zero-shot prompt using all the information above, or using a larger sample of the training-data.
+If you are ready to test yourself, run the cell below to evaluate your model on the test-set.
+
+**YOU ARE ONLY ALLOWED TO DO THIS ONCE, THIS WILL BE YOUR FINAL SCORE ON THE ZERO-SHOT EXERCISE**
+
+```{r}
+# We're making predictions in a for loop, and appending them to a dataframe
+# Not elegant or vectorised, but easy to understand.
+# please note: running this takes a while to finish...
+
+sentence_ids <- unique(data_test$sentence_id)
+predictions_test <- data.frame(sentence_id = integer(), aspect_term = character(), prediction = character())
+for (target_sentence_id in sentence_ids) {
+  targets <- data_test[data_test$sentence_id == target_sentence_id, ]
+  target_sentence <- targets[[1, "sentence_text"]]
+
+  target_aspect_terms_combined <- paste(targets$aspect_term, collapse = ", ")
+
+  prediction <- predict_sentiment(system_prompt, user_prompt, verbose=FALSE)
+  for (j in seq_along(prediction)) {
+    predictions_test <- rbind(predictions_test, data.frame(sentence_id = target_sentence_id, aspect_term = names(prediction)[[j]], polarity_prediction = prediction[[j]]))
+  }
+}
+
+data_test_p <- data_test %>% right_join(predictions_test, by = c("sentence_id", "aspect_term"))
+
+# Create a confusion matrix
+conf_matrix <- confusionMatrix(
+  factor(data_test_p$polarity_prediction, levels = c("negative", "neutral", "positive", "conflict")),
+  factor(data_test_p$polarity, levels = c("negative", "neutral", "positive", "conflict"))
+)
+
+# Extracting metrics
+accuracy <- conf_matrix$overall["Accuracy"]
+
+# Print the metrics
+print(glue("The baseline accuracy (predicting majority class): {round(baseline_accuracy,3)}"))
+print(glue("Micro Accuracy = Micro Precision = Micro Recall = Micro F1: {round(accuracy,3)}"))
+print(round(conf_matrix$byClass[, c("Precision", "Recall", "Specificity")], 3))
+
+plot_confusion_matrix(conf_matrix)
+```
+
+
+
+## Few-shot - Training
+
+Now adjust your system prompt, use examples to demonstrate how labels should be given. 
+You can only use examples from the training set, or examples that you thought of yourself. 
 
 ```{r}
 system_prompt <- "
-  Given a review, extract the aspect term(s) and determine their corresponding sentiment polarity.
-  
+  You are a sentiment labeling expert. You will be provided with a review along with a list of aspects. For each aspect, determine the sentiment polarity. Only make predictions for the aspects given.
   Rules:
-  Aspect terms: Single or multiword terms naming particular aspects of the target entity. For example,
-  in “I liked the service and the staff, but not the food”, the aspect terms are “service”,
-  “staff” and “food”; in “The hard disk is very noisy” the only aspect term is “hard disk”.
-  Aspect term polarity: Each aspect term has to be assigned one of the following polarities based on the 
-  sentiment that is expressed in the sentence about it: positive, negative, conflict (both positive and negative sentiment), neutral (neither positive nor negative sentiment)
+  Aspect term polarity: Each aspect term has to be assigned one of the following polarities based on the
+  sentiment that is expressed in the sentence: positive, negative, conflict (both positive and negative sentiment), neutral (neither positive nor negative sentiment)
 
-  Format your output as a .json with single list results, which has all pairs of 'aspect':'polarity' detected in the sentence.
-  
-  Review: {sentence}
+  Format your output as a .json with a polarity for each input aspect. Only return this json.
 "
+
+user_prompt <- "
+  aspects: {target_aspect_terms_combined}
+  sentence: {target_sentence}
+"
+
+messages <- list(
+  list(
+    "role" = "system",
+    "content" = glue(system_prompt)
+  ),
+  list(
+    "role" = "user",
+    "content" = "
+      aspects: Food, raw vegatables
+      sentence: Food is usually very good, though ocasionally I wondered about freshmess of raw vegatables in side orders.
+    "
+  ),
+  list(
+    "role" = "assistant",
+    "content" = '{\n  "Food": "conflict",\n  "raw vegatables": "negative"\n}'
+  ),
+  list(
+    "role" = "user",
+    "content" = "
+      aspects: drinks, appetizers
+      sentence: Went on a double date with friend and his girlfriend for a few drinks and appetizers
+    "
+  ),
+  list(
+    "role" = "assistant",
+    "content" = '{\n  "drinks": "neutral",\n  "appetizers": "neutral"\n}'
+  ),
+  list(
+    "role" = "user",
+    "content" = "
+      aspects: manager, reservation, bar, wait
+      sentence: night without a reservation, we had to wait at the bar for a little while, but the manager was so nice and made our wait a great experience.
+    "
+  ),
+  list(
+    "role" = "assistant",
+    "content" = '{\n  "manager": "positive",\n  "reservation": "neutral", "bar": "neutral", "wait":"positive"\n}'
+  ),
+  list(
+    "role" = "user",
+    "content" = "
+      aspects: wine, prices
+      sentence: I have known about this secret for the last 13 years, Emilio(the Godfather) has continued to serve food and wine for the gods at mortal prices.
+    "
+  ),
+  list(
+    "role" = "assistant",
+    "content" = '{\n  "wine": "positive",\n  "prices": "positive"\n}'
+  )
+)
+```
+
+## Few-shot - Test 
+
+```{r}
+# We're making predictions in a for loop, and appending them to a dataframe
+# Not elegant or vectorised, but easy to understand.
+# please note: running this takes a while to finish...
+
+sentence_ids <- unique(data_test$sentence_id)
+predictions_test <- data.frame(sentence_id = integer(), aspect_term = character(), prediction = character())
+for (target_sentence_id in sentence_ids) {
+  targets <- data_test[data_test$sentence_id == target_sentence_id, ]
+  target_sentence <- targets[[1, "sentence_text"]]
+
+  target_aspect_terms_combined <- paste(targets$aspect_term, collapse = ", ")
+
+  user_prompt_message <- list(
+    "role" = "user",
+    "content" = glue(user_prompt)
+  )
+
+  messages_input <- messages
+  messages_input[[length(messages) + 1]] <- user_prompt_message
+  prediction <- predict_sentiment(messages = messages_input, verbose=FALSE)
+  for (j in seq_along(prediction)) {
+    predictions_test <- rbind(predictions_test, data.frame(sentence_id = target_sentence_id, aspect_term = names(prediction)[[j]], polarity_prediction = prediction[[j]]))
+  }
+}
+
+data_test_p <- data_test %>% left_join(predictions_test, by = c("sentence_id", "aspect_term"))
+
+# Create a confusion matrix
+conf_matrix <- confusionMatrix(
+  factor(data_test_p$polarity_prediction, levels = c("negative", "neutral", "positive", "conflict")),
+  factor(data_test_p$polarity, levels = c("negative", "neutral", "positive", "conflict"))
+)
+
+# Extracting metrics
+accuracy <- conf_matrix$overall["Accuracy"]
+
+# Print the metrics
+print(glue("The baseline accuracy (predicting majority class): {round(baseline_accuracy,3)}"))
+print(glue("Micro Accuracy = Micro Precision = Micro Recall = Micro F1: {round(accuracy,3)}"))
+print(round(conf_matrix$byClass[, c("Precision", "Recall", "Specificity")], 3))
+
+plot_confusion_matrix(conf_matrix)
 ```
