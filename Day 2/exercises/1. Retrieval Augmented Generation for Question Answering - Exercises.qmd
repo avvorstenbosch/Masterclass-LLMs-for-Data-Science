@@ -166,7 +166,7 @@ data <- read.csv2("./data/WIKIPEDIA_natural_language_processing.csv", sep = ",")
 # Right now the embeddings have been loaded as strings,  convert them to vectors straight away.
 # Don't forget to remove the [ and ] from the string. If you get stuck, consider asking ChatGPT for help with a regex
 data <- data %>%
-  mutate(embedding = str_replace_all(embedding, #???, #???)) %>%
+  mutate(embedding = str_replace_all(embedding, YOUR_CODE_HERE, YOUR_CODE_HERE)) %>%
   mutate(embedding = str_split(embedding, ",\\s*") %>%
     map(~ as.numeric(.x)))
 ```
@@ -193,7 +193,7 @@ What are the number of dimensions, and the length, of the embedding?
 Round the result to 3 decimal places.
 
 ```{r}
-#???
+YOUR_CODE_HERE
 ```
 
 With such a high number of dimensions, there is a lot of information about prompt that is encoded in this vector.
@@ -207,19 +207,19 @@ This direction contains all the information the model has about the meaning of t
 Play around with this property. Write the same sentence twice, worded slightly differently, how do these embeddings compare?
 
 ```{r}
-#???
+YOUR_CODE_HERE
 ```
 
 Now write a new second sentence with the same topic of the first sentence, but a polarity for example. How does this embedding compare?
 
 ```{r}
-#???
+YOUR_CODE_HERE
 ```
 
 Now write a new second sentence that shares no similarities whatsover with the first sentence. How does this embedding compare?
 
 ```{r}
-#???
+YOUR_CODE_HERE
 ```
 This last one may suprise you. We will follow up on this shortly.
 
@@ -300,27 +300,6 @@ ggplot(data_plot) +
   )
 ```
 
-You should see all kinds of clusters appear:
-
--   Virtual assistants
-
--   NLP researchers
-
--   Language models
-
--   NLP datasets (corpora)
-
--   Translation models
-
--   OCR
-
--   Chatbots
-
--   Etc.
-
-You can see the effect of the embeddings.
-It is clearly visible that these have embedded some of the meaning of the articles into their numeric representations.
-
 ## Performing similarity search using our embeddings - euclidean distance
 
 Now we want to start comparing our embeddings to one another.
@@ -328,11 +307,6 @@ One might think of just calculating a regular distance metric like euclidean dis
 So we could just look to see which ones are the closest together.
 However, in practice that will not work.
 *Can you think of a reason why not?*
-
-The curse of dimensionality comes into play for our embeddings.
-At such high numbers of dimensions, our real life intuition on distances is no longer correct.
-We are trying to work with a `r length(prompt_embedding)` dimensional space.
-In such a space any point is effectively located on the surface of a hypersphere, and all points are approximately the same distance away from one another.
 
 ## Performing similarity search using our embeddings - cosine distance
 
@@ -345,7 +319,7 @@ Calculate the cosine similarity between our prompt_embedding and all embeddings 
 ```{r}
 data_similarity <- data %>%
   rowwise() %>%
-  mutate(similarity_score = #??? ) %>%
+  mutate(similarity_score = YOUR_CODE_HERE ) %>%
   arrange(desc(similarity_score))
 ```
 
@@ -393,7 +367,7 @@ for (i in seq_along(prompts)){
   embedding_tmp <- get_embedding(prompts[[i]])
   data_similarity_tmp <- data %>%
     rowwise() %>%
-    mutate(similarity_score = #???) %>%
+    mutate(similarity_score = YOUR_CODE_HERE) %>%
     ungroup() %>%
     mutate(label=labels[[i]]) %>%
     arrange(desc(similarity_score))
@@ -426,7 +400,7 @@ You can see the following:
 Retrieve the 3 values with the highest similarity_score with our original user prompt, and store them in a table called `context`.
 
 ```{r}
-#???
+YOUR_CODE_HERE
 ```
 
 # Retrieval Augmented Generation
@@ -509,7 +483,7 @@ article_names <- lapply(matches, function(x) x[, 2])[[1]]
 
 ```{r}
 # Regular Expression to capture the content of the quote.
-regex_quotes <- #??? Your regex here
+regex_quotes <- YOUR_CODE_HERE
 
 # Using str_match_all to extract all matches
 quotes <- str_match_all(answer, regex_quotes)
@@ -542,14 +516,14 @@ for (i in 1:length(quotes)) {
   context_tmp <- context %>% filter(page == article_names[[i]])
   context_tmp <- context_tmp %>%
     rowwise() %>%
-    mutate(incorrectnes_quote = round(adist(x = quotes[[i]], y = text, partial = TRUE, ignore.case = TRUE) #???, 2)) %>% # Finish the function at the #???
-    mutate(correct_quote = #??? ) %>% # Finish the function at the #???
+    mutate(incorrectnes_quote = round(adist(x = quotes[[i]], y = text, partial = TRUE, ignore.case = TRUE) YOUR_CODE_HERE, 2)) %>% # Finish the function at the YOUR_CODE_HERE
+    mutate(correct_quote = YOUR_CODE_HERE ) %>% # Finish the function at the YOUR_CODE_HERE
     group_by(page) %>%
-    summarize( # Finish these aggregations at the #???
-      incorrectnes_quote = #???(incorrectnes_quote),
-      correct_quote = #???(correct_quote),
-      text = text[which.#???(incorrectnes_quote)],
-      page = page[which.#???(incorrectnes_quote)]
+    summarize( # Finish these aggregations at the YOUR_CODE_HERE
+      incorrectnes_quote = YOUR_CODE_HERE(incorrectnes_quote),
+      correct_quote = YOUR_CODE_HERE(correct_quote),
+      text = text[which.YOUR_CODE_HERE(incorrectnes_quote)],
+      page = page[which.YOUR_CODE_HERE(incorrectnes_quote)]
     ) %>%
     ungroup()
   if (!any(context_tmp$correct_quote)) {
@@ -570,22 +544,22 @@ Now that we have a way of checking whether the quotes are not hallucinations, we
 ```{r}
 # A helper function to isolate article sources from the model response
 get_sources <- function(answer) {
-  #???
+  YOUR_CODE_HERE
 }
 
 # A helper function to isolate quotes from the model response
 get_quotes <- function(answer) {
-  #???
+  YOUR_CODE_HERE
 }
 
 # A helper function to retrieve the relevant context
 get_context <- function(prompt_embedding) {
-  #???
+  YOUR_CODE_HERE
 }
 
 # A helper function to check if the quotes are reasonable given the context
 check_quotes <- function(context, sources, quotes) {
-  #???
+  YOUR_CODE_HERE
 }
 ```
 
