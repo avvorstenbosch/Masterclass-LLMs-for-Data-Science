@@ -111,7 +111,7 @@ data_train %>%
 ```{r}
 data_train %>%
   group_by(polarity) %>%
-  summarize(count = n() / nrow(data) * 100) %>%
+  summarize(count = n() / nrow(data_train) * 100) %>%
   kable(digits=2) %>%
   kable_styling()
 ```
