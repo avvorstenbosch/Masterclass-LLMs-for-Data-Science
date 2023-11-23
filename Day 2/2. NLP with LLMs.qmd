@@ -27,29 +27,35 @@ Duration: Days
 
 ## NLP-tasks
 
+:::{.nonincremental}
 - Sentiment analysis
 - Named entity recognition
 - Natural language generation
 - Speech recognition
 - Speech synthesis
-- Ontology population
 - Question answering
 - Machine translation
 - Summarisation
 - Classification
 - Topic modeling
+- etc...
+:::
 
 ## Jack of all trades, master of none...
 - LLMs are great at a wide range of tasks...
 - ... but they aren't state-of-the-art for specific tasks
-- (might also be skewed due to allignment problem between benchmarks and human-eval in some)
+- *Might also be skewed due to allignment problem between benchmarks and human-eval in some metrics.*
 
 ## ... Except for QA and Reasoning
 - They are [SOTA](https://arxiv.org/pdf/2305.10403v3.pdf) for <span class="highlighted-text">Question Answering</span> and <span class="highlighted-text">Reasoning</span> 
 - Might fit into the Jack of all trades analogy.
-- Will score great on any subject overall, but not the best in class in any single subject
+- *"Best student in class on average, but not the best in class in any single subject"*
 
 ## Semantic versus Pragmatic
+
+:::{.columns}
+
+:::{.column width="40%"}
 - Semantic meaning: Literal
 - Pragmatic meaning: Context dependent
 
@@ -58,8 +64,14 @@ Duration: Days
 :::
 - Semantic: Compliment
 - Pragmatic: Sarcastic, Compliment, etc.
- 
-![](./figures/chatgpt-versus-sota.jpg)
+
+:::
+
+:::{.column width="60%"}
+![[ChatGPT: Jack of all trades, master of none](https://www.sciencedirect.com/science/article/pii/S156625352300177X)](./figures/chatgpt-versus-sota.jpg)
+
+:::
+:::
 
 ## Sentiment analysis
 
@@ -93,6 +105,12 @@ Duration: Days
 ::: {data-id="fig1"}
 ![[Extractive Summarization via ChatGPT for Faithful Summary Generation](https://arxiv.org/pdf/2304.04193.pdf)\
 [G-EVAL: NLG Evaluation using GPT-4 with Better Human Alignment](https://arxiv.org/pdf/2303.16634.pdf)](./figures/chatgpt-for-summarization.png)
+:::
+
+## ChatGPT for evaluating summarization {auto-animate="true"}
+
+::: {data-id="fig1"}
+![[G-EVAL: NLG Evaluation using GPT-4 with Better Human Alignment](https://arxiv.org/pdf/2303.16634.pdf)](./figures/G-eval.png){width="1000px" height="auto"}
 :::
 
 ## ChatGPT for evaluating summarization {auto-animate="true"}
