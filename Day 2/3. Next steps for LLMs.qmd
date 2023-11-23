@@ -21,7 +21,7 @@ date: "11-24-2023"
 - Retracted [CodeFusion: A Pre-trained Diffusion Model for Code Generation](https://arxiv.org/abs/2310.17680) possible leaked size of ChatGPT-3.5-Turbo:
     - 20B parameters
     - Deemed likely by experts due to model response speed
-    - Open source models at 13b appear to be somewhat comparable 
+    - Open source models at 13B appear to be somewhat comparable 
 - OpenAI appears to be shifting towards smaller faster models
 
 ## A case for small large language models
@@ -29,6 +29,7 @@ date: "11-24-2023"
 
 ![](./figures/isoloss-contours-deepmind.png){fig-align="center"}
 
+- Gopher is a 280B parameters model.
 - The road to improvement has become more data, not more parameters.
 - Data may now be the bottleneck, even given the incredibly large datasets.
 - Most papers are rather vague on their data collection...
@@ -38,9 +39,9 @@ date: "11-24-2023"
 - Smaller language models:
     - Are faster
     - Less expensive
-- Wouldn't require gpu-clusters 
+- Wouldn't require GPU-clusters. 
 - Could lead to more personalised AI in the long run...
-- ... Everybody has their own small-LLM as a personal assistant
+- ... everybody has their own small-LLM as a personal assistant
 
 ## A case for small large language models
 - Retracted [CodeFusion: A Pre-trained Diffusion Model for Code Generation](https://arxiv.org/abs/2310.17680) possible leaked size of ChatGPT-3.5-Turbo:
@@ -55,9 +56,10 @@ date: "11-24-2023"
 ## A case for open source
 
 - [Google "We Have No Moat, And Neither Does OpenAI"](https://www.semianalysis.com/p/google-we-have-no-moat-and-neither) 
-- open source is “faster, more customizable, more private, and pound-for-pound more capable.”
+- open source is *“faster, more customizable, more private, and pound-for-pound more capable.”*
 - Researcher claims open source will outpace Google, Openai
-- "the one clear winner in all of this is Meta"
+- *"the one clear winner in all of this is Meta"*
+
 ![](./figures/we-have-no-moat.webp)
 
 ## A case for open source
@@ -71,7 +73,7 @@ date: "11-24-2023"
 
 - <span class="highlighted-text"> No third party = No need to share private/proprietary data </span>
 - Cheaper to use
-- Full control to make your own domain specific model (hard)
+- Full control to make your own domain specific model (*hard*)
 - You can add your own improvements in the open source ecosystem
 
 ## Why open source might be less interesting for you
@@ -80,7 +82,7 @@ date: "11-24-2023"
 - Depending on usecase, need to deploy the model somewhere
 - No quick and easy API anymore
 
-## Currently open source LLMs rely on meta LLama2 model
+## Currently open source LLMs rely on Meta LLama2 model
 
 ![[https://ai.meta.com/llama/](https://ai.meta.com/llama/)](./figures/Llama2.png)
 
@@ -98,6 +100,8 @@ Most models are released in half-precision (16 bit):
     - 13B parameters ~ 7.8 GB of (V)RAM
     - 70B parameters ~ 42 GB of (V)RAM 
 
+![](./figures/downsizing.png)
+
 ## Quantization rules of thumb
 
 - For best performance:
@@ -105,6 +109,9 @@ Most models are released in half-precision (16 bit):
     - model-size > quantization: 13B at 8bit is better than 7B at full size.
 - Balancing performance/speed:
     - 4 bit quantizated models
+
+![](./figures/downsizing.png)
+
 
 ## AutoGPT - An Autonomous GPT-4 Experiment
 

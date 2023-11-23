@@ -51,6 +51,10 @@ Duration: Days
 - Might fit into the Jack of all trades analogy.
 - *"Best student in class on average, but not the best in class in any single subject"*
 
+## Papers with Code
+- For an overview of the current best model for your task:\
+[paperswithcode/Natural-Language-Processing](https://paperswithcode.com/area/natural-language-processing)
+
 ## Semantic versus Pragmatic
 
 :::{.columns}
@@ -73,15 +77,7 @@ Duration: Days
 :::
 :::
 
-## Sentiment analysis
-
-![[Is ChatGPT a Good Sentiment Analyzer? A Preliminary Study](https://arxiv.org/pdf/2304.04339.pdf)](./figures/ChatGPT-generalizes-better.png)
-
-## Papers with Code
-- For an overview of the current best model for your task:
-[paperswithcode/Natural-Language-Processing](https://paperswithcode.com/area/natural-language-processing)
-
-## But not state-of-the-art for others
+## Performance for Aspect Based Sentiment Analysis
 - Aspect Based Sentiment Analysis. 
     - The service was great but the food was terrible
         - service: positive
@@ -89,7 +85,7 @@ Duration: Days
 
 ![[Is ChatGPT a Good Sentiment Analyzer? A Preliminary Study](https://arxiv.org/pdf/2304.04339.pdf)](./figures/absc-chatgpt.png)
 
-## But not state-of-the-art for others
+## Performance for Aspect Based Sentiment Analysis
 
 :::{.nonincremental}
 - Aspect Based Sentiment Analysis. 
@@ -119,3 +115,46 @@ Duration: Days
 ![[G-EVAL: NLG Evaluation using GPT-4 with Better Human Alignment](https://arxiv.org/pdf/2303.16634.pdf)](./figures/llms-all-the-way-down.webp)
 :::
 
+## What if your model is not performing up to your standard?
+
+- You can only have so many few-shot examples for it to be economical
+- OpenAI offer the option to finetune your model
+- This will update parameter weights to better fit your usecase
+- This will result in a 'new' model you can call from the API in the future 
+
+## Usecases of Finetuning 
+
+- Improving reliability at producing your desired output
+- Correcting failures to follow instructions for more complex prompts
+- Performing a new skill or task that’s hard to articulate in a prompt
+- Show don't tell: It allows for more concise prompts as you can shown it what answers you expect
+
+![](./figures/Finetuning.png)
+
+## What will Finetuning give you?
+
+- Higher quality results than prompting with examples.
+- Ability to train on more examples than can fit in a prompt.
+- Saving tokens due to shorter prompts.
+- Lower latency requests due to shorter prompts.
+![](./figures/Finetuning.png)
+
+
+## What will Finetuning give you?
+
+- &uArr; Finetuned models will have improved performance in the specific domain you train on.
+- &dArr; But reduced general performance.
+
+## How does finetuning work
+
+- [OpenAI finetuning guide](https://platform.openai.com/docs/guides/fine-tuning/use-a-fine-tuned-model)
+    - Start with 50 examples
+    - Check if this provides any improvements
+    - Make sure you have an evaluation set
+    - *"Every doubling of the data you may expect a similair improvement gain"*
+- Finetuned models currently cost 3x of regular models
+    - If this saves you 10+ few-shot examples it's quickly worth it. 
+
+## The optimization flow
+
+![[OpenAI: A Survey of Techniques for Maximizing LLM Performance](https://www.youtube.com/watch?v=ahnGLM-RC1Y&t=2266s&ab_channel=OpenAI)](./figures/Model-optimization.png)
