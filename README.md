@@ -3,6 +3,7 @@
 ![](./_slides/Day%201/figures/pair-programming-with-llms.webp)
 
 Welcome to the Masterclass on Large Language Models for Data Science. This course is designed for data scientists, data analists, researchers, and AI enthusiasts in general looking to deepen their understanding of LLMs, such as ChatGPT, and their application in various fields.
+This Masterclass contains examples in both `Python` and `R` users and is suitable for both.
 
 ## Timetable day 1
 The first day of the Masterclass is a general introduction discussing the following points:
