@@ -74,14 +74,30 @@ Duration: Days
     - The service was great but the food was terrible
         - service: positive
         - food: negative
+
 ![[Is ChatGPT a Good Sentiment Analyzer? A Preliminary Study](https://arxiv.org/pdf/2304.04339.pdf)](./figures/absc-chatgpt.png)
 
 ## But not state-of-the-art for others
+
+:::{.nonincremental}
 - Aspect Based Sentiment Analysis. 
     - The service was great but the food was terrible
         - service: positive
         - food: negative
+:::
+
 ![[Is ChatGPT a Good Sentiment Analyzer? A Preliminary Study](https://arxiv.org/pdf/2304.04339.pdf)](./figures/ChatGPT-generalizes-better.png)
 
-## ChatGPT for summarization
-![[Extractive Summarization via ChatGPT for Faithful Summary Generation](https://arxiv.org/pdf/2304.04193.pdf)](./figures/chatgpt-for-summarization.png)
+## ChatGPT for summarization {auto-animate="true"}
+
+::: {data-id="fig1"}
+![[Extractive Summarization via ChatGPT for Faithful Summary Generation](https://arxiv.org/pdf/2304.04193.pdf)\
+[G-EVAL: NLG Evaluation using GPT-4 with Better Human Alignment](https://arxiv.org/pdf/2303.16634.pdf)](./figures/chatgpt-for-summarization.png)
+:::
+
+## ChatGPT for evaluating summarization {auto-animate="true"}
+
+::: {data-id="fig1"}
+![[G-EVAL: NLG Evaluation using GPT-4 with Better Human Alignment](https://arxiv.org/pdf/2303.16634.pdf)](./figures/llms-all-the-way-down.webp)
+:::
+
