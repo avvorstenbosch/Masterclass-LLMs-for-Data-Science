@@ -30,15 +30,21 @@ Load all the libraries we will need. You may need to install some of these libra
 import pandas as pd
 from IPython.display import display
 import json
-from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay, accuracy_score, classification_report
+from sklearn.metrics import (
+    confusion_matrix,
+    ConfusionMatrixDisplay,
+    accuracy_score,
+    classification_report,
+)
 from sklearn.preprocessing import LabelEncoder
 import matplotlib.pyplot as plt
 
 # Specify the path to your API-credentials file
 import yaml
 from openai import OpenAI
+
 file_path = "../../credentials.yml"
-with open(file_path, 'r') as yaml_file:
+with open(file_path, "r") as yaml_file:
     credentials = yaml.safe_load(yaml_file)
 
 client = OpenAI(
@@ -64,25 +70,25 @@ For this exercise set, we will be performing regular ABSA using an LLM.
 
 ```{python}
 # Read the data
-data_x = pd.read_csv("./data/semEval2014-restaurants-x.csv", delimiter=';')
-data_y = pd.read_csv("./data/semEval2014-restaurants-y.csv", delimiter=';')
+data_x = pd.read_csv("./data/semEval2014-restaurants-x.csv", delimiter=";")
+data_y = pd.read_csv("./data/semEval2014-restaurants-y.csv", delimiter=";")
 
 
 # DON'T TOUCH THIS CODE ---------------------##
 # We need everybodies data_test to be equal  ##
-#--------------------------------------------##
+# --------------------------------------------##
 # Not all sentences in the dataset have a y-label in the original data set
 # in this cleaned sample they do
 data = pd.merge(data_x, data_y, on="sentence_id", how="inner")
 
 # Add a new column 'new_id' for grouping
-data['new_id'] = data.groupby('sentence_id').ngroup()
+data["new_id"] = data.groupby("sentence_id").ngroup()
 
 # Create data_train and data_test DataFrames
-data_train = data[data['new_id'] <= 400].drop(columns='new_id')
-data_test = data[data['new_id'] > 400].drop(columns='new_id')
+data_train = data[data["new_id"] <= 400].drop(columns="new_id")
+data_test = data[data["new_id"] > 400].drop(columns="new_id")
 
-#--------------------------------------------##
+# --------------------------------------------##
 ```
 
 ### Check out the data, what does it look like
@@ -189,7 +195,6 @@ Now we'll do a bigger trial run on the training data. Below I've written some co
 dataframe and runs predictions. You should finish the `get_predicitions` function to get predictions for every sentence in data_train
 
 ```{python}
-#| output: false
 n_samples = # Select your number
 
 # Add a new column 'new_id' for grouping
@@ -242,12 +247,13 @@ for target_sentence_id in sentence_ids:
             'polarity_prediction': [polarity]
         })
         predictions_train = pd.concat([predictions_train, temp_df], ignore_index=True)
-
 ```
 
 Bring them together so we can evaluate the accuracy
 ```{python}
-data_train_p = pd.merge(data_train_sample, predictions_train, how="left", on = ["sentence_id", "aspect_term"]).dropna()
+data_train_p = pd.merge(
+    data_train_sample, predictions_train, how="left", on=["sentence_id", "aspect_term"]
+).dropna()
 ```
 
 ### Evaluation Metrics
@@ -259,8 +265,8 @@ In this section you can evaluate the performance of your model. You will get:
 
 ```{python}
 # get true and false
-y_true = data_train_p['polarity']
-y_pred = data_train_p['polarity_prediction']
+y_true = data_train_p["polarity"]
+y_pred = data_train_p["polarity_prediction"]
 
 # Create a confusion matrix
 conf_matrix = confusion_matrix(y_true, y_pred)
@@ -269,26 +275,36 @@ conf_matrix = confusion_matrix(y_true, y_pred)
 accuracy = accuracy_score(y_true, y_pred)
 
 # Calculate the baseline accuracy
-baseline_accuracy = data_train['polarity'].value_counts().max() / len(data_train)
+baseline_accuracy = data_train["polarity"].value_counts().max() / len(data_train)
 
 # Print the metrics
-print(f"The baseline accuracy (predicting majority class): {round(baseline_accuracy, 3)}")
-print(f"Micro Accuracy = Micro Precision = Micro Recall = Micro F1: {round(accuracy, 3)}")
+print(
+    f"The baseline accuracy (predicting majority class): {round(baseline_accuracy, 3)}"
+)
+print(
+    f"Micro Accuracy = Micro Precision = Micro Recall = Micro F1: {round(accuracy, 3)}"
+)
 
 # Precision, Recall, and F1-Score
 print(classification_report(y_true, y_pred, digits=3))
-
 ```
 
 ### Confusion matrix
 
 This code takes as input your confusion_matrix to turn it into a plot.
 ```{python}
-disp = ConfusionMatrixDisplay(confusion_matrix=conf_matrix, display_labels=["conflict", "negative", "neutral","positive",])
+disp = ConfusionMatrixDisplay(
+    confusion_matrix=conf_matrix,
+    display_labels=[
+        "conflict",
+        "negative",
+        "neutral",
+        "positive",
+    ],
+)
 disp.plot(cmap=plt.cm.Blues)
-plt.title('Confusion Matrix')
+plt.title("Confusion Matrix")
 plt.show()
-
 ```
 
 ### Inspect the wrong predictions
@@ -316,31 +332,37 @@ If you are ready to test yourself, run the cell below to evaluate your model on 
 # Not elegant or vectorised, but easy to understand.
 # please note: running this takes a while to finish...
 
-sentence_ids = data_test['sentence_id'].unique()
-predictions_test = pd.DataFrame(columns=['sentence_id', 'aspect_term', 'polarity_prediction'])
+sentence_ids = data_test["sentence_id"].unique()
+predictions_test = pd.DataFrame(
+    columns=["sentence_id", "aspect_term", "polarity_prediction"]
+)
 
 for target_sentence_id in sentence_ids:
-    targets = data_test[data_test['sentence_id'] == target_sentence_id]
-    target_sentence = targets.iloc[0]['sentence_text']
+    targets = data_test[data_test["sentence_id"] == target_sentence_id]
+    target_sentence = targets.iloc[0]["sentence_text"]
 
-    target_aspect_terms_combined = ', '.join(targets['aspect_term'])
+    target_aspect_terms_combined = ", ".join(targets["aspect_term"])
 
     # Assuming predict_sentiment is a function you have defined
     prediction = predict_sentiment(system_prompt, user_prompt)
 
     for aspect, polarity in prediction.items():
-        temp_df = pd.DataFrame({
-            'sentence_id': [target_sentence_id],
-            'aspect_term': [aspect],
-            'polarity_prediction': [polarity]
-        })
+        temp_df = pd.DataFrame(
+            {
+                "sentence_id": [target_sentence_id],
+                "aspect_term": [aspect],
+                "polarity_prediction": [polarity],
+            }
+        )
         predictions_test = pd.concat([predictions_test, temp_df], ignore_index=True)
 
-data_test_p = pd.merge(data_test, predictions_test, how="left", on = ["sentence_id", "aspect_term"]).dropna()
+data_test_p = pd.merge(
+    data_test, predictions_test, how="left", on=["sentence_id", "aspect_term"]
+).dropna()
 
 # get true and false
-y_true = data_test_p['polarity']
-y_pred = data_test_p['polarity_prediction']
+y_true = data_test_p["polarity"]
+y_pred = data_test_p["polarity_prediction"]
 
 # Create a confusion matrix
 conf_matrix = confusion_matrix(y_true, y_pred)
@@ -349,15 +371,27 @@ conf_matrix = confusion_matrix(y_true, y_pred)
 accuracy = accuracy_score(y_true, y_pred)
 
 # Print the metrics
-print(f"The baseline accuracy (predicting majority class): {round(baseline_accuracy, 3)}")
-print(f"Micro Accuracy = Micro Precision = Micro Recall = Micro F1: {round(accuracy, 3)}")
+print(
+    f"The baseline accuracy (predicting majority class): {round(baseline_accuracy, 3)}"
+)
+print(
+    f"Micro Accuracy = Micro Precision = Micro Recall = Micro F1: {round(accuracy, 3)}"
+)
 
 # Precision, Recall, and F1-Score
 print(classification_report(y_true, y_pred, digits=3))
 
-disp = ConfusionMatrixDisplay(confusion_matrix=conf_matrix, display_labels=["conflict", "negative", "neutral","positive",])
+disp = ConfusionMatrixDisplay(
+    confusion_matrix=conf_matrix,
+    display_labels=[
+        "conflict",
+        "negative",
+        "neutral",
+        "positive",
+    ],
+)
 disp.plot(cmap=plt.cm.Blues)
-plt.title('Confusion Matrix')
+plt.title("Confusion Matrix")
 plt.show()
 ```
 
@@ -410,7 +444,6 @@ Here is the same code as before to make predictions, but now you should:
 - Put your examples you just defined here inside the predict_sentiment function
 
 ```{python}
-#| output: false
 n_samples = # Select your number
 
 # Add a new column 'new_id' for grouping
@@ -471,31 +504,37 @@ If you are ready to test yourself, run the cell below to evaluate your model on 
 # Not elegant or vectorised, but easy to understand.
 # please note: running this takes a while to finish...
 
-sentence_ids = data_test['sentence_id'].unique()
-predictions_test = pd.DataFrame(columns=['sentence_id', 'aspect_term', 'polarity_prediction'])
+sentence_ids = data_test["sentence_id"].unique()
+predictions_test = pd.DataFrame(
+    columns=["sentence_id", "aspect_term", "polarity_prediction"]
+)
 
 for target_sentence_id in sentence_ids:
-    targets = data_test[data_test['sentence_id'] == target_sentence_id]
-    target_sentence = targets.iloc[0]['sentence_text']
+    targets = data_test[data_test["sentence_id"] == target_sentence_id]
+    target_sentence = targets.iloc[0]["sentence_text"]
 
-    target_aspect_terms_combined = ', '.join(targets['aspect_term'])
+    target_aspect_terms_combined = ", ".join(targets["aspect_term"])
 
     # Assuming predict_sentiment is a function you have defined
     prediction = predict_sentiment(system_prompt, user_prompt)
 
     for aspect, polarity in prediction.items():
-        temp_df = pd.DataFrame({
-            'sentence_id': [target_sentence_id],
-            'aspect_term': [aspect],
-            'polarity_prediction': [polarity]
-        })
+        temp_df = pd.DataFrame(
+            {
+                "sentence_id": [target_sentence_id],
+                "aspect_term": [aspect],
+                "polarity_prediction": [polarity],
+            }
+        )
         predictions_test = pd.concat([predictions_test, temp_df], ignore_index=True)
 
-data_test_p = pd.merge(data_test, predictions_test, how="left", on = ["sentence_id", "aspect_term"]).dropna()
+data_test_p = pd.merge(
+    data_test, predictions_test, how="left", on=["sentence_id", "aspect_term"]
+).dropna()
 
 # get true and false
-y_true = data_test_p['polarity']
-y_pred = data_test_p['polarity_prediction']
+y_true = data_test_p["polarity"]
+y_pred = data_test_p["polarity_prediction"]
 
 # Create a confusion matrix
 conf_matrix = confusion_matrix(y_true, y_pred)
@@ -504,14 +543,26 @@ conf_matrix = confusion_matrix(y_true, y_pred)
 accuracy = accuracy_score(y_true, y_pred)
 
 # Print the metrics
-print(f"The baseline accuracy (predicting majority class): {round(baseline_accuracy, 3)}")
-print(f"Micro Accuracy = Micro Precision = Micro Recall = Micro F1: {round(accuracy, 3)}")
+print(
+    f"The baseline accuracy (predicting majority class): {round(baseline_accuracy, 3)}"
+)
+print(
+    f"Micro Accuracy = Micro Precision = Micro Recall = Micro F1: {round(accuracy, 3)}"
+)
 
 # Precision, Recall, and F1-Score
 print(classification_report(y_true, y_pred, digits=3))
 
-disp = ConfusionMatrixDisplay(confusion_matrix=conf_matrix, display_labels=["conflict", "negative", "neutral","positive",])
+disp = ConfusionMatrixDisplay(
+    confusion_matrix=conf_matrix,
+    display_labels=[
+        "conflict",
+        "negative",
+        "neutral",
+        "positive",
+    ],
+)
 disp.plot(cmap=plt.cm.Blues)
-plt.title('Confusion Matrix')
+plt.title("Confusion Matrix")
 plt.show()
 ```
