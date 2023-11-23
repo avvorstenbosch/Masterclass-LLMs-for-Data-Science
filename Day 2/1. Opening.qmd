@@ -46,10 +46,3 @@ date: "11-24-2023"
 | 16:30 - 17:00 PM | 📝 Summary, Evaluation, and Conclusion                               |                                             |
 
 :::
-
-## Practical Points
-- Please feel free to ask questions during the presentations!
-- [Slides will be shared and published online](https://github.com/avvorstenbosch/MC_LLMs_for_DS)
-- Make sure you have acces to an environment with coding notebooks:
-    - Python: [Jupyter](https://jupyter.org/) or [VScode](https://code.visualstudio.com/) and/or [Quarto](https://quarto.org/) 
-    - R: [Rstudio](https://posit.co/download/rstudio-desktop/) with [Quarto](https://quarto.org/)
