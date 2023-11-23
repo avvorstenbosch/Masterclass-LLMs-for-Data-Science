@@ -106,7 +106,6 @@ Most models are released in half-precision (16 bit):
 - Balancing performance/speed:
     - 4 bit quantizated models
 
-
 ## AutoGPT - An Autonomous GPT-4 Experiment
 
 [AutoGPT github](https://github.com/Significant-Gravitas/AutoGPT):
@@ -138,6 +137,10 @@ Most models are released in half-precision (16 bit):
 - Have the model write is own CoT-prompting commands
 - Have the model criticise it's own plans (self-reflection)
 - Allowing the model to interact with many different API-endpoints (as well as OS)
+
+## How to find the best model?
+
+![[Berkeley: Chatbot Arena](https://huggingface.co/spaces/lmsys/chatbot-arena-leaderboard)](./figures/Chatbot-Arena.png){fig-align="center"}
 
 # Retrieval Augmented Generation
 
@@ -178,7 +181,54 @@ Most models are released in half-precision (16 bit):
 
 :::
 
-# What will come next?
+## What do you need to build a RAG system
+
+- Not that much actually:
+    - A text-embedding algorithm
+    - A vector database
+    - An LLM
+
+## What do you need to build a RAG system
+
+::: {.nonincremental}
+- Not that much actually:
+    - A text-embedding algorithm: (S)BERT 
+    - A vector database: small datasets = CSV, large dataset = vector-database 
+    - An LLM: ChatGPT, LLama2, etc...
+:::
+
+# Next Steps
+
+## Check out the amazing content made by Andrej Karpathy 
+
+<iframe width="1000" height="670" style="display: block; margin-left: auto; margin-right: auto;" src="https://www.youtube.com/embed/zjkBMFhNj_g?si=swKJFOEQfXpXAuA0&amp;start=2100" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+## Empowering models with tools
+
+<iframe src="https://chat.openai.com/share/539f9da3-cf59-4973-a1d6-73fbfe70cdd9
+" class="iframe-chatgpt"></iframe>
+
+
+## Multimodal models {.full-bg-slide background-image="./figures/multimodal.png"} 
+
+## Multimodal models - Vision
+
+![](./figures/multimodal_vision.png){fig-align="center"}
+
+## Multimodal models - Audio
+
+<div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)">
+  <span class="highlighted-text" style="font-size: 150px;">Demo</span>
+</div>
+
+## Reinforcement Learning - Self-Improvement
+
+- Currently, LLMs models are only learning language true human feedback (imitation)
+- One of the big innovations in Reinforcement Learning is Self-Improvement:
+    - For example playing games against yourself to keep self improving
+- Unclear how to achieve this for Language
+- If possible for domain specific tasks, could propel super-human capibilities of LLMs.^[[https://www.youtube.com/watch?v=zjkBMFhNj_g&ab_channel=AndrejKarpathy](https://www.youtube.com/watch?v=zjkBMFhNj_g&ab_channel=AndrejKarpathy)]
+
 
 ## Sparks of AGI? {.full-bg-slide background-image="./figures/an-uncertain-future.webp"} 
 
