@@ -1,0 +1,715 @@
+---
+title: "Retrieval Augmented Generation for Question Answering" 
+date: "11-24-2023"
+format: 
+    html:
+        number-sections: true
+        page-layout: full
+        title-block-banner: true
+        self-contained: true
+include-in-header:
+  - text: |
+      <style>
+      .cell-output-stdout code {
+        word-break: break-wor !important;
+        white-space: pre-wrap !important;
+      }
+      </style>
+execute: 
+  eval: false
+---
+
+This is where we bring it all together.
+The past days we've learned about:
+
+-   Large Language Models
+-   Their strengths and weaknesses
+-   Embeddings
+-   Prompting
+-   NLP
+
+We will bring this all together in this supercharged tutorial/exercise set.
+
+# Search + Generation
+
+Large Language Models have a vast amount of internal knowledge. This internal knowledge is known as parametric knowledge.
+This constitutes the general linguistic knowledge these models have, as well as the knowledge they have about the world in general.
+However, you already know that this parametric knowledge is far from flawless.
+These models tend to hallucinate more, the more detailed your requests become. Also, these models have no reference of what is true and what is not. 
+Truth and factualness is fundamentally not a core component in the training of these models, they just don't know.   
+Furthermore, when using thse models you may have questions about:
+
+-   Recent events
+-   Proprietary documents
+-   Private documents
+
+Per definition these were not included in the training data.
+In this case, we need to feed the model with our own knowledge base such that it may have the ability to answer our questions.
+This works wonderfully because we can make use of the strong reasoning capabilities these models display on tokens that are directly accesible in memory (their context window). 
+You may liken this to an open book exam: Long term memory is flawed (also in humans) but by providing the model with direct reference texts we can supercharge the question answering capabilities, while allowing ourselves to make the exam (our questions) more specific and more difficult to answer.
+
+# Dataset
+
+For this assignment we will be working with a Wikipedia dataset that covers the category: ["Natural Language Processing"](https://en.wikipedia.org/wiki/Category:Natural_language_processing).
+From this Wikipedia category a grand total of 964 articles have been extracted and parsed into plain-text.
+The sections per page were filtered such that we should have retained only the most informative sections per article.
+This means we filtered out the following sections:
+
+-   See also
+-   References
+-   External links
+-   Further reading
+-   Footnotes
+-   Bibliography
+-   Sources
+-   Citations
+-   etc.
+
+This left us with 4856 usable sections spread across 964 wikipedia pages.
+These sections were also slightly cleaned by removing whitespaces and Wikipedia specific markup elements from their articles.
+
+Each article was processed in so-called chunks of roughly 1600 tokens.
+These chunks are what will become our searchable and retrievable elements.
+If possible, chunks are made to be a single section of an article.
+In some cases, this was not possible and a single section is split into multiple chunks.
+For each chunk an corresponding embedding is generating using the API.
+we can compare the embeddings of our chunks, looking for the embedding or the embeddings that most closely resemble our question.
+Using this we can select the chunks that will be shared with our LLM during inference as the context that might answer our question.
+Of course, it might also be that there are no chunks that are relevant to our question.
+
+This data set can be found under: `./data/WIKIPEDIA_natural_language_processing.csv`.
+
+# Setup of the problem
+
+Run the code below to get your environment started, make sure you have your API-key inside the `credentials.yml`, or import it in any other way how you see fit. Install the packages below that fail to load.
+
+```{python}
+import pandas as pd
+from IPython.display import display
+import json
+from sklearn.metrics import (
+    confusion_matrix,
+    ConfusionMatrixDisplay,
+    accuracy_score,
+    classification_report,
+)
+from adjustText import adjust_text
+from sklearn.preprocessing import LabelEncoder
+import matplotlib.pyplot as plt
+import numpy as np
+from umap import UMAP
+import re
+from fuzzywuzzy import fuzz
+
+# Matplotlib
+plt.style.use("seaborn-darkgrid")
+
+# Specify the path to your API-credentials file
+import yaml
+from openai import OpenAI
+
+file_path = "../../credentials.yml"
+with open(file_path, "r") as yaml_file:
+    credentials = yaml.safe_load(yaml_file)
+
+client = OpenAI(
+    # defaults to os.environ.get("OPENAI_API_KEY")
+    api_key=credentials["OPENAI_API_KEY"],
+)
+```
+
+One of these functions is called `get_embeddings`, which will retrieve embeddings for you using `text-embedding-ada-002`.
+This is by far the cheapest model from OpenAI at roughly 3000 pages per dollar. These embeddings are usefull for tasks such as:
+
+- Semantic Search 
+- Semantic Clustering 
+- Recommender Systems
+- Anomaly Detection
+- Classification (where text strings are classified by their most similar label)
+
+The maximum amount of tokens that can be embedded in a single `text-embedding-ada-002` embedding is 8191.
+
+Run the get_embedding function on a string of your own choice:
+
+```{python}
+def get_embedding(prompt):
+    """Simple helperfunction for retrieving embeddings as numpy arrays"""
+    embedding_response = client.embeddings.create(
+        input=prompt, model="text-embedding-ada-002"
+    )
+    embedding = np.array(embedding_response.data[0].embedding)
+    return embedding
+```
+
+```{python}
+embedding_response = # get_embedding
+```
+
+## A question ChatGPT cannot answer
+
+During the Masterclass we talked about the famous Lawsuit where lawyers got into trouble because they used ChatGPT.
+They cited precedents that were hallucinated by ChatGPT. This event took place in May 2023.
+ChatGPT should not be aware of these events as they happened past the current cutoff date.
+Let us give it a try. Write a query asking ChatGPT what it knows about this case.
+
+-   Don't make your user prompt too short, as this will be detrimental to the content retrieval later on. Use at least 3 sentences.
+-   You don't have to supply any specifics, but paint the general picture of the story.
+-   Ask ChatGPT what ended up being the consequences for the lawyers in this court case.
+-   This is the user prompt we will use throughout this notebook, you will not change it after this point.
+
+```{python}
+system_prompt = "Your system prompt here"
+user_prompt = """
+  Your user prompt here
+"""
+
+response = client.chat.completions.create(
+    messages=[
+        {
+            "role": "system",
+            "content": system_prompt(),
+        },
+        {
+            "role": "user"
+            "content": user_prompt(),
+        }
+    ],
+    model = "gpt-4-1106-preview"
+    response_format = {"type": "json_object"},
+    t = 0
+)
+```
+
+As you can see, ChatGPT does not know of what case we speak.
+We can be happy about 2 things:
+
+- It told us that it has no knowledge of these events.
+- It has no knowledge if this event. For our exercise, that is good news.
+
+We are going to prove in the next few sections, that given the right technique, we can get ChatGPT to tells us about this unknown event anyways.
+
+## Retrieve the data, what does it look like?
+
+Load the data set and explore a little, what does the data look like?
+
+```{python}
+# load the dataset
+data = pd.read_csv("./data/WIKIPEDIA_natural_language_processing.csv", sep=",")
+
+# We must parse the dataset into the right format for later.
+# Right now the embeddings have been loaded as strings,  convert them to vectors straight away.
+# Don't forget to remove the [ and ] from the string. If you get stuck, consider asking ChatGPT for help with a regex
+data["embedding"] = YOUR_CODE_HERE
+
+# Split the string by commas and convert to numpy arrays
+data["embedding"] = data["embedding"].apply(
+    lambda x: np.array(x.split(", "), dtype=float)
+)
+```
+
+```{python}
+#| output: false
+# This result is not shown in the solutions, simply because the embeddings are too large to show properly. 
+
+data.sample(2)
+```
+
+# Playing with embeddings
+
+In order to find the correct contextual information, we will need to embed our `user_prompt`, as it will be the key to our search algorithm.
+Go ahead and create an embedding of your user prompt, use the `get_embedding` function as defined in `./utils/`.
+It has already been loaded into your environment so you can use it straight away.
+
+```{python}
+prompt_embedding = get_embedding(user_prompt)
+```
+
+What are the number of dimensions, and the length, of the embedding?
+Round the result to 3 decimal places.
+
+```{python}
+YOUR_CODE_HERE
+```
+
+With such a high number of dimensions, there is a lot of information about prompt that is encoded in this vector.
+These embeddings have been normalized. This means they have unit length. 
+Because of this, these embeddings only have 1 fundamental quality that is informative to us and that is the pointing direction.
+This direction contains all the information the model has about the meaning of the embedded text: 
+
+- Chunks with more similar meaning have more similar embeddings, 
+- Chunks with more different meaning have more different embeddings.
+
+Play around with this property. Write the same sentence twice, worded slightly differently, how do these embeddings compare?
+
+```{python}
+YOUR_CODE_HERE
+```
+
+Now write a new second sentence with the same topic of the first sentence, but a polarity for example. How does this embedding compare?
+
+```{python}
+YOUR_CODE_HERE
+```
+
+Now write a new second sentence that shares no similarities whatsover with the first sentence. How does this embedding compare?
+
+```{python}
+YOUR_CODE_HERE
+```
+This last one may suprise you. We will follow up on this shortly.
+
+## Visualising our embedding space
+
+We can make some interesting visualizations from our embeddings.
+Here we will project our high-dimensional embeddings onto 2 dimensions using the `umap` algorithm.
+These projections lose a lot of the original information, but allow us to plot our data.
+`UMAP` is a dimensionality reduction algorithm that works well at preserving both global and local structure in the data. 
+
+Fill in the code in the cells below to achieve the following:
+
+- For each page (article), calculate the average embedding. Don't forget to normalize the length after averaging. 
+- Calculate the reduced embedding form in 2 dimensions.
+- Sample these reduced form embeddings for N pages.
+- Plot the results, including page titles.
+
+The projection steps have been performed for you in this cells below:
+
+```{python}
+# Get 1 average embedding per page
+data_average = data.groupby("page").agg(
+    {"embedding": lambda x: np.mean(np.vstack(x), axis=0)}
+)
+data_average["embedding"] = data_average["embedding"].apply(
+    lambda x: x / np.linalg.norm(x, 2)
+)
+```
+
+
+```{python}
+# Calculate reduced embeddings
+embedding_matrix = np.vstack(data_average['embedding'])
+umap_model = UMAP()
+umap_embeddings = umap_model.fit_transform(embedding_matrix)
+
+# Perform UMAP dimensionality reduction
+umap_model = UMAP()
+umap_embeddings = umap_model.fit_transform(embedding_matrix)
+
+# Add the UMAP embeddings to the data_average dataframe
+data_average['x1'] = umap_embeddings[:, 0]
+data_average['x2'] = umap_embeddings[:, 1]
+```
+
+
+```{python}
+# Sample the reduced embeddings for N pages
+np.random.seed(1234)
+n_pages = 400
+data_plot = data_average.drop(columns='embedding').sample(n=n_pages).reset_index()
+```
+
+Visualize the different Wikipedia articles using the code below. 
+It is best to play with the value for n_pages a bit, as well as the text size.
+Open the figure in full screen.
+Explain, what do you see?
+
+```{python}
+#| fig-dpi: 100
+#| fig-width: 18
+#| fig-height: 12
+
+# Convert string categories to numeric values
+categories = pd.Categorical(data_plot['page'])
+cmap = plt.cm.get_cmap('viridis', len(categories.categories))  # Get a colormap with as many colors as categories
+color_values = cmap(categories.codes)  # Map category codes to colors
+
+# Create the plot
+fig, ax = plt.subplots(figsize=(18, 12))
+
+# Scatter plot with color mapping
+scatter = ax.scatter(data_plot['x1'], data_plot['x2'], alpha=0.5, s=15, c=color_values)
+
+
+# Adding text labels
+texts = []
+for x, y, label in zip(data_plot['x1'], data_plot['x2'], data_plot['page']):
+    texts.append(ax.text(x, y, label, size=5))
+
+# Removing axis titles
+ax.set_xlabel('')
+ax.set_ylabel('')
+
+# Adjusting text to prevent overlap
+# Adjust text has difficulty converging for this plot, optional 
+#adjust_text(texts, arrowprops=dict(arrowstyle='-', color='gray'), precision =0.4, lim=1)
+
+plt.show()
+```
+
+## Performing similarity search using our embeddings - euclidean distance
+
+Now we want to start comparing our embeddings to one another.
+One might think of just calculating a regular distance metric like euclidean distance for our embeddings, after all our vectors represent a single point in space.
+So we could just look to see which ones are the closest together.
+However, in practice that will not work.
+*Can you think of a reason why not?*
+
+## Performing similarity search using our embeddings - cosine distance
+
+The easiest way to to compare our embeddings is through the metric called `cosine similarity`.
+Because our vectors are already normalised, we can use take the dot-product (inner product) between 2 vectors to directly calculate the angle between them, this is the cosine distance.
+You can calculate the cosine similarity by using `vector_1 @ vector_2`.
+
+Calculate the cosine similarity between our prompt_embedding and all embeddings in the dataset, store this value in the column `similarity score`.
+
+```{python}
+# Apply the function row-wise
+data['similarity_score'] = YOUR_CODE_HERE
+
+# Sort the DataFrame by similarity_score in descending order
+data_similarity = data.sort_values(by='similarity_score', ascending=False)
+```
+
+Plot the distribution of similarity scores:
+```{python}
+#| fig-dpi: 100
+#| fig-width: 18
+#| fig-height: 12
+
+# Create the histogram
+bins = np.linspace(-1, 1, 101)
+plt.figure(figsize=(10, 6))
+plt.hist(data_similarity['similarity_score'], bins=bins, alpha=0.8, edgecolor='black')
+plt.xlim(-1, 1)
+plt.title("Distribution cosine similarity user prompt and Wikipedia embeddings")
+plt.xlabel('Similarity Score')
+plt.ylabel('Frequency')
+
+# Show the plot
+plt.show()
+```
+
+It is somewhat suprising what you see in this plot. You'd expect there to be a very large range from -1 to 1, but instead the values are concentrated around 0.7.
+
+To see what is going on, we will make another figure. 
+Make another plot showing the distribution of cosine similarities with respect to the user prompt, together with the following 3 input prompts:
+
+-   label: "Deltaplan" - prompt:"The estuaries of the rivers Rhine, Meuse and Schelde have been subject to flooding over the centuries. After building the Afsluitdijk (1927 – 1932), the Dutch started studying the damming of the Rhine-Meuse Delta. Plans were developed to shorten the coastline and turn the delta into a group of freshwater coastal lakes. By shortening the coastline, fewer dikes would have to be reinforced. Due to indecision and the Second World War, little action was taken. In 1950 two small estuary mouths, the Brielse Gat near Brielle and the Botlek near Vlaardingen were dammed. After the North Sea flood of 1953, a Delta Works Commission was installed to research the causes and develop measures to prevent such disasters in future. They revised some of the old plans and came up with the 'Deltaplan'."
+-   label: "Baking" - prompt:"What is the best recipe for baking a carrot cake? I prefer them with not too many spices. The icing should be made with cream cheese of course"
+-   label: "Astronomy" - prompt:"A few years ago I remember seeing newspaper articles about astronomers imaging the black hole in our own milky way, how did they achieve this?"
+
+Use these labels to add fill color to your histogram:
+
+```{python}
+#| fig-dpi: 100
+#| fig-width: 18
+#| fig-height: 12
+results = []
+prompts = [
+  "The estuaries of the rivers Rhine, Meuse and Schelde have been subject to flooding over the centuries. After building the Afsluitdijk (1927 – 1932), the Dutch started studying the damming of the Rhine-Meuse Delta. Plans were developed to shorten the coastline and turn the delta into a group of freshwater coastal lakes. By shortening the coastline, fewer dikes would have to be reinforced. Due to indecision and the Second World War, little action was taken. In 1950 two small estuary mouths, the Brielse Gat near Brielle and the Botlek near Vlaardingen were dammed. After the North Sea flood of 1953, a Delta Works Commission was installed to research the causes and develop measures to prevent such disasters in future. They revised some of the old plans and came up with the 'Deltaplan'.",
+  "What is the best recipe for baking a carrot cake? I prefer them with not too many spices. The icing should be made with cream cheese of course",
+  "A few years ago I remember seeing newspaper articles about astronomers imaging the black hole in our own milky way, how did they achieve this?"
+]
+
+labels = [
+  "Deltaplan",
+  "Baking",
+  "Astronomy"
+]w
+
+# Add the embedding matrix to the results lists
+for (i in seq_along(prompts)){
+  embedding_tmp = get_embedding(prompts[[i]])
+  data_similarity_tmp = data %>%
+    rowwise() %>%
+    mutate(similarity_score = YOUR_CODE_HERE) %>%
+    ungroup() %>%
+    mutate(label=labels[[i]]) %>%
+    arrange(desc(similarity_score))
+  
+  results[[i]] = data_similarity_tmp
+}
+
+for i, prompt in enumerate(prompts):
+    embedding_tmp = get_embedding(prompt)
+    data['similarity_score'] = data.apply(calculate_similarity, axis=1)
+    data_similarity_tmp = data.sort_values(by='similarity_score', ascending=False)
+    data_similarity_tmp['label'] = labels[i]
+    results.append(data_similarity_tmp)
+
+data_similarity["label"] = "user_prompt"
+results.append(data_similarity)
+
+# Combine the dataframes with pd.concat
+result = pd.concat(results, ignore_index=True)
+
+# plot the histogram of the 4 prompts at the same time
+YOUR_CODE_HERE
+```
+What do you see?
+
+You can see the following:
+
+- The embeddings of `text-embedding-ada-002` have a very small dynamic range. 
+
+- This in itself is not a big issue. We still see that the prompt on AI got the highest similarity with the dataset, while the prompt on baking got the lowest similarity with the dataset. 
+
+- This does mean that in practice we cannot set a reasonable cut-off for cosine similarity as one can do with BERT-embeddings. 
+
+## Collect best matches
+
+Retrieve the 3 values with the highest similarity_score with our original user prompt, and store them in a table called `context`.
+
+```{python}
+YOUR_CODE_HERE
+```
+
+# Retrieval Augmented Generation
+
+Now we have all the steps to perform retrieval augmented generation.
+Let's get going!
+
+## First try
+
+We've kept the user_prompt from the beginning, which we will not touch.
+Instead, change the system prompt to achieve the following: 
+
+- The 3 best matching context chunks from data_similarity should be passed to the model as context.
+- It should only answer, if the context provides an answer.
+- The answer should only be based on the context, nothing else.
+- The answer should be as detailed as possible.
+
+```{python}
+system_prompt = lambda: """
+  Your system prompt here 
+"""
+
+response = client.chat.completions.create(
+    messages=[
+        {
+            "role": "system",
+            "content": system_prompt(),
+        },
+        {
+            "role": "user"
+            "content": user_prompt,
+        }
+    ],
+    model = "gpt-4-1106-preview",
+    t = 0
+)
+```
+
+Yeah!
+Now we are getting answers.
+However, we are not quite there yet.
+Now we have an answer, but how can we know it is true?
+It could still be making this up.
+For a single example we can of course fact-check the sources ourselves.
+But automation is the name of the game: we need to find a better solution!
+
+## Making responses (more) verifiable 
+
+Once again, we are going to pass text content to our system prompt.
+This time, it will be very important that the model only answers using direct quotes from the context-chunks:
+
+-   It should only answer in the format: (\`Wikipedia article: name\`) "quoted text"
+
+-   It should only answer, if the context provides an answer.
+
+-   Quotes should only be direct, no paraphrasing.
+
+-   It is not allowed to use ellipses to shorten a quote.
+
+-   The answer should be as detailed as possible.
+
+```{python}
+system_prompt = lambda: """
+  Your system prompt here 
+"""
+
+response = client.chat.completions.create(
+    messages=[
+        {
+            "role": "system",
+            "content": system_prompt(),
+        },
+        {
+            "role": "user"
+            "content": user_prompt,
+        }
+    ],
+    model = "gpt-4-1106-preview",
+    t = 0
+)
+```
+
+Hooray!
+You can see that the model is mostly doing what we want.
+It is quoting directly.
+It is giving some extra reasoning around these quotes, but that is not an issue.
+
+## Is our LLM quoting correctly?
+
+Now we want to verify the information provided by our LLM.
+We can use simple `regular expressions` to extract the sources from the response, as well as the quotes.
+We can check if these quotes are indeed present in the context we provided.
+
+```{python}
+answer = response.choices[0].message.content
+
+# Regular Expression to capture the article name as it is in your context-table
+regex_articles = r"Wikipedia article: ([^`]+)"
+
+# Using re.findall to extract all matches
+article_names = re.findall(regex_articles, answer)
+```
+
+```{python}
+# Regular Expression to capture the content of the quote.
+regex_quotes = YOUR_CODE_HERE
+
+# Using str_match_all to extract all matches
+quotes = re.findall(regex_articles, answer)
+```
+
+Now the question is, how do we check if these quotes are present in the text.
+We cannot use: `A %in% B` syntax.
+If our model changes a single character; it won't work to do literal matching.
+Instead, we will use a clever solution called Levenshtein distance.
+Please look up what Levenshtein distance is, what does it calculate?
+
+It calculates the minimal number of edits (insertions, deletions, or substitions) that are needed to go from string A to string B.
+
+We will make use of the function `fuzz.partial_ratio` from the fuzzywuzzy library.
+`partial_ratio` will look for the best location to match susbtring_x to a piece of string y, and then calculate the Levenshtein distance, and normalizes it by the length of the substring. 
+For each quote found in the model answer above: 
+
+- `incorrectness_quote`: Calculate the normalized Levensthein distance.
+- Make sure that you don't take into account the casing of the letters (upper or lower).
+- `correct_quote`: Check if the incorrectness value stays below 5%.
+
+If this is the case, correct_quote should read `TRUE` - It can happen that the same article (wikipedia page) is passed multiple times as context, take this into account in the function below in the group_by.
+
+```{python}
+your_code_here
+```
+
+## Bringing it together
+
+Now that we have a way of checking whether the quotes are not hallucinations, we can adjust our prompting function to do these calculations for us: 
+
+- Fill out all the helper functions 
+- Then fill in the main `RAG_completion` function:
+
+```{python}
+# A helper function to isolate article sources from the model response
+def get_sources(answer):
+  YOUR_CODE_HERE
+
+
+# A helper function to isolate quotes from the model response
+def get_quotes(answer):
+  YOUR_CODE_HERE
+
+
+# A helper function to retrieve the relevant context
+def get_context(prompt_embedding):
+  YOUR_CODE_HERE
+
+
+# A helper function to check if the quotes are reasonable given the context
+def check_quotes(context, sources, quotes):
+  YOUR_CODE_HERE
+
+```
+
+```{python}
+# Our RAG_completion main function
+def RAG_completion(system = system_prompt,
+                          prompt = user_prompt,
+                          t = 1,
+                          n = 1,
+                          max_tokens = NULL,
+                          model = "gpt-4-1106-preview",
+                          format = NULL):
+  #' Flexible API Request Function with Integrated Glue Functionality
+  #'
+  #' This function sends a request to a specified API, integrating the 'glue' function to allow
+  #' dynamic insertion of context documents into the user_prompt.
+  #'
+  #' @param system the system prompt provided to the model The URL of the API to which the request is being sent, defaults to system_prompt object
+  #' @param prompt the user prompt provided to the model, defaults to user_prompt object
+  #' @param t the temperature setting for the mode, defaults to 1
+  #' @param n the number of completions to generate, defaults to 1
+  #' @param max_tokens the maximum model response length, defaults to 500 tokens
+  #'
+  #' @return
+  #' The response object from the chat_completion api
+
+  # Find the appropriate context for our quote:
+  prompt_embedding = get_embedding(prompt)
+
+  # Retrieve the 3 most relevant context chunks in a df called context
+  context = get_context(prompt_embedding)
+
+  # Generate our model response
+  response = client.chat.completions.create(
+      messages=[
+          {
+              "role": "system",
+              "content": system_prompt(),
+          },
+          {
+              "role": "user"
+              "content": user_prompt,
+          }
+      ],
+      model = "gpt-4-1106-preview",
+      t = 0
+      response_format = format, # Set the response format for JSON mode
+      temperature = t, # The randomness setting of the model: 0 is deterministic, 2 is most random
+      n = n, # How many completions do we want the model to generate
+      max_tokens = max_tokens, # How many tokens is the model allowed to use,
+  )
+
+  # Print the model response(s)
+  for choice_num in range(len(response.choices[0])):
+    # Extract the model answer
+    answer = response$choices[[choice_num, "message.content"]]
+
+    # Pretty print the answer 
+    print(answer)
+
+    # extract the sources and quotes
+    sources = get_sources(answer)
+    quotes = get_quotes(answer)
+
+    # Verify the model quotes. Raise a warning if a quote does not reach the standard
+    check_quotes(context, sources, quotes)
+
+
+  return(response)
+
+```
+
+```{python}
+response = RAG_completion(system_prompt, user_prompt, t = 0)
+```
+
+## Congratulations, try it out for other questions!
+
+```{python}
+user_prompt = """
+Who is Andrew NG, and why do I see so many of his Deep Learning content videos online?
+"""
+
+response = RAG_completion(system_prompt, user_prompt, t = 0)
+```
+
+## (Optional) It's LLMs all the way down.
+
+What if you pass the output answer from `RAG_completion` to a new chat, along with the context.
+Can you get another chat with the LLM to verify whether the answer is correct given the content and the quote checks?
+Use `gpt-3.5-turbo-1106` before returning the answer to the user, to perform a check whether the answer can be verified 
+based on the context. Include the quote-correctness in the new user prompt. 
