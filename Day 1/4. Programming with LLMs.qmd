@@ -42,21 +42,24 @@ date: "11-17-2023"
 
 ## Introduction to the OpenAI API - Python
 - We'll be calling the API directly from Python or R
-```{.python code-line-numbers="|1-6|8-11|13-25|15|16-21|22|23|24|"}
+```{.python code-line-numbers="|1-6|8-10|12-15|17-28|18|19-24|25|26|27|"}
 # Specify the path to your API-credentials file
 import yaml
-import openai
+from openai import OpenAI
 file_path = "credentials.yml"
 with open(file_path, 'r') as yaml_file:
     credentials = yaml.safe_load(yaml_file)
-openai.api_key = credentials["OPENAI_API_KEY"]
 
 # You can also use an .env file
 import os
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
-# Get a model response
-response = openai.ChatCompletion.create(
+client = OpenAI(
+    # defaults to os.environ.get("OPENAI_API_KEY")
+    api_key=credentials["OPENAI_API_KEY"],
+)
+
+chat_completion = client.chat.completions.create(
     model="gpt-3.5-turbo", 
     messages=[
         {"role": "system", "content": "You are a helpful assistant."},
