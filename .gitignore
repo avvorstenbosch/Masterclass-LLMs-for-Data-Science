@@ -182,7 +182,10 @@ data
 *.csv
 *.xml
 *.zip
+*.yml
 
+# Ignore lua filters
+*.lua
 #-------------------------------------------------------------------
 
 # Ignore R files
