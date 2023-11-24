@@ -2,8 +2,17 @@
 
 ![](./_slides/Day%201/figures/pair-programming-with-llms.webp)
 
-Welcome to the Masterclass on Large Language Models for Data Science. This course is designed for data scientists, data analists, researchers, and AI enthusiasts in general looking to deepen their understanding of LLMs, such as ChatGPT, and their application in various fields.
+Welcome to the Masterclass on Large Language Models for Data Science. This course is designed for data scientists, data analysts, researchers, and AI enthusiasts in general looking to deepen their understanding of LLMs, such as ChatGPT, and their application in various fields.
 This Masterclass contains examples in both `Python` and `R` users and is suitable for both.
+
+## Using the Masterclass
+
+This masterclass was developed using `Quarto`. I highly recommend installing if you intend to work through these exercises.
+
+- `Python`: Using the `VScode`-IDE allows you to interactively work with the .Qmd files, just like with .ipynb files.
+- `R`: Using the `Rstudio`-IDE allows you to interactively work with the .Qmd files, just like with .Rnotebook files.
+
+The timetable below has links to all the slides. The slides were rendered to the `RevealJS`-html format, which means all the slides can be opened directly in the browser.
 
 ## Timetable day 1
 The first day of the Masterclass is a general introduction discussing the following points:
@@ -17,16 +26,16 @@ The first day of the Masterclass is a general introduction discussing the follow
 
 | Time              | Title                                          | Description                                                                       |
 |-------------------|------------------------------------------------|-----------------------------------------------------------------------------------|
-| 09:00 – 09:30 AM | 👋 Introduction                                 |                                                                                   |
-| 09:30 – 10:45 AM | 🤖 Introduction to LLM's and ChatGPT           | NLP and development of LLMs<br>Capabilities of ChatGPT<br>Real world applications |
+| 09:00 – 09:30 AM | 👋 [Introduction](https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/_slides/Day%201/1.%20Opening.html)                                 |                                                                                   |
+| 09:30 – 10:45 AM | 🤖 [Introduction to LLM's and ChatGPT](https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/_slides/Day%201/2.%20Introduction%20Large%20Language%20Models%20and%20ChatGPT.html)         | NLP and development of LLMs<br>Capabilities of ChatGPT<br>Real world applications |
 | 10:45 – 11:00 AM | ☕ Break                                        |                                                     |
-| 11:00 – 12:00 AM | 💬 Prompt Engineering                          | Introduction to prompting<br>Best practices for prompting<br>Hands-on exercises   |
+| 11:00 – 12:00 PM | 💬 [Prompt Engineering](https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/_slides/Day%201/3.%20Prompt%20Engineering.html)                          | Introduction to prompting<br>Best practices for prompting<br>[Hands-on exercises]((https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/_slides/Day%201/exercises/) )   |
 | 12:00 – 13:00 PM | 🥪 Lunch                                        |                                            |
-| 13:00 – 13:45 PM | 💻 Programming with GPT                         | Introduction to the OpenAI API<br>Hands-on exercises                              |
-| 13:45 – 14:45 PM | ⚖️ Ethical Considerations in Using LLMs        | Biases and Misinformation<br>The Dark Side of LLMs<br>Privacy and Legal Challenges|
+| 13:00 – 13:45 PM | 💻 [Programming with GPT](https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/_slides/Day%201/)                         | Introduction to the OpenAI API<br>[Hands-on exercises](https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/_slides/Day%201/exercises/)                               |
+| 13:45 – 14:45 PM | ⚖️ [Ethical Considerations in Using LLMs](https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/_slides/Day%201/)        | Biases and Misinformation<br>The Dark Side of LLMs<br>Privacy and Legal Challenges|
 | 14:45 - 15:00 PM | ☕ Break                                        |                                                |
-| 15:00 - 16:00 PM |  💻Programming with GPT                         | Pair-programming with LLMs<br>Hands-on exercises                                  |
-| 16:00 – 16:45 PM  | 🚀 Improved Efficiency with ChatGPT            | Examples of real implementations of ChatGPT in a workflow                         |
+| 15:00 - 16:00 PM |  💻[Programming with GPT](https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/_slides/Day%201/)                         | Pair-programming with LLMs<br>[Hands-on exercises](https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/_slides/Day%201/exercises/)                                   |
+| 16:00 – 16:45 PM  | 🚀 [Improved Efficiency with ChatGPT](https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/_slides/Day%201/)            | Examples of real implementations of ChatGPT in a workflow                         |
 | 16:45 – 17:00 PM | 📝 Summary, Evaluation and Conclusion of Day 1 |                                                   |
 
 
@@ -39,12 +48,12 @@ The second day of the Masterclass is a more in-depth session, ending with a larg
 
  | Time              | Title                                                               | Description                                                                                   |
 |-------------------|---------------------------------------------------------------------|-----------------------------------------------------------------------------------------------|
-| 09:00 – 09:20 AM | 🌅 Opening and Discussion of the Day's Agenda                       |                                                                                               |
-| 09:20 – 10:45 AM | 📊 Text Analysis with LLMs                                          | Foundation models for NLP<br>Evaluation of performance<br>Hands-on Exercises                  |
+| 09:00 – 09:20 AM | 🌅 [Opening and Discussion of the Day's Agenda](https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/_slides/Day%202/1.%20Opening.html)                       |                                                                                               |
+| 09:20 – 10:45 AM | 📊 [Text Analysis with LLMs](https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/_slides/Day%202/2.%20NLP%20with%20LLMs.qmd)                                          | Foundation models for NLP<br>Evaluation of performance<br>[Hands-on Exercises](https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/_slides/Day%202/exercises/)                   |
 | 10:45 – 11:00 AM | ☕ Break                                                             |                                                                         |
-| 11:00 – 12:30 PM | 🔍 Retrieval Augmented Generation (RAG), open source, and next steps | LLMs versus Search Engines<br>How to host your own LLM<br>Next steps?                          |
+| 11:00 – 12:30 PM | 🔍 [Retrieval Augmented Generation (RAG), open source, and next steps](https://avvorstenbosch.github.io/_slides/Day%202/Masterclass-LLMs-for-Data-Science/3.%20Next%20steps%20for%20LLMs.qmd) | LLMs versus Search Engines<br>How to host your own LLM<br>Next steps?                          |
 | 12:30 – 13:30 PM | 🥗 Lunch                                                             |                                                                  |
-| 13:30 - 16:30 PM | 🚀 Extended Practical Assignment - RAG 🔍                                    |   Building your own Retrieval Augmented Generation system with fact-checking against hallucinations                                                                                    |
+| 13:30 - 16:30 PM | 🚀 [Extended Practical Assignment - RAG 🔍](https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/_slides/Day%202/exercises/)                                    |   Building your own Retrieval Augmented Generation system with fact-checking against hallucinations                                                                                    |
 | 16:30 - 17:00 PM | 📝 Summary, Evaluation, and Conclusion                               |                                             |
 
 # Repository structure
@@ -128,3 +137,40 @@ The source code for the exercises and slides can be found under the folders name
                 └── get_embedding.R
 ```
 
+# Contributing
+
+I greatly appreciate contributions from the community. Your input helps to improve and expand the masterclass. Here’s how you can contribute:
+
+## Reporting Bugs or Factual Errors
+
+- If you find any bugs or factual errors in the content, please report them using the Issues tab.
+- Clearly describe the issue and provide any relevant links or references to support your issue.
+
+## Suggestions for Improvements
+
+- Suggestions are always welcome! Feel free to submit your ideas through the Issues tab.
+- Explain your suggestion in detail and how it adds value to the masterclass.
+
+## Submitting Pull Requests
+
+- If you have developed content that you believe would enhance this masterclass, please submit a pull request.
+- Ensure your submission is well-researched, factually accurate, and adds educational value.
+- Follow the existing structure and style for consistency.
+
+## Guidelines for Contributions
+
+- **Quality Standards**: Contributions should maintain be in line with the quality of the existing content. Ensure accuracy, clarity, and relevance.
+- **Review Process**: All submissions will be reviewed for quality and relevance. I aim to provide feedback or merge contributions promptly.
+
+## License
+This project is open source and available under the Attribution-NonCommercial-ShareAlike 4.0 International Creative Commons Licens.
+
+You are free to:
+- Share — copy and redistribute the material in any medium or format.
+- Adapt — remix, transform, and build upon the material.
+The licensor cannot revoke these freedoms as long as you follow the license terms.
+Under the following terms:
+- Attribution - You must give appropriate credit , provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
+- NonCommercial - You may not use the material for commercial purposes.
+- ShareAlike - If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.
+- No additional restrictions - You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.
