@@ -102,7 +102,7 @@ date: "11-17-2023"
 | 09:00 – 09:30 AM | 👋 Introduction                                 |                                                                                   |
 | 09:30 – 10:45 AM | 🤖 Introduction to LLM's and ChatGPT           | NLP and development of LLMs<br>Capabilities of ChatGPT<br>Real world applications |
 | 10:45 – 11:00 AM | ☕ Break                                        |                                                     |
-| 11:00 – 12:00 AM | 💬 Prompt Engineering                          | Introduction to prompting<br>Best practices for prompting<br>Hands-on exercises   |
+| 11:00 – 12:00 PM | 💬 Prompt Engineering                          | Introduction to prompting<br>Best practices for prompting<br>Hands-on exercises   |
 | 12:00 – 13:00 PM | 🥪 Lunch                                        |                                            |
 | 13:00 – 13:45 PM | 💻 Programming with GPT                         | Introduction to the OpenAI API<br>Hands-on exercises                              |
 | 13:45 – 14:45 PM | ⚖️ Ethical Considerations in Using LLMs        | Biases and Misinformation<br>The Dark Side of LLMs<br>Privacy and Legal Challenges|
