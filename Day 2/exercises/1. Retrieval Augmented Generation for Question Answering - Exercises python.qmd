@@ -415,21 +415,9 @@ labels = [
   "Deltaplan",
   "Baking",
   "Astronomy"
-]w
+]
 
 # Add the embedding matrix to the results lists
-for (i in seq_along(prompts)){
-  embedding_tmp = get_embedding(prompts[[i]])
-  data_similarity_tmp = data %>%
-    rowwise() %>%
-    mutate(similarity_score = YOUR_CODE_HERE) %>%
-    ungroup() %>%
-    mutate(label=labels[[i]]) %>%
-    arrange(desc(similarity_score))
-  
-  results[[i]] = data_similarity_tmp
-}
-
 for i, prompt in enumerate(prompts):
     embedding_tmp = get_embedding(prompt)
     data['similarity_score'] = data.apply(calculate_similarity, axis=1)
