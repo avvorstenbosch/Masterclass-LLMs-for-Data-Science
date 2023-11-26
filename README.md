@@ -1,6 +1,6 @@
 # Masterclass: Large Language Models for Data Science
 
-![](./slides/Day%201/figures/pair-programming-with-llms.webp)
+![](./slides/Day_1/figures/pair-programming-with-llms.webp)
 
 Welcome to the Masterclass on Large Language Models for Data Science. This course is designed for data scientists, data analysts, researchers, and AI enthusiasts in general looking to deepen their understanding of LLMs, such as ChatGPT, and their application in various fields.
 This Masterclass contains examples in both `Python` and `R` users and is suitable for both.
@@ -26,16 +26,16 @@ The first day of the Masterclass is a general introduction discussing the follow
 
 | Time              | Title                                          | Description                                                                       |
 |-------------------|------------------------------------------------|-----------------------------------------------------------------------------------|
-| 09:00 – 09:30 AM | 👋 [Introduction](https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/_slides/Day%201/1.%20Opening.html)                                 |                                                                                   |
-| 09:30 – 10:45 AM | 🤖 [Introduction to LLM's and ChatGPT](https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/_slides/Day%201/2.%20Introduction%20Large%20Language%20Models%20and%20ChatGPT.html)         | NLP and development of LLMs<br>Capabilities of ChatGPT<br>Real world applications |
+| 09:00 – 09:30 AM | 👋 [Introduction](https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/slides/Day_1/1._Opening.html)                                 |                                                                                   |
+| 09:30 – 10:45 AM | 🤖 [Introduction to LLM's and ChatGPT](https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/slides/Day_1/2._Introduction_Large_Language_Models_and_ChatGPT.html)         | NLP and development of LLMs<br>Capabilities of ChatGPT<br>Real world applications |
 | 10:45 – 11:00 AM | ☕ Break                                        |                                                     |
-| 11:00 – 12:00 PM | 💬 [Prompt Engineering](https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/_slides/Day%201/3.%20Prompt%20Engineering.html)                          | Introduction to prompting<br>Best practices for prompting<br>[Hands-on exercises]((https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/_slides/Day%201/exercises/) )   |
+| 11:00 – 12:00 PM | 💬 [Prompt Engineering](https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/slides/Day_1/3._Prompt_Engineering.html)                          | Introduction to prompting<br>Best practices for prompting<br>[Hands-on exercises]((https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/slides/Day_1/exercises/) )   |
 | 12:00 – 13:00 PM | 🥪 Lunch                                        |                                            |
-| 13:00 – 13:45 PM | 💻 [Programming with GPT](https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/_slides/Day%201/)                         | Introduction to the OpenAI API<br>[Hands-on exercises](https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/_slides/Day%201/exercises/)                               |
-| 13:45 – 14:45 PM | ⚖️ [Ethical Considerations in Using LLMs](https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/_slides/Day%201/)        | Biases and Misinformation<br>The Dark Side of LLMs<br>Privacy and Legal Challenges|
+| 13:00 – 13:45 PM | 💻 [Programming with GPT](https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/slides/Day_1/)                         | Introduction to the OpenAI API<br>[Hands-on exercises](https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/slides/Day_1/exercises/)                               |
+| 13:45 – 14:45 PM | ⚖️ [Ethical Considerations in Using LLMs](https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/slides/Day_1/)        | Biases and Misinformation<br>The Dark Side of LLMs<br>Privacy and Legal Challenges|
 | 14:45 - 15:00 PM | ☕ Break                                        |                                                |
-| 15:00 - 16:00 PM |  💻[Programming with GPT](https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/_slides/Day%201/)                         | Pair-programming with LLMs<br>[Hands-on exercises](https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/_slides/Day%201/exercises/)                                   |
-| 16:00 – 16:45 PM  | 🚀 [Improved Efficiency with ChatGPT](https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/_slides/Day%201/)            | Examples of real implementations of ChatGPT in a workflow                         |
+| 15:00 - 16:00 PM |  💻[Programming with GPT](https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/slides/Day_1/)                         | Pair-programming with LLMs<br>[Hands-on exercises](https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/slides/Day_1/exercises/)                                   |
+| 16:00 – 16:45 PM  | 🚀 [Improved Efficiency with ChatGPT](https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/slides/Day_1/)            | Examples of real implementations of ChatGPT in a workflow                         |
 | 16:45 – 17:00 PM | 📝 Summary, Evaluation and Conclusion of Day 1 |                                                   |
 
 
@@ -48,17 +48,17 @@ The second day of the Masterclass is a more in-depth session, ending with a larg
 
  | Time              | Title                                                               | Description                                                                                   |
 |-------------------|---------------------------------------------------------------------|-----------------------------------------------------------------------------------------------|
-| 09:00 – 09:20 AM | 🌅 [Opening and Discussion of the Day's Agenda](https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/_slides/Day%202/1.%20Opening.html)                       |                                                                                               |
-| 09:20 – 10:45 AM | 📊 [Text Analysis with LLMs](https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/_slides/Day%202/2.%20NLP%20with%20LLMs.qmd)                                          | Foundation models for NLP<br>Evaluation of performance<br>[Hands-on Exercises](https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/_slides/Day%202/exercises/)                   |
+| 09:00 – 09:20 AM | 🌅 [Opening and Discussion of the Day's Agenda](https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/slides/Day_2/1._Opening.html)                       |                                                                                               |
+| 09:20 – 10:45 AM | 📊 [Text Analysis with LLMs](https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/slides/Day_2/2._NLP_with_LLMs.qmd)                                          | Foundation models for NLP<br>Evaluation of performance<br>[Hands-on Exercises](https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/slides/Day_2/exercises/)                   |
 | 10:45 – 11:00 AM | ☕ Break                                                             |                                                                         |
-| 11:00 – 12:30 PM | 🔍 [Retrieval Augmented Generation (RAG), open source, and next steps](https://avvorstenbosch.github.io/_slides/Day%202/Masterclass-LLMs-for-Data-Science/3.%20Next%20steps%20for%20LLMs.qmd) | LLMs versus Search Engines<br>How to host your own LLM<br>Next steps?                          |
+| 11:00 – 12:30 PM | 🔍 [Retrieval Augmented Generation (RAG), open source, and next steps](https://avvorstenbosch.github.io/slides/Day_2/Masterclass-LLMs-for-Data-Science/3._Next_steps_for_LLMs.qmd) | LLMs versus Search Engines<br>How to host your own LLM<br>Next steps?                          |
 | 12:30 – 13:30 PM | 🥗 Lunch                                                             |                                                                  |
-| 13:30 - 16:30 PM | 🚀 [Extended Practical Assignment - RAG 🔍](https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/_slides/Day%202/exercises/)                                    |   Building your own Retrieval Augmented Generation system with fact-checking against hallucinations                                                                                    |
+| 13:30 - 16:30 PM | 🚀 [Extended Practical Assignment - RAG 🔍](https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/slides/Day_2/exercises/)                                    |   Building your own Retrieval Augmented Generation system with fact-checking against hallucinations                                                                                    |
 | 16:30 - 17:00 PM | 📝 Summary, Evaluation, and Conclusion                               |                                             |
 
 # Repository structure
 
-This course was rendered using `Quarto` to create `RevealJS` HTML slides. The slides and solutions to exercises can be found under the folder `./_slides/`, which has seperate subfolders `./_slides/Day 1/` and `./_slides/Day 2/` for the individual days.
+This course was rendered using `Quarto` to create `RevealJS` HTML slides. The slides and solutions to exercises can be found under the folder `./slides/`, which has seperate subfolders `./slides/Day 1/` and `./slides/Day 2/` for the individual days.
 
 The source code for the exercises and slides can be found under the folders names `./Day 1/` and  `./Day 2/`
 
@@ -99,7 +99,7 @@ The source code for the exercises and slides can be found under the folders name
 │           ├── chat_completions.R
 │           ├── cosine_similarity.R
 │           └── get_embedding.R
-└── _slides
+└── slides
     ├── Day 1
     │   ├── 1. Opening.html
     │   ├── 2. Introduction Large Language Models and ChatGPT.html
