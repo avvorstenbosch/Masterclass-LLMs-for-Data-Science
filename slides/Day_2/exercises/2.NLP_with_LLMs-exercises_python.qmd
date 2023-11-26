@@ -1,0 +1,568 @@
+---
+title: "NLP with LLMs" 
+date: "11-24-2023"
+format: 
+    html:
+        number-sections: true
+        page-layout: full
+        title-block-banner: true
+        self-contained: true
+include-in-header:
+  - text: |
+      <style>
+      .cell-output-stdout code {
+        word-break: break-wor !important;
+        white-space: pre-wrap !important;
+      }
+      </style>
+execute: 
+  eval: false
+---
+
+# Sentiment Analysis
+
+In this Exercise set, we are going to use ChatGPT for a sentiment analysis problem. 
+We'll be using the API, along with the prompting lessons we learned in previous lectures. 
+
+## Environment setup
+Load all the libraries we will need. You may need to install some of these libraries. 
+```{python}
+import pandas as pd
+from IPython.display import display
+import json
+from sklearn.metrics import (
+    confusion_matrix,
+    ConfusionMatrixDisplay,
+    accuracy_score,
+    classification_report,
+)
+from sklearn.preprocessing import LabelEncoder
+import matplotlib.pyplot as plt
+
+# Specify the path to your API-credentials file
+import yaml
+from openai import OpenAI
+
+file_path = "../../credentials.yml"
+with open(file_path, "r") as yaml_file:
+    credentials = yaml.safe_load(yaml_file)
+
+client = OpenAI(
+    # defaults to os.environ.get("OPENAI_API_KEY")
+    api_key=credentials["OPENAI_API_KEY"],
+)
+```
+
+We will be making use of the format specifier in the api today. 
+This feature has only been around since Dev-Day (November 6th 2023) and allows you to force the model to output correct `json`, given that you mention json output in your prompt. 
+
+## Read the data
+The dataset contains 500 sentences of the SemEval2014-restaurants dataset. This is a dataset for ABSA:\
+"Aspect Based Sentiment Analysis": Given all the aspects (red: relevant elements) detect the sentiment expressed about them. 
+
+There are 2 flavours of ABSA:
+
+- regular ABSA: Detect the sentiment for each aspect given. 
+- E2E-ABSA: End-to-End Aspect Based Sentiment Analysis; Detect both the aspects and their sentiment. 
+
+E2E is significantly harder to achieve, and to a higher degree depends on the labeling quality of the data set.
+For this exercise set, we will be performing regular ABSA using an LLM. 
+
+```{python}
+# Read the data
+data_x = pd.read_csv("./data/semEval2014-restaurants-x.csv", delimiter=";")
+data_y = pd.read_csv("./data/semEval2014-restaurants-y.csv", delimiter=";")
+
+
+# DON'T TOUCH THIS CODE ---------------------##
+# We need everybodies data_test to be equal  ##
+# --------------------------------------------##
+# Not all sentences in the dataset have a y-label in the original data set
+# in this cleaned sample they do
+data = pd.merge(data_x, data_y, on="sentence_id", how="inner")
+
+# Add a new column 'new_id' for grouping
+data["new_id"] = data.groupby("sentence_id").ngroup()
+
+# Create data_train and data_test DataFrames
+data_train = data[data["new_id"] <= 400].drop(columns="new_id")
+data_test = data[data["new_id"] > 400].drop(columns="new_id")
+
+# --------------------------------------------##
+```
+
+### Check out the data, what does it look like
+
+```{python}
+# your code here
+```
+
+# ABSA
+
+Here we will try our hand at sentiment analysis using an out-of-the-box LLM.\
+\
+*IMPORTANT-RULE:*\
+You are allowed to do whatever you want with the training data.
+Play with it, experiment with it, etc. But you are only allowed to touch the test-data when we evaluate our model performance.
+If you need to alter the format of data_test for your prompt, that is allowed, but other than that, you cannot touch it!
+We will see who get's the highest test-performance at the end of the session.
+
+## Zero-shot - Single
+
+At this point, we are going to try performing Zero-shot sentiment analysis. The rules are simple:
+
+- The model response should contain the prediction for all aspects in the same sentence at once.
+- You are not allowed to provide any sentiment analysis examples to the model.
+- You are allowed to describe the various sentiment polarities and their definition.
+- You are free to write this prompt as you see fit, just don't give examples.
+- You can decide how to distribute the prompt over the system_prompt and the user_prompt. 
+- Check out the labeling rules guide for SemEval: `./data/SemEval14_ABSA_AnnotationGuidelines.pdf`
+- Make it easy for yourself: use the json mode for easy extraction of the classifications!
+
+**Example:**\
+Here is an example to demonstrate what the data looks like, and what the expected output is. 
+
+Targets:
+
+- sentence: "The food is uniformly exceptional, with a very capable kitchen which will proudly whip up whatever you feel like eating, whether it's on the menu or not."
+- aspects: food, kitchen, menu
+- sentiment: positive, positive, neutral
+
+Output:
+
+- {"food": "positive", "kitchen": "positive", "menu": "neutral"}
+
+Let us start with classifying the sentiment for a single example sentence. 
+
+```{python}
+# this notation is a bit weird
+# It's a trick to delay the f string evaluation
+# Now you can call system_prompt() within a loop to get the current correct values
+system_prompt = lambda: f"""
+  Your system prompt here
+"""
+
+user_prompt = lambda: f"""
+ your user prompt here
+"""
+```
+
+```{python}
+i = 1
+x_sentence_id = data_train.loc[i, "sentence_id"]
+target_sentence = data_train.loc[i, "sentence_text"]
+
+targets = data_train[data_train['sentence_id'] == x_sentence_id]
+target_aspect_terms_combined = ", ".join(targets.aspect_term)
+```
+
+```{python}
+response = client.chat.completions.create(
+    messages=[
+        {
+            "role": "system",
+            "content": system_prompt(),
+        },
+        {
+            "role": "user",
+            "content": user_prompt(),
+        }
+    ],
+    model='gpt-3.5-turbo-1106',
+    response_format={"type": "json_object"},
+)
+```
+
+### Check if the predictions where correct
+```{python}
+# Read classifications from response
+response_classifications = json.loads(response.choices[0].message.content)
+
+# Check correctness for each prediction
+results = []
+for i,aspect in enumerate(response_classifications):
+  result_i = aspect == (targets.polarity[targets.aspect_term == aspect]).values[0]
+  results.append(result_i)
+
+print(results)
+```
+
+You can play around a bit here, to test your prompt on individual examples. In the next section, I've supplied code you can use to test your prompt on multiple examples at once. 
+
+## Zero-shot - Multiple examples
+
+Now we'll do a bigger trial run on the training data. Below I've written some code that puts all the data of the first 50 sentences into a single
+dataframe and runs predictions. You should finish the `get_predicitions` function to get predictions for every sentence in data_train
+
+```{python}
+n_samples = # Select your number
+
+# Add a new column 'new_id' for grouping
+data_train_sample = data_train
+data_train_sample['new_id'] = data_train_sample.groupby('sentence_id').ngroup()
+
+# Create data_train_sample_train and data_train_sample_test data_train_sampleFrames
+data_train_sample= data_train_sample[data_train_sample['new_id'] <= n_samples].drop(columns='new_id')
+
+def predict_sentiment(system_prompt = system_prompt, user_prompt = user_prompt):
+  #' A simple wrapper function for generate completion that extracts the sentiment from the response
+  #' Please modify to your own liking!
+  response = client.chat.completions.create(
+    messages=[
+        {
+            "role": "system",
+            "content": system_prompt(),
+        },
+        {
+            "role": "user",
+            "content": user_prompt(),
+        }
+    ],
+    model='gpt-3.5-turbo-1106',
+    response_format={"type": "json_object"},
+  )
+  response_classifications = json.loads(response.choices[0].message.content)
+  return(response_classifications)
+
+
+# We're making predictions in a for loop, and appending them to a dataframe
+# Not elegant or vectorised, but easy to understand.
+# please note: running this takes a while to finish...
+sentence_ids = data_train_sample['sentence_id'].unique()
+predictions_train = pd.DataFrame(columns=['sentence_id', 'aspect_term', 'polarity_prediction'])
+
+for target_sentence_id in sentence_ids:
+    targets = data_train_sample[data_train_sample['sentence_id'] == target_sentence_id]
+    target_sentence = targets.iloc[0]['sentence_text']
+
+    target_aspect_terms_combined = ', '.join(targets['aspect_term'])
+
+    # Assuming predict_sentiment is a function you have defined
+    prediction = predict_sentiment(system_prompt, user_prompt)
+
+    for aspect, polarity in prediction.items():
+        temp_df = pd.DataFrame({
+            'sentence_id': [target_sentence_id],
+            'aspect_term': [aspect],
+            'polarity_prediction': [polarity]
+        })
+        predictions_train = pd.concat([predictions_train, temp_df], ignore_index=True)
+```
+
+Bring them together so we can evaluate the accuracy
+```{python}
+data_train_p = pd.merge(
+    data_train_sample, predictions_train, how="left", on=["sentence_id", "aspect_term"]
+).dropna()
+```
+
+### Evaluation Metrics
+
+In this section you can evaluate the performance of your model. You will get:
+
+- The accuracy
+- Class level: Precision, Recall, Specificity
+
+```{python}
+# get true and false
+y_true = data_train_p["polarity"]
+y_pred = data_train_p["polarity_prediction"]
+
+# Create a confusion matrix
+conf_matrix = confusion_matrix(y_true, y_pred)
+
+# Extracting metrics
+accuracy = accuracy_score(y_true, y_pred)
+
+# Calculate the baseline accuracy
+baseline_accuracy = data_train["polarity"].value_counts().max() / len(data_train)
+
+# Print the metrics
+print(
+    f"The baseline accuracy (predicting majority class): {round(baseline_accuracy, 3)}"
+)
+print(
+    f"Micro Accuracy = Micro Precision = Micro Recall = Micro F1: {round(accuracy, 3)}"
+)
+
+# Precision, Recall, and F1-Score
+print(classification_report(y_true, y_pred, digits=3))
+```
+
+### Confusion matrix
+
+This code takes as input your confusion_matrix to turn it into a plot.
+```{python}
+disp = ConfusionMatrixDisplay(
+    confusion_matrix=conf_matrix,
+    display_labels=[
+        "conflict",
+        "negative",
+        "neutral",
+        "positive",
+    ],
+)
+disp.plot(cmap=plt.cm.Blues)
+plt.title("Confusion Matrix")
+plt.show()
+```
+
+### Inspect the wrong predictions
+
+Please check what the examples where the model got wrong.:
+```{python}
+# Your code here
+```
+
+Please check if there were examples where the model returned the wrong aspect label:
+```{python}
+# Your code here
+```
+
+The model corrects misspelled words in the current version, and it sometimes splits terms into 2 or more terms where it shouldn't
+
+## Zero-shot - Test
+You can still iterate over your zero-shot prompt above, using all the information from the train set, or using a larger sample of the training-data.
+If you are ready to test yourself, run the cell below to evaluate your model on the test-set.
+
+**YOU ARE ONLY ALLOWED TO DO THIS ONCE, THIS WILL BE YOUR FINAL SCORE ON THE ZERO-SHOT EXERCISE**
+
+```{python}
+# We're making predictions in a for loop, and appending them to a dataframe
+# Not elegant or vectorised, but easy to understand.
+# please note: running this takes a while to finish...
+
+sentence_ids = data_test["sentence_id"].unique()
+predictions_test = pd.DataFrame(
+    columns=["sentence_id", "aspect_term", "polarity_prediction"]
+)
+
+for target_sentence_id in sentence_ids:
+    targets = data_test[data_test["sentence_id"] == target_sentence_id]
+    target_sentence = targets.iloc[0]["sentence_text"]
+
+    target_aspect_terms_combined = ", ".join(targets["aspect_term"])
+
+    # Assuming predict_sentiment is a function you have defined
+    prediction = predict_sentiment(system_prompt, user_prompt)
+
+    for aspect, polarity in prediction.items():
+        temp_df = pd.DataFrame(
+            {
+                "sentence_id": [target_sentence_id],
+                "aspect_term": [aspect],
+                "polarity_prediction": [polarity],
+            }
+        )
+        predictions_test = pd.concat([predictions_test, temp_df], ignore_index=True)
+
+data_test_p = pd.merge(
+    data_test, predictions_test, how="left", on=["sentence_id", "aspect_term"]
+).dropna()
+
+# get true and false
+y_true = data_test_p["polarity"]
+y_pred = data_test_p["polarity_prediction"]
+
+# Create a confusion matrix
+conf_matrix = confusion_matrix(y_true, y_pred)
+
+# Extracting metrics
+accuracy = accuracy_score(y_true, y_pred)
+
+# Print the metrics
+print(
+    f"The baseline accuracy (predicting majority class): {round(baseline_accuracy, 3)}"
+)
+print(
+    f"Micro Accuracy = Micro Precision = Micro Recall = Micro F1: {round(accuracy, 3)}"
+)
+
+# Precision, Recall, and F1-Score
+print(classification_report(y_true, y_pred, digits=3))
+
+disp = ConfusionMatrixDisplay(
+    confusion_matrix=conf_matrix,
+    display_labels=[
+        "conflict",
+        "negative",
+        "neutral",
+        "positive",
+    ],
+)
+disp.plot(cmap=plt.cm.Blues)
+plt.title("Confusion Matrix")
+plt.show()
+```
+
+
+
+## Few-shot - Training
+
+Now adjust your system prompt, use examples to demonstrate how labels should be given. 
+You can only use examples from the training set, or examples that you thought of yourself. 
+
+```{python}
+messages=[
+  {
+      "role": "system",
+      "content": system_prompt(),
+  },
+  {
+      "role": "user",
+      "content": 
+  },
+  {
+      "role": "assistant",
+      "content": ,
+  },
+  {
+      "role": "user",
+      "content": 
+  },
+  {
+      "role": "assistant",
+      "content": ,
+  },
+  {
+      "role": "user",
+      "content": 
+  },
+  {
+      "role": "assistant",
+      "content": ,
+  },
+  {
+      "role": "user",
+      "content": user_prompt
+  },
+]
+```
+
+Here is the same code as before to make predictions, but now you should:
+
+- Put your examples you just defined here inside the predict_sentiment function
+
+```{python}
+n_samples = # Select your number
+
+# Add a new column 'new_id' for grouping
+data_train_sample = data_train
+data_train_sample['new_id'] = data_train_sample.groupby('sentence_id').ngroup()
+
+# Create data_train_sample_train and data_train_sample_test data_train_sampleFrames
+data_train_sample= data_train_sample[data_train_sample['new_id'] <= n_samples].drop(columns='new_id')
+
+def predict_sentiment(system_prompt = system_prompt, user_prompt = user_prompt):
+  #' A simple wrapper function for generate completion that extracts the sentiment from the response
+  #' Please modify to your own liking!
+  response = client.chat.completions.create(
+    messages=[
+        ...
+    ],
+    model='gpt-3.5-turbo-1106',
+    response_format={"type": "json_object"},
+  )
+  response_classifications = json.loads(response.choices[0].message.content)
+  return(response_classifications)
+
+
+# We're making predictions in a for loop, and appending them to a dataframe
+# Not elegant or vectorised, but easy to understand.
+# please note: running this takes a while to finish...
+sentence_ids = data_train_sample['sentence_id'].unique()
+predictions_train = pd.DataFrame(columns=['sentence_id', 'aspect_term', 'polarity_prediction'])
+
+for target_sentence_id in sentence_ids:
+    targets = data_train_sample[data_train_sample['sentence_id'] == target_sentence_id]
+    target_sentence = targets.iloc[0]['sentence_text']
+
+    target_aspect_terms_combined = ', '.join(targets['aspect_term'])
+
+    # Assuming predict_sentiment is a function you have defined
+    prediction = predict_sentiment(system_prompt, user_prompt)
+
+    for aspect, polarity in prediction.items():
+        temp_df = pd.DataFrame({
+            'sentence_id': [target_sentence_id],
+            'aspect_term': [aspect],
+            'polarity_prediction': [polarity]
+        })
+        predictions_train = pd.concat([predictions_train, temp_df], ignore_index=True)
+
+data_train_p = pd.merge(data_train_sample, predictions_train, how="left", on = ["sentence_id", "aspect_term"]).dropna()
+```
+
+
+## Few-shot - Test 
+You can still iterate over your few-shot prompt above, using all the information from the train set, or using a larger sample of the training-data.
+If you are ready to test yourself, run the cell below to evaluate your model on the test-set.
+
+**YOU ARE ONLY ALLOWED TO DO THIS ONCE, THIS WILL BE YOUR FINAL SCORE ON THE FEW-SHOT EXERCISE**
+```{python}
+# We're making predictions in a for loop, and appending them to a dataframe
+# Not elegant or vectorised, but easy to understand.
+# please note: running this takes a while to finish...
+
+sentence_ids = data_test["sentence_id"].unique()
+predictions_test = pd.DataFrame(
+    columns=["sentence_id", "aspect_term", "polarity_prediction"]
+)
+
+for target_sentence_id in sentence_ids:
+    targets = data_test[data_test["sentence_id"] == target_sentence_id]
+    target_sentence = targets.iloc[0]["sentence_text"]
+
+    target_aspect_terms_combined = ", ".join(targets["aspect_term"])
+
+    # Assuming predict_sentiment is a function you have defined
+    prediction = predict_sentiment(system_prompt, user_prompt)
+
+    for aspect, polarity in prediction.items():
+        temp_df = pd.DataFrame(
+            {
+                "sentence_id": [target_sentence_id],
+                "aspect_term": [aspect],
+                "polarity_prediction": [polarity],
+            }
+        )
+        predictions_test = pd.concat([predictions_test, temp_df], ignore_index=True)
+
+data_test_p = pd.merge(
+    data_test, predictions_test, how="left", on=["sentence_id", "aspect_term"]
+).dropna()
+
+# get true and false
+y_true = data_test_p["polarity"]
+y_pred = data_test_p["polarity_prediction"]
+
+# Create a confusion matrix
+conf_matrix = confusion_matrix(y_true, y_pred)
+
+# Extracting metrics
+accuracy = accuracy_score(y_true, y_pred)
+
+# Print the metrics
+print(
+    f"The baseline accuracy (predicting majority class): {round(baseline_accuracy, 3)}"
+)
+print(
+    f"Micro Accuracy = Micro Precision = Micro Recall = Micro F1: {round(accuracy, 3)}"
+)
+
+# Precision, Recall, and F1-Score
+print(classification_report(y_true, y_pred, digits=3))
+
+disp = ConfusionMatrixDisplay(
+    confusion_matrix=conf_matrix,
+    display_labels=[
+        "conflict",
+        "negative",
+        "neutral",
+        "positive",
+    ],
+)
+disp.plot(cmap=plt.cm.Blues)
+plt.title("Confusion Matrix")
+plt.show()
+```

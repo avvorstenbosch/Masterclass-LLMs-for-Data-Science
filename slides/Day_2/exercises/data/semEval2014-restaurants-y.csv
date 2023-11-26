@@ -1,0 +1,873 @@
+sentence_id;aspect_term;polarity
+1634;food;positive
+1634;kitchen;positive
+1634;menu;neutral
+1458;orrechiete with sausage and chicken;positive
+1458;waiters;positive
+1458;meats;neutral
+1458;dish;neutral
+1793;drinks;neutral
+1793;check;neutral
+1407;seats;negative
+1623;wine list;positive
+1101;glass of wine;neutral
+1074;Dosa;neutral
+1215;bagels;positive
+1215;spreads;positive
+183;service;conflict
+1755;pizza;positive
+1688;dish;negative
+1383;delivery;negative
+1383;order;negative
+1197;check;negative
+148;rice dishes;positive
+148;congee (rice porridge);positive
+1402;Indian food;positive
+1549;food;positive
+1549;food;positive
+1798;table;negative
+173;Food;conflict
+173;raw vegatables;negative
+1836;service;negative
+1404;Indian;positive
+1404;prices;positive
+1819;Ambiance;positive
+1474;ingredients;positive
+1474;ingredients;positive
+1474;pizza;negative
+1474;crust;neutral
+1599;pizza;positive
+1352;chef;positive
+1743;pizza;positive
+1743;fresh mozzarella;positive
+1743;cheese;negative
+1321;place;positive
+1321;food;positive
+1198;fish;positive
+1198;variety of fish;negative
+1110;bartender;positive
+1110;beverage manager;positive
+1830;Pizza;positive
+1478;values for your money;positive
+1413;lunch;positive
+1554;corridor;negative
+1554;space;negative
+1554;counters;negative
+1554;counter;negative
+1554;entrees;neutral
+141;dish;positive
+1624;food;positive
+1624;service;positive
+1630;anti-pasta;positive
+1630;calamari;positive
+1630;filling pasta mains;positive
+1535;food;positive
+1535;counter;negative
+1494;takeout menu;positive
+1494;menu;positive
+1494;italian dishes;positive
+1278;pizza;positive
+1578;food;positive
+1319;servers;negative
+1175;food;neutral
+1175;plate of dumplings;positive
+1115;Filet Mignon;positive
+139;food;positive
+139;Cantonese;positive
+1104;eggs benedict;negative
+1104;hollondaise sauce;negative
+1104;brunch;neutral
+1551;staff;positive
+1785;roll;negative
+1785;roll;negative
+1785;roll;negative
+1785;rice;neutral
+1138;Grilled Chicken special with Edamame Puree;neutral
+128;roast duck;positive
+128;pork;positive
+128;chicken on rice with ginger;positive
+1008;menu;negative
+1133;dinner;neutral
+152;service;positive
+1033;Delivery;positive
+1646;Spicy Fried Clam Rolls;positive
+1646;Spider Rolls;positive
+1269;FOOD;neutral
+1542;food;negative
+1542;employees;negative
+1542;containers for condiments;negative
+1542;containers;neutral
+1542;manager;negative
+1538;tuna melt;negative
+1538;cheese;neutral
+1538;tuna sandwich;negative
+1272;thai food;negative
+1188;food;positive
+1188;service;neutral
+1828;mozzarella;positive
+1828;pie;positive
+1843;establishment;positive
+1270;thai food;negative
+1705;burger;positive
+1705;pastas;positive
+1705;food;neutral
+1705;staples;positive
+1817;Food;positive
+1749;wait;conflict
+1130;meal;positive
+1652;service;positive
+1652;prices;positive
+1652;atmosphere;positive
+1672;food;positive
+1672;striped bass;positive
+1125;music;conflict
+1125;corriander;neutral
+1250;chu chu curry;neutral
+1250;pad thai chicken;neutral
+1533;pastrami;positive
+1533;soups;positive
+1055;bagels;positive
+1784;sushi;positive
+1689;food;negative
+1689;quality of food;negative
+1034;service;positive
+1034;seating;positive
+1034;Delivery;positive
+1034;sushi;positive
+1049;rolls;positive
+102;owner;positive
+1077;dosa;negative
+1077;eat;positive
+133;atmosphere;negative
+133;waiters;conflict
+1362;seasoning;negative
+178;waitress;positive
+178;food;positive
+1616;menu;neutral
+1616;main dishes;neutral
+1616;waiter;positive
+1616;specials;neutral
+1103;dinner;negative
+1617;dishes;positive
+1617;menu;neutral
+1022;waitress;positive
+1022;fried mini buns with the condensed milk and the assorted fruits on beancurd;positive
+1711;food;negative
+1711;prices;negative
+1622;portions;positive
+1622;servers;positive
+1622;starter;positive
+1059;bagels;positive
+1592;server;positive
+1331;reservation;negative
+1316;food;neutral
+1577;stuff;positive
+1579;portions;positive
+1242;coconut rice;positive
+1152;music;negative
+1152;bottle minimun;negative
+1435;Quality of food;positive
+1435;price;positive
+1435;pork;positive
+1435;fish;positive
+1435;chicken;positive
+1435;lamb;positive
+1435;vegetables;positive
+1056;appetizing;positive
+1056;price;positive
+1293;calzones;negative
+119;secret back room;positive
+1013;pig feet ginger simmered in black vinegar;positive
+1013;desserts with frog jelly;positive
+1707;dinner;positive
+1600;fresh tomato sauce;positive
+1600;fresh mozz cheese;positive
+1600;basil;positive
+1600;dough;positive
+1600;pizza;positive
+1600;flour;positive
+134;food;positive
+159;food;positive
+159;plates;positive
+1490;fresh mozzerella slices;positive
+1490;Plain Cheese slice;positive
+1548;food;negative
+1709;food;negative
+1550;food;positive
+1827;food;positive
+1228;manager;negative
+1228;open faced cheese sandwich;neutral
+1702;food;positive
+1702;price;neutral
+1487;garlic;positive
+1487;fresh tomatoes;positive
+1487;sauce on the pizza;positive
+1632;bill;conflict
+1632;measures of liquers;positive
+1273;pizza;positive
+179;Service;positive
+109;lamb chop;positive
+109;salads;positive
+109;lemon;positive
+109;extra virgnin olive oil;positive
+1185;lunch;positive
+1185;dinner;positive
+1555;counter;negative
+1032;fish;positive
+1032;service;positive
+1032;Sushi fix;positive
+1124;waitress;positive
+1663;reservation sigh;neutral
+1663;table;negative
+1690;food;negative
+1780;menu;negative
+1780;food art;positive
+1471;toppings;neutral
+175;decor;positive
+175;dining hall;positive
+175;semi-private boths;positive
+1609;Service;positive
+1057;service;negative
+1656;spicy tuna;positive
+1656;salmon;positive
+1345;Barbecued codfish;positive
+1345;seasoning;negative
+1345;texture;conflict
+1345;spice rub;negative
+1345;herb mix;negative
+1345;sauce;negative
+1159;dance floor;positive
+1159;dinner;neutral
+1209;Bagels;positive
+1377;spot;positive
+1439;menu;negative
+1439;American Chinese food;negative
+1750;Located;positive
+1007;trays of Dim Sum;neutral
+1161;bar;positive
+1161;bartenders;positive
+1000;food;positive
+1000;dishes;positive
+1000;drinks;positive
+1021;lines;negative
+1021;crowds;negative
+1729;Pizza;positive
+1429;Sauce;negative
+1429;food;negative
+1429;flavor;negative
+1066;apetizers;neutral
+1066;food;neutral
+127;noodle and rices dishes;positive
+1199;sauces;negative
+1211;capex;positive
+1211;bagels;neutral
+1312;chefs;neutral
+1565;decor;neutral
+1659;nigiri;neutral
+1797;place;positive
+1797;service;negative
+1731;calamari;negative
+1586;FOOD PORTIONS;positive
+1792;staff;negative
+166;service;negative
+1727;music;positive
+1727;in-house lady DJ;positive
+1541;hot dogs;negative
+1541;buns;negative
+1037;food;positive
+1386;food;positive
+1386;Thai cuisine;positive
+1386;flavors;positive
+1378;service;positive
+1183;soup;positive
+1118;served;positive
+1287;bar scene;positive
+1094;food;positive
+1493;owner;positive
+1493;pizza;positive
+1014;atmosphere;positive
+1434;General Tao chicken;negative
+1434;Chinese food;neutral
+1050;cuisine;positive
+1050;service;positive
+1680;bar;neutral
+1671;reservation;positive
+1671;drink;neutral
+1671;bar;neutral
+1677;wait staff;positive
+1412;dishes;positive
+1662;sushi;neutral
+1176;dumplings;positive
+1340;Decor;neutral
+1111;drinks;positive
+1279;Pizza;positive
+1279;Margheritta;positive
+1006;Dim Sum;negative
+1621;service;positive
+1621;food;positive
+1041;people;negative
+1089;sandwiches;negative
+1532;dining experience;negative
+1509;serves;negative
+131;establishment;positive
+1580;staff;positive
+1436;Guizhou chicken;positive
+1436;fish with hot bean source;positive
+1436;fish fillet in spicy source;positive
+1436;special menu;positive
+1370;food;negative
+1353;Thai food;positive
+1353;service;negative
+1645;sushi;positive
+1645;sushi places;positive
+1645;quality;positive
+1054;toaster;negative
+1040;food;positive
+1324;Dosa;positive
+1477;portions;positive
+1477;appetizer;neutral
+1477;entree;neutral
+1564;People;positive
+1069;cream cheeses;positive
+1069;coffee;positive
+1382;beef version;negative
+1382;beef;negative
+1128;thai;negative
+1576;owners;neutral
+1576;cost;negative
+1191;chef;negative
+1191;waitress;negative
+1673;wine selection;positive
+1415;food;negative
+1415;service;negative
+1660;Japanese food;neutral
+1575;entertainment;positive
+1608;pizza;positive
+1418;bill;neutral
+1644;all you can eat deal;positive
+1822;pizzas;positive
+1822;price;positive
+1594;food;positive
+1327;menu;positive
+1327;variety of dishes;positive
+1327;seafood;positive
+132;price;positive
+132;food;positive
+132;service;positive
+1029;sashimi plate;positive
+163;waitress;negative
+163;servants;negative
+1017;food;positive
+1017;service;neutral
+1339;lunch;neutral
+1140;food;positive
+1174;place;conflict
+162;drinks;neutral
+162;appetizers;neutral
+1216;hot bagel;positive
+1304;food;neutral
+1304;service;neutral
+1304;tip;negative
+1335;food;positive
+1335;service;negative
+1335;waiter;negative
+1335;service;negative
+1344;jalapeno;positive
+1381;pad see ew;neutral
+1381;dishes;positive
+1840;location;positive
+1363;food;neutral
+1065;food;positive
+1065;price;positive
+1099;dinner;neutral
+1099;brunch;neutral
+1114;staff;positive
+1095;quality of food;positive
+1095;live jazz;positive
+1240;cook;positive
+1787;Yellowtail;positive
+1244;drink;neutral
+1343;Fluke sashimi;positive
+1343;jalapeno-lime olive oil;positive
+1343;fruit of the oil;positive
+1343;fish;positive
+1779;staff;positive
+1779;ambiance;positive
+1779;owner;positive
+142;congee;positive
+142;bread;positive
+142;donut like deep fried dough they call Ow Ley Soh;positive
+1204;food;conflict
+1204;ethnic food;negative
+1606;cooks;positive
+1424;Scallion Pancake;positive
+1424;vegetable juice;positive
+1424;Guizhou Chicken;positive
+1424;Shredded Squid Family Style;positive
+1424;Sichuan Spicy Soft Shell Crab;positive
+1424;Shuizhu Fish;positive
+1424;Sichuan food;neutral
+1294;spinach mushroom calzone;negative
+1294;canned vegetables;negative
+1393;noodle dishes;positive
+1393;Green Curry dish;negative
+1317;prices;negative
+1213;service;negative
+1213;food;negative
+1281;atmoshere;positive
+1738;staff;positive
+1081;cost;negative
+1081;meal;neutral
+1081;seat;negative
+1117;dessert;positive
+1117;White Chocolate Bread Pudding with Gelato and hot chocolate;positive
+1117;dinner;positive
+1015;place;positive
+1015;drinks;positive
+1015;desserts;positive
+1607;service;negative
+1607;dinner;neutral
+1607;table;positive
+1355;Drinks;negative
+1173;dumplings;positive
+1470;pizza;negative
+1595;meal;positive
+1018;food;negative
+1018;service;negative
+1018;service;negative
+1018;good;positive
+1837;service;positive
+1296;prices;negative
+165;food;neutral
+165;appetizers;neutral
+158;appetizer platter;neutral
+1546;jewish deli food;conflict
+1747;Wait staff;negative
+1747;pie;positive
+1481;ingredients;positive
+1481;crust;positive
+1481;slice;positive
+1767;Fish;positive
+1039;decor;negative
+1547;owner;negative
+1714;spinach ravioli in a light oil and garlic sauce;positive
+1714;dish;positive
+1714;dishes;neutral
+1329;reservations;negative
+1704;food;negative
+1196;service;negative
+1196;table;negative
+16;manager;positive
+16;reservation;neutral
+16;bar;neutral
+16;wait;positive
+124;food;positive
+1681;servers;positive
+1734;Service;neutral
+1768;Waitstaff;positive
+1664;Service;negative
+1664;food;neutral
+1585;SHOWS;positive
+1585;ACTORS;positive
+1667;ambience;neutral
+1667;food;neutral
+1497;waitress;positive
+1116;zucchini;positive
+1116;mashed potatoes;positive
+1116;garlic;positive
+1116;butter;positive
+1045;Spicy Scallop roll;positive
+1650;sushi;positive
+1835;workers;negative
+1835;order;negative
+1023;desserts;positive
+1023;mixed drinks;positive
+1023;snack foods;positive
+1062;bagel;negative
+1062;eggs;negative
+1062;bagel;negative
+1722;wait staff;positive
+1218;atmosphere;negative
+1218;bagel;neutral
+1387;Pad Se-Ew;positive
+1387;Chicken with Cashew Nuts;positive
+1301;food;negative
+1559;Food;conflict
+1655;sushi place;negative
+1254;Thai ice tea;positive
+1665;Drinks;negative
+1665;priced;negative
+1845;service;neutral
+1845;sesame crusted Salmon;neutral
+149;lunch;positive
+1713;atmosphere;positive
+1713;people;positive
+1713;food;positive
+1323;music;positive
+1322;Chicken Tikka Masala;positive
+184;kitchen;negative
+1328;hostess;positive
+1482;plain slice;positive
+1482;toppings;positive
+1372;Service;negative
+1372;ambience;negative
+1602;Service;positive
+1602;takeout;positive
+1473;pizza;negative
+1675;quality of food;negative
+1730;Salads;positive
+1730;meal;positive
+1120;tamarind duck;positive
+1120;noodles with ground beef;positive
+1120;dishes;positive
+1120;Thai flavors;positive
+1668;cuisine;positive
+1357;spot;positive
+1670;wait;negative
+1670;reservations;neutral
+1488;pizza;positive
+1488;sicilian;positive
+136;takeout;positive
+1096;ambiance;positive
+1096;night scene;positive
+1096;spot;positive
+1591;shows;positive
+1591;actors;positive
+1844;drinks;positive
+1844;decor;positive
+1844;food;positive
+1618;desserts;positive
+1618;cannoli;positive
+1618;after dinner drink;positive
+1800;room;neutral
+1800;area;negative
+1002;view;positive
+1002;food;positive
+1181;place;conflict
+1181;food;neutral
+1052;bagels;positive
+1052;cream cheese;positive
+1739;service;positive
+1583;SHOWS;positive
+1469;pizza;positive
+1469;atmoshpere;positive
+1691;food;positive
+1666;Food;conflict
+1666;wait;negative
+1384;food;positive
+1384;price;positive
+1167;fried dumpling;positive
+1457;primi;positive
+1457;secondi;positive
+1457;portions;positive
+1530;employees;negative
+1530;dining area;neutral
+1799;waitress;neutral
+1433;Sichuan chef;neutral
+1200;spicy tuna roll;negative
+1200;serving;neutral
+1200;nori;negative
+1318;ambience;negative
+1318;place;negative
+1318;aisle;negative
+1563;Pakistani food;positive
+1459;eggplant parmesan;positive
+1459;baked ziti with meatsauce;positive
+1459;serves;positive
+1597;ingredients;positive
+1597;price;positive
+1441;hot pot with seafood;negative
+1441;shrimp;negative
+1441;squid;negative
+1441;entree;positive
+1441;crabmeat;negative
+1305;food;negative
+1305;menu;neutral
+1438;white sauce;negative
+1438;Chinese food;neutral
+1570;food;neutral
+1454;menu items;negative
+1206;place;negative
+1206;food;positive
+1164;food;positive
+1164;wait;negative
+1846;mayonaisse;negative
+1846;food runners;neutral
+1846;bill;negative
+1846;fries;negative
+110;wines;neutral
+110;wine list;positive
+1612;iced tea;positive
+1226;salads;negative
+1226;lettuce;neutral
+1182;food;positive
+1182;price;positive
+1182;fried dumplings;negative
+1303;prices;negative
+1313;dishes;negative
+1100;service;negative
+1786;Tuna roll;positive
+1786;price range;positive
+153;comfort food;positive
+1346;ingredients;positive
+1346;technique;positive
+1346;lunch;neutral
+1346;dinner;neutral
+1686;price;negative
+1686;dish;negative
+1686;lunch special;negative
+1067;bagel;negative
+1190;service;negative
+1275;snapple;positive
+1385;Service;positive
+1385;decor;positive
+1088;dosas;negative
+1088;popcorn topping;neutral
+1157;ladies;positive
+1129;food;conflict
+1078;fillings;neutral
+1078;dosa batter;positive
+1268;mussaman curry;negative
+1268;fried tofu;negative
+1268;potato;negative
+1151;place;negative
+1227;Bagels;neutral
+1409;lunch buffet;neutral
+135;price;positive
+135;congee;neutral
+135;noodles;neutral
+135;rice dishes;neutral
+1456;food;positive
+1456;prices;positive
+1271;red curry;negative
+1271;pad thai;negative
+1271;rice;negative
+1271;seafood;negative
+1631;wine list;positive
+1631;meal;positive
+1631;priced;positive
+1371;hanger steak;negative
+1371;tuna;negative
+1596;pizza;positive
+1232;lunch food;positive
+1127;food;positive
+1127;quasi-thai;positive
+1217;bagels;positive
+1028;portions;positive
+1082;menu;neutral
+1080;chai tea;positive
+1641;Spicy Tuna hand rolls;positive
+1724;atmosphere;positive
+1031;service;negative
+1031;food;positive
+1031;atmosphere;positive
+1205;sushi;positive
+1419;Thali;negative
+181;food;positive
+1465;service;conflict
+1544;place;positive
+1341;Service;positive
+1011;chinese food;positive
+14;staff;negative
+160;Gulab Jamun (dessert);positive
+160;waiter;positive
+116;food;positive
+116;wine;positive
+116;prices;positive
+1010;bill;negative
+1288;owners;positive
+1288;employees;positive
+1288;pizza;positive
+1723;food;positive
+1723;mussels in spicy tomato sauce;positive
+1723;fries;positive
+1795;servers;negative
+1276;case of snapple;neutral
+1519;staff;positive
+1519;bar;neutral
+1009;service;negative
+1009;food;negative
+1460;decor;conflict
+1338;food;positive
+1338;service;negative
+1625;waiters;positive
+1604;dinner;neutral
+1440;soup;negative
+1440;pepper;negative
+1771;sushi;neutral
+1394;atmosphere;positive
+1708;dinner;neutral
+1061;Service;positive
+1514;potato chips;positive
+1514;bar;neutral
+130;service;negative
+1683;vibe;positive
+1683;service;positive
+1683;food;positive
+1171;taste;positive
+1171;quantity;positive
+1518;bartender;neutral
+1518;food;positive
+1518;drinks;positive
+1518;steak with portobello mushrooms;positive
+1518;bar;neutral
+1156;spot;positive
+1715;martinis;positive
+1643;rolls;negative
+1643;menu;neutral
+1643;avocado;negative
+1643;rice;negative
+185;food;neutral
+1710;waiter;positive
+1710;place;positive
+1710;prices;negative
+1710;food;negative
+164;place;negative
+1480;slice;positive
+1839;Food;positive
+1756;price;positive
+1097;cuisine;positive
+1097;prices;positive
+1186;table;positive
+1295;counter service;negative
+1491;sauce;positive
+1491;crust;positive
+1601;entrees;positive
+1794;drinks;negative
+1163;service;positive
+1109;garlic mashed potatoes;positive
+1748;pizza;positive
+1748;service;positive
+1428;lunch;neutral
+1639;wine list;negative
+1639;desserts;negative
+1417;Lassi;neutral
+1030;service;conflict
+1030;waitresses;conflict
+1782;Taxan;positive
+1649;sushi;positive
+1649;menu;positive
+1649;Japanese classic cuisine;positive
+1195;sushi;neutral
+1195;prices;neutral
+1693;Owner;neutral
+1496;service;positive
+1399;food;positive
+1399;owner;positive
+1024;drink;neutral
+1024;hong-kong styled milk;positive
+1024;tea with tapioca pearls (hot);positive
+1483;owner;positive
+1701;crew;positive
+1701;staff;positive
+1701;serving;positive
+1086;chutneys;positive
+1231;bagels;positive
+1676;atmosphere;conflict
+1699;fried dumplings;positive
+147;BBQ ribs;positive
+1411;food;positive
+1566;food;positive
+126;Seating;neutral
+1207;tuna;positive
+182;somosas;positive
+182;chai;positive
+182;chole;positive
+182;dhosas;negative
+182;dhal;negative
+1416;prices;negative
+1818;Service;positive
+1718;food;positive
+1718;decor;positive
+1718;service;positive
+1192;sushi;positive
+1192;sauce;positive
+1192;topping;positive
+1373;taste;negative
+1325;meal;positive
+1528;food;positive
+1162;atmosphere;positive
+1162;music;positive
+1162;dress cod;negative
+1716;place;positive
+1003;strawberry daiquiries;positive
+1614;dinner;neutral
+140;egg noodles in the beef broth with shrimp dumplings and slices of BBQ roast pork;positive
+1168;table;neutral
+1168;rice congee soup;neutral
+1060;Spreads;positive
+1060;toppings;positive
+1302;prices;negative
+1302;prices;negative
+1302;food;negative
+1302;service;negative
+1642;staff;positive
+1766;Food;positive
+1119;menu;neutral
+1119;pad thai;neutral
+1119;tom yum soup;neutral
+1158;food;positive
+1467;eats;positive
+1123;entrees;negative
+1123;summer rolls;positive
+1123;owner;positive
+1395;entrees;positive
+1366;drinks;positive
+1366;service staff;negative
+1638;prices;positive
+1638;food;positive
+1534;pastrami on challah sandwich;positive
+1534;soups;positive
+1534;knishes;positive
+1778;atmosphere;neutral
+1733;Decor;positive
+1358;spring rolls;positive
+1358;noodles;positive
+1358;price;positive
+1170;line;negative
+1326;food;positive
+1627;service;positive
+1558;rice;positive
+1558;entrees;positive
+1540;tuna;positive
+1508;discount;negative
+1508;service;negative
+1610;pizza;positive
+1139;Edamame pureed;positive
+1808;service;negative
+1398;food;positive
+1398;service;positive
+1398;atmosphere;positive
+1398;lunch buffet;positive
+1398;dinner;positive
+1398;lunch;positive
+1038;service;neutral
+1038;air conditioning;negative
+1038;meal;negative
+1770;sushi;negative
+151;food;positive
+151;price;positive
+151;decor;negative
+1423;sichuan cooking;positive
+1423;chongqing hotpot;positive
+1851;Service;conflict
+1539;hot dogs;neutral
+1539;menu;neutral
+1687;dish;neutral
+1687;beef;neutral
+137;place;positive
+1462;Appetizers;neutral
+1462;main dishes;neutral
+1605;pizza;neutral
+1605;caprese salad appetizer;neutral
+1447;meal;negative
+1430;food;neutral
+1430;value;neutral
+1536;soup;positive
+1536;nosh (pastrami sandwich);positive
+1420;beer;negative
+1027;bottle of sake;neutral
+1027;edamames;neutral
+1027;sushi plate;neutral
+1027;sashimi;neutral
+1735;cheese sticks;neutral
