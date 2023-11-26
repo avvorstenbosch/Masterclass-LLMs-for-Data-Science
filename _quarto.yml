@@ -1,5 +1,5 @@
 project:
-  output-dir: _slides
+  output-dir: slides
 
 title-slide-attributes:
   data-background-opacity: "0.5"
