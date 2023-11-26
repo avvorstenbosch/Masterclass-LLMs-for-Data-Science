@@ -118,11 +118,15 @@ response <- create_chat_completion(
 #| echo: false
 #| output: false
 import yaml
-import openai
+from openai import OpenAI
 file_path = "../credentials.yml"
 with open(file_path, 'r') as yaml_file:
     credentials = yaml.safe_load(yaml_file)
-openai.api_key = credentials["OPENAI_API_KEY"]
+
+client = OpenAI(
+    # defaults to os.environ.get("OPENAI_API_KEY")
+    api_key=credentials["OPENAI_API_KEY"],
+)
 ```
 
 ## Let's try it out! {.smaller}
@@ -130,7 +134,8 @@ openai.api_key = credentials["OPENAI_API_KEY"]
 
 ```{python}
 #| echo: true
-response = openai.ChatCompletion.create(
+
+response = client.chat.completions.create(
     model="gpt-3.5-turbo", 
     messages=[
         {"role": "system", "content": "You are a helpful assistant."},
@@ -174,7 +179,7 @@ print(response.choices[0].message.content)
 #| eval: false
 #| echo: true
 #| output: false
-response = openai.ChatCompletion.create(
+response = client.chat.completions.create(
     model="gpt-3.5-turbo", 
     messages=[
         {"role": "system", "content": "You are a helpful assistant."},
