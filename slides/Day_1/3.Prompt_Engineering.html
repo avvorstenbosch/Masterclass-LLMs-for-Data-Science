@@ -97,7 +97,7 @@
     code span.wa { color: #e85848; } /* Warning */
   </style>
   <link rel="stylesheet" href="3.Prompt_Engineering_files/libs/revealjs/dist/theme/quarto.css">
-  <link rel="stylesheet" href="../style.scss">
+  <link rel="stylesheet" href="../style.css">
   <link href="3.Prompt_Engineering_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="3.Prompt_Engineering_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="3.Prompt_Engineering_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -507,7 +507,7 @@ Duration: Days</p>
 <li class="fragment">FORMAT_OUTPUT: (Optional) Specify how the answer should be given.</li>
 </ul></li>
 </ul>
-<div class="cell" data-execution_count="1">
+<div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1" data-code-line-numbers="|2|3|4|5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="ss">f"""</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="ss">ROLE: </span><span class="sc">{</span>ROLE<span class="sc">}</span></span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="ss">TASK: </span><span class="sc">{</span>TASK_DESCRIPTION<span class="sc">}</span></span>
@@ -598,7 +598,7 @@ Duration: Days</p>
 <ul>
 <li class="fragment">To help mitigate this (partially), you can Include a reference text<sup>1</sup></li>
 </ul>
-<div class="cell" data-execution_count="2">
+<div class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="ss">f"""</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="ss">ROLE: </span><span class="sc">{</span>ROLE<span class="sc">}</span></span>
 <span id="cb2-3"><a href="#cb2-3"></a><span class="ss">TASK: </span><span class="sc">{</span>TASK_DESCRIPTION<span class="sc">}</span></span>
@@ -621,7 +621,7 @@ Duration: Days</p>
 <li class="fragment">To help mitigate this (partially), you can Include a reference text<sup>1</sup></li>
 <li class="fragment">Explicitly tell the model to not answer the question if it can’t.</li>
 </ul>
-<div class="cell" data-execution_count="3">
+<div class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3" data-code-line-numbers="|6-9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="ss">f"""</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="ss">ROLE: </span><span class="sc">{</span>ROLE<span class="sc">}</span></span>
 <span id="cb3-3"><a href="#cb3-3"></a><span class="ss">TASK: </span><span class="sc">{</span>TASK_DESCRIPTION<span class="sc">}</span></span>

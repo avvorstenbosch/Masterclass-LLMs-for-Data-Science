@@ -1,0 +1,59 @@
+@import 'https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&display=swap';
+/*-- scss:defaults --*/
+/*-- scss:rules --*/
+ .reveal .custom-title {
+	 position: absolute;
+	 color: #00589b;
+	 font-size: 3em;
+	 text-align: right;
+	 right: 20px;
+	 top: -200px;
+}
+/*-- slide titels --*/
+ h1.title {
+	 font-size: 180px !important;
+}
+/*-- highlighted text in slides example: <span class="highlighted-text">Introduction</span> --*/
+ .highlighted-text {
+	 color: #f7c420;
+	 font-weight: bold;
+	 padding: 2px 5px;
+}
+ .iframe-chatgpt {
+	 height: 650px;
+	 width: 500px;
+	 border: 0;
+	 background-color: antiquewhite;
+	 border-radius: 12px;
+	 margin-left: auto;
+	 margin-right: auto;
+	 display: block;
+	/* This ensures the iframe behaves like a block element */
+}
+ .full-bg-slide .slide-background-content {
+	 background-size: 100% auto !important;
+	/*This ensures the slide fits on screen*/
+	 background-repeat: no-repeat;
+	 background-position: center center !important;
+}
+ .inline-fragment {
+	 display: flex;
+}
+ .inline-fragment p {
+	 padding-right: 10px;
+	 padding-left: 10px;
+	 padding-top: 4px;
+}
+ .sourceCode {
+	 background-color: #000 !important;
+	/* This sets the background to a light gray color */
+	 border-radius: 12px !important;
+}
+ .reveal pre.sourceCode code {
+	 max-height: 800px;
+}
+ .smaller-2 {
+	 font-size: 22px;
+	/* You can adjust the size as needed */
+}
+ 
