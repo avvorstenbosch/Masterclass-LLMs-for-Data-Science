@@ -168,7 +168,7 @@ figures
 /.quarto/
 
 # Ignore the slides
-_slides
+slides
 
 # ignore sectrets
 credentials.yml
