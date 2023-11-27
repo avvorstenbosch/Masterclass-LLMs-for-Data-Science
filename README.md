@@ -7,18 +7,18 @@ This Masterclass contains examples in both `Python` and `R` users and is suitabl
 
 ## Using the Masterclass
 
-This masterclass was developed using `Quarto`. I highly recommend installing if you intend to work through these exercises.
+This Masterclass was developed using `Quarto`. I highly recommend installing it if you intend to work through these exercises.
 
-- `Python`: Using the `VScode`-IDE allows you to interactively work with the .Qmd files, just like with .ipynb files.
-- `R`: Using the `Rstudio`-IDE allows you to interactively work with the .Qmd files, just like with .Rnotebook files.
+- `Python`: Using the `VS Code`-IDE allows you to interactively work with the .qmd files, just like with .ipynb files.
+- `R`: Using the `Rstudio`-IDE allows you to interactively work with the .qmd files, just like with .Rnotebook files.
 
-The timetable below has links to all the slides. The slides were rendered to the `RevealJS`-html format, which means all the slides can be opened directly in the browser. In ym experience the edge and chrome browsers have trouble with some of the slides. Firefox does not seem to have any issues so far.
+The timetable below has links to all the slides. The slides were rendered to the `RevealJS`-html format, which means all the slides can be opened directly in the browser and have many interactive features; press `?` for an overview. In my experience the edge and chrome browsers have trouble with some of the slides. Firefox does not seem to have any issues so far.
 
 **Main branch**\
-The main branch contains all the source `Quarto`, `Python`, and `R` branches for the workshop\
+The main branch contains all the source `Quarto`, `Python`, and `R` code for the workshop.\
 \
 **gh_pages**\
-This branch is used for hosting the full materclass on github. This branch contains the full masterclass in the `./slides/` folder. All the html-files, datasets and figures can be found there. 
+This branch is used for hosting the full Masterclass on github. This branch contains the full Masterclass in the `./slides/` folder. All the html-files, datasets and figures can be found there. 
 
 ## Timetable day 1
 
@@ -65,7 +65,7 @@ The second day of the Masterclass is a more in-depth session, ending with a larg
 
 # Repository structure
 
-This course was rendered using `Quarto` to create `RevealJS` HTML slides. The slides and solutions to exercises can be found under the folder `./slides/`, which has seperate subfolders `./slides/Day 1/` and `./slides/Day 2/` for the individual days.
+This course's materials were rendered using `Quarto` to create `RevealJS`-html slides. The slides and solutions to exercises can be found under the folder `./slides/`, which has separate subfolders `./slides/Day 1/` and `./slides/Day 2/` for the individual days.
 
 The source code for the exercises and slides can be found under the folders names `./Day 1/` and  `./Day 2/`
 
@@ -146,7 +146,7 @@ The source code for the exercises and slides can be found under the folders name
 
 # Contributing
 
-I greatly appreciate contributions from the community. Your input helps to improve and expand the masterclass. Here’s how you can contribute:
+I greatly appreciate contributions from the community. Your input helps to improve and expand the Masterclass. Here’s how you can contribute:
 
 ## Reporting Bugs or Factual Errors
 
@@ -156,11 +156,11 @@ I greatly appreciate contributions from the community. Your input helps to impro
 ## Suggestions for Improvements
 
 - Suggestions are always welcome! Feel free to submit your ideas through the Issues tab.
-- Explain your suggestion in detail and how it adds value to the masterclass.
+- Explain your suggestion in detail and how it adds value to the Masterclass.
 
 ## Submitting Pull Requests
 
-- If you have developed content that you believe would enhance this masterclass, please submit a pull request.
+- If you have developed content that you believe would enhance this Masterclass, please submit a pull request.
 - Ensure your submission is well-researched, factually accurate, and adds educational value.
 - Follow the existing structure and style for consistency.
 
@@ -171,7 +171,7 @@ I greatly appreciate contributions from the community. Your input helps to impro
 
 ## License
 
-This project is open source and available under the Attribution-NonCommercial-ShareAlike 4.0 International Creative Commons Licens.
+This project is open source and available under the Attribution-NonCommercial-ShareAlike 4.0 International Creative Commons License.
 
 You are free to:
 
@@ -179,7 +179,7 @@ You are free to:
 - Adapt — remix, transform, and build upon the material.
 The licensor cannot revoke these freedoms as long as you follow the license terms.
 Under the following terms:
-- Attribution - You must give appropriate credit , provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
+- Attribution - You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
 - NonCommercial - You may not use the material for commercial purposes.
 - ShareAlike - If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.
 - No additional restrictions - You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.
