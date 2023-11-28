@@ -12,9 +12,10 @@ This masterclass was developed using `Quarto`. I highly recommend installing if 
 - `Python`: Using the `VScode`-IDE allows you to interactively work with the .Qmd files, just like with .ipynb files.
 - `R`: Using the `Rstudio`-IDE allows you to interactively work with the .Qmd files, just like with .Rnotebook files.
 
-The timetable below has links to all the slides. The slides were rendered to the `RevealJS`-html format, which means all the slides can be opened directly in the browser.
+The timetable below has links to all the slides. The slides were rendered to the `RevealJS`-html format, which means all the slides can be opened directly in the browser. In ym experience the edge and chrome browsers have trouble with some of the slides. Firefox does not seem to have any issues so far.
 
 ## Timetable day 1
+
 The first day of the Masterclass is a general introduction discussing the following points:
 
 - What are LLMs and what is the recipe for making them?
@@ -26,34 +27,34 @@ The first day of the Masterclass is a general introduction discussing the follow
 
 | Time              | Title                                          | Description                                                                       |
 |-------------------|------------------------------------------------|-----------------------------------------------------------------------------------|
-| 09:00 – 09:30 AM | 👋 [Introduction](https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/slides/Day_1/1._Opening.html)                                 |                                                                                   |
-| 09:30 – 10:45 AM | 🤖 [Introduction to LLM's and ChatGPT](https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/slides/Day_1/2._Introduction_Large_Language_Models_and_ChatGPT.html)         | NLP and development of LLMs<br>Capabilities of ChatGPT<br>Real world applications |
+| 09:00 – 09:30 AM | 👋 [Introduction](https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/slides/Day_1/1.Opening.html)                                 |                                                                                   |
+| 09:30 – 10:45 AM | 🤖 [Introduction to LLM's and ChatGPT](https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/slides/Day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html)         | NLP and development of LLMs<br>Capabilities of ChatGPT<br>Real world applications |
 | 10:45 – 11:00 AM | ☕ Break                                        |                                                     |
-| 11:00 – 12:00 PM | 💬 [Prompt Engineering](https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/slides/Day_1/3._Prompt_Engineering.html)                          | Introduction to prompting<br>Best practices for prompting<br>[Hands-on exercises]((https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/slides/Day_1/exercises/) )   |
+| 11:00 – 12:00 PM | 💬 [Prompt Engineering](https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/slides/Day_1/3.Prompt_Engineering.html)                          | Introduction to prompting<br>Best practices for prompting<br>[Hands-on exercises](https://github.com/avvorstenbosch/Masterclass-LLMs-for-Data-Science/tree/main/Day_1/exercises)    |
 | 12:00 – 13:00 PM | 🥪 Lunch                                        |                                            |
-| 13:00 – 13:45 PM | 💻 [Programming with GPT](https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/slides/Day_1/)                         | Introduction to the OpenAI API<br>[Hands-on exercises](https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/slides/Day_1/exercises/)                               |
-| 13:45 – 14:45 PM | ⚖️ [Ethical Considerations in Using LLMs](https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/slides/Day_1/)        | Biases and Misinformation<br>The Dark Side of LLMs<br>Privacy and Legal Challenges|
+| 13:00 – 13:45 PM | 💻 [Programming with GPT](https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/slides/Day_1/4.Programming_with_LLMs.html)                         | Introduction to the OpenAI API<br>[Hands-on exercises](https://github.com/avvorstenbosch/Masterclass-LLMs-for-Data-Science/tree/main/Day_1/exercises)                               |
+| 13:45 – 14:45 PM | ⚖️ [Ethical Considerations in Using LLMs](https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/slides/Day_1/5.Ethical_Considerations_in_Using_LLMs_.html)        | Biases and Misinformation<br>The Dark Side of LLMs<br>Privacy and Legal Challenges|
 | 14:45 - 15:00 PM | ☕ Break                                        |                                                |
-| 15:00 - 16:00 PM |  💻[Programming with GPT](https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/slides/Day_1/)                         | Pair-programming with LLMs<br>[Hands-on exercises](https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/slides/Day_1/exercises/)                                   |
-| 16:00 – 16:45 PM  | 🚀 [Improved Efficiency with ChatGPT](https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/slides/Day_1/)            | Examples of real implementations of ChatGPT in a workflow                         |
+| 15:00 - 16:00 PM |  💻[Programming with GPT](https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/slides/Day_1/4.Programming_with_LLMs.html)                         | Pair-programming with LLMs<br>[Hands-on exercises](https://github.com/avvorstenbosch/Masterclass-LLMs-for-Data-Science/tree/main/Day_1/exercises)                                   |
+| 16:00 – 16:45 PM  | 🚀 [Improved Efficiency with ChatGPT](https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/slides/Day_1/6.Increased_efficiency_with_LLMs.html)            | Examples of real implementations of ChatGPT in a workflow                         |
 | 16:45 – 17:00 PM | 📝 Summary, Evaluation and Conclusion of Day 1 |                                                   |
 
-
 ## Timetable Day 2
+
 The second day of the Masterclass is a more in-depth session, ending with a large practical assignment:
 
 - Can, and should, you use LLMs for Natural Language Processing?
 - What are the latest developments in the field of LLMs?
-- How to build your own Retrieval Augmented Generation system with fact-checking against hallucinations? 
+- How to build your own Retrieval Augmented Generation system with fact-checking against hallucinations?
 
  | Time              | Title                                                               | Description                                                                                   |
 |-------------------|---------------------------------------------------------------------|-----------------------------------------------------------------------------------------------|
-| 09:00 – 09:20 AM | 🌅 [Opening and Discussion of the Day's Agenda](https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/slides/Day_2/1._Opening.html)                       |                                                                                               |
-| 09:20 – 10:45 AM | 📊 [Text Analysis with LLMs](https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/slides/Day_2/2._NLP_with_LLMs.qmd)                                          | Foundation models for NLP<br>Evaluation of performance<br>[Hands-on Exercises](https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/slides/Day_2/exercises/)                   |
+| 09:00 – 09:20 AM | 🌅 [Opening and Discussion of the Day's Agenda](https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/slides/Day_2/1.Opening.html)                       |                                                                                               |
+| 09:20 – 10:45 AM | 📊 [Text Analysis with LLMs](https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/slides/Day_2/2.NLP_with_LLMs.html)                                          | Foundation models for NLP<br>Evaluation of performance<br>[Hands-on Exercises](https://github.com/avvorstenbosch/Masterclass-LLMs-for-Data-Science/tree/main/Day_2/exercises)                   |
 | 10:45 – 11:00 AM | ☕ Break                                                             |                                                                         |
-| 11:00 – 12:30 PM | 🔍 [Retrieval Augmented Generation (RAG), open source, and next steps](https://avvorstenbosch.github.io/slides/Day_2/Masterclass-LLMs-for-Data-Science/3._Next_steps_for_LLMs.qmd) | LLMs versus Search Engines<br>How to host your own LLM<br>Next steps?                          |
+| 11:00 – 12:30 PM | 🔍 [Retrieval Augmented Generation (RAG), open source, and next steps](https://avvorstenbosch.github.io/slides/Day_2/Masterclass-LLMs-for-Data-Science/3.Next_steps_for_LLMs.html) | LLMs versus Search Engines<br>How to host your own LLM<br>Next steps?                          |
 | 12:30 – 13:30 PM | 🥗 Lunch                                                             |                                                                  |
-| 13:30 - 16:30 PM | 🚀 [Extended Practical Assignment - RAG 🔍](https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/slides/Day_2/exercises/)                                    |   Building your own Retrieval Augmented Generation system with fact-checking against hallucinations                                                                                    |
+| 13:30 - 16:30 PM | 🚀 [Extended Practical Assignment - RAG 🔍](https://github.com/avvorstenbosch/Masterclass-LLMs-for-Data-Science/tree/main/Day_2/exercises)                                    |   Building your own Retrieval Augmented Generation system with fact-checking against hallucinations                                                                                    |
 | 16:30 - 17:00 PM | 📝 Summary, Evaluation, and Conclusion                               |                                             |
 
 # Repository structure
@@ -163,9 +164,11 @@ I greatly appreciate contributions from the community. Your input helps to impro
 - **Review Process**: All submissions will be reviewed for quality and relevance. I aim to provide feedback or merge contributions promptly.
 
 ## License
+
 This project is open source and available under the Attribution-NonCommercial-ShareAlike 4.0 International Creative Commons Licens.
 
 You are free to:
+
 - Share — copy and redistribute the material in any medium or format.
 - Adapt — remix, transform, and build upon the material.
 The licensor cannot revoke these freedoms as long as you follow the license terms.
