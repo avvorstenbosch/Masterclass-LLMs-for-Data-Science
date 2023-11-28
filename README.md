@@ -33,7 +33,7 @@ The first day of the Masterclass is a general introduction discussing the follow
 
 | Time              | Title                                          | Description                                                                       |
 |-------------------|------------------------------------------------|-----------------------------------------------------------------------------------|
-| 09:00 – 09:30 AM | 👋 [Introduction](https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/slides/Day_1/1.Opening.html)                                 |                                                                                   |
+| 09:00 – 09:30 AM | 👋 Introduction                               |                                                                                   |
 | 09:30 – 10:45 AM | 🤖 [Introduction to LLM's and ChatGPT](https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/slides/Day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html)         | NLP and development of LLMs<br>Capabilities of ChatGPT<br>Real world applications |
 | 10:45 – 11:00 AM | ☕ Break                                        |                                                     |
 | 11:00 – 12:00 PM | 💬 [Prompt Engineering](https://avvorstenbosch.github.io/Masterclass-LLMs-for-Data-Science/slides/Day_1/3.Prompt_Engineering.html)                          | Introduction to prompting<br>Best practices for prompting<br>[Hands-on exercises](https://github.com/avvorstenbosch/Masterclass-LLMs-for-Data-Science/tree/gh_pages/Day_1/exercises)    |
