@@ -6,16 +6,19 @@ footer: "Ethics and LLMs"
 title-slide-attributes:
   data-background-image: "./figures/llms-and-ethics.webp"
   data-background-opacity: "0.5"
+resources: 
+  - ./webpages/hallucination1_files/*
+  - ./webpages/hallucination2_files/*
 
-date: "11-17-2023"
+
 ---
 
 ## Overview
-\
-__Disclaimer__\
+
+\__Disclaimer__\
 I don't claim to have the answers.\
-It is important to be aware of these topics.\
-Form your own opinions, and openly discuss these issues.
+Be aware of these topics.\
+Form your own opinions and openly discuss issues.
 
 ## Overview
 :::{.nonincremental}
@@ -30,23 +33,28 @@ Form your own opinions, and openly discuss these issues.
 - LLMs can strengthen negative stereotypes.
 - LLMs can strengten the views of users via confirmation bias:
   - LLMs have a tendency to agree with the user
-  - People have a tendency to think that 'models' are objective and speak the 'truth'
-- LLMs are 'skewed' to the trainingset majority:
+  - People have a tendency to think that models are *'objective'* and speak the *'truth'*
+- LLMs are *'skewed'* to the trainingset majority:
   - English Western views for example 
 
-![](./figures/reuters-amazon-bias.png){fig-aling=center}
+:::{.fragment}
 
-::: {.aside}
+:::{.smaller}
+
 [Reuters: Amazon scraps secret AI recruiting tool that showed bias against women](https://www.reuters.com/article/us-amazon-com-jobs-automation-insight-idUSKCN1MK08G)
+
+:::
+
+![](./figures/reuters-amazon-bias.png){fig-aling=center}
 :::
 
 ## Hallucinating false information
 - What are <span class="highlighted-text">Hallucinations</span>? 
   - It's when LLMs generates incorrect, nonsensical, or unverifiable information presented as fact.
   - Might also be answers that are not supported by the provided context
-  - Can be hard to spot as the model is a great 'bluffer'
+  - Can be hard to spot as the model is a great *'bluffer'*
     - Doesn't know that the information is wrong
-    - self-reflection does help however
+    - asking for self-reflection does help
 
 ![](./figures/chatgpt-lawyer.png)
 
@@ -57,12 +65,12 @@ Form your own opinions, and openly discuss these issues.
 ::: {.columns}
 
 ::: {.column width="50%"}
- <iframe src="https://chat.openai.com/share/e8826676-81ad-40b9-a9ad-a27dc22f9151" class="iframe-chatgpt"></iframe>
+ <iframe src="./webpages/hallucination1.html" class="iframe-chatgpt"></iframe>
 
 :::
 
 ::: {.column width="50%"}
- <iframe src="https://chat.openai.com/share/49872740-604f-4b27-a844-002eff6743a9" class="iframe-chatgpt"></iframe>
+ <iframe src="./webpages/hallucination2.html" class="iframe-chatgpt"></iframe>
 
 :::
 
@@ -90,6 +98,12 @@ First pedestrian was pushing a bike with shoping bags accross the road.
 
 ![Screenshots of Business Insider's disturbing conversation with "Eliza," a chatbot from Chai Research.](./figures/dangerous-chatbots.png){fig-align="center"}
 
+## Stories of dangerous behaviour by AI chatbots
+
+- [Google Gemini tells user to 'Please die'](https://gemini.google.com/share/6d141b742a13)
+
+- [Mother says AI chatbot led her son to kill himself in lawsuit against its maker](https://www.theguardian.com/technology/2024/oct/23/character-ai-chatbot-sewell-setzer-death)
+
 ## Importance of human-in-the-loop
 - **Quality Control:** Because of the generative design LLMs are prone to errors. Require human checks and feedback to ensure accuracy of the output.
 - **Human (ethical) Judgement:** Some decisions require human (ethical) judgment, especially in complex, nuanced situations where the context matters.
@@ -103,21 +117,23 @@ First pedestrian was pushing a bike with shoping bags accross the road.
     - *If not possible, make sure the risks are acceptable*
 
 
-## What constitutes appropriate content?
-- ChatGPT by OpenAI: closed source - strongly moderated and curated
-- Grok by Xai: closed source - 'supposedly' less restrictions
-- Llama-models by Meta: open source - Can be finetuned for any purpose
-- Keep in mind: Nobody is sharing the most important part: <span class="highlighted-text">DATA</span>
+## What constitutes appropriate content? {.smaller}
 
-![*A reddit pol on the most annoying ChatGPT responses*](./figures/users_getting_tired_of_responses.jpg)
+| Model                | Source        | Restrictions                              |
+|----------------------|---------------|-------------------------------------------|
+| ChatGPT by OpenAI    | Closed source | Strongly moderated and curated            |
+| Grok by Xai          | Closed source | Less restrictions                         |
+| Llama-models by Meta | Open source   | Can be finetuned for any purpose          |
 
-## Moderation of your GPT application with the OpenAI moderation API
-- Make sure no \textcolor{red}{'bad'} content is processed via your API-key/application.
-- The moderation endpoint is free to use when monitoring the inputs and outputs of OpenAI APIs. 
-- [OpenAI Moderation API](https://platform.openai.com/docs/guides/moderation/overview)
-```{.python}
-moderation_resp = openai.Moderation.create(input="Am I breaking any of the rules here?")
-``` 
+:::{.fragment}
+> **Keep in mind**: Nobody is sharing the most important part: <span class="highlighted-text">HIGH QUALITY DATA</span>
+:::
+
+
+:::{.fragment}
+![*A reddit pol on the most annoying ChatGPT responses*](./figures/users_getting_tired_of_responses.jpg){height=500px}
+:::
+
 ## Overview
 :::{.nonincremental}
 - <span class="highlighted-text">Biases and Misinformation</span>
@@ -176,7 +192,20 @@ developer Tim Davis, a professor of computer science and engineering at Texas A&
 - How can we mitigate inference of private information by LLMs?
   - [https://llm-privacy.org/](https://llm-privacy.org/)
 - How can we trust third-parties with our proprietary/private information?
-  - This will be discussed further on Day 2
+
+## Current view Dutch-government
+
+- ([Overheidsbrede visie Generatieve AI; 01-01-2024]()):\
+
+::: {.fragment style="text-align: center"}
+*Niet-gecontracteerde generatieve AI-toepassingen voldoen over het algemeen niet aantoonbaar aan de
+geldende privacy- en auteursrechtelijke wetgeving. Zodoende
+is het gebruik hiervan door Rijksorganisaties (of in opdracht
+daarvan) niet toegestaan, in die gevallen waarin het risico
+bestaat dat wetgeving wordt overtreden, tenzij de aanbieder
+en de gebruiker **aantoonbaar** voldoen aan de geldende wet- en
+regelgeving.*
+:::
 
 ## Transparency issues of LLMs
 - How can we trust models that are "black boxes"?
@@ -185,11 +214,17 @@ developer Tim Davis, a professor of computer science and engineering at Texas A&
 - How can we prevent the use of LLMs for unsuited usecases?
 
 ## Misuse of LLMs
+:::{.columns}
+:::{.column width="60%"}
 - How can we prevent the automated generation of misinformation at scale?
 - How can we prevent the use of these techniques for spam, identity fraud, and worse?
 - Who should decide what misuse of LLMs means?
-
 ![](./figures/spamspamspam.jpg){fig-aling=center}
+:::
+:::{.column width="40%"}
+![](./figures/facebook_fake_pages.jpeg){fig-aling=center height=800px}
+:::
+:::
 
 ## Are these AI developments safe?
  
@@ -199,26 +234,34 @@ developer Tim Davis, a professor of computer science and engineering at Texas A&
 
 <iframe width="500px" height="400" frameborder="0" src="https://www.bbc.com/news/av-embeds/65452940/vpid/p0fkvt9j"></iframe>
 
-[BBC: AI 'godfather' Geoffrey Hinton tells the BBC of AI dangers after he quits Google](https://www.bbc.com/news/av/world-us-canada-65453192)
-
 :::
 
 :::{.column width="33%"}
 
 <iframe width="500px" height="400" frameborder="0" src="https://www.bbc.com/news/av-embeds/65760449/vpid/p0frhhp3"></iframe>
 
-[BBC: AI 'godfather' Yoshua Bengio feels 'lost' over life's work](https://www.bbc.com/news/technology-65760449)
 :::
 
 :::{.column width="33%"}
 
-<div style="height:435px">
+<iframe width="500px" height="355" frameborder="0" src="https://www.youtube.com/embed/5t1vTLU7s40?si=Sw13s70TPQQ0XWtR&amp;start=7728" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-![](./figures/yann-lecun-safety.webp){width=500px}
+::: 
+:::
 
-</div>
+:::{.columns}
+:::{.column width="33%"}
 
-[BBC: Meta scientist Yann LeCun says AI won't destroy jobs forever](https://www.bbc.com/news/technology-65886125)
+[BBC: AI 'godfather' Geoffrey Hinton tells the BBC of AI dangers after he quits Google](https://www.bbc.com/news/av/world-us-canada-65453192)
+
+:::
+
+:::{.column width="33%"}
+[BBC: AI 'godfather' Yoshua Bengio feels 'lost' over life's work](https://www.bbc.com/news/technology-65760449)
+:::
+
+:::{.column width="33%"}
+[BBC: Yann LeCun says AI won't take over the world or destroy jobs forever](https://www.bbc.com/news/technology-65886125)
 ::: 
 
 :::
@@ -243,6 +286,10 @@ Geoffrey Hinton, Yann LeCun, and Joshua Bengio won the 2018 Turing Award. Highes
 [BI: AI one-percenters seizing power forever is the real doomsday scenario, warns AI godfather](https://www.businessinsider.com/sam-altman-and-demis-hassabis-just-want-to-control-ai-2023-10?international=true&r=US&IR=T)
 ::: 
 
+- Very real threat in current social media ecosystem:
+  - [Romanian election result annulment due to Election Interference](https://www.ifes.org/publications/romanian-2024-election-annulment-addressing-emerging-threats-electoral-integrity)
+  - [Report On The Investigation Into Russian Interference In The 2016 Presidential Election, R. Mueller](https://www.justice.gov/archives/sco/file/1373816/dl?inline=)
+  - [*Speculative:* Whistleblower: X's Role in 2024 Election Interference via AI-bots](https://theconcernedbird.substack.com/p/elon-musks-and-xs-role-in-2024-election)
 :::{.column width="50%"}
 
 <div style="height:600px">
@@ -271,6 +318,32 @@ Andrew NG: head of Google Brain and was the former Chief Scientist at Baidu, Sta
 
 <iframe width="800" height="500" style="display: block; margin-left: auto; margin-right: auto;" src="https://www.youtube.com/embed/IB0y2jidZIk?si=-JfIWbC0-IwFg6fx&amp;controls=0&amp;start=7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
+## EU AI Act {.smaller}
+
+:::{.columns}
+
+:::{.column width="60%"}
+
+Was just passed earlier this month, main effects:
+
+- Unacceptable risk AI systems will be banned
+  - Real time biometric identification
+  - Behavioural manipulation
+  - Social scoring systems
+- AI needs to be transparant
+  - You must know if you are interacting with AI
+  - Companies must disclose if content was generated with AI
+- The setup of a new European AI Office to coordinate compliance, implementation, and enforcement of the AI Act
+  - Tasked with oversight of General Purpose AI models across Europe
+
+:::
+
+:::{.column width="40%"}
+![](./figures/eu.webp)
+:::
+
+:::
+
 ## The economic impact of AI
 - Will it take (many of) our jobs?
 - Will it create jobs?
@@ -280,13 +353,12 @@ Andrew NG: head of Google Brain and was the former Chief Scientist at Baidu, Sta
 - These models are very compute intensive:
   - In the training process
   - But also during inference!
+- Estimated to use <span class="highlighted-text">0.5%-2%</span> of global energy usage in 2026\ ([International Energy Agency - Electricity forecast 2024](https://www.iea.org/reports/electricity-2024/executive-summary))
 - How can we justify this (inefficient) use of technology?
+
 
 ![](./figures/microsoft-ai-servers.jpg){fig-aling=center}
 
-:::{.notes}
-Estimated training cost of a single ChatGPT instance is 500 tonnes of C02. A 1000 cars driving 1000 kms.
-:::
 
 ## Training the model via RLHF
 
@@ -336,13 +408,13 @@ Estimated training cost of a single ChatGPT instance is 500 tonnes of C02. A 100
 
 # Group discussion
 
-1. Should LLMs be placed under regulatory oversight?
+1. Can LLMs be used if they are trained on copyrighted and/or AVG-protected data?
 
 
-2. Should LLMs be constrained by ethical guidelines and content filters?
+2. Should LLM usage be constrained by ethical guidelines and content filters?
 
 
-3. Should LLMs be trusted for any usecase, when 'hallucinations' are inherit to their design? 
+3. Can LLMs be trusted if hallucinations are an inherent part of these systems? 
 
 :::{.fragment style="font-size:30px"}
 Discuss within your group for <span class="highlighted-text"> 5-10 minutes </span>, and then we will discuss the results in a plenary session.
