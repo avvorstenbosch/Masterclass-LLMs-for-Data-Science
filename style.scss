@@ -1,17 +1,22 @@
-/*-- scss:defaults --*/
-
-// fonts
-@import 'https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&display=swap';
-
-$font-family-sans-serif: "Atkinson Hyperlegible", sans-serif;
-$presentation-heading-color: #d342c7;
-$presentation-title-slide-text-align: "left";
-$presentation-subtitle-slide-text-align: "left";
-$code-block-font-size: 0.6em;
-$code-color: #5f5f5f;
-$presentation-h2-font-size: 1.4em;
-
 /*-- scss:rules --*/
+
+/* Specific table styling */
+.custom-table thead tr {
+  background-color: #007BFF; /* Header background color - blue */
+  color: white;             /* Header text color */
+  text-align: left;
+}
+
+.custom-table {
+  > tbody > tr:nth-of-type(odd) > * {
+    background-color: #181818;
+  }
+  > tbody > tr:nth-of-type(even) > * {
+    background-color: #494949;
+  }
+}
+
+
 
 .reveal .custom-title {
   position: absolute;
@@ -24,7 +29,7 @@ $presentation-h2-font-size: 1.4em;
 
 /*-- slide titels --*/
 h1.title {
-  font-size: 180px; !important
+  font-size: 180px !important;
 }
 
 /*-- highlighted text in slides
@@ -36,6 +41,17 @@ h1.title {
   font-weight: bold;
   padding: 2px 5px;
 }
+
+.tab-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%; /* Adjust this if necessary */
+  width: 100%; /* Ensure it takes full width for centering */
+
+}
+
 
 .iframe-chatgpt {
   height: 650px;
@@ -76,4 +92,5 @@ h1.title {
 .smaller-2 {
   font-size: 22px; /* You can adjust the size as needed */
 }
+
 
