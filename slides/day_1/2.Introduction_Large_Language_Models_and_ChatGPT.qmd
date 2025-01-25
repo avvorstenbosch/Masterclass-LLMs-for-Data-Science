@@ -1,14 +1,19 @@
 ---
-title: "Introduction to Large Language Models and ChatGPT" 
+title: "Introduction to Large Language Models, ChatGPT, and Generative AI" 
 subtitle: ""
 author: "Alex van Vorstenbosch"
 footer: "LLMs and ChatGPT"
 title-slide-attributes:
     data-background-image: "./figures/LLMs-and-chatgpt.png"
     data-background-opacity: "0.5"
-
-date: "11-17-2023"
 ---
+
+## Hello world!
+
+- <span class="highlighted-text">Generative AI</span>, is the biggest data-driven hype of the past years.
+
+![](./figures/Gif-ChatGPT.gif){fig-align="center"}
+
 
 # What is ChatGPT?
 :::: {.columns}
@@ -24,23 +29,103 @@ date: "11-17-2023"
     - *Accessible* to use for <span class="highlighted-text">Anybody</span>
 :::
 ::: {.column width="40%"}
-<iframe src="https://chat.openai.com/share/7c278d44-48bd-47c7-8523-ce080b4d4ee1" class="iframe-chatgpt"></iframe>
+<iframe src="./webpages/ChatGPT for Data Science.html" class="iframe-chatgpt"></iframe>
 :::
 :::
 
-## Overview
+## What is generative AI
+
+- Generative AI:
+
+::: {.center}
+
+::: {.fragment}
+<div style="text-align: center;">
+*"In three words: deep learning worked."*
+</div>
+:::
+
+::: {.fragment}
+<div style="text-align: center;">
+*"In 15 words: deep learning worked, got predictably better with scale, and we dedicated increasing resources to it."*
+</div>
+:::
+
+::: {.fragment}
+<div style="text-align: center;">
+*"That’s really it; humanity discovered an algorithm that could really, truly learn any distribution of data (or really, the underlying “rules” that produce any distribution of data). To a shocking degree of precision, the more compute and data available, the better it gets at helping people solve hard problems. I find that no matter how much time I spend thinking about this, I can never really internalize how consequential it is."*
+</div>
+<div style="text-align: right;">
+*- Sam Altman, [The Intelligence Age, 23-09-2024]*
+</div>
+:::
+
+:::
+
+
+## What is generative AI
+
+- Generative AI:
+
+::: {style="text-align: center"}
+*"\
+Artificial Intelligence that has learned to create data such as:\
+images, text, audio, videos, etc...\
+"*
+:::
+
+    - Text (Large Language Models)
+    - Images (and Video) (Diffusion Models)
+    - Audio (Text-to-Speech)
+    - Tabular Data (Synthetic data)
+
+- Typically meant in the context of content-creation
+
+- This is **not new**: [thispersondoesnotexist.com (2018)](https://thispersondoesnotexist.com/)
+    - For more check out [ThisXdoesnotexist.com](https://thisxdoesnotexist.com/)
+
+- But became significantly more **powerfull**, **flexible**, **practical**, and **"mainstream"** around ~2022
+
+## What is generative AI - Language Models
+
+- Large Language Models are:
+    - The State-of-the-Art for <span class ="highlighted-text" >generating language</span>
+    - Famous LLMs are:
+        - OpenAI: ChatGPT (GPT 3.5), GPT4(o) **(proprietary)**
+        - Meta: LLama
+        - Google: Gemini (Bard) **(proprietary)**
+        - Alibaba: Qwen 
+        - Anthropic: Claude **(proprietary)**
+        - Mistral: Mistral, Mixtral 
+        - Microsoft: Phi  
+
+## What is generative AI - Image models
+
+- Diffusion models are the State-of-the-Art for <span class ="highlighted-text" >generating images</span>:
+    - Famous diffusion models are:
+        - OpenAI: Dall-E **(proprietary)**
+        - Midjourney: Midjourney **(proprietary)**
+        - Stability-AI: Stable Diffusion
+
+## Overview 
+:::{.nonincremental}
 - A brief history of LLMs
 - Capabilities of ChatGPT
+:::
 
-## Overview
+## Overview 
+:::{.nonincremental}
 - <span class="highlighted-text">A brief history of LLMs</span>
 - Capabilities of ChatGPT
+:::
 
 # A brief history of LLMs
 ## Next-word prediction machine
 $$P(token_n|token_{n-1}, \cdots, token_1)$$
 
 A token: *a single character, a combination of characters, or a word*
+
+![](./figures/what-are-tokens.png){fig-align="center"}
 
 ## Next-word prediction machine
 $$P(token_n|token_{n-1}, \cdots, token_1)$$
@@ -382,14 +467,27 @@ size^[[Scaling Laws for Neural Language Models](https://arxiv.org/pdf/2001.08361
 ![Alt text](./figures/model_size_growing.jpg)
 Models just kept on growing, credit: [Julien Simon, Huggingface](https://huggingface.co/blog/large-language-models)
 
-## GPT3 *IS* ChatGPT, almost ...
+## GPT3 *IS* ChatGPT, almost ... {.smaller}
+
+:::{.columns}
+
+:::{.column width="50%"}
+
 - [2020 - Language Models are Few-Shot Learners](https://arxiv.org/pdf/2005.14165.pdf)
-- These models are so good at language modeling (*SOTA*), that finetuning is no longer needed to perform NLP task
+- These models are so good at language modeling (*SOTA*),\
+ that finetuning is no longer needed to perform NLP task
 - Very strong 0-shot performance in many NLP task (already in GPT2)
-- Can perform **In-context learning**:
+- Can perform <span class ="highlighted-text" >**In-context learning**</span>:
     - Given a few examples, learn how to perform task
     - *No model parameters are adjusted at any point*
     - <span class="highlighted-text"> Emergent property </span> of LLMs
+:::
+
+:::{.column width="50%"}
+![](./figures/few-shot-learning.webp)
+:::
+
+:::
 
 ## 
 ![[Andrej Karpathy, Microsoft - State of GPT](https://karpathy.ai/stateofgpt.pdf)](./figures/stateofgpt.png)
@@ -433,7 +531,7 @@ tune the model towards higher quality responses.
 
 ## And this gives you...
 
-<iframe src="https://chat.openai.com/share/36173d8f-2a3e-4994-8a6a-04cc5188d97f" class="iframe-chatgpt"></iframe>
+<iframe src="./webpages/Hello world!.html" class="iframe-chatgpt"></iframe>
 
 ## Overview 
 ::: {.nonincremental}
@@ -452,7 +550,7 @@ tune the model towards higher quality responses.
 
 Foundational language model that:
 
-- *'Understands'* language conventions (syntax, grammer, etc.)
+- <span class ="highlighted-text" >*'Understands'*</span> language conventions (syntax, grammer, etc.)
 - Can answer questions (has internal knowledge base)
 - Can code
 - Can write just like humans
@@ -463,14 +561,33 @@ Foundational language model that:
 
 ## Weaknesses of LLMs
 
-- Limited input window (4096 tokens for base model)
-- It has no memory
+- Limited <span class ="highlighted-text" >context window</span> (*input size*) 
+- It has <span class ="highlighted-text" >no memory</span>
 - It can only predict next tokens, nothing else:
     - It cannot perform tasks while you wait!
-- It cannot think in multiple directions like we do!
+- It cannot `think' in `multiple directions' like we do!
+- `Thinking' only has a fast mode, no thinking fast and slow.
 - It doesn't understand it's own internal model!
-- It doesn't know what the truth is and what it is not
-- It doesn't understand tabular data
+- It <span class ="highlighted-text" >doesn't know what the truth is</span> and what it is not
+- It doesn't understand tabular data 
+- It doesn't proces language in a human way ([The Reversal Curse](https://arxiv.org/abs/2309.12288))
+
+:::{.notes}
+"Who is Tom Cruise's mother? [A: Mary Lee Pfeiffer]" and the reverse "Who is Mary Lee Pfeiffer's son?". GPT-4 correctly answers questions like the former 79% of the time, compared to 33% for the latter. 
+:::
+
+## Common mistakes
+::: {.callout-caution}
+
+## Be Carefull
+
+-	<span class="highlighted-text">LLMs don't learn continuously!</span> *LLMs have a seperate training phase, they need frequent updates for recent events*
+-   <span class="highlighted-text">**LLMs don't work like our brains!**</span> *On a conceptual level biological neurons inspired the technique, but in practice they worlds apart in how they function and why*
+-   <span class="highlighted-text">**LLMs don't search in a database**</span> *LLMs learn a statistical distribution, and use this to predict the best next token.[^1]*  
+
+:::
+
+[^1]: Unless results from a search engine are explicitly used as an input (Copilot in Bing search, Gemini in Google Search, search on ChatGPT.com, etc.)
 
 ## How you should not think of ChatGPT
 
@@ -485,7 +602,7 @@ Foundational language model that:
     - Therefore the sampling algorithm receives a <span class="highlighted-text">repetition penalty</span>
     - This can be exploited
 
-<iframe src="https://chat.openai.com/share/cfe864c6-4213-4be5-b70c-f66a8c55a3fd" class="iframe-chatgpt" style="width: 700px; height: 900px;" ></iframe>
+<iframe src="./webpages/breaking the algorithm.html" class="iframe-chatgpt" style="width: 700px; height: 900px;" ></iframe>
 
 ## Glitch Tokens
 - Some tokens identified by BPE only appear in <span class="highlighted-text">useless</span> context
@@ -496,7 +613,7 @@ Foundational language model that:
 
 :::{.column width="40%"}
 
-<iframe src="https://chat.openai.com/share/f4a8c854-e3ff-4032-8683-40b31f1444e2" class="iframe-chatgpt"></iframe>
+<iframe src="./webpages/Glitchtokens example behaviour.html" class="iframe-chatgpt"></iframe>
 
 :::
 
@@ -508,12 +625,17 @@ Foundational language model that:
 
 :::
 
-# Real world applications of ChatGPT
+# ChatGPT3.5 vs GPT4{.smaller}
 
-- Pair Programming
-- Language Modeling Tasks
-- Text Generation
-- Data Synthesis
-- Inspiration/creativity
-- Explanation/education
-- Knowledge retrieval
+| Feature/Aspect           | GPT-3.5                                      | GPT-4(o)(o)                                               |
+|--------------------------|----------------------------------------------|-----------------------------------------------------|
+| **Problem-Solving**      | Standard problem-solving skills                 | Greater accuracy and broader knowledge              |
+| **Creativity**           | Standard                                     | More creative and collaborative                      |
+| **Reasoning Capabilities**| Standard reasoning                          | Advanced reasoning capabilities                     |
+| **Context Length**       | 8K tokens context                  | 32K to 128K tokens context                             |
+| **Multimodality**        | None                                         | - Vision <br> - Speech in  <br> - Speech out <br> - Image generation    |
+| **Extra features**   | None                                    | - RAG <br> - Advanced Data Analysis  |
+| **Factual Accuracy**     | Standard                   | more likely to produce factual responses        |
+| **Command Adherence**    | Standard                         | More likely to adhere to prompt                     |
+| **Availability**         | Free for everybody                       | Free for everybody, higher rate limits for paying customers                                |
+: {.custom-table }
