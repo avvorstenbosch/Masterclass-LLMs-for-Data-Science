@@ -1,10 +1,36 @@
 project:
-  output-dir: slides
+    type: website
+    output-dir: cursusmateriaal
 
 title-slide-attributes:
-  data-background-opacity: "0.5"
-  data-background-size: cover
+    data-background-opacity: "0.5"
+    data-background-size: cover
+
+website:
+    title: "LLMs for Data Science"
+ 
+author: "Alex van Vorstenbosch"
 institute: ""
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+date: "29 11 2024"
 format:
     revealjs:
         width: 1600
@@ -13,21 +39,30 @@ format:
         chalkboard: 
             buttons: false
         preview-links: true 
-        theme: night 
+        theme: 
+            - night 
+            - ./style.scss
         scrollable: false
-        css: style.scss
         highlight-style: oblivion
         code-copy: true
         incremental: true  
-    html:
-        css: style.scss
-        highlight-style: oblivion
-        code-copy: true
-        theme:
-          light: flatly
-          dark: darkly
+
 execute:
     warning: false
     error: false
     cache: true
 jupyter: openai
+resources:
+    - ./webpages/*
+    - ./slides/demo
+    - ./slides/webpages/breaking the algorithm_files 
+    - ./slides/webpages/ChatGPT for Data Science_files 
+    - ./slides/webpages/Example of using Wolfram Alpha plugin_files 
+    - ./slides/webpages/Glitchtokens example behaviour_files 
+    - ./slides/webpages/hallucination1_files 
+    - ./slides/webpages/hallucination2_files 
+    - ./slides/webpages/Hello world!_files 
+    - ./slides/webpages/Prime Numbers Multiplication_files 
+    - ./slides/webpages/Prompt Engineering in NLP_files 
+    - ./slides/webpages/Three Prime Numbers Multiplied_files
+    - ./exercises/Documents/
