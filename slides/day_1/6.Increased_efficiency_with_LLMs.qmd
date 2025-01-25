@@ -1,14 +1,227 @@
 ---
 title: "Increased efficiency with LLMs"
-subtitle: A few highlighting projects
-author: "Alex van Vorstenbosch"
+subtitle: A few projects highlighted
 footer: LLMs in Practice 
 title-slide-attributes:
   data-background-image: "./figures/Increased-efficiency-with-llms.webp"
   data-background-opacity: "0.5"
 
-date: "11-17-2023"
+
 ---
+
+## How should we interact with documents?
+
+* Many documents we are interested in are too large for the context window of LLMs
+    * For the GPT4o-API this is 128K tokens!! (200-300 pages)
+* But even then:
+    * You might want to search through a large collection of large documents:\
+        - <span class="highlighted-text">your companies knowledge base</span>
+        - 100s of financial reports
+        - Wikipedia
+        - etc.
+    * You might not want to add all the documents to the context window due to:
+        - Speed issues
+        - Cost issues
+
+## Finding the right context to answer the question {.full-bg-slide background-image="./figures/retrieval-augmented-generation.png"}
+
+## Finding the right context to answer the question {.full-bg-slide background-image="./figures/retrieval-augmented-generation2.png"}
+
+## The Solution: Retrieval-Augmented Generation
+
+- RAG couples your generative model to a knowledge base via <span class="highlighted-text">chunks </span>.
+- <span class="highlighted-text">chunks </span> = _A piece of text found using semantic search_(embeddings)
+- combines the strengths of <span class="highlighted-text">search</span> methods and <span class="highlighted-text">generative models</span>
+- Using a <span class="highlighted-text">search engine</span> to find relevant text chunks, and <span class="highlighted-text">Large Language Models</span> to reason about them.
+- Commonly used when we require precise information from documentation, such as legal texts, research papers, or customer support databases.
+
+![](./figures/retrieval-augmented-generation2.png){fig-align=center;width=1500px}
+
+## Automated Data Analysis with ChatGPT
+:::{.columns}
+
+:::{.column width="60%"}
+- <span class="highlighted-text">**Exploratory Data Analysis**</span>:\
+ Automatically start analysing your dataset 
+- <span class="highlighted-text">**Interactive customization</span>**:\
+    - Customize the analysis and charts by just chatting!
+    - No coding experience needed!
+
+:::
+
+:::{.column width="40%"}
+![](./figures/ADA.webp){width=500px}
+::: 
+<!--column-->
+:::
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+:::{.fragment}
+
+**Supported File Types**\
+
+::: 
+<!--fragment-->
+
+:::{.fragment}
+
+:::{.nonincremental}
+
+- Excel (.xls / .xlsx)
+- CSV (.csv)
+- PDF (.pdf)
+- JSON
+
+::: 
+<!--nonincremental-->
+
+::: 
+<!--fragment-->
+
+::: 
+<!--column-->
+
+:::{.column width="50%"}
+
+:::{.fragment}
+
+**File Uploads**:\
+
+:::
+
+:::{.fragment}
+
+:::{.nonincremental}
+
+  - Up to 10 files per conversation.
+  - Up to 20 files can be attached to a GPT as Knowledge.
+
+:::
+
+:::
+
+::: 
+<!--column-->
+
+::: 
+<!--columns-->
+
+
+## Automated Data Analysis with ChatGPT
+
+<div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)">
+  <span class="highlighted-text" style="font-size: 150px;">Demo</span>
+</div>
+
+## Best Practices for Data Preparation
+
+- <span class="highlighted-text"> **Do**</span>:
+  - Include descriptive column headers in the first row
+  - Use plain language for column headers
+  - Use one row per record
+
+- <span class="highlighted-text"> **Don't**</span>:
+  - Include multiple sections and tables in a single spreadsheet
+  - Include empty rows or columns
+  - Include images containing critical information
+
+## Applications Beyond Data Analysis
+
+**File Manipulation and Generation**\
+
+- "*Please remove the background of this image*"\
+<span class="highlighted-text" style="font-size: 150px; margin-left: 25%;text-align:center">Demo</span>
+
+- "*Please make an excel template for my planner*"\
+<span class="highlighted-text" style="font-size: 150px; margin-left: 25%;text-align:center">Demo</span>
+
+
+## OpenAI GPTs (Agents) 
+
+:::{.columns}
+:::{.column width="50%"}
+- <span class="highlighted-text">**Customization**</span>:\
+ Create tailored versions of ChatGPT for specific purposes.
+- <span class="highlighted-text">**No Coding Required**</span>:\
+ Easily build GPTs for personal use, internal company use, or public sharing.
+- <span class="highlighted-text">**Example Applications**</span>:\
+ Learning rules to board games, teaching you about math, designing stickers.
+:::
+:::{.column width="50%"}
+![](./figures/gpt-store-cropped.webp)
+:::
+
+:::
+
+## GPTs (under the hood)
+
+:::{.columns}
+:::{.column width="50%"}
+- Re-use <span class="highlighted-text">custom instructions</span>
+- USe 10 documents for <span class="highlighted-text">RAG</span> knowledge
+- (advanced) <span class="highlighted-text">API-acces</span> to external services 
+- <span class="highlighted-text">Make GPTs for your most used prompts</span> and insert them in your chat at any moment with <span class="highlighted-text">@GPT...</span>
+:::
+:::{.column width="50%"}
+![](./figures/gpt-store-cropped.webp)
+:::
+
+:::
+
+## Example GPTs
+
+- <span class="highlighted-text">**Scholar GPT**</span>: RAG chat with scientific publications
+- <span class="highlighted-text">**Wolfram**</span>: Solve math problems, circumventing the issues with LLMs and math by using the Wolfrom-Alpha API.
+- <span class="highlighted-text">**Interviewer/Negotiator**</span>: Practice for Job Interviews or Salary Negotiations 
+- <span class="highlighted-text">**Sous Chef**</span>: Generates recipes you can make, based on your listed ingredients
+
+:::fragment
+[Visit the GPT-store for many more](https://chatgpt.com/gpts)
+:::
+
+## Audio Data with ChatGPT
+
+:::{.columns}
+:::{.column width="60%"}
+
+- <span class="highlighted-text">**Audio input**</span>:\
+GPT models can understand spoken audio
+- <span class="highlighted-text">**Processing**</span>:\
+Speech to Speech translation, Speech transcription
+- <span class="highlighted-text">**Voice synthesis**</span>:\
+natural-sounding conversations with ChatGPT
+
+:::
+
+:::{.column width="40%"}
+![](./figures/her.jpg)
+:::
+
+:::
+
+## Use Cases
+
+:::{.columns}
+:::{.column width="60%"}
+
+- <span class="highlighted-text">**Voice Assistants**</span>:\
+Enhancing the capabilities of voice-activated assistants with more natural and context-aware responses.
+- <span class="highlighted-text">**Transcription Services**</span>:\
+Converting spoken language into written text for meetings, notes, etc.
+- <span class="highlighted-text">**Language Translation**</span>:\
+Real-time translation of audio content
+
+:::
+
+:::{.column width="40%"}
+![](./figures/her.jpg)
+:::
+
+:::
+
 
 # Generative AI for exams
 
@@ -177,10 +390,16 @@ Suggestions for next steps:
 
 [Comparing Physician and Artificial Intelligence Chatbot Responses to Patient Questions Posted to a Public Social Media Forum](https://jamanetwork.com/journals/jamainternalmedicine/article-abstract/2804309)
 
-- Chatbot responses preferred in 78.6% (95% CI, 75.0%-81.8%) of the 585 evaluations. 
-- Response length: physicians 52 [17-62] words vs Chatbot 211 [168-245] words
-- The proportion of good or very good quality responses was higher for chatbot than physicians (chatbot: 78.5%, 95% CI, 72.3%-84.1%; physicians: 22.1%, 95% CI, 16.4%-28.2%;). 
-- The proportion of responses rated empathetic or very empathetic (≥4) was higher for chatbot than for physicians (physicians: 4.6%, 95% CI, 2.1%-7.7%; chatbot: 45.1%, 95% CI, 38.5%-51.8%)
+- Chatbot responses preferred in <span class="highlighted-text">78.6%</span> (95% CI: 75.0%-81.8%) of the 585 evaluations. 
+- Response length: 
+    - Chatbot <span class="highlighted-text">211</span> (95% CI: 168-245) words
+    - Physicians <span class="highlighted-text">52</span> (95% CI: 17-62) words
+- The proportion of good or very good quality responses: 
+    - Chatbot: <span class="highlighted-text">78.5%</span>, (95% CI: 72.3%-84.1%) 
+    - Physicians: <span class="highlighted-text">22.1%</span>, (95% CI: 16.4%-28.2%). 
+- The proportion of responses rated empathetic or very empathetic (≥4): 
+    - Chatbot: <span class="highlighted-text">45.1%</span>, (95% CI: 38.5%-51.8%)
+    - Physicians: <span class="highlighted-text">4.6%</span>, (95% CI: 2.1%-7.7%); 
 
 ## GPT4 answering patient questions in Groningen
 
@@ -205,29 +424,10 @@ Suggestions for next steps:
     - Instead, ask thought provoking questions
     - Less risk of bad answers due to isolated environment
 
-# Finding the right context to answer the question
-## Finding the right context to answer the question
 
+## Finding the right context to answer the question
 - These solutions all have the following in common:
     - LLM embedded in nicely defined context
     - Most relevant information directly at hand as context for the model
-
-- But what if finding the right context becomes harder?
-
-## {.full-bg-slide background-image="./figures/retrieval-augmented-generation.png"}
-
-## {.full-bg-slide background-image="./figures/retrieval-augmented-generation2.png"}
-
-## Practical assignment day 2
-
-- We're going to implement our own RAG system
-- Open question - is R really suitable for this?
-    - Little support for NLP compared to Python
-    - Basics should be fine
-
-- I want to encourage creativity:
-    - If you have your own idea for a project...
-    - Or if you have your own dataset to work with...
-    - ...Contact me and we can see if we can get it too work.
-
+    - The task is performed based on information in the context window, not model internal knowledge
 
