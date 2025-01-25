@@ -7,7 +7,7 @@ title-slide-attributes:
     data-background-image: "./figures/prompt-engineering.png"
     data-background-opacity: "0.5"
 
-date: "11-17-2023"
+
 ---
 
 ## Overview
@@ -63,50 +63,50 @@ Duration: Days
 
 ## Best techniques for prompting
 
-- Make use of a general prompting template 
-- Be precise in your description
-- 'No' is also an answer
-- Use delimiters to mark sections of your prompt
-- Give LLMs room to think
-- Take into account the order of operations 
-- Guide complex problems with chain-of-thought prompting
-- Split tasks into simpler subtasks
-- Mind the Context Window
+- Make use of a general prompting template such as <span class="highlighted-text">RTF</span>
+- <span class="highlighted-text">Be precise</span> in your description
+- include a <span class="highlighted-text">reference text</span> 
+- <span class="highlighted-text">'No'</span> is also an answer
+- Give LLMs <span class="highlighted-text">room to think</span>
+- Guide complex problems with <span class="highlighted-text">chain-of-thought prompting</span>
+- Mind the <span class="highlighted-text">Context Window!</span>
 
-## General prompting template
+## General prompting template - RTF framework
 - A general decent prompt templates looks like the following:
-- Specify which ROLE the model should assume.
-- Specify the task it should perform:
+- Specify which <span class="highlighted-text">ROLE</span> the model should assume.
+- Specify the <span class="highlighted-text">TASK</span> it should perform:
     - TASK_DESCRIPTION: What is the task.
     - TASK_SPECIFICATION: Specify how the task should be performed
-    - FORMAT_OUTPUT: (Optional) Specify how the answer should be given.
+- (Optional) Specify in what <span class="highlighted-text">FORMAT</span> the answer should be given.
 ```{python}
-#| eval: false
-#| echo: true
-#| output: false
-#| code-line-numbers: "|2|3|4|5"
+# | eval: false
+# | echo: true
+# | output: false
+# | code-line-numbers: "|2|3|4|5"
 f"""
-ROLE: {ROLE}
-TASK: {TASK_DESCRIPTION}
-      {TASK_SPECIFICATION}
-      {FORMAT_OUTPUT} 
+ROLE: {ROLE: You are a professional translator.}
+TASK: {TASK_DESCRIPTION: Translate the user input from English to Dutch.}
+      {TASK_SPECIFICATION: Make sure you only use formal language that is suitable for a business setting.}
+      {FORMAT_OUTPUT: Only return the translated text, nothing else} 
 """
 ```
+
 
 ## General prompting template
 ::: {.columns}
 ::: {.column width="60%"}
+::: {.nonincremental}
 - A general decent prompt templates looks like the following:
-- Specify which ROLE the model should assume.
-- Specify the task it should perform:
+- Specify which <span class="highlighted-text">ROLE</span> the model should assume.
+- Specify the <span class="highlighted-text">TASK</span> it should perform:
     - TASK_DESCRIPTION: What is the task.
     - TASK_SPECIFICATION: Specify how the task should be performed
-    - FORMAT_OUTPUT: (Optional) Specify how the answer should be given.
-- Don't take the role too far: You might go '*out-of-distribution*'
+- (Optional) Specify in what <span class="highlighted-text">FORMAT</span> the answer should be given.
+:::
 :::
 
 ::: {.column width="40%"}
-<iframe src="https://chat.openai.com/share/aec332f7-d4fc-40fd-b203-d15458880610" class="iframe-chatgpt"></iframe>
+<iframe src="./webpages/Prompt Engineering in NLP.html" class="iframe-chatgpt"></iframe>
 :::
 :::
 
@@ -137,22 +137,14 @@ You may think your task is clear, but it may not be:
 
 ## Be precise in your task descriptions
 - LLMs don't know anything about you or the task it is given.
+- Give the model <span class="highlighted-text">the context</span> it needs to know 
 - "Please explain to me how LLMs works?"
     - What is your background knowledge? Academic, high-school, etc..
-    - What type of explanation? Technical, simple summary, etc..
-    - How long should it be? 5 paragraphs, 5 sentences, etc..
+    - How would you like the explanation? Technical, simple summary, funny, etc..
+    - How long should it be? 5 sentences, 5 paragraphs, 5 pages etc..
+    - Do you want the model to answer with or without the mathemathical foundations?
     - Do you need references? 
     - etc... 
-
-## Use delimiters
-
-- Indicates what describes the task at hand, and what the task should be performed on
-- use either: 
-    - *### TEXT ###* 
-    - *""" TEXT """* 
-    - *''' TEXT '''* 
-    - These triplets are all a single token
-- Or use clear section titles, HTML-tags, etc.
 
 ## Include a reference text
 ::: {.columns}
@@ -161,12 +153,13 @@ You may think your task is clear, but it may not be:
 - These answers are called <span class="highlighted-text">Hallucinations</span>, more on them later.
 :::
 ::: {.column width="40%"}
-<iframe class="iframe-chatgpt" src="https://chat.openai.com/share/49872740-604f-4b27-a844-002eff6743a9"></iframe>
+<iframe class="iframe-chatgpt" src="./webpages/hallucination2.html"></iframe>
 :::
 :::
 
 ## Include a reference text
 - To help mitigate this (partially), you can Include a reference text^[[OpenAI GPT guide](https://platform.openai.com/docs/guides/gpt-best-practices/strategy-provide-reference-text)]
+    - Note: Finding these reference texts in a smart way, is essentially what RAG systems do
 ```{python}
 #| eval: false
 #| echo: true
@@ -186,6 +179,16 @@ DOCUMENT:
 '''
 """
 ```
+
+## Use delimiters
+
+- Indicates what describes the task at hand, and what the task should be performed on
+- use either: 
+    - *### TEXT ###* 
+    - *""" TEXT """* 
+    - *''' TEXT '''* 
+    - These triplets are all a single token
+- Or use clear section titles, HTML-tags, etc.
 
 ## 'No' is also an answer! 
 - To help mitigate this (partially), you can Include a reference text^[[OpenAI GPT guide](https://platform.openai.com/docs/guides/gpt-best-practices/strategy-provide-reference-text)]
@@ -215,6 +218,8 @@ DOCUMENT:
 ```
 
 ## Give models time-to-think {.smaller}
+- Allow the model to work through a problem first
+- break up a task into smaller steps
 ```{.python}
 f"""
 Determine if my answer below is correct.
@@ -265,14 +270,14 @@ I found the following answer:
 ::: {style="text-align: center"}
 **Bad order**
 :::
-<iframe style="width:100%; height:800px;" class="iframe-chatgpt" src="https://chat.openai.com/share/a1c44c6d-a815-421a-bb2d-eb999cc250db"></iframe>
+<iframe style="width:100%; height:800px;" class="iframe-chatgpt" src="./webpages/Prime Numbers Multiplication.html"></iframe>
 
 :::
 ::: {.column width="50%"}
 ::: {style="text-align: center"}
 **Good order**
 :::
-<iframe style="width:100%; height:800px;" class="iframe-chatgpt" src="https://chat.openai.com/share/0e0d9797-f300-4d88-9cee-d954fbae6108"></iframe>
+<iframe style="width:100%; height:800px;" class="iframe-chatgpt" src="./webpages/Three Prime Numbers Multiplied.html"></iframe>
 
 :::
 
@@ -282,9 +287,10 @@ I found the following answer:
 
 - Some tasks are complicated for a LLM, based on just the prompt
 - Give the model room to think with Chain-of-Thought prompting
-- Chain-of-Thought prompting is essentially single or few-shot prompting for reasoning.
+- Chain-of-Thought prompting is essentially <span class="highlighted-text">single or few-shot prompting</span> for reasoning.
 - What was few-shot prompting again?
 
+:::{.fragment}
 **Input**\
 *Poor English input: I eated the purple berries.*\
 *Good English output: I ate the purple berries.*\
@@ -296,6 +302,7 @@ I found the following answer:
 **output**\
 The requested changes have been made. or I made the alteration that you*
 *requested. or I changed things you wanted and made the modifications.^[Language Models are Few-Shot Learners: [https://arxiv.org/pdf/2005.14165.pdf](https://arxiv.org/pdf/2005.14165.pdf)]
+:::
 
 - That this works, is one of the emergent properties of LLMs
 
@@ -316,4 +323,146 @@ You can already improve performance by just adding:\
 <span class="highlighted-text"> "Let's think step by step." </span>\
 at the end of a prompt^[Large Language Models are Zero-Shot Reasoners[https://arxiv.org/pdf/2205.11916.pdf](https://arxiv.org/pdf/2205.11916.pdf)]
 
+
+## Mind the Context Window
+- Depending on the model, the context window is between <span class="hightlight-text">10</span> and <span class="hightlight-text">200</span> pages of text
+- Use 1 conversation for 1 task
+
+## Meta-prompting {.smaller}
+
+- Writing good prompts is time-consuming
+- A meta-prompt instructs the model to write a good prompt for you:
+    - It incorporates best practices and guidelines for prompting
+    - It helps you get started with your prompt faster
+
+```{python}
+# | eval: false
+# | echo: true
+# | output: false
+"""
+Given a task description or existing prompt, produce a detailed system prompt to guide a language model in completing the task effectively.
+
+# Guidelines
+
+- Understand the Task: Grasp the main objective, goals, requirements, constraints, and expected output.
+- Minimal Changes: If an existing prompt is provided, improve it only if it's simple. For complex prompts, enhance clarity and add missing elements without altering the original structure.
+- Reasoning Before Conclusions**: Encourage reasoning steps before any conclusions are reached. ATTENTION! If the user provides examples where the reasoning happens afterward, REVERSE the order! NEVER START EXAMPLES WITH CONCLUSIONS!
+    - Reasoning Order: Call out reasoning portions of the prompt and conclusion parts (specific fields by name). For each, determine the ORDER in which this is done, and whether it needs to be reversed.
+    - Conclusion, classifications, or results should ALWAYS appear last.
+- Examples: Include high-quality examples if helpful, using placeholders [in brackets] for complex elements.
+   - What kinds of examples may need to be included, how many, and whether they are complex enough to benefit from placeholders.
+- Clarity and Conciseness: Use clear, specific language. Avoid unnecessary instructions or bland statements.
+- Formatting: Use markdown features for readability. DO NOT USE ``` CODE BLOCKS UNLESS SPECIFICALLY REQUESTED.
+- Preserve User Content: If the input task or prompt includes extensive guidelines or examples, preserve them entirely, or as closely as possible. If they are vague, consider breaking down into sub-steps. Keep any details, guidelines, examples, variables, or placeholders provided by the user.
+- Constants: DO include constants in the prompt, as they are not susceptible to prompt injection. Such as guides, rubrics, and examples.
+- Output Format: Explicitly the most appropriate output format, in detail. This should include length and syntax (e.g. short sentence, paragraph, JSON, etc.)
+    - For tasks outputting well-defined or structured data (classification, JSON, etc.) bias toward outputting a JSON.
+    - JSON should never be wrapped in code blocks (```) unless explicitly requested.
+
+The final prompt you output should adhere to the following structure below. Do not include any additional commentary, only output the completed system prompt. SPECIFICALLY, do not include any additional messages at the start or end of the prompt. (e.g. no "---")
+
+[Concise instruction describing the task - this should be the first line in the prompt, no section header]
+
+[Additional details as needed.]
+
+[Optional sections with headings or bullet points for detailed steps.]
+
+# Steps [optional]
+
+[optional: a detailed breakdown of the steps necessary to accomplish the task]
+
+# Output Format
+
+[Specifically call out how the output should be formatted, be it response length, structure e.g. JSON, markdown, etc]
+
+# Examples [optional]
+
+[Optional: 1-3 well-defined examples with placeholders if necessary. Clearly mark where examples start and end, and what the input and output are. User placeholders as necessary.]
+[If the examples are shorter than what a realistic example is expected to be, make a reference with () explaining how real examples should be longer / shorter / different. AND USE PLACEHOLDERS! ]
+
+# Notes [optional]
+
+[optional: edge cases, details, and an area to call or repeat out specific important considerations]
+"""
+```
+
+
+
+# Prompting for image Generation {background-image="./figures/image-generation.png" background-opacity=0.45}
+
+## Prompting for image Generation
+
+- Dall-E 3 (also used by bing) first <span class="highlighted-text"> rewords your prompt</span>, to refine it.
+    - Other image generators such as Stable-Diffusion don't do this
+
+::: {.fragment}
+
+::: {.columns}
+
+::: {.column}
+**User Input**\
+An image of a black cat, sitting on a piano during golden hour. the image is a realistic photograph, taken by a pro photographer. The cat looks content.
+:::
+
+::: {.column}
+**Dall-E Input**\
+A realistic photograph of a black cat sitting on a piano. The background features a window with golden light shining through, indicative of an off-screen sunset. The cat looks content, with a relaxed posture and serene expression. The image captures the ambiance of a cozy, warmly lit room, highlighting the reflective surface of the piano and the soft, diffused sunlight.
+
+:::
+
+:::
+
+:::
+
+:::{.fragment}
+![](./figures/black-cat.webp){.absolute top=100 left=0}
+:::
+
+
+
+
+## Tips for writing image generation prompts {.smaller}
+
+::: {.columns}
+
+::: {.column}
+
+**Do's**\
+
+(@) <span class="highlighted-text"> **Be Specific**:</span>\
+ Include details about the subject, background, mood, etc.
+
+(@) <span class="highlighted-text"> **Be descriptive**:</span>\
+ Instead of saying “*a dog*” say “*a fluffy, small, brown dog.*”
+
+(@) <span class="highlighted-text"> **Specify a style**:</span> "cubism” “watercolor painting", "In the style of starry night by Van Gogh", "photorealistic", etc.
+
+(@) <span class="highlighted-text"> **Add search-keywords**:</span> for high quality images consider: "4k", "HD", "DSLR photography", etc
+
+(@) <span class="highlighted-text"> **Iterate over images**:</span> Ask Dall-E to make slight changes you'd prefer
+
+(@) <span class="highlighted-text"> **Specify the resolution**:</span> "Portait", "Widescreen", etc...
+
+(@) <span class="highlighted-text"> **Request a specific random seed**:</span>
+This reduces the variance when iterating over images.\
+*GPT4o no longer generates a new random seed for each image
+:::
+
+::: {.column}
+
+**Don'ts**\
+
+1.  <span class="highlighted-text"> **Expect the image to perfectly match your vision**</span>\ 
+The randomness in the process makes it very hard to recreate specific visions.
+
+2.  <span class="highlighted-text"> **Don't try ask Dall-E to *Not* do something**</span>\
+This will insert the keyword into the prompt and often achieves the oppossite. 
+
+3.  <span class="highlighted-text"> **Don't add too many elements to your images**</span>\
+Adherence to your prompt will suffer from this
+
+4.  <span class="highlighted-text"> **Don't expect photorealism**</span>\
+OpenAI has tuned these models to typically display a cartoony hyperrealism
+:::
+:::
 
