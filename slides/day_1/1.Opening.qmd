@@ -6,8 +6,6 @@ footer: "ChatGPT for Data Science"
 title-slide-attributes:
   data-background-image: "./figures/ds-with-llm.png"
   data-background-opacity: "0.5"
-
-date: "11-17-2023"
 ---
 
 ## About me
