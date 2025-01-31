@@ -111,7 +111,7 @@ def generate_response(
         If stream is False, returns the full response text as a string.
         If stream is True, returns a generator that yields partial text chunks.
     """
-    response_format = "json_object" if json_mode else None
+    response_format = {"type": "json_object"} if json_mode else None
 
     # Create the completion generator (or dictionary if streaming is disabled)
     completion = llm.create_chat_completion(
