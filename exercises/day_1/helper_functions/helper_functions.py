@@ -35,7 +35,7 @@ messages = [
 response = generate_response(
     llm=llm,
     messages=messages,
-    max_tokens=128,
+    max_tokens=256,
     temperature=0.8,
     top_p=0.95,
     top_k=40,
@@ -111,7 +111,7 @@ def generate_response(
         If stream is False, returns the full response text as a string.
         If stream is True, returns a generator that yields partial text chunks.
     """
-    response_format = "json_object" if stream else "non-streamed"
+    response_format = "json_object" if stream else None
 
     # Create the completion generator (or dictionary if streaming is disabled)
     completion = llm.create_chat_completion(
