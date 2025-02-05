@@ -189,6 +189,16 @@ First try to solve it yourself! What is the answer?
 \rotatebox[origin=c]{180}{Monday - John, Tuesday - George, Wednesday - Abe, Thursday - Millard, Friday - William}
 \end{tiny}
 
+## Compare the answers given by 2 different LLMs
+Now pair up with a partner and use 2 different chats to ask this question.
+
+* one of you will use `bartowski/Mistral-Small-24B-Instruct-2501-GGUF`
+* The other will use a smaller model such as the llama model we were already using.
+* Both use the same system and user prompts to ask the question.
+
+Did both get it right? What did you think of the difference in the answers?
+If you have access to Deepseek-R1 or ChatGPT 0X, you can also compare to these reasoning models. Those tend to easily one-shot this riddle.
+
 \newpage
 # Summarizing texts
 One simple but time consuming task you might often do is to summarize meeting notes, or perhaps summarize presentation contents. 
