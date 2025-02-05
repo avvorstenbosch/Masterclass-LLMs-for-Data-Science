@@ -1,10 +1,65 @@
 ---
 title: "Prompt Engineering Exercises" 
-date: "11-17-2023"
+
 format: 
     pdf:
         number-sections: true
+header-includes:
+  - \usepackage{fancyhdr}
+  - \usepackage{color}
+  - \usepackage[framemethod=TikZ]{mdframed}
+  - \usepackage{graphicx}
+  - \usepackage{background}
+  - \usepackage{fontspec}
+  - \usepackage{fvextra} % provides extra options for verbatim environments
+  - \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}, fontsize=\scriptsize}
+  - \setmainfont{Arial}
+  - \fancyhead[C]{\textbf{Prompt Engineering Exercises}}
+  - \fancyhead[R]{\thepage}
+  - \fancyhead[L]{\ }
+  - \fancyfoot[L]{May 31, 2024}
+  - \fancyfoot[C]{ }
+  - \fancyfoot[R]{\thepage}
+  - \pagestyle{fancy}
+  - \renewcommand{\headrulewidth}{0.4pt}
+  - \renewcommand{\footrulewidth}{0.4pt}
+  - \definecolor{shadecolor}{RGB}{204, 230, 255}
+  - \definecolor{greyline}{RGB}{225, 225, 225}
+  - \mdfdefinestyle{mystyle}{
+      backgroundcolor=shadecolor, 
+      roundcorner=10pt,
+      linecolor=greyline, 
+      linewidth=1pt,
+      innertopmargin=10pt,
+      innerbottommargin=0pt,
+      innerrightmargin=0pt,
+      innerleftmargin=10pt}
+  - \backgroundsetup{
+      scale=2.5,
+      color=black,
+      opacity=0.7,
+      angle=0,
+      position=current page.south west,
+      vshift=6cm,
+      hshift=-3cm,
+      contents={
+        \includegraphics[width=8cm,keepaspectratio]{../../slides/day_1/figures/banner.png}
+        }
+      }
 ---
+
+\section*{Google Colab}
+You can make these exercises using the general [google colab notebook](https://colab.research.google.com/drive/1LnsvqzL8BjO3m52siYJpakS-uR64B9pI?usp=sharing).
+Please take a few minutes to read through the notebook to familiarize yourself with the environment.
+
+\section*{Prompting Cheatsheet}
+Check out the prompting cheatsheet: **Cheatsheet.pdf**!\
+It can be found in the course material under **./slides/**.
+
+It contains some example prompts and inspiration for all kinds of prompting tasks. Read it before starting on the assingments below.
+
+\section*{Prompting assignments}
+Below you will find some assingments to get some experience with prompting:\
 
 # Exercise: Create a Basic Prompt 
 Using the general prompting template provided in the slides, create a prompt that asks the language model to act a personal tutor for you. Make the model explain to you what a transformer is. Specify the:
@@ -14,77 +69,195 @@ Using the general prompting template provided in the slides, create a prompt tha
 - TASK_SPECIFICATION,
 - and FORMAT_OUTPUT.
 
-## try some variations
-Try experimenting with some variations of this yourself. Change the role, task, and output format. How does the model respond to these changes? 
+## Exercise: System prompt vs User prompt 
 
-# Exercise: Order of Operations 
-## Answer first
-Give ChatGPT the task to multiply 3 numbers together, which are at least 3 digits in length.
-Specify the output such that ChatGPT first gives you the result of the multiplication, and only then it gives you the 3 numbers.
-What do you see happening?
+It is good practice to put the general part of the prompt in the `system prompt`, and the specific part in the `user prompt`. 
+`System prompts` explain the current context within which the model should generate its response, before any interaction with the user has occured.
+This makes most sense when you are hosting a model with external users who interact with a chatbot, but it is also good practice for your own use.
+Most LLMs, but not all, are trained in such a way that they strongly adhere to the system prompt, and it is not easy for users to override this. 
+This is in contrast to specifying the RTF framework in the `user prompt`, where it is easy to override by the user.
 
-## Answer last
-Do the same, but now reverse the order. Make sure ChatGPT first gives you the 3 numbers, and then make it calculate the multiplication. Is anything different, why?
+This is also usefull when you are not dealing with external interaction, as it makes your systems prompts highly reusable. 
 
-# Exercise: Order of Operations + room to think
-## Answer first
-Let the model check the answer below. First, only allow the model to answer with the verdict correct or incorrect. Then ask for the explanation in the next message.
-```python
-f"""
-Determine if my answer below is correct.
 
-I'm trying to figure out how expensive my prompting of the GPT4 API will be in total.
-I'm going to run around 1000 prompts. For these prompts, the average prompt-lengt is 250 words.
-The average response length of the model for these prompts is 300 words. 
-
-The API pricing is as follows:
-$0.03/1k prompt tokens.
-$0.06/1k sampled tokens.
-
-We can assume that 1 token is on average 3/4th of a single word. 
-
-I found the following answer:
-18 dollars.
-"""
+```{.python}
+messages = [
+    {"role": "system", "content": """
+    ROLE: You are a professional chef in a restaurant
+    TASK: Based on the ingredients provided, give suggestions for dinner dishes that can be made.
+    SPECIFICATION: Only suggest healhty meals that can be made in under 30 minutes. Suggest 3 distinct dishes.
+                    Don't include any dishes that contain lactose.
+    OUTPUT_FORMAT: Provide the name of the dish, the ingredients, and a short summary of the preparation.
+    """},
+    {"role": "user", "content": """
+    Hi! I have the following ingredients:
+    - 4 chicken breast
+    - 2 bell peppers
+    - 3 onions
+    - Garlic cloves
+    - 1 can of chickpeas
+    - 1 can of diced tomatoes
+    - 2 can of coconut milk
+    - 1 pack of brown rice
+    - a cupboard full of many different types of spices    
+    """}
+]
 ```
 
-## Answer last
-Now do the same, but instruct the model to first work through the problem itself. Ask it to **think step by step**.
+## Experiment some more
+Pick 2 of the prompts from the cheatsheet and experiment with them. Adjust the wording if needed and use them for a task of your own interest. If you have no inspiration, you can try these:
+\begin{itemize}
+\item Adjust the \textbf{Formatting} template, and have your LLM turn this information into a table:\newline \textit{The Ipsos survey explored the impact respondents believe AI will have on various aspects of their lives, such as health and entertainment. On topics like time management and entertainment, the majority viewed AI positively. For instance, 54\% of global respondents agree that AI will improve the efficiency of their tasks, and 51\% believe AI will enhance entertainment options like TV, movies, music, and books. However, skepticism was more prominent in other areas. Only 39\% feel AI will benefit their health, and 37\% think it will improve their job. Only 34\% anticipate AI will boost the economy, and just 32\% believe it will enhance the job market.} 
+\item use the \textbf{Brainstorming} assistant template and adjust it: You want to organize an event in your company to promote the possibilities of LLMs. Come up with a list of possibilities for your event!
+\end{itemize}
 
-## Reflection
-Why would it help language models to work step-by-step?
 
-# Exercise: Spelling
-1. Ask the model the reverse the word: "congratulations".
+\newpage
+# Translation
+Below you'll find an e-mail in Italian. 
+
+\begin{mdframed}[style=mystyle]
+Ciao,
+
+Sono estremamente arrabbiato! Dove diamine è il tuo contributo per il progetto? La scadenza era venerdì scorso e non ho ancora visto niente da parte tua. Grazie mille per il disordine che hai creato! Adesso dobbiamo estendere la scadenza e il cliente sarà furioso con noi. Questo ci costerà un sacco di soldi, magari non per questo progetto, ma sicuramente per quelli futuri. Cosa hai da dire in tua difesa?! Ho già avvisato il capo di questa situazione, quindi voglio che tu informi il cliente al posto nostro.
+
+X
+\newline
+\end{mdframed}
+
+## Translate the language
+Have your LLM translate this to English. What does it say?
+
+## `Translate' the tone of the email
+This mail does not read very professional. Please make it more professional sounding, while keeping the original message clear.
+
+## `Translate' the context of the email in canvas
+Apperently there was a misscommunication, and the deadline is next Friday. 
+Have your LLM change the email to one making sure we make next Friday's deadline.
+Make sure the email is firm yet constructive.
+
+\newpage
+# Exercise: Spelling-problems
+1. Ask the model the reverse the word: "arbeidsongeschiktheidsverzekeringsformulier".
 2. Ask the model to reverse the word and spell it out letter-by-letter.
-What do you see? Why do you think this happens.
+What do you see? Why do you think this happens. Use the retry button to see if the model gives a different answer the second time.
+This feels like a trivial task, but it is far from it. Can you think of why?
 
 ## A closer look
 Use the [openai-tokenizer](https://platform.openai.com/tokenizer) to look at the words? What do you see?
+Use the functions below to look at the tokens of the word. What do you see?
+
+```{.python}
+# This returns a list of token IDs
+tokens = llm.tokenize("arbeidsongeschiktheidsverzekeringsformulier".encode("UTF8"))
+print("Token IDs:", tokens)
+
+# Convert the token IDS back to the corresponding strings
+decoded_tokens = [llm.detokenize([token]) for token in tokens]
+print("Decoded tokens:", decoded_tokens)
+```
 
 ## Self-reflection
 Ask the model whether the answer it gave was correct, what happens? Why do you think this is the case?
 
-### Self-reflection on the API-costs questions
-If the answer given was incorrect, see how it responds if you ask it to reflect on the answer given.
+\newpage
+# Comparing reasoning LLMs to regular LLMs
+In this exercise we will compare the performance of LLMs developed for reasoning to regular ones. 
+At the time of writing there are no true reasoning LLMs available open weights, that we can also run on colab. 
+However, there are some distilled models that were trained with supervised finetuning instead of Reinforcement Learning, that can still demonstrate the difference in reasoning capabilities.
 
-# (Optional) Few-shot prompting + Chain-of-thoughts
-One simple but time consuming task you might often do is to take notes during a meeting, then type these out into a mail to send to the team. However, how you take notes is very specific to you, just like how you want and need the mail to look.
+This demonstration is a little difficult as the models are stochastic: you cannot fully predict the answer you will get.\ 
+The reasoning model is made specifically for reasoning task. You will see that it will work through the different problem solving steps more clearly, before giving an answer.
 
-We can guide the model by giving it a few examples of our task, this is called *Few-shot prompting.* Also, I want you to take into consideration the order of operations and how to go from meeting notes to this email. 
+## Riddle me this
+Logic puzzles are one of the simples ways to show the improved reasoning skills of reasoning models. Look at the following riddle:
 
-**\textcolor{red}{Please don't send any private or proprietary information to third parties.}**\
-You can use your notes for this Masterclass if you like.
+\begin{mdframed}[style=mystyle]
+George, William, John, Abe, and Millard have their birthdays on consecutive days, all between Monday and Friday.\
 
-# (Optional) Generating movie reviews
+\begin{itemize}
+\item George’s birthday is as many days before Millard’s as William’s is after Abe’s.
+\item John is two days older than Abe.
+\item Millard’s birthday is on Thursday.
+\end{itemize}
+Can you figure out whose birthday is on each day?
+\newline
+\end{mdframed}
+
+First try to solve it yourself! What is the answer?
+\begin{tiny}
+\rotatebox[origin=c]{180}{Monday - John, Tuesday - George, Wednesday - Abe, Thursday - Millard, Friday - William}
+\end{tiny}
+
+\newpage
+# Summarizing texts
+One simple but time consuming task you might often do is to summarize meeting notes, or perhaps summarize presentation contents. 
+
+## Use your LLM to summarize the contents of `Introduction to prompt engineering` slides
+I've prepared a pdf version of the document:
+\begin{itemize}
+\item LLMs for Everybody - Introduction to Prompt Engineering.pdf
+\end{itemize}
+It can be found in the course material: exercises \rightarrow\ documents
+
+Write a prompt to summarize the content of the slides. Make sure to include the content of the slides as direct text: (\textit{For this assignment you can just copy-paste from the pdf})
+
+What do you think of the quality of the summarization? Did it miss anything? Iterate over the summary untill you are satisfied.
+
+\newpage
+# Generating movie reviews
 
 One of the areas where these models really shine is content generation. Or at least, getting you started with written content.
 
-For one of the later exercises we will use these models to analyse movie reviews. In preperation for this exercise, have the model generate a review of a movie of your own choice. Make use of the following rules:
+Have the model generate a review of a movie or television series of your own choice, based on your own opinions. Make use of the following rules:
 
-- from the review, the sentiment regarding the movie should be slightly ambigous. 
 - Make clear what the 'reviewer' liked about the movie, and what it didn't like. 
 - Begin the movie review with some general information about the movie: such as the director, star actors/actresses, runtime and other such information. 
-- Make sure the model mentions at least 3 other related movies in the review.
 - Don't include a star rating or other numeric rating within this review. 
+- Give the model some reference material about the movie/series, for example from IMDB.
 - The review should be around 500 words long. 
+
+\newpage
+# Do you have time left? Perform the above exercises on chatgpt.com
+You can just use the free account, and see how the OpenAI models compare to these open weights models. 
+
+# ChatGPT website only - Generating images
+**Use GPT4o for this assignment**
+
+## Start generic
+Write a very simple image generation prompt, no more than 1 line of text.
+We are going to itterate over this prompt. 
+
+Ask the model to give you the prompt it used to generate this image.3
+
+## Adjust the Prompt
+Using the image prompt from the model as a reference, use it to write a new prompt. Adjust any elements you want, make use of the `Do's' from the slides:
+
+Do’s
+
+\begin{itemize}
+\item \textbf{Be Specific:}\\
+Include details about the subject, background, mood, etc.
+\item \textbf{Be descriptive:}\\
+Instead of saying ``a dog” say ``a fluffy, small, brown dog.”
+\item \textbf{Specify a style:}\\
+``cubism”, ``watercolor painting”, ``In the style of starry night by Van Gogh”, ``photorealistic”, etc.
+\item \textbf{Add search-keywords:}\\
+for high quality images consider: ``4k”, ``HD”, ``DSLR photography”, etc.
+\item \textbf{Iterate over images:}\\
+Ask Dall-E to make slight changes you’d prefer.
+\item \textbf{Specify the resolution:}\\
+“Portrait”, “Widescreen”, etc.
+\item \textbf{Request a specific random seed:}\\
+This reduces the variance when iterating over images. The newest version of GPT4 no longer generates a new random seed for each image.
+\end{itemize}
+
+Ask the model to generate a few different images.
+
+## Adjustment Tool
+Now, for the image you like best, click on it, and adjust it using the adjustment tool:
+\begin{itemize}
+\item mark an element of the image that should be changes
+\item describe what the content of that element should be instead.
+\end{itemize}
+
