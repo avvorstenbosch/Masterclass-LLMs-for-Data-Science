@@ -57,8 +57,6 @@ interactive_chat(
 )
 """
 
-from llama_cpp import Llama
-
 
 def generate_response(
     llm,
@@ -232,3 +230,22 @@ def interactive_chat(
 
             # Append model response to chat history
             messages.append({"role": "assistant", "content": model_reply})
+
+
+def generate_query(query):
+    """
+    Abstracts the task of generating instruction tuned embeddings for a given query.
+    Appends a general retrieval task instruction to the query as required by intfloat/multilingual-e5-large-instruct
+
+    Parameters
+    ----------
+    query : str
+        query to be embedded for RAG
+
+    Returns
+    -------
+    str:
+        query with instruction for RAG
+    """
+    task = "Given a web search query, retrieve the most relevant passages that answer the query"
+    return f"Instruct: {task}\nQuery: {query}"
