@@ -55,6 +55,24 @@ title-slide-attributes:
 :::
 :::
 
+## The second wave - OpenSource Deepseek-R1
+::: {.columns}
+::: {.column width="50%"}
+
+::: {.incremental}
+- Released on 20 januari 2025
+- Open sourced methodology and released models open weights
+- Quickly dethroned ChatGPT as most downloaded app in App store and Play store
+- Disruptive, erased 1 trillion dollars from the stock markets
+  - Nvidia stocks dropped by 18\%
+:::
+
+:::
+::: {.column width="50%"}
+  ![](./figures/deepseek.webp){width=80%}
+:::
+:::
+
 
 ## The adoption of ChatGPT
 
@@ -64,7 +82,7 @@ title-slide-attributes:
 ::: {.incremental}
 - Has not been widely adopted
 - Is not used that often by those who have adopted it
-- is mostly used for writing, coding and finding information
+- It is used for writing, coding and finding information
 :::
 
 :::
