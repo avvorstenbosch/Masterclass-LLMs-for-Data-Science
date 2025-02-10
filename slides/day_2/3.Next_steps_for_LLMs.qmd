@@ -91,16 +91,34 @@ title-slide-attributes:
 - <span class="highlighted-text"> Not user friendly </span> compared to paid models
 - <span class="highlighted-text"> Not SOTA </span> (even though it comes close)
 
-## Currently open source LLMs rely on Meta LLama models a lot
+## More and more open source models ...
 
-![[https://ai.meta.com/llama/](https://ai.meta.com/llama/)](./figures/llama3.png)
+![[See what is trending on huggingface.co/](https://huggingface.co/models?pipeline_tag=text-generation&sort=trending)](./figures/llama3.png)
 
 Most models are released in half-precision (16 bit):
 
+- 3B parameters ~ 2.25 GB of (V)RAM
 - 7B parameters ~ 14 GB of (V)RAM
 - 13B parameters ~ 26 GB of (V)RAM
+- 20B parameters ~ 40 GB of (V)RAM
 - 70B parameters ~ 140 GB of (V)RAM 
 how to run these huge models?
+
+## ... and quantisation makes them more usable 
+
+![[See what is trending on huggingface.co/](https://huggingface.co/models?pipeline_tag=text-generation&sort=trending)](./figures/llama3.png)
+
+The same models at 6-bit quantisation are:
+
+- 3B parameters ~ 6 GB of (V)RAM
+- 7B parameters ~ 5.25 GB of (V)RAM
+- 13B parameters ~ 9.75 GB of (V)RAM
+- 20B parameters ~ 15 GB of (V)RAM
+- 70B parameters ~ 52.5 GB of (V)RAM 
+
+This makes all models except the 70B model usable on high end consumer hardware.
+This makes all models except the 70B model usable on low to mid-range professional hardware. 
+
 
 ## Try out huggingchat
 
@@ -109,29 +127,6 @@ how to run these huge models?
 <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)">
   <span class="highlighted-text" style="font-size: 150px;">[Demo](https://huggingface.co/chat/)</span>
 </div>
-
-## AutoGPT - An Autonomous GPT-4 Experiment
-
-[AutoGPT github](https://github.com/Significant-Gravitas/AutoGPT):
-
-:::{.columns}
-
-:::{.column width="60%"}
-- 🌐 Internet access for searches and information gathering
-- 💾 Long-term and short-term memory management
-- 🧠 GPT-4 instances for text generation
-- 🔗 Access to popular websites and platforms
-- 🗃️ File storage and summarization with GPT-3.5
-- 🔌 Extensibility with Plugins
-:::
-
-:::{.column width="40%"}
-![](./figures/autogpt-stars.svg)
-:::
-
-:::
-
-## {background-video="./figures/autogpt-code-improvement.mp4"}
 
 ## How to find the best model?
 
@@ -181,9 +176,70 @@ how to run these huge models?
 
 :::
 
-## Reinfocement Learning - Breaking news!
+## Reinfocement Learning for reasoning
 
-[New OpenAI models: Reasoning with LLMs](https://openai.com/index/learning-to-reason-with-llms/)
+:::{.columns}
+
+:::{.column width="60%"}
+2 big models in recend days:
+
+- [OpenAI models: o1 Reasoning with LLMs](https://openai.com/index/learning-to-reason-with-llms/)
+- [Deepseek-R1](https://github.com/deepseek-ai/DeepSeek-R1)
+
+Allow for allocating extra test-time compute:
+
+- More number crunching before answering a question
+- Works a lot better for hard problems
+- The models themselves allocate the compute, and learn to do this via reinforcement learning
+
+:::
+
+:::{.column width="40%"}
+![[DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](https://arxiv.org/abs/2501.12948)](./figures/Deepseek-R1.png)
+:::
+
+## Math mode 'on'
+
+:::{.columns}
+
+:::{.column width="60%"}
+
+- Deepmind: LLM based model is now better than in geometry problems than average gold-medalists in the International Mathematical Olympiad (IMO)    
+
+:::
+
+:::{.column width="40%"}
+
+![[PREPRINT: Gold-medalist Performance in Solving Olympiad Geometry with AlphaGeometry2](https://arxiv.org/pdf/2502.03544v1)](./figures/AlphaGeometry2)
+
+
+## AutoGPT - An Autonomous GPT-4 Experiment
+
+[AutoGPT github](https://github.com/Significant-Gravitas/AutoGPT):
+
+:::{.columns}
+
+:::{.column width="60%"}
+- 🌐 Internet access for searches and information gathering
+- 💾 Long-term and short-term memory management
+- 🧠 GPT-4 instances for text generation
+- 🔗 Access to popular websites and platforms
+- 🗃️ File storage and summarization with GPT-3.5
+- 🔌 Extensibility with Plugins:::{.column width="40%"}
+![](./figures/autogpt-stars.svg)
+:::
+
+:::
+
+## {background-video="./figures/autogpt-code-improvement.mp4"}
+
+## LLM Agents are becoming more mainstream
+
+Mainstream AI agent are expected to be one of the next big steps:
+
+- [OpenAI Operator: an agent that can go to the web to perform tasks for you.](https://openai.com/index/introducing-operator/)
+
+- [OpenAI Deep Research: an agent that conducts multi-step research on the internet for complex tasks - Literature reviews](https://openai.com/index/introducing-deep-research/)
 
 
 ## Sparks of AGI? {.full-bg-slide background-image="./figures/an-uncertain-future.webp"} 
