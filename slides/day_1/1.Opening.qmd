@@ -55,14 +55,16 @@ title-slide-attributes:
 :::
 :::
 
-## The second wave - OpenSource Deepseek-R1
+## The second wave (?) - OpenSource Deepseek-R1
 ::: {.columns}
 ::: {.column width="50%"}
 
 ::: {.incremental}
 - Released on 20 januari 2025
-- Open sourced methodology and released models open weights
+- <span class="highlighted-text">Open sourced</span> Open sourced methodology and released models <span class="highlighted-text">Generative AI</span>open weights </span>
 - Quickly dethroned ChatGPT as most downloaded app in App store and Play store
+- Reportedly developed very cheaply within limited GPU embargo position
+  - The reality was a lot less extreme than what was reported.
 - Disruptive, erased 1 trillion dollars from the stock markets
   - Nvidia stocks dropped by 18\%
 :::
