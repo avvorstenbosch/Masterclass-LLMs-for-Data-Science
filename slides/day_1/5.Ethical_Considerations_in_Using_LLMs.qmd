@@ -7,8 +7,8 @@ title-slide-attributes:
   data-background-image: "./figures/llms-and-ethics.webp"
   data-background-opacity: "0.5"
 resources: 
-  - ./webpages/hallucination1_files/*
-  - ./webpages/hallucination2_files/*
+  - ../webpages/hallucination1_files/*
+  - ../webpages/hallucination2_files/*
 
 
 ---
@@ -65,12 +65,12 @@ Form your own opinions and openly discuss issues.
 ::: {.columns}
 
 ::: {.column width="50%"}
- <iframe src="./webpages/hallucination1.html" class="iframe-chatgpt"></iframe>
+ <iframe src="../webpages/hallucination1.html" class="iframe-chatgpt"></iframe>
 
 :::
 
 ::: {.column width="50%"}
- <iframe src="./webpages/hallucination2.html" class="iframe-chatgpt"></iframe>
+ <iframe src="../webpages/hallucination2.html" class="iframe-chatgpt"></iframe>
 
 :::
 
@@ -286,11 +286,17 @@ Geoffrey Hinton, Yann LeCun, and Joshua Bengio won the 2018 Turing Award. Highes
 [BI: AI one-percenters seizing power forever is the real doomsday scenario, warns AI godfather](https://www.businessinsider.com/sam-altman-and-demis-hassabis-just-want-to-control-ai-2023-10?international=true&r=US&IR=T)
 ::: 
 
+:::{.column width="50%"}
 - Very real threat in current social media ecosystem:
   - [Romanian election result annulment due to Election Interference](https://www.ifes.org/publications/romanian-2024-election-annulment-addressing-emerging-threats-electoral-integrity)
   - [Report On The Investigation Into Russian Interference In The 2016 Presidential Election, R. Mueller](https://www.justice.gov/archives/sco/file/1373816/dl?inline=)
   - [*Speculative:* Whistleblower: X's Role in 2024 Election Interference via AI-bots](https://theconcernedbird.substack.com/p/elon-musks-and-xs-role-in-2024-election)
-:::{.column width="50%"}
+:::
+
+::: 
+
+## Are these AI developments safe?
+
 
 <div style="height:600px">
 
@@ -300,9 +306,6 @@ Geoffrey Hinton, Yann LeCun, and Joshua Bengio won the 2018 Turing Award. Highes
 
 [BI: Google Brain cofounder says Big Tech companies are inflating fears about the risks of AI wiping out humanity because they want to dominate the market](https://www.bbc.com/news/technology-65886125)
 
-:::
-
-::: 
 
 :::{.notes}
 Andrew NG: head of Google Brain and was the former Chief Scientist at Baidu, Stanford professor

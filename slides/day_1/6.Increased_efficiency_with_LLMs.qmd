@@ -222,6 +222,184 @@ Real-time translation of audio content
 
 :::
 
+# Coding-assistants
+
+## What is Github Copilot
+::: {.columns}
+::: {.column width="50%"}
+
+- an LLM-Powered Code Assistant
+  - We will talk more about LLMs in <span class='highlighted-text'> Februari 2025 </span>
+- Developed by GitHub, OpenAI and Microsoft
+- Helps write code faster with AI suggestions
+
+:::
+::: {.column width="50%"}
+![](./figures/copilot_generate_test.gif)
+:::
+::: 
+
+## How Does It Work?
+::: {.columns}
+::: {.column}
+- Based on a   <span class='highlighted-text'> GPT-model </span>
+  - Originally `Codex`
+- Trained on billions of lines of public (and private) code
+- Provides context-aware code completion suggestions
+:::
+::: {.column}
+![](./figures/autoregressive-llm.jpg)
+:::
+::: 
+
+::: {.columns}
+::: {.column width='35%'}
+
+:::{.fragment}
+Supported Languages:
+:::
+
+- R
+- Python
+- JavaScript
+- SQL
+- Typescript,
+- C#,
+- C++
+- Ruby, Go, Rust, etc...
+:::
+
+::: {.column width='65%'}
+- Quality of suggestions relates directly to language <span class='highlighted-text'> popularity </span> on Github
+:::
+:::
+
+# Types of tasks Copilot can help with
+
+::: {.columns}
+::: {.column}
+- Writing code
+- Translation between code-languages
+- Writing boilerplate-code
+- Documenting code
+- Writing unittests
+- Explainig code
+- Improving/Optimising code
+- Debugging code
+- Reviewing code
+:::
+::: {.column}
+![](./figures/Copilot-image.webp)
+:::
+::: 
+
+## Limitations and Considerations
+- Suggestions can be far from optimal
+  - They can also be flat out wrong!
+  - Sometimes <span class="highlighted-text"> 'hallucinates' </span> non-existing functions.
+- be mindfull of inconsistent use of libraries and style
+  - Less so when using integrated tools like `github copilot`
+  - More so when using seperate online tools like `ChatGPT` 
+
+:::{.fragment}
+Remedy:
+:::
+
+- Always review and test the code!
+- Never just accept blindly
+- Try to understand what is going on
+
+
+## Security Risks
+- May produce insecure code
+  - Especially when you are more on the product development side of things
+- Be cautious with sensitive information
+  - Your environment can contain propriatery code or data
+  - Never install copilot without consulting with your <span class="highlighted-text"> Security departement</span>. 
+
+ GitHub Copilot in VSCode
+
+## GitHub Copilot in VSCode
+
+::: {.columns}
+
+::: {.column width="30"}
+
+Copilot in VSCode
+- Autocomplete Your Code
+- Start typing code or comments
+- Copilot suggests completions inline
+- Accept with Tab
+- Press Ctrl + Enter to view alternatives
+- Extension ecosystem
+- Supports Copilot Chat
+:::
+
+::: {.column width="70"}
+![](./figures/invscode.png)
+
+:::
+::: 
+
+## Comment-Based Prompts {auto-animate="true"}
+- Write a comment describing desired code
+- Copilot generates the code for you as ghost code (press tab to accept)
+Example: Calculating Mean
+```{r}
+#| eval: false
+#| incremental: true
+#| echo: true
+#| code-line-numbers: '1'
+# Function to calculate mean of a vector
+```
+
+## Comment-Based Prompts {auto-animate="true"}
+:::{.nonincremental}
+- Write a comment describing desired code
+- Copilot generates the code for you
+Example: Calculating Mean
+:::
+```{r}
+#| eval: false
+#| incremental: true
+#| echo: true
+# Function to calculate mean of a vector
+def <- function(x) {
+    mean <- sum(x) / length(x)
+    return(mean)
+}
+```
+
+
+## Asking Questions in Comments {auto-animate="true"}
+- Use Natural Language
+- Pose questions in comments
+- Only works for short questions
+- preferably, but not limited to, coding questions
+```{r}
+#| eval: false
+#| incremental: true
+#| echo: true
+
+# Q: What is a recursive function?
+```
+
+## Asking Questions in Comments {auto-animate="true"}
+:::{.nonincremental}
+- Use Natural Language
+- Pose questions in comments
+- Only works for short questions
+- preferably, but not limited to, coding questions
+:::
+```{r}
+#| eval: false
+#| incremental: true
+#| echo: true
+
+# Q: What is a recursive function?
+# A: A recursive function is a function that calls itself within its definition. This allows the function to repeat its operation on a smaller or simpler version of the input untill a base case is reached, at which point the function returns a final result.
+
+```
 
 # Generative AI for exams
 

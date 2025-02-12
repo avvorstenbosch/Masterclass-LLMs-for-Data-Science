@@ -5,361 +5,70 @@ author: "Alex van Vorstenbosch"
 footer: "Pair-programming with LLMs"
 title-slide-attributes:
     data-background-image: "./figures/pair-programming-with-llms.webp"
-    data-background-opacity: "0.5"
 
-date: "11-17-2023"
 ---
 
-## Overview
+# Pair-programming with LLM-Chats
 
-:::{.nonincremental}
-- Introduction to the OpenAI API
-- Pair-programming with LLMs
-:::
-
-## Overview
-
-:::{.nonincremental}
-- <span class="highlighted-text">Introduction to the OpenAI API</span>
-- Pair-programming with LLMs
-:::
-
-# Introduction to the OpenAI API
-
-## Introduction to the OpenAI API
-
-- The website/app is nice and sleek
-
-- But...
-
-    - It is a workflow that cannot be scaled!
-    - You don't have a lot of control as a user!
-
-- Therefore we want to get to know the API:
-
-    - Allows interaction from your programming language of choice
-    - Allows (more) acces to options to control model output
-
-## Introduction to the OpenAI API - Python
-- We'll be calling the API directly from Python or R
-```{.python code-line-numbers="|1-6|8-10|12-15|17-28|18|19-24|25|26|27|"}
-# Specify the path to your API-credentials file
-import yaml
-from openai import OpenAI
-file_path = "credentials.yml"
-with open(file_path, 'r') as yaml_file:
-    credentials = yaml.safe_load(yaml_file)
-
-# You can also use an .env file
-import os
-openai.api_key = os.getenv("OPENAI_API_KEY")
-
-client = OpenAI(
-    # defaults to os.environ.get("OPENAI_API_KEY")
-    api_key=credentials["OPENAI_API_KEY"],
-)
-
-chat_completion = client.chat.completions.create(
-    model="gpt-3.5-turbo", 
-    messages=[
-        {"role": "system", "content": "You are a helpful assistant."},
-        {"role": "user", "content": "Who are you?"},
-        {"role": "assistant", "content": "Hello! I'm ChatGPT. How can I assist you today?"},
-        {"role": "user", "content": "What can the OpenAI API do?"}
-    ],
-    temperature=1,     # The randomness setting of the model: 0 is deterministic, 2 is most random
-    n = 1,             # How many completions do we want the model to generate
-    max_tokens=None    # How many tokens is the model allowed to use
-)
-```
-
-## Introduction to the OpenAI API - R
-- We'll be calling the API directly from Python or R
-```{.R code-line-numbers="|2|1-6|8-9|11-35|13|14-31|32-34|35|"}
-# Specify the path to your API-credentials file
-library(openai) # open source, not official implementation!
-library(yaml)
-file_path <- "credentials.yml"
-credentials <- yaml.load_file(file_path)
-OPENAI_API_KEY <- credentials$OPENAI_API_KEY
-
-# You can also use you .Renvironment
-OPENAI_API_KEY <- Sys.getenv["OPENAI_API_KEY"]
-
-# Get a model response
-response <- create_chat_completion(
-    model = "gpt-3.5-turbo",
-    messages = list(
-        list(
-            "role" = "system",
-            "content" = "You are a helpful assistant."
-        ),
-        list(
-            "role" = "user",
-            "content" = "Who are you?"
-        ),
-        list(
-            "role" = "assistant",
-            "content" = "Hello! I'm ChatGPT. How can I assist you today?"
-        ),
-        list(
-            "role" = "user",
-            "content" = "What can the OpenAI API do?"
-        )
-    ),
-    temperature = 1,     # The randomness setting of the model: 0 is deterministic, 2 is most random
-    n = 1,               # How many completions do we want the model to generate
-    max_tokens = NULL,   # How many tokens is the model allowed to use
-    openai_api_key = OPENAI_API_KEY # Required if it was not stored in your .Renviron
-)
-```
-```{python}
-#| eval: true
-#| echo: false
-#| output: false
-import yaml
-from openai import OpenAI
-file_path = "../credentials.yml"
-with open(file_path, 'r') as yaml_file:
-    credentials = yaml.safe_load(yaml_file)
-
-client = OpenAI(
-    # defaults to os.environ.get("OPENAI_API_KEY")
-    api_key=credentials["OPENAI_API_KEY"],
-)
-```
-
-## Let's try it out! {.smaller}
-- Run prompts with temperature 0 to make them reproducible!
-
-```{python}
-#| echo: true
-
-response = client.chat.completions.create(
-    model="gpt-3.5-turbo", 
-    messages=[
-        {"role": "system", "content": "You are a helpful assistant."},
-        {"role": "user", "content": "Who are you?"},
-        {"role": "assistant", "content": "Hello! I'm ChatGPT. How can I assist you today?"},
-        {"role": "user", "content": "What can the OpenAI API do?"}
-    ],
-    temperature=0,     # The randomness setting of the model: 0 is deterministic, 2 is most random
-    n = 1,             # How many completions do we want the model to generate
-    max_tokens=None  # How many tokens is the model allowed to use
-)
-print(response.choices[0].message.content)
-```
-:::{.panel-tabset}
-
-## T = 1 (normal)
-
-![](./figures/ptoken-t1.png){fig-aling=center}
-
-## T = 0.5 
-
-![](./figures/ptoken-t05.png){fig-aling=center}
-
-
-## T = 2
-
-![](./figures/ptoken-t2.png){fig-aling=center}
-
-
-## T = 0
-
-![](./figures/ptoken-t0.png){fig-aling=center}
-
-:::
-
-
-## Let's try it out! {.smaller}
-- Run prompts with temperature 0 to make them reproducible!
-
-```{python}
-#| eval: false
-#| echo: true
-#| output: false
-response = client.chat.completions.create(
-    model="gpt-3.5-turbo", 
-    messages=[
-        {"role": "system", "content": "You are a helpful assistant."},
-        {"role": "user", "content": "Who are you?"},
-        {"role": "assistant", "content": "Hello! I'm ChatGPT. How can I assist you today?"},
-        {"role": "user", "content": "What can the OpenAI API do?"}
-    ],
-    temperature=0,     # The randomness setting of the model: 0 is deterministic, 2 is most random
-    n = 1,             # How many completions do we want the model to generate
-    max_tokens=None  # How many tokens is the model allowed to use
-)
-
-```
-```{python}
-#| echo: false
-print(response)
-```
-
-## Experiment - random number generation using N setting{.smaller}
-
-```{.python}
-response = openai.ChatCompletion.create(
-    model="gpt-3.5-turbo", 
-    messages=[
-        {"role": "system", "content": "You are a helpful assistant. You will answer only in .json formatted responses"},
-        {"role": "user", "content": """Choose an integer number between 0 and 1000. Only return the following json format, don't say anything else:
-                                            {"number":number}"""},
-    ],
-    temperature=1,   # The randomness setting of the model: 0 is deterministic, 2 is most random
-    n = 128,         # How many completions do we want the model to generate
-    max_tokens=None  # How many tokens is the model allowed to use
-)
-```
-
-:::{.panel-tabset}
-
-## Real (pseudo-)random numbers
-
-![](./figures/real_random_number_generator.png){fig-aling=center}
-
-## ChatGPT random numbers - "Pick"
-
-![](./figures/bad-random-number-generator.png){fig-aling=center}
-
-
-## ChatGPT random numbers - "Choose"
-
-![](./figures/bad-random-number-generator2.png){fig-aling=center}
-
-:::
-
-## Check out the official documentation
-
-- More info can be found on the official pages
-- Developments are going fast, be sure to check in frequently:
-    - [API-reference chat completions](https://platform.openai.com/docs/api-reference/chat)
-    - [Text generation models guide](https://platform.openai.com/docs/guides/text-generation)
-    - [Prompting examples](https://platform.openai.com/examples)
-    - [API pricing](https://openai.com/pricing)
-
-## What if we want to see the number of tokens before sending a request?
-- Use the `tiktoken` package (only for `Python`)
-
-```{python}
-#| echo: true
-import tiktoken
-encoding = tiktoken.encoding_for_model("gpt-3.5-turbo")
-encoding = encoding.encode("I wonder how many tokens are used for this line?")
-print(encoding)
-print(f"The number of tokens used was: {len(encoding)}")
-```
-
-
-```{python}
-#| output: false
-#| echo: false
-def num_tokens_from_messages(messages, model="gpt-3.5-turbo-0613"):
-    """Return the number of tokens used by a list of messages."""
-    try:
-        encoding = tiktoken.encoding_for_model(model)
-    except KeyError:
-        print("Warning: model not found. Using cl100k_base encoding.")
-        encoding = tiktoken.get_encoding("cl100k_base")
-    if model in {
-        "gpt-3.5-turbo-0613",
-        "gpt-3.5-turbo-16k-0613",
-        "gpt-4-0314",
-        "gpt-4-32k-0314",
-        "gpt-4-0613",
-        "gpt-4-32k-0613",
-        }:
-        tokens_per_message = 3
-        tokens_per_name = 1
-    elif model == "gpt-3.5-turbo-0301":
-        tokens_per_message = 4  # every message follows <|start|>{role/name}\n{content}<|end|>\n
-        tokens_per_name = -1  # if there's a name, the role is omitted
-    elif "gpt-3.5-turbo" in model:
-        print("Warning: gpt-3.5-turbo may update over time. Returning num tokens assuming gpt-3.5-turbo-0613.")
-        return num_tokens_from_messages(messages, model="gpt-3.5-turbo-0613")
-    elif "gpt-4" in model:
-        print("Warning: gpt-4 may update over time. Returning num tokens assuming gpt-4-0613.")
-        return num_tokens_from_messages(messages, model="gpt-4-0613")
-    else:
-        raise NotImplementedError(
-            f"""num_tokens_from_messages() is not implemented for model {model}. See https://github.com/openai/openai-python/blob/main/chatml.md for information on how messages are converted to tokens."""
-        )
-    num_tokens = 0
-    for message in messages:
-        num_tokens += tokens_per_message
-        for key, value in message.items():
-            num_tokens += len(encoding.encode(value))
-            if key == "name":
-                num_tokens += tokens_per_name
-    num_tokens += 3  # every reply is primed with <|start|>assistant<|message|>
-    return num_tokens
-```
-
-## What if we want to see the number of tokens before sending a request?
-- Check the [openai-cookbook-tiktoken](https://cookbook.openai.com/examples/how_to_count_tokens_with_tiktoken) page for function for our message structure
-
-```{python}
-#| echo: true
-messages=[
-    {"role": "system", "content": "You are a helpful assistant."},
-    {"role": "user", "content": "Who are you?"},
-    {"role": "assistant", "content": "Hello! I'm ChatGPT. How can I assist you today?"},
-    {"role": "user", "content": "What can the OpenAI API do?"}
-]
-tiktoken_count = num_tokens_from_messages(messages)
-API_count = response.usage.prompt_tokens
-print(f"Tiktoken counted {tiktoken_count} tokens.\nThe API counted {API_count} tokens.")
-if tiktoken_count == API_count:
-    print("Hurray! It's a match!")
-```
-
-## ... But i'm not a Python user
-- Worry not!
-    - In the assignments I've written a helper function to help you make estimates
-        - For English: we can assume ~ $\frac{3}{4}$ words-per-token
-        - For Dutch: we can assume ~ $\frac{2}{4}$ words-per-token
-
-
-## Overview
-
-:::{.nonincremental}
-- <span class="highlighted-text">Introduction to the OpenAI API</span>
-- Pair-programming with LLMs
-:::
-
-## Overview
-
-:::{.nonincremental}
-- Introduction to the OpenAI API
-- <span class="highlighted-text">Pair-programming with LLMs</span>
-:::
-
-# Pair-programming with LLMs
-
-## What can ChatGPT mean for you?
+## What can LLMs mean for you? {.smaller}
+::: {.columns}
+::: {.column}
 
 - Writing code: 
-    - Think low complexity, but not complicated: 
+    - Great for code with extensive syntax, but simple logic: 
         - Regex patterns
         - SQL queries
-- Translation between code-languages
-- Writing boilerplate-code
-- Documenting code
+    - Getting better at complex logic which reasoning models such as:
+        - [Deepseek R1](https://arxiv.org/abs/2501.12948)
+        - [GPT o1](https://openai.com/index/learning-to-reason-with-llms/)
+- Translation between code-languages:
+    - i.e. Python to R
+    - i.e. R to Python
+- Writing boilerplate-code 
+- Writing documentation
 - Writing unittests 
 - Explainig code
-- Improving/Optimising code
 - Debugging code
 - Reviewing code
+    - Optimising code
+    - Improving code
+:::
+::: {.column}
+![](./figures/Gif-ChatGPT.gif)
+:::
+::: 
 
-## Writing code
+## What can LLMs mean for you? {.smaller}
+::: {.columns}
+::: {.column}
+
+- How does using LLM chat differ from github copilot?
+    - General purpose versus only code specific
+    - More interactive
+    - Longer conversations
+    - Ability to guide more in the Context
+    - But also more removed from IDE
+    - Cannot see code context from your project
+:::
+::: {.column}
+![](./figures/Gif-ChatGPT.gif)
+:::
+::: 
+
+## Demo: GitHub Copilot Chat in VSCode
+<div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)">
+  <span class="highlighted-text" style="font-size: 150px;">Demo</span>
+</div>
+
+## Writing code with LLMs
 
 :::{style="text-align:center"}
 *“What I love is that it will come out of left field with methods I didn't even know existed. Of course in some cases those methods actually don't exist...”*
 :::
-- Example of a task where, in my personal experience, there is a big difference between GPT3.5 and GPT4:
-    - Can handle both more complicated and more complex code
+
+- [AdventOfCode](https://adventofcode.com/)
+- Example of a task where there reasoning models feels like a big leap forwards:
+    - Can handle more complex code involving more distinct reasoning steps to solve
 
 ::: {.columns}
 
@@ -379,42 +88,34 @@ if tiktoken_count == API_count:
 
 ## Writing code - SQL queries
 
-<iframe class="iframe-chatgpt" src="https://chat.openai.com/share/bda13f05-fcd0-40e3-b37e-88eea6ab1e3b" style="height: 800px; width:800px"></iframe>
+<iframe class="iframe-chatgpt" src="../webpages/Pad and Concatenate Strings in SQL.html"></iframe>
+
+## Writing code - Regex patterns
+
+<iframe class="iframe-chatgpt" src="../webpages/Regex for Repeated Consonants.html"></iframe>
+
 
 ## Writing code - Pong in Python
 
-<iframe class="iframe-chatgpt" src="https://chat.openai.com/share/f809290f-eb39-44f9-95b8-80f13f12bda6" style="height: 800px; width:800px"></iframe>
+<iframe class="iframe-chatgpt" src="../webpages/Pong Game Implementation in Python.html" style="height: 800px; width:800px"></iframe>
 
 ## {background-video="./figures/pong-demo.mp4"}
-
-
-
-## Writing code - Pong in R
-
-- Could not get this to work... :(
-    - Keeps trying to use functions that don't exist
-    - When called out, apologizes, and then does it agian. 
-- Simple explanation: R as a language is not written to support this type of code.
-    - It's not impossible, but it is not part of the base functionality
-    - R is very focussed on data wrangling and statistics
-    - Python is much more generalized
 
 ## Translation between code-languages {.smaller}
 
 - Remember this function from the exercises :)
 
-<iframe class="iframe-chatgpt" src="https://chat.openai.com/share/69ebe8b5-4f0b-456e-b70d-33cac76110a9" style="height: 800px; width:800px"></iframe>
+<iframe class="iframe-chatgpt" src="../webpages/Python to R Translation of tokenizer count.html" style="height: 800px; width:800px"></iframe>
 
 ## Documenting code
 
-<iframe class="iframe-chatgpt" src="https://chat.openai.com/share/dbae088e-3e9d-4348-a42c-79bc60b843c0" style="height: 800px; width:800px"></iframe>
+<iframe class="iframe-chatgpt" src="../webpages/Documentation for undocumented Pong Code.html" style="height: 800px; width:800px"></iframe>
 
 
 ## Explaining code
 
-<iframe class="iframe-chatgpt" src="https://chat.openai.com/share/a0225e04-11a8-443b-be8b-59c3c99640a4" style="height: 800px; width:800px"></iframe>
+<iframe class="iframe-chatgpt" src="../webpages/Pong Game Code Explanation.html" style="height: 800px; width:800px"></iframe>
 
 ## Improving/Optimising/Reviewing code
 
-<iframe class="iframe-chatgpt" src="https://chat.openai.com/share/01ef4e08-eb08-4692-88b7-8e92624a45d5" style="height: 800px; width:800px"></iframe>
-
+<iframe class="iframe-chatgpt" src="../webpages/Code Review and Improvements.html" style="height: 800px; width:800px"></iframe>

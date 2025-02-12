@@ -29,7 +29,7 @@ title-slide-attributes:
     - *Accessible* to use for <span class="highlighted-text">Anybody</span>
 :::
 ::: {.column width="40%"}
-<iframe src="./webpages/ChatGPT for Data Science.html" class="iframe-chatgpt"></iframe>
+<iframe src="../webpages/ChatGPT for Data Science.html" class="iframe-chatgpt"></iframe>
 :::
 :::
 
@@ -531,7 +531,7 @@ tune the model towards higher quality responses.
 
 ## And this gives you...
 
-<iframe src="./webpages/Hello world!.html" class="iframe-chatgpt"></iframe>
+<iframe src="../webpages/Hello world!.html" class="iframe-chatgpt"></iframe>
 
 ## Overview 
 ::: {.nonincremental}
@@ -551,11 +551,11 @@ tune the model towards higher quality responses.
 Foundational language model that:
 
 - <span class ="highlighted-text" >*'Understands'*</span> language conventions (syntax, grammer, etc.)
-- Can answer questions (has internal knowledge base)
+- Can answer questions (has knowledge backed into weights)
 - Can code
 - Can write just like humans
 - Can do some basic arithmatic
-- Can understand *deep* elements of writing: sentiment, style, etc.
+- Can understand *deep* elements of writing: *sentiment, style, etc.*
 - Can do logical reasoning (to some extent)
 - [Capabilities measured on easy scales](https://openai.com/research/gpt-4)
 
@@ -565,11 +565,11 @@ Foundational language model that:
 - It has <span class ="highlighted-text" >no memory</span>
 - It can only predict next tokens, nothing else:
     - It cannot perform tasks while you wait!
-- It cannot `think' in `multiple directions' like we do!
-- `Thinking' only has a fast mode, no thinking fast and slow.
+- It cannot `think` in `multiple directions' like we do!
+- `Thinking` only has a fast mode, no thinking fast and slow.
 - It doesn't understand it's own internal model!
 - It <span class ="highlighted-text" >doesn't know what the truth is</span> and what it is not
-- It doesn't understand tabular data 
+- It doesn't understand tabular data well
 - It doesn't proces language in a human way ([The Reversal Curse](https://arxiv.org/abs/2309.12288))
 
 :::{.notes}
@@ -602,7 +602,7 @@ Foundational language model that:
     - Therefore the sampling algorithm receives a <span class="highlighted-text">repetition penalty</span>
     - This can be exploited
 
-<iframe src="./webpages/breaking the algorithm.html" class="iframe-chatgpt" style="width: 700px; height: 900px;" ></iframe>
+<iframe src="../webpages/breaking the algorithm.html" class="iframe-chatgpt" style="width: 700px; height: 900px;" ></iframe>
 
 ## Glitch Tokens
 - Some tokens identified by BPE only appear in <span class="highlighted-text">useless</span> context
@@ -613,7 +613,7 @@ Foundational language model that:
 
 :::{.column width="40%"}
 
-<iframe src="./webpages/Glitchtokens example behaviour.html" class="iframe-chatgpt"></iframe>
+<iframe src="../webpages/Glitchtokens example behaviour.html" class="iframe-chatgpt"></iframe>
 
 :::
 
@@ -627,7 +627,7 @@ Foundational language model that:
 
 # ChatGPT3.5 vs GPT4{.smaller}
 
-| Feature/Aspect           | GPT-3.5                                      | GPT-4(o)(o)                                               |
+| Feature/Aspect           | GPT-3.5                                      | GPT-4(o)                                               |
 |--------------------------|----------------------------------------------|-----------------------------------------------------|
 | **Problem-Solving**      | Standard problem-solving skills                 | Greater accuracy and broader knowledge              |
 | **Creativity**           | Standard                                     | More creative and collaborative                      |
@@ -637,5 +637,4 @@ Foundational language model that:
 | **Extra features**   | None                                    | - RAG <br> - Advanced Data Analysis  |
 | **Factual Accuracy**     | Standard                   | more likely to produce factual responses        |
 | **Command Adherence**    | Standard                         | More likely to adhere to prompt                     |
-| **Availability**         | Free for everybody                       | Free for everybody, higher rate limits for paying customers                                |
 : {.custom-table }
