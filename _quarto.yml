@@ -1,6 +1,6 @@
 project:
     type: website
-    output-dir: cursusmateriaal
+    output-dir: CourseMaterials
     render:
     - "*.qmd"
     - "!./exercises/day_2/solutions/"
