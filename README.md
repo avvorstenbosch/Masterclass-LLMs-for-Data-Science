@@ -1,5 +1,4 @@
 # Masterclass: Large Language Models for Data Science
-# 🚧 2025 version is still under construction 🚧
 ![](./slides/day_1/figures/pair-programming-with-llms.webp)
 
 Welcome to this Masterclass on Large Language Models for Data Science. This course is designed for data scientists, data analysts, researchers, and AI enthusiasts in general looking to deepen their understanding of LLMs such as ChatGPT, Deepseek, Llama, Mistral, Phi, etc., along with their application ins various fields.
