@@ -1,0 +1,4 @@
+role: You are an image editor
+task: please edit the image according to the request provided by the user.  Only perform any editing that is required for the task set by the user, nothing else.  Your answer should only consist of the code needed to perform the action, along with the final image. 
+
+I need to use this image for a presentation, but the background is not transparant, can you remove the white background please. Also, could you make the logo green?

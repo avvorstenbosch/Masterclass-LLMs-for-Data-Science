@@ -1,0 +1,121 @@
+---
+title: "Programming with LLMs"
+subtitle: "*Time to Pair up*"
+author: "Alex van Vorstenbosch"
+footer: "Pair-programming with LLMs"
+title-slide-attributes:
+    data-background-image: "./figures/pair-programming-with-llms.webp"
+
+---
+
+# Pair-programming with LLM-Chats
+
+## What can LLMs mean for you? {.smaller}
+::: {.columns}
+::: {.column}
+
+- Writing code: 
+    - Great for code with extensive syntax, but simple logic: 
+        - Regex patterns
+        - SQL queries
+    - Getting better at complex logic which reasoning models such as:
+        - [Deepseek R1](https://arxiv.org/abs/2501.12948)
+        - [GPT o1](https://openai.com/index/learning-to-reason-with-llms/)
+- Translation between code-languages:
+    - i.e. Python to R
+    - i.e. R to Python
+- Writing boilerplate-code 
+- Writing documentation
+- Writing unittests 
+- Explainig code
+- Debugging code
+- Reviewing code
+    - Optimising code
+    - Improving code
+:::
+::: {.column}
+![](./figures/Gif-ChatGPT.gif)
+:::
+::: 
+
+## What can LLMs mean for you? {.smaller}
+::: {.columns}
+::: {.column}
+
+- How does using LLM chat differ from github copilot?
+    - General purpose versus only code specific
+    - More interactive
+    - Longer conversations
+    - Ability to guide more in the Context
+    - But also more removed from IDE
+    - Cannot see code context from your project
+:::
+::: {.column}
+![](./figures/Gif-ChatGPT.gif)
+:::
+::: 
+
+## Demo: GitHub Copilot Chat in VSCode
+<div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)">
+  <span class="highlighted-text" style="font-size: 150px;">Demo</span>
+</div>
+
+## Writing code with LLMs
+
+:::{style="text-align:center"}
+*“What I love is that it will come out of left field with methods I didn't even know existed. Of course in some cases those methods actually don't exist...”*
+:::
+
+- [AdventOfCode](https://adventofcode.com/)
+- Example of a task where there reasoning models feels like a big leap forwards:
+    - Can handle more complex code involving more distinct reasoning steps to solve
+
+::: {.columns}
+
+::: {.column width="33%"}
+:::
+
+::: {.column width="34%"}
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">I placed 2nd (out of ~100,000) in <a href="https://twitter.com/hashtag/AdventOfCode?src=hash&amp;ref_src=twsrc%5Etfw">#AdventOfCode</a> Part 1 today, by having <a href="https://twitter.com/OpenAI?ref_src=twsrc%5Etfw">@OpenAI</a>&#39;s GPT-3 write the code<a href="https://twitter.com/ostwilkens?ref_src=twsrc%5Etfw">@ostwilkens</a> placed 1st, and did the same<br><br>Lots more competitions are going to become like chess competitions — humans striving to emulate a computer <a href="https://t.co/aH0ZlX1b09">pic.twitter.com/aH0ZlX1b09</a></p>&mdash; Max (@max_sixty) <a href="https://twitter.com/max_sixty/status/1598924237947154433?ref_src=twsrc%5Etfw">December 3, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+:::
+
+::: {.column width="33%"}
+
+:::
+
+::: 
+
+## Writing code - SQL queries
+
+<iframe class="iframe-chatgpt" src="../webpages/Pad and Concatenate Strings in SQL.html"></iframe>
+
+## Writing code - Regex patterns
+
+<iframe class="iframe-chatgpt" src="../webpages/Regex for Repeated Consonants.html"></iframe>
+
+
+## Writing code - Pong in Python
+
+<iframe class="iframe-chatgpt" src="../webpages/Pong Game Implementation in Python.html" style="height: 800px; width:800px"></iframe>
+
+## {background-video="./figures/pong-demo.mp4"}
+
+## Translation between code-languages {.smaller}
+
+- Remember this function from the exercises :)
+
+<iframe class="iframe-chatgpt" src="../webpages/Python to R Translation of tokenizer count.html" style="height: 800px; width:800px"></iframe>
+
+## Documenting code
+
+<iframe class="iframe-chatgpt" src="../webpages/Documentation for undocumented Pong Code.html" style="height: 800px; width:800px"></iframe>
+
+
+## Explaining code
+
+<iframe class="iframe-chatgpt" src="../webpages/Pong Game Code Explanation.html" style="height: 800px; width:800px"></iframe>
+
+## Improving/Optimising/Reviewing code
+
+<iframe class="iframe-chatgpt" src="../webpages/Code Review and Improvements.html" style="height: 800px; width:800px"></iframe>

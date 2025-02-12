@@ -1,0 +1,611 @@
+---
+title: "Increased efficiency with LLMs"
+subtitle: A few projects highlighted
+footer: LLMs in Practice 
+title-slide-attributes:
+  data-background-image: "./figures/Increased-efficiency-with-llms.webp"
+  data-background-opacity: "0.5"
+
+
+---
+
+## How should we interact with documents?
+
+* Many documents we are interested in are too large for the context window of LLMs
+    * For the GPT4o-API this is 128K tokens!! (200-300 pages)
+* But even then:
+    * You might want to search through a large collection of large documents:\
+        - <span class="highlighted-text">your companies knowledge base</span>
+        - 100s of financial reports
+        - Wikipedia
+        - etc.
+    * You might not want to add all the documents to the context window due to:
+        - Speed issues
+        - Cost issues
+
+## Finding the right context to answer the question {.full-bg-slide background-image="./figures/retrieval-augmented-generation.png"}
+
+## Finding the right context to answer the question {.full-bg-slide background-image="./figures/retrieval-augmented-generation2.png"}
+
+## The Solution: Retrieval-Augmented Generation
+
+- RAG couples your generative model to a knowledge base via <span class="highlighted-text">chunks </span>.
+- <span class="highlighted-text">chunks </span> = _A piece of text found using semantic search_(embeddings)
+- combines the strengths of <span class="highlighted-text">search</span> methods and <span class="highlighted-text">generative models</span>
+- Using a <span class="highlighted-text">search engine</span> to find relevant text chunks, and <span class="highlighted-text">Large Language Models</span> to reason about them.
+- Commonly used when we require precise information from documentation, such as legal texts, research papers, or customer support databases.
+
+![](./figures/retrieval-augmented-generation2.png){fig-align=center;width=1500px}
+
+## Automated Data Analysis with ChatGPT
+:::{.columns}
+
+:::{.column width="60%"}
+- <span class="highlighted-text">**Exploratory Data Analysis**</span>:\
+ Automatically start analysing your dataset 
+- <span class="highlighted-text">**Interactive customization</span>**:\
+    - Customize the analysis and charts by just chatting!
+    - No coding experience needed!
+
+:::
+
+:::{.column width="40%"}
+![](./figures/ADA.webp){width=500px}
+::: 
+<!--column-->
+:::
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+:::{.fragment}
+
+**Supported File Types**\
+
+::: 
+<!--fragment-->
+
+:::{.fragment}
+
+:::{.nonincremental}
+
+- Excel (.xls / .xlsx)
+- CSV (.csv)
+- PDF (.pdf)
+- JSON
+
+::: 
+<!--nonincremental-->
+
+::: 
+<!--fragment-->
+
+::: 
+<!--column-->
+
+:::{.column width="50%"}
+
+:::{.fragment}
+
+**File Uploads**:\
+
+:::
+
+:::{.fragment}
+
+:::{.nonincremental}
+
+  - Up to 10 files per conversation.
+  - Up to 20 files can be attached to a GPT as Knowledge.
+
+:::
+
+:::
+
+::: 
+<!--column-->
+
+::: 
+<!--columns-->
+
+
+## Automated Data Analysis with ChatGPT
+
+<div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)">
+  <span class="highlighted-text" style="font-size: 150px;">Demo</span>
+</div>
+
+## Best Practices for Data Preparation
+
+- <span class="highlighted-text"> **Do**</span>:
+  - Include descriptive column headers in the first row
+  - Use plain language for column headers
+  - Use one row per record
+
+- <span class="highlighted-text"> **Don't**</span>:
+  - Include multiple sections and tables in a single spreadsheet
+  - Include empty rows or columns
+  - Include images containing critical information
+
+## Applications Beyond Data Analysis
+
+**File Manipulation and Generation**\
+
+- "*Please remove the background of this image*"\
+<span class="highlighted-text" style="font-size: 150px; margin-left: 25%;text-align:center">Demo</span>
+
+- "*Please make an excel template for my planner*"\
+<span class="highlighted-text" style="font-size: 150px; margin-left: 25%;text-align:center">Demo</span>
+
+
+## OpenAI GPTs (Agents) 
+
+:::{.columns}
+:::{.column width="50%"}
+- <span class="highlighted-text">**Customization**</span>:\
+ Create tailored versions of ChatGPT for specific purposes.
+- <span class="highlighted-text">**No Coding Required**</span>:\
+ Easily build GPTs for personal use, internal company use, or public sharing.
+- <span class="highlighted-text">**Example Applications**</span>:\
+ Learning rules to board games, teaching you about math, designing stickers.
+:::
+:::{.column width="50%"}
+![](./figures/gpt-store-cropped.webp)
+:::
+
+:::
+
+## GPTs (under the hood)
+
+:::{.columns}
+:::{.column width="50%"}
+- Re-use <span class="highlighted-text">custom instructions</span>
+- USe 10 documents for <span class="highlighted-text">RAG</span> knowledge
+- (advanced) <span class="highlighted-text">API-acces</span> to external services 
+- <span class="highlighted-text">Make GPTs for your most used prompts</span> and insert them in your chat at any moment with <span class="highlighted-text">@GPT...</span>
+:::
+:::{.column width="50%"}
+![](./figures/gpt-store-cropped.webp)
+:::
+
+:::
+
+## Example GPTs
+
+- <span class="highlighted-text">**Scholar GPT**</span>: RAG chat with scientific publications
+- <span class="highlighted-text">**Wolfram**</span>: Solve math problems, circumventing the issues with LLMs and math by using the Wolfrom-Alpha API.
+- <span class="highlighted-text">**Interviewer/Negotiator**</span>: Practice for Job Interviews or Salary Negotiations 
+- <span class="highlighted-text">**Sous Chef**</span>: Generates recipes you can make, based on your listed ingredients
+
+:::fragment
+[Visit the GPT-store for many more](https://chatgpt.com/gpts)
+:::
+
+## Audio Data with ChatGPT
+
+:::{.columns}
+:::{.column width="60%"}
+
+- <span class="highlighted-text">**Audio input**</span>:\
+GPT models can understand spoken audio
+- <span class="highlighted-text">**Processing**</span>:\
+Speech to Speech translation, Speech transcription
+- <span class="highlighted-text">**Voice synthesis**</span>:\
+natural-sounding conversations with ChatGPT
+
+:::
+
+:::{.column width="40%"}
+![](./figures/her.jpg)
+:::
+
+:::
+
+## Use Cases
+
+:::{.columns}
+:::{.column width="60%"}
+
+- <span class="highlighted-text">**Voice Assistants**</span>:\
+Enhancing the capabilities of voice-activated assistants with more natural and context-aware responses.
+- <span class="highlighted-text">**Transcription Services**</span>:\
+Converting spoken language into written text for meetings, notes, etc.
+- <span class="highlighted-text">**Language Translation**</span>:\
+Real-time translation of audio content
+
+:::
+
+:::{.column width="40%"}
+![](./figures/her.jpg)
+:::
+
+:::
+
+# Coding-assistants
+
+## What is Github Copilot
+::: {.columns}
+::: {.column width="50%"}
+
+- an LLM-Powered Code Assistant
+  - We will talk more about LLMs in <span class='highlighted-text'> Februari 2025 </span>
+- Developed by GitHub, OpenAI and Microsoft
+- Helps write code faster with AI suggestions
+
+:::
+::: {.column width="50%"}
+![](./figures/copilot_generate_test.gif)
+:::
+::: 
+
+## How Does It Work?
+::: {.columns}
+::: {.column}
+- Based on a   <span class='highlighted-text'> GPT-model </span>
+  - Originally `Codex`
+- Trained on billions of lines of public (and private) code
+- Provides context-aware code completion suggestions
+:::
+::: {.column}
+![](./figures/autoregressive-llm.jpg)
+:::
+::: 
+
+::: {.columns}
+::: {.column width='35%'}
+
+:::{.fragment}
+Supported Languages:
+:::
+
+- R
+- Python
+- JavaScript
+- SQL
+- Typescript,
+- C#,
+- C++
+- Ruby, Go, Rust, etc...
+:::
+
+::: {.column width='65%'}
+- Quality of suggestions relates directly to language <span class='highlighted-text'> popularity </span> on Github
+:::
+:::
+
+# Types of tasks Copilot can help with
+
+::: {.columns}
+::: {.column}
+- Writing code
+- Translation between code-languages
+- Writing boilerplate-code
+- Documenting code
+- Writing unittests
+- Explainig code
+- Improving/Optimising code
+- Debugging code
+- Reviewing code
+:::
+::: {.column}
+![](./figures/Copilot-image.webp)
+:::
+::: 
+
+## Limitations and Considerations
+- Suggestions can be far from optimal
+  - They can also be flat out wrong!
+  - Sometimes <span class="highlighted-text"> 'hallucinates' </span> non-existing functions.
+- be mindfull of inconsistent use of libraries and style
+  - Less so when using integrated tools like `github copilot`
+  - More so when using seperate online tools like `ChatGPT` 
+
+:::{.fragment}
+Remedy:
+:::
+
+- Always review and test the code!
+- Never just accept blindly
+- Try to understand what is going on
+
+
+## Security Risks
+- May produce insecure code
+  - Especially when you are more on the product development side of things
+- Be cautious with sensitive information
+  - Your environment can contain propriatery code or data
+  - Never install copilot without consulting with your <span class="highlighted-text"> Security departement</span>. 
+
+ GitHub Copilot in VSCode
+
+## GitHub Copilot in VSCode
+
+::: {.columns}
+
+::: {.column width="30"}
+
+Copilot in VSCode
+- Autocomplete Your Code
+- Start typing code or comments
+- Copilot suggests completions inline
+- Accept with Tab
+- Press Ctrl + Enter to view alternatives
+- Extension ecosystem
+- Supports Copilot Chat
+:::
+
+::: {.column width="70"}
+![](./figures/invscode.png)
+
+:::
+::: 
+
+## Comment-Based Prompts {auto-animate="true"}
+- Write a comment describing desired code
+- Copilot generates the code for you as ghost code (press tab to accept)
+Example: Calculating Mean
+```{r}
+#| eval: false
+#| incremental: true
+#| echo: true
+#| code-line-numbers: '1'
+# Function to calculate mean of a vector
+```
+
+## Comment-Based Prompts {auto-animate="true"}
+:::{.nonincremental}
+- Write a comment describing desired code
+- Copilot generates the code for you
+Example: Calculating Mean
+:::
+```{r}
+#| eval: false
+#| incremental: true
+#| echo: true
+# Function to calculate mean of a vector
+def <- function(x) {
+    mean <- sum(x) / length(x)
+    return(mean)
+}
+```
+
+
+## Asking Questions in Comments {auto-animate="true"}
+- Use Natural Language
+- Pose questions in comments
+- Only works for short questions
+- preferably, but not limited to, coding questions
+```{r}
+#| eval: false
+#| incremental: true
+#| echo: true
+
+# Q: What is a recursive function?
+```
+
+## Asking Questions in Comments {auto-animate="true"}
+:::{.nonincremental}
+- Use Natural Language
+- Pose questions in comments
+- Only works for short questions
+- preferably, but not limited to, coding questions
+:::
+```{r}
+#| eval: false
+#| incremental: true
+#| echo: true
+
+# Q: What is a recursive function?
+# A: A recursive function is a function that calls itself within its definition. This allows the function to repeat its operation on a smaller or simpler version of the input untill a base case is reached, at which point the function returns a final result.
+
+```
+
+# Generative AI for exams
+
+## Programming Exam Evaluation - Dr. Nick Koning
+
+:::{.columns}
+
+:::{.column width="40%"}
+
+- A practical example of LLM usage at the EUR
+- Graciously provided for this MC by Dr. Nick Koning
+- Accesible yet innovative usecase
+
+:::{.fragment}
+Context:
+:::
+
+- Introduction to Programming Course - Java
+- 16 TAs to help with grading
+
+:::
+
+:::{.column width="60%"}
+
+<iframe width="1000" height="500" src="https://www.youtube.com/embed/bIHyktT_GGs?si=A3_Ba4nEe90-pei0&amp;start=11" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+:::
+:::
+
+## Exam Evaluation - Dr. Nick Koning
+
+::: {.columns}
+
+:::{.column width="40%"}
+ - Example question:
+    - Write code to find the <span class="highlighted-text"> second </span> largest number in the sequence.
+    - {3, 1, 4, 5, 3, 2}
+        -  4
+:::
+
+:::{.column width="60%"}
+![](./figures/NK-exam-question-3.png)
+
+:::
+
+:::
+
+## Exam Evaluation - Dr. Nick Koning
+
+There are 3 scenarios:
+
+1. Code runs and wit right answers AutoTest: *full points*
+
+2. Code runs, but get's wrong answers: *Needs to be manually checked*
+
+3. Code doesn't run: *Needs to be manually checked*
+
+
+
+- Manually checking code for 400 students is a lot of work
+    - Can we automate this?
+    - ChatGPT??
+
+
+## Exam Evaluation - Dr. Nick Koning
+
+How did he do it:
+
+- Webinterface was not an option, used the API
+- Organise students questions in seperate files
+
+![](./figures/NK-API-coding.png){fig-align="right"}
+
+## Exam Evaluation - Dr. Nick Koning
+
+Quick observation:
+
+- Out-of-the-box ChatGPT does not work
+- Mediocre and inconsistent quality
+
+Start Small!
+
+- Just 3 students
+- First graded them manually
+- Main advantage of starting small:
+    - Fast
+    - Cheap
+    - Able to keep overview
+- Spent 90% of time on finetuning prototype
+
+## Exam Evaluation - Dr. Nick Koning
+
+Final instructions - Role + Task:
+![](./figures/nk-system-prompt.png)
+
+## Exam Evaluation - Dr. Nick Koning
+
+Final instructions - Task:
+![](./figures/NK-task-specification.png)
+
+## Exam Evaluation - Dr. Nick Koning
+
+Final instructions - Task format:
+![](./figures/NK-output-formatting.png)
+
+## Exam Evaluation - Dr. Nick Koning
+
+Results:
+![](./figures/nk-output-model.png)
+
+## Exam Evaluation - Dr. Nick Koning
+
+Results:
+![](./figures/NK-3.5vs4.png)
+
+## Exam Evaluation - Dr. Nick Koning
+Integrated into exam environment:
+
+- Exams are graded as soon as student hands-in the work
+
+- Feedback + preliminary result in 2 minutes ...
+
+- ... not 2 weeks
+
+- Human-in-the-loop: Grading serves as input for the TA's
+    - And if you don't agree there is room for an appeal
+
+- Broadly available via the [CodeGrade](https://www.codegrade.com/)
+
+## Exam Evaluation - Dr. Nick Koning
+
+Suggestions for next steps:
+
+-   Finetune a model for grading:
+    - Show don't tell: It allows for more concise prompts as you've shown it what answers you expect
+    - Should align GPT grades better with TA grades
+
+-   Ask the model for Json output:
+    - Can use JSON mode introduced on [Devday](https://openai.com/blog/new-models-and-developer-products-announced-at-devday)   
+    - No need for regex parsing of response anymore
+
+# Generative AI for healthcare
+
+## GPT4 answering patient questions in Groningen
+
+![[UMCG beantwoordt vragen patiënten met hulp van AI](https://nieuws.umcg.nl/w/umcg-beantwoordt-vragen-pati%C3%ABnten-met-hulp-van-ai)](./figures/umc-groningen.webp)
+
+## GPT4 answering patient questions in Groningen
+
+- UMCG get's up to 1200 patient questions a week
+- Hospital staff has little time to answers such questions 
+
+## GPT4 answering patient questions in Groningen
+
+- GPT4 integrated securely inside the EPD:
+    - Access to the relevant healthrecords
+- Colaboration between EPIC (EPD company) and Microsoft. 
+
+## GPT4 answering patient questions in Groningen
+
+- Human-in-the-loop: GPT4 writes a draft
+- Healthcare providers can correct and/or expand on answer given
+- Research suggests people actually prefer GPT answers
+
+## Physicians versus GPT
+
+[Comparing Physician and Artificial Intelligence Chatbot Responses to Patient Questions Posted to a Public Social Media Forum](https://jamanetwork.com/journals/jamainternalmedicine/article-abstract/2804309)
+
+- Chatbot responses preferred in <span class="highlighted-text">78.6%</span> (95% CI: 75.0%-81.8%) of the 585 evaluations. 
+- Response length: 
+    - Chatbot <span class="highlighted-text">211</span> (95% CI: 168-245) words
+    - Physicians <span class="highlighted-text">52</span> (95% CI: 17-62) words
+- The proportion of good or very good quality responses: 
+    - Chatbot: <span class="highlighted-text">78.5%</span>, (95% CI: 72.3%-84.1%) 
+    - Physicians: <span class="highlighted-text">22.1%</span>, (95% CI: 16.4%-28.2%). 
+- The proportion of responses rated empathetic or very empathetic (≥4): 
+    - Chatbot: <span class="highlighted-text">45.1%</span>, (95% CI: 38.5%-51.8%)
+    - Physicians: <span class="highlighted-text">4.6%</span>, (95% CI: 2.1%-7.7%); 
+
+## GPT4 answering patient questions in Groningen
+
+- Win-win
+    - Less pressure for doctors
+    - Better answers for patients
+
+## Healthcare specific LLMs such as med-PaLM2
+
+![[16 May 2023 - Towards Expert-Level Medical Question Answering with Large Language Models](https://arxiv.org/pdf/2305.09617.pdf)](./figures/medpalm2-ranking.png)
+
+# Generative AI for learning
+
+## Khanmigo as a socratic super tutor
+
+<iframe width="1250" height="750" src="https://www.youtube.com/embed/hJP5GqnTrNo? si=LsAmn-U_1rAqkOqy" style="display: block; margin-left: auto; margin-right: auto;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+## Khanmigo as a socratic super tutor
+- Get personalised help over a wide range of topics
+- Socratic method based:
+    - Not giving answers
+    - Instead, ask thought provoking questions
+    - Less risk of bad answers due to isolated environment
+
+
+## Finding the right context to answer the question
+- These solutions all have the following in common:
+    - LLM embedded in nicely defined context
+    - Most relevant information directly at hand as context for the model
+    - The task is performed based on information in the context window, not model internal knowledge
+

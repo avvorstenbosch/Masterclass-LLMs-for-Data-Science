@@ -1,0 +1,46 @@
+---
+title: "Welcome" 
+subtitle: ""
+author: "Alex van Vorstenbosch"
+footer: "ChatGPT for Data Science"
+title-slide-attributes:
+  data-background-image: "./figures/ds-with-llm.png"
+  data-background-opacity: "0.5"
+---
+
+## The exercises
+
+- How did they go?
+- Where there any issues?
+
+
+## The Planning {.smaller-2}
+:::{.panel-tabset}
+## Day 1
+| Time              | Title                                          | Description                                                                       |
+|-------------------|------------------------------------------------|-----------------------------------------------------------------------------------|
+| 09:00 – 09:30 AM | 👋 Introduction                                 |                                                                                   |
+| 09:30 – 10:45 AM | 🤖 Introduction to LLM's and ChatGPT           | NLP and development of LLMs<br>Capabilities of ChatGPT<br>Real world applications |
+| 10:45 – 11:00 AM | ☕ Break                                        |                                                     |
+| 11:00 – 12:00 PM | 💬 Prompt Engineering                          | Introduction to prompting<br>Best practices for prompting<br>Hands-on exercises   |
+| 12:00 – 13:00 PM | 🥪 Lunch                                        |                                            |
+| 13:00 – 13:45 PM | 💻 Programming with GPT                         | Introduction to the OpenAI API<br>Hands-on exercises                              |
+| 13:45 – 14:45 PM | ⚖️ Ethical Considerations in Using LLMs        | Biases and Misinformation<br>The Dark Side of LLMs<br>Privacy and Legal Challenges|
+| 14:45 - 15:00 PM | ☕ Break                                        |                                                |
+| 15:00 - 16:00 PM |  💻Programming with GPT                         | Pair-programming with LLMs<br>Hands-on exercises                                  |
+| 16:00 – 16:45 PM  | 🚀 Improved Efficiency with ChatGPT            | Examples of real implementations of ChatGPT in a workflow                         |
+| 16:45 – 17:00 PM | 📝 Summary, Evaluation and Conclusion of Day 1 |                                                |
+
+
+## Day 2
+ | Time              | Title                                                               | Description                                                                                   |
+|-------------------|---------------------------------------------------------------------|-----------------------------------------------------------------------------------------------|
+| 09:00 – 09:20 AM | 🌅 Opening and Discussion of the Day's Agenda                       |                                                                                               |
+| 09:20 – 10:45 AM | 📊 Text Analysis with LLMs                                          | Foundation models for NLP<br>Evaluation of performance<br>Hands-on Exercises                  |
+| 10:45 – 11:00 AM | ☕ Break                                                             |                                                                         |
+| 11:00 – 12:30 PM | 🔍 Retrieval Augmented Generation (RAG), open source, and next steps | LLMs versus Search Engines<br>How to host your own LLM<br>Next steps?                          |
+| 12:30 – 13:30 PM | 🥗 Lunch                                                             |                                                                  |
+| 13:30 - 16:30 PM | 🚀 Extended Practical Assignment - RAG 🔍                                    |   Building your own Retrieval Augmented Generation system with fact-checking against hallucinations                                                                                    |
+| 16:30 - 17:00 PM | 📝 Summary, Evaluation, and Conclusion                               |                                             |
+
+:::

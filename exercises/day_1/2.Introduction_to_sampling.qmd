@@ -1,0 +1,213 @@
+---
+title: "Introduction to Sampling" 
+format: 
+    pdf:
+        number-sections: true
+header-includes:
+  - \usepackage{fancyhdr}
+  - \usepackage{color}
+  - \usepackage[framemethod=TikZ]{mdframed}
+  - \usepackage{graphicx}
+  - \usepackage{background}
+  - \usepackage{fontspec}
+  - \usepackage{fvextra} % provides extra options for verbatim environments
+  - \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}, fontsize=\scriptsize}
+  - \setmainfont{Arial}
+  - \fancyhead[C]{\textbf{Introduction to Sampling}}
+  - \fancyhead[R]{\thepage}
+  - \fancyhead[L]{\ }
+  - \fancyfoot[L]{May 31, 2024}
+  - \fancyfoot[C]{ }
+  - \fancyfoot[R]{\thepage}
+  - \pagestyle{fancy}
+  - \renewcommand{\headrulewidth}{0.4pt}
+  - \renewcommand{\footrulewidth}{0.4pt}
+  - \definecolor{shadecolor}{RGB}{204, 230, 255}
+  - \definecolor{greyline}{RGB}{225, 225, 225}
+  - \mdfdefinestyle{mystyle}{
+      backgroundcolor=shadecolor, 
+      roundcorner=10pt,
+      linecolor=greyline, 
+      linewidth=1pt,
+      innertopmargin=10pt,
+      innerbottommargin=0pt,
+      innerrightmargin=0pt,
+      innerleftmargin=10pt}
+  - \backgroundsetup{
+      scale=2.5,
+      color=black,
+      opacity=0.7,
+      angle=0,
+      position=current page.south west,
+      vshift=6cm,
+      hshift=-3cm,
+      contents={
+        \includegraphics[width=8cm,keepaspectratio]{../../slides/day_1/figures/banner.png}
+        }
+      }
+---
+
+\section*{Google Colab}
+You can make these exercises using the general [google colab notebook](https://colab.research.google.com/drive/1LnsvqzL8BjO3m52siYJpakS-uR64B9pI?usp=sharing).
+Please take a few minutes to read through the notebook to familiarize yourself with the environment.
+
+# Exercise: Getting to know the generate_response function
+In order to make interaction with the LLMs easier, I have written a helper function called `generate_response`.
+Run `help(generate_response)` to see the documentation of the function.
+
+Experiment with the various parameters of LLM response:
+
+-   What happens when you adjust temperature to 0? And what happens when you adjust temperature to 2?
+-   What happens when you adjust max_tokens? 
+
+\newpage
+# Exercise: Iterative prompt development on a movie review
+As we have access to the sampling parameters of the LLM, we have a lot more control compared to the online interfaces such as ChatGPT and DeepSeek. We can set the temperature for our chat completion to 0, which ensures that the same prompt will gave the same result every time.
+
+For each of the tasks below, finetune your prompt untill you are happy with the result
+
+## Load the review
+It can be found under `./Day 1/exercises/data/movie-review-1.txt`
+
+## Task: Provide a synopsis of the review
+
+## Task: Make sure the synopsis of the review is at most 3 sentences long
+
+## Task: Extract the movie title, genre, year, director and actors from the review. Place this information at the top of the response.
+
+## Task: Extract a list of tips and tops of the movie, using only keywords
+
+## Task: Make the model return these fields in a nicely structured (and valid) .json format
+
+For this you can use the flag `json_mode = True` in the `generate_response` function.
+
+## Task: Review number 2
+Now apply the prompt you've crafted to the second movie review:\
+`./Day 1/exercises/data/movie-review-2.txt`\
+Does it work?
+
+\newpage
+# Exercise: accessing the sampling backbone - logits
+
+While we cannot really look into the inner workings of the models, it can be informative to look at the outputs of the model. The logits are the raw outputs of the model, before they are transformed into probabilities.
+These are accessible to the user, and allow us to look into the sampling options of the model. 
+
+## The quick Brown Fox
+
+Using the low-level API for llama-cpp, we are going to look at what possible completions the model generates for the phrase: `The quick brown fox`.
+Use the code below to look at the completions.
+
+```{.python}
+# ---------------------------
+# 1. Generate a single token as completion
+# ---------------------------
+prompt = "The quick brown fox"
+
+#tokenize() expects bytes, not raw strings
+prompt_tokens = llm.tokenize(prompt.encode("utf-8"))
+
+# Generate a single token as completion
+response = llm(
+    prompt=prompt,
+    max_tokens=1,
+    temperature = 0,
+    echo=True
+)
+
+# ---------------------------
+# 2. Retrieve and process the logits for the last token generated
+# ---------------------------
+logits = np.array(llm.eval_logits)  # shape: (vocab_size,)
+last_token_logits = logits.squeeze()# shape: (vocab_size,)
+
+# Compute probabilities using softmax:
+t = 0.8 #         sampling temperature
+exp_logits = np.exp(last_token_logits/t)
+probs = exp_logits / np.sum(exp_logits)
+
+# ---------------------------
+# 3. retrieve the tokens
+# ---------------------------
+size_vocab = llm.n_vocab()           
+token_indices = range(size_vocab)
+
+tokens = []
+for token_id in token_indices:
+    try:
+        token_str = llm.detokenize([token_id]).decode("utf-8")  # Convert to readable text
+    except Exception:
+        token_str = f"<{token_id}>"  # If decoding fails, use token ID as fallback
+    tokens.append((token_id, token_str))
+
+# ---------------------------
+# 4. Return the N most likely continuations
+# ---------------------------
+n = 10
+highest_indices = np.argsort(probs)[-1:-n-1:-1]
+for i in range(0, n):  # Last n elements in the sorted highest indices
+    index = highest_indices[i]
+    token_str = tokens[index][1]
+    prob = probs[index]
+    print(f"index:{index} - token:{token_str} - prob:{prob}")
+```
+
+## Chat completions
+Now use the chat completion framework to let the model generate responses to a question. 
+Give the model a name in the system prompt, and ask it what it's name is in the user prompt.
+
+Visualize the output probabilities in a bar-chart using the code provided below. Plotting all tokens is very slow, so we filter on a reasonable threshold value. 
+
+```{.python}
+# ---------------------------
+# 1. Filter and sort tokens based on probability
+# ---------------------------
+# Set a probability threshold. Tokens with probability below this will be skipped.
+threshold = 0.0001
+
+# Find indices where probability is at least the threshold.
+filtered_indices = np.where(probs >= threshold)[0]
+top_indices = filtered_indices
+top_probs = probs[top_indices]
+
+# ---------------------------
+# 2. Retrieve token strings for the filtered tokens
+# ---------------------------
+tokens = []
+for token_id in top_indices:
+    try:
+        token_str = llm.detokenize([token_id]).decode("utf-8")  # Convert to readable text
+    except Exception:
+        token_str = f"<{token_id}>"
+    tokens.append(token_str)
+
+# ---------------------------
+# 3. Plot the results
+# ---------------------------
+fig, ax = plt.subplots(figsize=(15, 8))
+# We use the filtered token indices (or their order in the new list) for plotting.
+x_positions = np.arange(len(top_indices))
+ax.bar(x_positions, top_probs, edgecolor='black')
+ax.set_xlabel("Token (filtered and sorted)", fontsize=14)
+ax.set_ylabel("Probability", fontsize=14)
+ax.set_title("Next-Token Probability Distribution", fontsize=16)
+
+# Annotate the top 10 tokens with the highest probabilities.
+# Find the indices in the filtered array that correspond to the top 10 probabilities.
+top10_order = np.argsort(top_probs)[-10:]
+for idx in top10_order:
+    token_str = tokens[idx]
+    prob = top_probs[idx]
+    ax.text(x_positions[idx], prob + 0.002, token_str, ha='center', fontsize=10, fontweight='bold')
+
+plt.tight_layout()
+plt.show()
+```
+
+## random number generator
+Again use the chat completions framework:
+
+* Specify in the system prompt that the model should generate a random number between 0 and 9
+* Ask the model to generate a random number in the user prompt
+
+Visualize the output probabilities in a bar-chart using the code provided above.
+Is this what you would expect? Can you get the distribution to change?
