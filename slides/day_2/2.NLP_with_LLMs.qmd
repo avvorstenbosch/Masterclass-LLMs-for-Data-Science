@@ -6,8 +6,6 @@ footer: "NLP with LLMs"
 title-slide-attributes:
     data-background-image: "./figures/llm_for_nlp.png"
     data-background-opacity: "0.5"
-
-date: "24-17-2023"
 ---
 
 ## NLP-lifecycle on it's head
