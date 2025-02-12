@@ -65,83 +65,59 @@ The second day of the Masterclass is a more in-depth session, ending with a larg
 
 # Repository structure
 
-This course's materials were rendered using `Quarto` to create `RevealJS`-html slides. The slides and solutions to exercises can be found under the folder `./slides/`, which has separate subfolders `./slides/Day 1/` and `./slides/Day 2/` for the individual days.
+This course's materials were rendered using `Quarto` to create `RevealJS`-html slides. The raw files for the slides, excercises, and solutions to exercises can be found under the `main` branch in the  `./slides/`, `./exercises`, `./exercises/*/solutions/` folders respectively.
 
-The source code for the exercises and slides can be found under the folders names `./Day 1/` and  `./Day 2/`
+On the `gh_pages` branch you will find the figures, datasets, and html files for the slides. The `gh_pages` branch is used to host the full Masterclass on github.
+The general structure for the codebase and the rendered masterclass is as follows: 
 
 ```
-├── Day 1
-│   ├── 1. Opening.qmd
-│   ├── 2. Introduction Large Language Models and ChatGPT.qmd
-│   ├── 3. Prompt Engineering.qmd
-│   ├── 4. Programming with LLMs.qmd
-│   ├── 5. Ethical Considerations in Using LLMs .qmd
-│   ├── 6. Increased efficiency with LLMs.qmd
-│   └── exercises
-│       ├── 1. Prompt engineering exercises.qmd
-│       ├── 2. Introduction to the ChatGPT API.qmd
-│       ├── 3. Pair-programming with LLMs.qmd
+├── exercises
+│   ├── day_1
+│   │   ├── 1.Prompt_engineering_exercises.qmd
+│   │   ├── 2.Introduction_to_sampling.qmd
+│   │   ├── 3.Pair-programming_with_LLMs.qmd
+│   │   ├── data
+│   │   │   ├── advent-of-code-input-solutions.txt
+│   │   │   ├── code.py
+│   │   │   ├── code.R
+│   │   │   ├── code-solution.py
+│   │   │   ├── input-data-script.txt
+│   │   │   ├── movie-review-1.txt
+│   │   │   └── movie-review-2.txt
+│   │   ├── Google_Colab_General_notebook_for_assignments.ipynb
+│   │   ├── helper_functions
+│   │   │   └── helper_functions.py
+│   │   └── solutions
+│   │       ├── 1.Prompt_engineering_solutions.qmd
+│   │       └── 2.Introduction_to_sampling_solutions.qmd
+│   └── day_2
 │       ├── data
-│       │   ├── code.py
-│       │   ├── code.R
-│       │   ├── code-solution.py
-│       │   └── create_exercise_bingo_board_generator.py
+│       │   ├── semEval2014-restaurants-x.csv
+│       │   ├── semEval2014-restaurants-y.csv
+│       │   └── WIKIPEDIA_natural_language_processing.csv
+│       ├── Exercises_NLP_with_LLMs.ipynb
+│       ├── Retrieval_Augmented_Generation_(RAG)_for_Question_Answering.ipynb
 │       └── solutions
-│           ├── 1. Prompt engineering exercises - solutions.qmd
-│           ├── 2. Introduction to the ChatGPT  - R solution.qmd
-│           └── 3. Pair-programming with LLMs - R solution.qmd
-├── Day 2
-│   ├── 1. Opening.qmd
-│   ├── 2. NLP with LLMs.qmd
-│   ├── 3. Next steps for LLMs.qmd
-│   └── exercises
-│       ├── 1. Retrieval Augmented Generation for Question Answering - Exercises.qmd
-│       ├── 1. Retrieval Augmented Generation for Question Answering - Solutions.qmd
-│       ├── 2. NLP with LLMs - exercises.qmd
-│       ├── 2. NLP with LLMs - solutions.qmd
-│       ├── create_exercise-2. NLP with LLMs - building dataset.qmd
-│       ├── data
-│       │   └── SemEval2014
-│       └── utils
-│           ├── chat_completions.R
-│           ├── cosine_similarity.R
-│           └── get_embedding.R
+│           ├── Exercises_NLP_with_LLMs_Solutions.ipynb
+│           └── Retrieval_Augmented_Generation_(RAG)_for_Question_Answering_Solutions.ipynb
 └── slides
-    ├── Day 1
-    │   ├── 1. Opening.html
-    │   ├── 2. Introduction Large Language Models and ChatGPT.html
-    │   ├── 3. Prompt Engineering.html
-    │   ├── 4. Programming with LLMs.html
-    │   ├── 5. Ethical Considerations in Using LLMs .html
-    │   ├── 6. Increased efficiency with LLMs.html
-    │   └── exercises
-    │       ├── data
-    │       │   ├── code.py
-    │       │   ├── code.R
-    │       │   ├── code-solution.py
-    │       │   └── create_exercise_bingo_board_generator.py
-    │       └── solutions
-    │           ├── 2. Introduction to the ChatGPT  - R solution.html
-    │           ├── 2. Introduction to the ChatGPT  - R solution.qmd
-    │           ├── 3. Pair-programming with LLMs - R solution.html
-    │           └── 3. Pair-programming with LLMs - R solution.qmd
-    └── Day 2
-        ├── 1. Opening.html
-        ├── 2. NLP with LLMs.html
-        ├── 3. Next steps for LLMs.html
-        └── exercises
-            ├── 1. Retrieval Augmented Generation for Question Answering - Exercises.html
-            ├── 1. Retrieval Augmented Generation for Question Answering - Exercises.qmd
-            ├── 1. Retrieval Augmented Generation for Question Answering - Solutions.html
-            ├── 2. NLP with LLMs - exercises.html
-            ├── 2. NLP with LLMs - exercises.qmd
-            ├── 2. NLP with LLMs - solutions.html
-            ├── data
-            │   └── SemEval2014
-            └── utils
-                ├── chat_completions.R
-                ├── cosine_similarity.R
-                └── get_embedding.R
+    ├── day_1
+    │   ├── 1.Opening.qmd
+    │   ├── 2.Introduction_Large_Language_Models_and_ChatGPT.qmd
+    │   ├── 3.Prompt_Engineering.qmd
+    │   ├── 4.Programming_with_LLMs.qmd
+    │   ├── 5.Ethical_Considerations_in_Using_LLMs.qmd
+    │   ├── 6.Increased_efficiency_with_LLMs.qmd
+    │   └── demo
+    │       ├── demo-1-advanced-data-analysis.txt
+    │       ├── demo-1-penguins.csv
+    │       ├── demo-2-image-editing.txt
+    │       ├── demo-2-OpenAI.webp
+    │       └── demo-3-excel-template.txt
+    └── day_2
+        ├── 1.Opening.qmd
+        ├── 2.NLP_with_LLMs.qmd
+        └── 3.Next_steps_for_LLMs.qmd
 ```
 
 # Contributing
