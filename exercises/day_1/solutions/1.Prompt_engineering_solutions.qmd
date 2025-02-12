@@ -11,10 +11,8 @@ header-includes:
   - \usepackage{graphicx}
   - \usepackage{background}
   - \usepackage{fontspec}
-  - \usepackage{fvextra} % provides extra options for verbatim environments
-  - \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}, fontsize=\scriptsize}
   - \setmainfont{Arial}
-  - \fancyhead[C]{\textbf{Prompt Engineering Exercises}}
+  - \fancyhead[C]{\textbf{LLM Prompt Cheatsheet}}
   - \fancyhead[R]{\thepage}
   - \fancyhead[L]{\ }
   - \fancyfoot[L]{May 31, 2024}
@@ -24,6 +22,7 @@ header-includes:
   - \renewcommand{\headrulewidth}{0.4pt}
   - \renewcommand{\footrulewidth}{0.4pt}
   - \definecolor{shadecolor}{RGB}{204, 230, 255}
+  - \definecolor{answer}{RGB}{149, 201, 125}
   - \definecolor{greyline}{RGB}{225, 225, 225}
   - \mdfdefinestyle{mystyle}{
       backgroundcolor=shadecolor, 
@@ -31,9 +30,18 @@ header-includes:
       linecolor=greyline, 
       linewidth=1pt,
       innertopmargin=10pt,
-      innerbottommargin=0pt,
+      innerbottommargin=10pt,
       innerrightmargin=0pt,
       innerleftmargin=10pt}
+  - \mdfdefinestyle{answers}{
+    backgroundcolor=answer, 
+    roundcorner=10pt,
+    linecolor=greyline, 
+    linewidth=1pt,
+    innertopmargin=10pt,
+    innerbottommargin=10pt,
+    innerrightmargin=0pt,
+    innerleftmargin=10pt}
   - \backgroundsetup{
       scale=2.5,
       color=black,
@@ -43,7 +51,7 @@ header-includes:
       vshift=6cm,
       hshift=-3cm,
       contents={
-        \includegraphics[width=8cm,keepaspectratio]{../../slides/day_1/figures/banner.png}
+        \includegraphics[width=8cm,keepaspectratio]{../../../slides/day_1/figures/banner.png}
         }
       }
 ---
@@ -71,14 +79,13 @@ Using the general prompting template provided in the slides, create a prompt tha
 
 ## Exercise: System prompt vs User prompt 
 
-It is good practice to put the general part of the prompt in the `system prompt` (aslo know as `developer prompt` for some models), and the specific part in the `user prompt`. 
+It is good practice to put the general part of the prompt in the `system prompt`, and the specific part in the `user prompt`. 
 `System prompts` explain the current context within which the model should generate its response, before any interaction with the user has occured.
 This makes most sense when you are hosting a model with external users who interact with a chatbot, but it is also good practice for your own use.
 Most LLMs, but not all, are trained in such a way that they strongly adhere to the system prompt, and it is not easy for users to override this. 
 This is in contrast to specifying the RTF framework in the `user prompt`, where it is easy to override by the user.
 
 This is also usefull when you are not dealing with external interaction, as it makes your systems prompts highly reusable. 
-
 
 ```{.python}
 messages = [
@@ -104,6 +111,11 @@ messages = [
 ]
 ```
 
+\begin{mdframed}[style=answers  ]
+\textbf{Answer:}\newline
+\href{https://chatgpt.com/share/4ff36b7a-be65-4f96-afa8-efdc2b241a2b}{Example chat}
+\end{mdframed}
+
 ## Try some variations
 Try experimenting with some variations of this yourself. Change the role, task, and output format. How does the model respond to these changes? 
 
@@ -113,12 +125,11 @@ Try experimenting with some variations of this yourself. Change the role, task, 
 \end{mdframed}
 
 ## Experiment some more
-Pick 2 of the prompts from the cheatsheet and experiment with them. Adjust the wording if needed and use them for a task of your own interest. If you have no inspiration, you can try these:
+Pick 2 of the prompts from the cheatsheet and experiment with them. Adjust the wording if needed and use them for a task of your own. If you have no inspiration, you can try these:
 \begin{itemize}
-\item Adjust the \textbf{Formatting} template, and have your LLM turn this information into a table:\newline \textit{The Ipsos survey explored the impact respondents believe AI will have on various aspects of their lives, such as health and entertainment. On topics like time management and entertainment, the majority viewed AI positively. For instance, 54\% of global respondents agree that AI will improve the efficiency of their tasks, and 51\% believe AI will enhance entertainment options like TV, movies, music, and books. However, skepticism was more prominent in other areas. Only 39\% feel AI will benefit their health, and 37\% think it will improve their job. Only 34\% anticipate AI will boost the economy, and just 32\% believe it will enhance the job market.} 
+\item Adjust the \textbf{Formatting} template, and have ChatGPT turn this information into a table:\newline \textit{The Ipsos survey explored the impact respondents believe AI will have on various aspects of their lives, such as health and entertainment. On topics like time management and entertainment, the majority viewed AI positively. For instance, 54\% of global respondents agree that AI will improve the efficiency of their tasks, and 51\% believe AI will enhance entertainment options like TV, movies, music, and books. However, skepticism was more prominent in other areas. Only 39\% feel AI will benefit their health, and 37\% think it will improve their job. Only 34\% anticipate AI will boost the economy, and just 32\% believe it will enhance the job market.} 
 \item use the \textbf{Brainstorming} assistant template and adjust it: You want to organize an event in your company to promote the possibilities of LLMs. Come up with a list of possibilities for your event!
 \end{itemize}
-
 
 \newpage
 # Translation
@@ -144,6 +155,12 @@ Apperently there was a misscommunication, and the deadline is next Friday.
 Have your LLM change the email to one making sure we make next Friday's deadline.
 Make sure the email is firm yet constructive.
 
+\begin{mdframed}[style=answers  ]
+\textbf{Answer:}\newline
+\href{https://chatgpt.com/share/a6bedaa2-42ba-4cbd-a182-62cc1dee608b}{Example chat for all of the above.}
+\end{mdframed}
+
+\newpage
 \newpage
 # Exercise: Spelling-problems
 1. Ask the model the reverse the word: "arbeidsongeschiktheidsverzekeringsformulier".
@@ -151,24 +168,35 @@ Make sure the email is firm yet constructive.
 What do you see? Why do you think this happens. Use the retry button to see if the model gives a different answer the second time.
 This feels like a trivial task, but it is far from it. Can you think of why?
 
+\begin{mdframed}[style=answers  ]
+\textbf{Answer:}\newline
+\href{https://chatgpt.com/share/e/67ac6400-429c-800b-b190-f703170c3a0f}{Example chat for all of the above.}\
+As you see, the answer was incorrect. We will discuss why in the next question. 
+\end{mdframed}
+
+
 ## A closer look
 Use the functions below to look at the tokens of the word. What do you see?
 
-```{.python}
-# This returns a list of token IDs
-tokens = llm.tokenize("arbeidsongeschiktheidsverzekeringsformulier".encode("UTF8"))
-print("Token IDs:", tokens)
+\begin{mdframed}[style=answers  ]
+\textbf{Answer:}\newline
+These models do not see individual characters, they see tokens. And in practice this makes spelling tasks rather difficult. The model does not know exactly what characters make up a token, in general it has a decent grasp but it is guessing. The model is guessing the reverse spelling of the word with a stochastic model, but there is only a single sollution to the spelling of the word. If at a single place it chooses the wrong character the spelling is wrong. 
+\end{mdframed}
 
-# Convert the token IDS back to the corresponding strings
-decoded_tokens = [llm.detokenize([token]) for token in tokens]
-print("Decoded tokens:", decoded_tokens)
-```
 
 ## Self-reflection
 Ask the model whether the answer it gave was correct, what happens? Why do you think this is the case?
 
+
+\begin{mdframed}[style=answers  ]
+\textbf{Answer:}\newline
+The interesting thing is that you can often get these models to correct themselves by asking them to reflect on their own answers. In this case asking if the spelling was done correctly can nudge it in the direction to realize that the spelling was faulty. Please note that the natural option when being asked if your answer was correct, is that someone is trying to make you realise that your answer was incorrect. So it is understandable why the model would say it was incorrect.  In my example above this happens and the model tries to correct itself, however it fails to get the correct answer again as the fundamental limitation of the model has not been solved in any way.
+\end{mdframed}
+
+
 \newpage
 # Comparing reasoning LLMs to regular LLMs
+\textit{At the time of writing, `llama-cpp` does not yet support the R1-distill models. Instead you can compare a larger model to a smaller model.}
 In this exercise we will compare the performance of LLMs developed for reasoning to regular ones. 
 At the time of writing there are no true reasoning LLMs available open weights, that we can also run on colab. 
 However, there are some distilled models that were trained with supervised finetuning instead of Reinforcement Learning, that can still demonstrate the difference in reasoning capabilities.
@@ -177,7 +205,7 @@ This demonstration is a little difficult as the models are stochastic: you canno
 The reasoning model is made specifically for reasoning task. You will see that it will work through the different problem solving steps more clearly, before giving an answer.
 
 ## Riddle me this
-Logic puzzles are one of the simples ways to show the improved reasoning skills of reasoning models. Look at the following riddle:
+Logic puzzles are one of the simples ways to show the improved reasoning skills. Look at the following riddle:
 
 \begin{mdframed}[style=mystyle]
 George, William, John, Abe, and Millard have their birthdays on consecutive days, all between Monday and Friday.\
@@ -203,14 +231,16 @@ Now pair up with a partner and use 2 different chats to ask this question.
 * The other will use a smaller model such as the llama model we were already using.
 * Both use the same system and user prompts to ask the question.
 
-Did both get it right? What did you think of the difference in the answers?
-If you have access to Deepseek-R1 or ChatGPT 0X, you can also compare to these reasoning models. Those tend to easily one-shot this riddle.
+\begin{mdframed}[style=answers  ]
+\textbf{Answer:}\newline
+For the old GPT3.5-like model this was a very difficult problem it would typically fail at answering correctly answering the riddle. The reasoning skills of bigger models are already a lot better, and they are typically able to solve the riddle without issues, but not always. One of the reasons is that they tend to have step-by-step reasoning baked into them from the training process. For example, OpenAI-GPT4o tends to write answers following a step-by-step reasoning approach without prompting it to do so. The OpenAI-o1 model is specifically designed for reasoning tasks, and it is the best OpenAI-model for such problems. Notice that it is takes longer to solve the problems. In the backrgound the model is running a lot more computations that we are not allowed to see in order to try and solve the problem.
+\end{mdframed}
 
 \newpage
 # Summarizing texts
 One simple but time consuming task you might often do is to summarize meeting notes, or perhaps summarize presentation contents. 
 
-## Use your LLM to summarize the contents of `Introduction to prompt engineering` slides
+## Use ChatGPT to summarize the contents of `Introduction to prompt engineering` slides
 I've prepared a pdf version of the document:
 \begin{itemize}
 \item LLMs for Everybody - Introduction to Prompt Engineering.pdf
@@ -220,6 +250,10 @@ It can be found in the course material: exercises \rightarrow\ documents
 Write a prompt to summarize the content of the slides. Make sure to include the content of the slides as direct text: (\textit{For this assignment you can just copy-paste from the pdf})
 
 What do you think of the quality of the summarization? Did it miss anything? Iterate over the summary untill you are satisfied.
+\begin{mdframed}[style=answers  ]
+\textbf{Answer:}\newline
+\href{https://chatgpt.com/share/898838f3-8763-40c3-a2b2-5a34e14417b3}{Example chat}\\
+\end{mdframed}
 
 \newpage
 # Generating movie reviews
@@ -234,6 +268,11 @@ Have the model generate a review of a movie or television series of your own cho
 - Give the model some reference material about the movie/series, for example from IMDB.
 - The review should be around 500 words long. 
 
+\begin{mdframed}[style=answers  ]
+\textbf{Answer:}\newline
+\href{https://chatgpt.com/share/d2a90913-5849-48e4-a62e-8e9471a0fc3f}{Example chat}\\
+\end{mdframed}
+
 \newpage
 # Do you have time left? Perform the above exercises on chatgpt.com
 You can just use the free account, and see how the OpenAI models compare to these open weights models. 
@@ -245,7 +284,7 @@ You can just use the free account, and see how the OpenAI models compare to thes
 Write a very simple image generation prompt, no more than 1 line of text.
 We are going to itterate over this prompt. 
 
-Ask the model to give you the prompt it used to generate this image.3
+Ask the model to give you the prompt it used to generate this image.
 
 ## Adjust the Prompt
 Using the image prompt from the model as a reference, use it to write a new prompt. Adjust any elements you want, make use of the `Do's' from the slides:
@@ -278,3 +317,27 @@ Now, for the image you like best, click on it, and adjust it using the adjustmen
 \item describe what the content of that element should be instead.
 \end{itemize}
 
+\begin{mdframed}[style=answers  ]
+\textbf{Answer:}\newline
+At the moment it is not possible to share image generation chats directly, but this was the converstation:
+
+\textbf{user}\\
+Please generate an image of a man building an avocado chair\\
+\textbf{assistant}\\
+\includegraphics[width=10cm]{./../../../slides/day_1/figures/image-generation-1.png}\\
+\textbf{user}\\
+Please tell me the prompt that was used to generate this image.\\
+\textbf{assistant}\\
+The prompt used to generate the image was:
+
+"A man building an avocado chair in a workshop. The man is wearing casual clothes with a tool belt, and he is focused on assembling the chair. The chair is shaped like a large avocado, with the seat in the pit area and the rest of the avocado forming the back and sides of the chair. Tools and woodworking materials are scattered around the workshop. The scene is detailed and realistic, with good lighting to highlight the craftsmanship."\\
+\textbf{user}\\
+Please generate the following image:
+"A man is building an avocado chair in a workshop. The man is tall and skiny, he is wearing casual clothes and a white shirt with a tool belt, and he is busy measuring parts for the chair. The chair is shaped like a large avocado, with the seat in the pit area and the rest of the avocado forming the back and sides of the chair.  The image is an oil painting reminiscent of the style of the old Dutch masters. There is a single window illuminating the room. The image is in portrait mode"\\
+\textbf{assistant}\\
+\includegraphics[width=10cm]{./../../../slides/day_1/figures/image-generation-2.png}\\
+\textbf{user}\\
+Please focus more on the oil-painting style, and also make the setting fit the 18th century Netherlands.\\ 
+\textbf{assistant}\\
+\includegraphics[width=10cm]{./../../../slides/day_1/figures/image-generation-3.png}\\
+\end{mdframed}
