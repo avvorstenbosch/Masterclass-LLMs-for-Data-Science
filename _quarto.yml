@@ -1,36 +1,18 @@
 project:
     type: website
     output-dir: cursusmateriaal
-
+    render:
+    - "*.qmd"
+    - "!./exercises/day_2/solutions/"
+    - "!./exercises/day_2/create/"
 title-slide-attributes:
     data-background-opacity: "0.5"
     data-background-size: cover
-
 website:
     title: "LLMs for Data Science"
- 
 author: "Alex van Vorstenbosch"
 institute: ""
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-date: "29 11 2024"
+date: "Februari 2025"
 format:
     revealjs:
         width: 1600
@@ -46,15 +28,13 @@ format:
         highlight-style: oblivion
         code-copy: true
         incremental: true  
-
 execute:
     warning: false
     error: false
     cache: true
-jupyter: openai
 resources:
-    - ./webpages/*
-    - ./slides/demo
+    - ./slides/day_1/demo/
+    - ./slides/webpages/*
     - ./slides/webpages/breaking the algorithm_files 
     - ./slides/webpages/ChatGPT for Data Science_files 
     - ./slides/webpages/Example of using Wolfram Alpha plugin_files 
@@ -65,4 +45,3 @@ resources:
     - ./slides/webpages/Prime Numbers Multiplication_files 
     - ./slides/webpages/Prompt Engineering in NLP_files 
     - ./slides/webpages/Three Prime Numbers Multiplied_files
-    - ./exercises/Documents/
