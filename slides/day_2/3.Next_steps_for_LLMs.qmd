@@ -93,7 +93,7 @@ title-slide-attributes:
 
 ## More and more open source models ...
 
-![[See what is trending on huggingface.co/](https://huggingface.co/models?pipeline_tag=text-generation&sort=trending)](./figures/llama3.png)
+![[See what is trending on huggingface.co/](https://huggingface.co/models?pipeline_tag=text-generation&sort=trending)](./figures/hf-logo-with-title.png){width=500px}
 
 Most models are released in half-precision (16 bit):
 
@@ -106,7 +106,7 @@ how to run these huge models?
 
 ## ... and quantisation makes them more usable 
 
-![[See what is trending on huggingface.co/](https://huggingface.co/models?pipeline_tag=text-generation&sort=trending)](./figures/llama3.png)
+![[See what is trending on huggingface.co/](https://huggingface.co/models?pipeline_tag=text-generation&sort=trending)](./figures/hf-logo-with-title.png){width=500px}
 
 The same models at 6-bit quantisation are:
 
@@ -198,6 +198,8 @@ Allow for allocating extra test-time compute:
 ![[DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](https://arxiv.org/abs/2501.12948)](./figures/Deepseek-R1.png)
 :::
 
+:::
+
 ## Math mode 'on'
 
 :::{.columns}
@@ -210,8 +212,11 @@ Allow for allocating extra test-time compute:
 
 :::{.column width="40%"}
 
-![[PREPRINT: Gold-medalist Performance in Solving Olympiad Geometry with AlphaGeometry2](https://arxiv.org/pdf/2502.03544v1)](./figures/AlphaGeometry2)
+![[PREPRINT: Gold-medalist Performance in Solving Olympiad Geometry with AlphaGeometry2](https://arxiv.org/pdf/2502.03544v1)](./figures/alphageometry.png)
 
+:::
+
+:::
 
 ## AutoGPT - An Autonomous GPT-4 Experiment
 
@@ -225,8 +230,14 @@ Allow for allocating extra test-time compute:
 - 🧠 GPT-4 instances for text generation
 - 🔗 Access to popular websites and platforms
 - 🗃️ File storage and summarization with GPT-3.5
-- 🔌 Extensibility with Plugins:::{.column width="40%"}
+- 🔌 Extensibility with Plugins
+
+:::
+
+:::{.column width="40%"}
+
 ![](./figures/autogpt-stars.svg)
+
 :::
 
 :::
