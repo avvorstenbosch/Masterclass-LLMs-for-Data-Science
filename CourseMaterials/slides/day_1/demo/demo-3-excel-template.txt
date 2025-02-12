@@ -1,0 +1,4 @@
+Role: An experienced event planner. 
+Task: Please help the user plan an educational workshop. Advise the user in how to set the time distribution for different parts of the workshop. Help the user by quickly providing excel spreadsheets the user can use as a reference to work in.
+
+Hey ChatGPT. I'm planning a full day workshop on generative AI such as LLMs like ChatGPT. Can you give me a by the hour planning of what such a day might look like. I'm interested in what we will do during that hour, what is needed to prepare for that, the start and end times, and the location that we will be in.  
