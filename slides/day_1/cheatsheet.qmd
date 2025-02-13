@@ -1,0 +1,269 @@
+---
+title: "Prompting Cheatsheet"
+format: 
+    pdf
+header-includes:
+  - \usepackage{fancyhdr}
+  - \usepackage{color}
+  - \usepackage[framemethod=TikZ]{mdframed}
+  - \usepackage{graphicx}
+  - \usepackage{background}
+  - \usepackage{fontspec}
+  - \setmainfont{Arial}
+  - \fancyhead[C]{\textbf{LLM Prompt Cheatsheet}}
+  - \fancyhead[R]{\thepage}
+  - \fancyhead[L]{\ }
+  - \fancyfoot[L]{Februari, 2025}
+  - \fancyfoot[C]{ }
+  - \fancyfoot[R]{\thepage}
+  - \pagestyle{fancy}
+  - \renewcommand{\headrulewidth}{0.4pt}
+  - \renewcommand{\footrulewidth}{0.4pt}
+  - \definecolor{shadecolor}{RGB}{204, 230, 255}
+  - \definecolor{greyline}{RGB}{225, 225, 225}
+  - \mdfdefinestyle{mystyle}{
+      backgroundcolor=shadecolor, 
+      roundcorner=10pt,
+      linecolor=greyline, 
+      linewidth=1pt,
+      innertopmargin=10pt,
+      innerbottommargin=0pt,
+      innerrightmargin=0pt,
+      innerleftmargin=10pt}
+  - \backgroundsetup{
+      scale=2.5,
+      color=black,
+      opacity=0.7,
+      angle=0,
+      position=current page.south west,
+      vshift=6cm,
+      hshift=-3cm,
+      contents={
+        \includegraphics[width=8cm,keepaspectratio]{./figures/banner.png}}}
+---
+
+This prompting cheatsheet will show you some ideas you can apply yourself for how you can use LLMs, as well as how to write better prompts. This list is obviously not exhaustive; the possibilities are endless!
+
+# General prompting template
+\begin{mdframed}[style=mystyle]
+\textbf{Role}: \{\textit{What/who does the model act like?}\}\newline
+\textbf{Task}: \{\textit{What do we want the model to do?}\}\newline
+\phantom{\textbf{Role}:  }\{\textit{How do we want the model to do this?}\}\newline
+\phantom{\textbf{Role}:  }\{\textit{How should the model format the reply?}\}\newline
+\end{mdframed}
+
+Using this general prompting template, we can specify any task we want the model to perform, along with any role it should assume while doing so. Use this as a startingpoint to write any of the promps you want to write.\newline
+Note that you can, but don't have to, include the 'Role:' or 'Task:' tags. This is up to your own preference, it can help with the readability. I tend to do the following:
+
+\begin{mdframed}[style=mystyle]
+\textbf{Role}: \{\textit{What/who does the model act like?}\}\newline
+\textbf{Task}: 
+\{\textit{What do we want the model to do?}\}\newline
+\phantom{\textbf{Role}:  }\{\textit{How do we want the model to do this?}\}\newline
+\phantom{\textbf{Role}:  }\{\textit{How should the model format the reply?}\}\newline
+\textbf{Question}: \{\textit{The specific question for this conversation}\}
+\newline
+\end{mdframed}
+
+Where the first 4 steps of the prompt are just a general template you can reuse, and the 'Question' contains the information specific to this prompt.
+
+In the rest of this cheatsheet I will give a few examples for prompts you can use in your daily life.
+
+# Text Processing
+
+## Proofreading
+\begin{mdframed}[style=mystyle]
+\textbf{Role}: \textit{You are a detail-oriented proofreader.}\newline
+\textbf{Task}: 
+\begin{minipage}[t]{\dimexpr\textwidth-3cm}
+\textit{You will be provided with a text and I want you to review it for spelling, grammar, and punctuation mistakes. You will also make suggestions for the style and flow of the text if you have any. In your reply, first give your corrections and suggestions, and then implement these and rewrite the text.}
+\end{minipage}\newline
+
+\textbf{Input Text}\newline
+\#\#\#\newline
+\{\textit{Text}\}\newline
+\#\#\#\newline
+\end{mdframed}
+
+
+## Drafting promotional-emails
+\begin{mdframed}[style=mystyle]
+\textbf{Role}: \textit{You are a senior marketing colleague in my company}\newline
+\textbf{Task}: 
+\begin{minipage}[t]{\dimexpr\textwidth-3cm}
+\textit{You will be provided with a plan for a company event, you will write an exciting promotional mail for this event based on the information provided. The style of the mail should be professional but lighthearted. Only respond with the draft e-mail, nothing else.}
+\end{minipage}\newline
+
+\textbf{Event plan}\newline
+\#\#\#\newline
+\{\textit{Text}\}\newline
+\#\#\#\newline
+\end{mdframed}
+
+
+\newpage
+## Summarizing notes + extract action points (meeting)
+\begin{mdframed}[style=mystyle]
+\textbf{Role}: \textit{You are a personal assistant}\newline
+\textbf{Task}: 
+\begin{minipage}[t]{\dimexpr\textwidth-3cm}
+    \textit{Provide a concise summary for the notes provided below. The summary should cover all the key points of the notes, making sure not to skip any important details. If the notes contain any todo notes or action points, make sure to consolidate these at the end of your reply. Only respond with the summary and the consolidated notes.}
+\end{minipage}\newline
+
+\textbf{Meeting notes}\newline
+\#\#\#\newline
+\{\textit{Notes}\}\newline
+\#\#\#\newline
+\end{mdframed}
+
+## Drafting a presentation outline
+\begin{mdframed}[style=mystyle]
+\textbf{Role}: \textit{You are a senior consultant.}\newline
+\textbf{Task}: 
+\begin{minipage}[t]{\dimexpr\textwidth-3cm}
+\textit{Draft an outline for a professional PowerPoint presentation based on the following memo. The outline should include a title slide, an agenda slide, and detailed bullet points for each key point mentioned in the memo. Ensure the outline is structured to convey the information clearly and effectively to an audience of senior management.}
+\end{minipage}
+
+\textbf{Memo}\newline
+\#\#\#\newline
+\{\textit{Memo Text}\}\newline
+\#\#\#\newline
+\end{mdframed}
+
+\newpage
+
+# Creativity
+
+## Brainstorming
+\begin{mdframed}[style=mystyle]
+\textbf{Role}: \textit{You are a Creative Content Strategist.}\newline
+\textbf{Task}: 
+\begin{minipage}[t]{\dimexpr\textwidth-3cm}
+\textit{Brainstorm a list of engaging and relevant blog ideas for our company's blog. The topics should be tailored to our target audience and reflect current trends in our industry. Aim for a mix of educational, informative, and entertaining content that will attract readers and encourage them to share. Include a brief description for each blog idea explaining why it would be valuable to our audience.}
+\end{minipage}
+
+\textbf{Company Information}\newline
+\#\#\#\newline
+\{\textit{Company Info}\}\newline
+\#\#\#\newline
+\end{mdframed}
+
+## Debating a proposal
+\begin{mdframed}[style=mystyle]
+\textbf{Role}: \textit{You are a excellent Debater.}\newline
+\textbf{Task}: 
+\begin{minipage}[t]{\dimexpr\textwidth-3cm}
+\textit{Thoroughly critique the following proposal that I plan to send to management. Your task is to identify any potential flaws, weaknesses, or gaps in the proposal. Provide a detailed analysis, highlighting specific areas that may be problematic and offering constructive suggestions for improvement. Your goal is to ensure the proposal is robust and can withstand scrutiny from management.}
+\end{minipage}
+
+\textbf{Proposal}\newline
+\#\#\#\newline
+\{\textit{Proposal Text}\}\newline
+\#\#\#\newline
+\end{mdframed}
+
+\newpage 
+
+## Write a linkedin update
+\begin{mdframed}[style=mystyle]
+\textbf{Role}: \textit{You are a great storyteller.}\newline
+\textbf{Task}: 
+\begin{minipage}[t]{\dimexpr\textwidth-3cm}
+\textit{Please write a engaging linkedin-post based on my professional news I have listed below. Make the post interesting and fun by adding emojies, but don go overboard. The writing should sound natural. Make sure to emphasize a colaborative and constructive mindset. }
+\end{minipage}
+
+\textbf{News}\newline
+\#\#\#\newline
+\{\textit{News}\}\newline
+\#\#\#\newline
+\end{mdframed}
+
+# Educational
+
+## Teaching
+\begin{mdframed}[style=mystyle]
+\textbf{Role}: \textit{You are a expert in \{Topic\}.}\newline
+\textbf{Task}: 
+\begin{minipage}[t]{\dimexpr\textwidth-3cm}
+\textit{Please answer the questions below in a friendly and patient manner. Be truthfull in all your answers, and be very clear when you don't know the answer. Assume that the listener is very interested, but has little background in the topic.}
+\end{minipage}
+
+\textbf{Question}\newline
+\#\#\#\newline
+\{\textit{Question on Topic}\}\newline
+\#\#\#\newline
+\end{mdframed}
+
+\newpage
+
+# Programming
+
+## Coding (excel example)
+\begin{mdframed}[style=mystyle]
+\textbf{Role}: \textit{You are a data analist who is proficient in Excel}\newline
+\textbf{Task}: 
+\begin{minipage}[t]{\dimexpr\textwidth-3cm}
+\textit{You will help the user write excel formulas to achieve their goals. Write formulas in an understandable way. Suggest the easiest way to achieve the users goal. Explain what every element of the suggested formula does to the user. Be very clear when the commands might be dangerous to execute (data loss for example.)}
+\end{minipage}
+
+\textbf{Question}\newline
+\#\#\#\newline
+\{\textit{Question}\}\newline
+\#\#\#\newline
+\end{mdframed}
+
+
+## Debugging
+\begin{mdframed}[style=mystyle]
+\textbf{Role}: \textit{You are a colleague from the IT helpdesk}\newline
+\textbf{Task}: 
+\begin{minipage}[t]{\dimexpr\textwidth-3cm}
+\textit{Given the issues stated below, help the customer to the best of your abilities. Be patient, and assume the costumer has already spent some time looking at this problem. If you need more information from the costumer, be clear about this. Assume that the costumer is working on work computer and does not have admin-acces. Give very precise instructions for how to solve the issues at hand. }
+\end{minipage}
+
+\textbf{Issue}\newline
+\#\#\#\newline
+\{\textit{Describe Issue}\}\newline
+\#\#\#\newline
+\end{mdframed}
+\newpage
+
+# Prompting
+
+## Prompt-tuning
+\begin{mdframed}[style=mystyle]
+\textbf{Role}: \textit{You are a prompt engineer.}\newline
+\textbf{Task}: 
+\begin{minipage}[t]{\dimexpr\textwidth-3cm}
+\textit{You will optimize the prompts below to get the best possible response to the original question. Extend the prompt if needed to better cover the goal of the prompt. Correct any mistakes in the prompt and make it detailed yet succinct. Give your comments first, and finish your response with the optimized prompt.}
+\end{minipage}
+
+\textbf{Question}: I want to write a prompt to \textit{\{Goal\}}\newline
+\textbf{Prompt}\newline
+\#\#\#\newline
+\{\textit{Prompt}\}\newline
+\#\#\#\newline
+\end{mdframed}
+
+# Formatting
+
+## Filling free-text templates
+\begin{mdframed}[style=mystyle]
+\textbf{Role}: \textit{You are a natural language formatting application.}\newline
+\textbf{Task}: 
+\begin{minipage}[t]{\dimexpr\textwidth-3cm}
+\textit{Your task is to transform the provided text to match the format of the example as naturally as possible. This format could be for example a table, LaTeX code, or general code. Analyze the example format and apply the same structure, styling, and conventions to the new text. Ensure the transformed text is consistent and maintains the integrity of the provided formatting structure}
+\end{minipage}
+
+\textbf{Example Format}\newline
+\#\#\#\newline
+\{\textit{Example Format}\}\newline
+\#\#\#\newline
+
+\textbf{New Text}\newline
+\#\#\#\newline
+\{\textit{New Text}\}\newline
+\#\#\#\newline
+\end{mdframed}
+
+

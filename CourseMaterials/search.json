@@ -196,769 +196,6 @@
     "text": "The Planning\n\nDay 1Day 2\n\n\n\n\n\n\n\n\n\n\nTime\nTitle\nDescription\n\n\n\n\n09:00 – 09:30 AM\n👋 Introduction\n\n\n\n09:30 – 10:45 AM\n🤖 Introduction to LLM’s and ChatGPT\nNLP and development of LLMsCapabilities of ChatGPTReal world applications\n\n\n10:45 – 11:00 AM\n☕ Break\n\n\n\n11:00 – 12:00 PM\n💬 Prompt Engineering\nIntroduction to promptingBest practices for promptingHands-on exercises\n\n\n12:00 – 13:00 PM\n🥪 Lunch\n\n\n\n13:00 – 13:45 PM\n💻 Programming with GPT\nIntroduction to the OpenAI APIHands-on exercises\n\n\n13:45 – 14:45 PM\n⚖️ Ethical Considerations in Using LLMs\nBiases and MisinformationThe Dark Side of LLMsPrivacy and Legal Challenges\n\n\n14:45 - 15:00 PM\n☕ Break\n\n\n\n15:00 - 16:00 PM\n💻Programming with GPT\nPair-programming with LLMsHands-on exercises\n\n\n16:00 – 16:45 PM\n🚀 Improved Efficiency with ChatGPT\nExamples of real implementations of ChatGPT in a workflow\n\n\n16:45 – 17:00 PM\n📝 Summary, Evaluation and Conclusion of Day 1\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTime\nTitle\nDescription\n\n\n\n\n09:00 – 09:20 AM\n🌅 Opening and Discussion of the Day’s Agenda\n\n\n\n09:20 – 10:45 AM\n📊 Text Analysis with LLMs\nFoundation models for NLPEvaluation of performanceHands-on Exercises\n\n\n10:45 – 11:00 AM\n☕ Break\n\n\n\n11:00 – 12:30 PM\n🔍 Retrieval Augmented Generation (RAG), open source, and next steps\nLLMs versus Search EnginesHow to host your own LLMNext steps?\n\n\n12:30 – 13:30 PM\n🥗 Lunch\n\n\n\n13:30 - 16:30 PM\n🚀 Extended Practical Assignment - RAG 🔍\nBuilding your own Retrieval Augmented Generation system with fact-checking against hallucinations\n\n\n16:30 - 17:00 PM\n📝 Summary, Evaluation, and Conclusion\n\n\n\n\n\n\n\n\n\n\nChatGPT for Data Science"
   },
   {
-    "objectID": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#overview",
-    "href": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#overview",
-    "title": "Ethical Considerations in Using LLMs",
-    "section": "Overview",
-    "text": "Overview\n__Disclaimer__\nI don’t claim to have the answers.\nBe aware of these topics.\nForm your own opinions and openly discuss issues."
-  },
-  {
-    "objectID": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#overview-1",
-    "href": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#overview-1",
-    "title": "Ethical Considerations in Using LLMs",
-    "section": "Overview",
-    "text": "Overview\n\n\nBiases and Misinformation\nThe Dark Side of LLMs\nGroup discussion"
-  },
-  {
-    "objectID": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#biases",
-    "href": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#biases",
-    "title": "Ethical Considerations in Using LLMs",
-    "section": "Biases",
-    "text": "Biases\n\nLLMs can strengthen negative stereotypes.\nLLMs can strengten the views of users via confirmation bias:\n\nLLMs have a tendency to agree with the user\nPeople have a tendency to think that models are ‘objective’ and speak the ‘truth’\n\nLLMs are ‘skewed’ to the trainingset majority:\n\nEnglish Western views for example\n\n\n\n\nReuters: Amazon scraps secret AI recruiting tool that showed bias against women"
-  },
-  {
-    "objectID": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#hallucinating-false-information",
-    "href": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#hallucinating-false-information",
-    "title": "Ethical Considerations in Using LLMs",
-    "section": "Hallucinating false information",
-    "text": "Hallucinating false information\n\nWhat are Hallucinations?\n\nIt’s when LLMs generates incorrect, nonsensical, or unverifiable information presented as fact.\nMight also be answers that are not supported by the provided context\nCan be hard to spot as the model is a great ‘bluffer’\n\nDoesn’t know that the information is wrong\nasking for self-reflection does help"
-  },
-  {
-    "objectID": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#hallucinating-false-information-1",
-    "href": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#hallucinating-false-information-1",
-    "title": "Ethical Considerations in Using LLMs",
-    "section": "Hallucinating false information",
-    "text": "Hallucinating false information\n\nWhat are Hallucinations?\n\nIt’s when LLMs generates incorrect, nonsensical, or unverifiable information presented as fact."
-  },
-  {
-    "objectID": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#who-is-responsible-when-ai-makes-a-mistake",
-    "href": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#who-is-responsible-when-ai-makes-a-mistake",
-    "title": "Ethical Considerations in Using LLMs",
-    "section": "Who is responsible when AI makes a mistake?",
-    "text": "Who is responsible when AI makes a mistake?\n\nFirst recorded death of the driver of a self-driving car in 2016\nFirst recorded fatility of a pedestrian by a self-driving car in 2018\n\n\n\nThe first known fatal accident involving a vehicle being driven by itself took place in Williston, Florida on 7 May 2016 while a Tesla Model S electric car was engaged in Autopilot mode. The driver was killed in a crash with a large 18-wheel tractor-trailer.\nFirst pedestrian was pushing a bike with shoping bags accross the road."
-  },
-  {
-    "objectID": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#stories-of-dangerous-behaviour-by-ai-chatbots",
-    "href": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#stories-of-dangerous-behaviour-by-ai-chatbots",
-    "title": "Ethical Considerations in Using LLMs",
-    "section": "Stories of dangerous behaviour by AI chatbots",
-    "text": "Stories of dangerous behaviour by AI chatbots\n\nNYtimes: A Conversation With Bing’s Chatbot Left Me Deeply Unsettled\n\n“It (red: Sydney chatbot) then tried to convince me that I was unhappy in my marriage, and that I should leave my wife and be with it instead.”\n\nUnable to verify: La Libre Belgique story: Without these conversations with the Eliza chatbot, my husband would still be here\n\n\nScreenshots of Business Insider’s disturbing conversation with “Eliza,” a chatbot from Chai Research."
-  },
-  {
-    "objectID": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#stories-of-dangerous-behaviour-by-ai-chatbots-1",
-    "href": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#stories-of-dangerous-behaviour-by-ai-chatbots-1",
-    "title": "Ethical Considerations in Using LLMs",
-    "section": "Stories of dangerous behaviour by AI chatbots",
-    "text": "Stories of dangerous behaviour by AI chatbots\n\nGoogle Gemini tells user to ‘Please die’\nMother says AI chatbot led her son to kill himself in lawsuit against its maker"
-  },
-  {
-    "objectID": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#importance-of-human-in-the-loop",
-    "href": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#importance-of-human-in-the-loop",
-    "title": "Ethical Considerations in Using LLMs",
-    "section": "Importance of human-in-the-loop",
-    "text": "Importance of human-in-the-loop\n\nQuality Control: Because of the generative design LLMs are prone to errors. Require human checks and feedback to ensure accuracy of the output.\nHuman (ethical) Judgement: Some decisions require human (ethical) judgment, especially in complex, nuanced situations where the context matters.\n\n My personal beliefs: \n\nGenerative AI is an amazing transformative tool, but not an autonomous agent\nYou are responsible for the mistakes you make when using generative AI:\n\nMake sure the risks are known\nMake sure the risks are manageble\nIf not possible, make sure the risks are acceptable"
-  },
-  {
-    "objectID": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#what-constitutes-appropriate-content",
-    "href": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#what-constitutes-appropriate-content",
-    "title": "Ethical Considerations in Using LLMs",
-    "section": "What constitutes appropriate content?",
-    "text": "What constitutes appropriate content?\n\n\n\n\n\n\n\n\nModel\nSource\nRestrictions\n\n\n\n\nChatGPT by OpenAI\nClosed source\nStrongly moderated and curated\n\n\nGrok by Xai\nClosed source\nLess restrictions\n\n\nLlama-models by Meta\nOpen source\nCan be finetuned for any purpose\n\n\n\n\n\nKeep in mind: Nobody is sharing the most important part: HIGH QUALITY DATA\n\n\n\n\n\n\nA reddit pol on the most annoying ChatGPT responses"
-  },
-  {
-    "objectID": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#overview-2",
-    "href": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#overview-2",
-    "title": "Ethical Considerations in Using LLMs",
-    "section": "Overview",
-    "text": "Overview\n\n\nBiases and Misinformation\nThe Dark Side of LLMs\nGroup discussion"
-  },
-  {
-    "objectID": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#overview-3",
-    "href": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#overview-3",
-    "title": "Ethical Considerations in Using LLMs",
-    "section": "Overview",
-    "text": "Overview\n\n\nBiases and Misinformation\nThe Dark Side of LLMs\nGroup discussion"
-  },
-  {
-    "objectID": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#copyright-issues-and-llms",
-    "href": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#copyright-issues-and-llms",
-    "title": "Ethical Considerations in Using LLMs",
-    "section": "Copyright issues and LLMs",
-    "text": "Copyright issues and LLMs\n\nCan the output be copyrighted?\nCan they be trained on copyrighted materials?\nCan you claim contain generated by LLMs is infringing copyright?\nOpen source code does not mean no licenses apply:\n\nGPL: “You may use my code as long as you also release your code open source”\n\n\n\n\n\n\n\n\n@github copilot, with \"public code\" blocked, emits large chunks of my copyrighted code, with no attribution, no LGPL license. For example, the simple prompt \"sparse matrix transpose, cs_\" produces my cs_transpose in CSparse. My code on left, github on right. Not OK. pic.twitter.com/sqpOThi8nf\n\n— Tim Davis (@DocSparse) October 16, 2022\n\n\n\n\n\n\n\n\n\n\n\ndeveloper Tim Davis, a professor of computer science and engineering at Texas A&M University"
-  },
-  {
-    "objectID": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#privacy-issues-and-llms",
-    "href": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#privacy-issues-and-llms",
-    "title": "Ethical Considerations in Using LLMs",
-    "section": "Privacy issues and LLMs",
-    "text": "Privacy issues and LLMs\n\nCan companies train LLMs on (scraped) private data without consent?\n\nWhat if LLMs memorise private data?\n\nHow can we mitigate inference of private information by LLMs?\n\nhttps://llm-privacy.org/\n\nHow can we trust third-parties with our proprietary/private information?"
-  },
-  {
-    "objectID": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#current-view-dutch-government",
-    "href": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#current-view-dutch-government",
-    "title": "Ethical Considerations in Using LLMs",
-    "section": "Current view Dutch-government",
-    "text": "Current view Dutch-government\n\n(Overheidsbrede visie Generatieve AI; 01-01-2024):\n\n\n\nNiet-gecontracteerde generatieve AI-toepassingen voldoen over het algemeen niet aantoonbaar aan de geldende privacy- en auteursrechtelijke wetgeving. Zodoende is het gebruik hiervan door Rijksorganisaties (of in opdracht daarvan) niet toegestaan, in die gevallen waarin het risico bestaat dat wetgeving wordt overtreden, tenzij de aanbieder en de gebruiker aantoonbaar voldoen aan de geldende wet- en regelgeving."
-  },
-  {
-    "objectID": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#transparency-issues-of-llms",
-    "href": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#transparency-issues-of-llms",
-    "title": "Ethical Considerations in Using LLMs",
-    "section": "Transparency issues of LLMs",
-    "text": "Transparency issues of LLMs\n\nHow can we trust models that are “black boxes”?\n\nEspecially if aren’t even sure what these models look like or how they were trained?\n\nHow can these models be used if they can generate ‘hallucinations’ at any point?\nHow can we prevent the use of LLMs for unsuited usecases?"
-  },
-  {
-    "objectID": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#misuse-of-llms",
-    "href": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#misuse-of-llms",
-    "title": "Ethical Considerations in Using LLMs",
-    "section": "Misuse of LLMs",
-    "text": "Misuse of LLMs\n\n\n\nHow can we prevent the automated generation of misinformation at scale?\nHow can we prevent the use of these techniques for spam, identity fraud, and worse?\nWho should decide what misuse of LLMs means?"
-  },
-  {
-    "objectID": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#are-these-ai-developments-safe",
-    "href": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#are-these-ai-developments-safe",
-    "title": "Ethical Considerations in Using LLMs",
-    "section": "Are these AI developments safe?",
-    "text": "Are these AI developments safe?\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBBC: AI ‘godfather’ Geoffrey Hinton tells the BBC of AI dangers after he quits Google\n\nBBC: AI ‘godfather’ Yoshua Bengio feels ‘lost’ over life’s work\n\nBBC: Yann LeCun says AI won’t take over the world or destroy jobs forever\n\n\n\nGeoffrey E. Hinton is internationally distinguished for his work on artificial neural nets, especially how they can be designed to learn without the aid of a human teacher. This may well be the start of autonomous intelligent brain-like machines.\nGeoffrey Hinton, Yann LeCun, and Joshua Bengio won the 2018 Turing Award. Highest distinction in computer science."
-  },
-  {
-    "objectID": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#are-these-ai-developments-safe-1",
-    "href": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#are-these-ai-developments-safe-1",
-    "title": "Ethical Considerations in Using LLMs",
-    "section": "Are these AI developments safe?",
-    "text": "Are these AI developments safe?\n\n\n\n\n\nBI: AI one-percenters seizing power forever is the real doomsday scenario, warns AI godfather\n\n\nVery real threat in current social media ecosystem:\n\nRomanian election result annulment due to Election Interference\nReport On The Investigation Into Russian Interference In The 2016 Presidential Election, R. Mueller\nSpeculative: Whistleblower: X’s Role in 2024 Election Interference via AI-bots"
-  },
-  {
-    "objectID": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#are-these-ai-developments-safe-2",
-    "href": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#are-these-ai-developments-safe-2",
-    "title": "Ethical Considerations in Using LLMs",
-    "section": "Are these AI developments safe?",
-    "text": "Are these AI developments safe?\n\n\n\nBI: Google Brain cofounder says Big Tech companies are inflating fears about the risks of AI wiping out humanity because they want to dominate the market\n\nAndrew NG: head of Google Brain and was the former Chief Scientist at Baidu, Stanford professor"
-  },
-  {
-    "objectID": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#should-there-be-governmental-oversight-on-ai",
-    "href": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#should-there-be-governmental-oversight-on-ai",
-    "title": "Ethical Considerations in Using LLMs",
-    "section": "Should there be governmental oversight on AI",
-    "text": "Should there be governmental oversight on AI\n\n22 march 2023 - Call for pause on giant AI development\n\n6 months\ndevelop and implement a shared safety protocols\nwork with policymakers to dramatically accelerate development of robust AI governance systems\n“…new and capable regulatory authorities dedicated to AI”\n\nU.S. senate hearing: Oversight of A.I.: Rules for Artificial Intelligence"
-  },
-  {
-    "objectID": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#eu-ai-act",
-    "href": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#eu-ai-act",
-    "title": "Ethical Considerations in Using LLMs",
-    "section": "EU AI Act",
-    "text": "EU AI Act\n\n\nWas just passed earlier this month, main effects:\n\nUnacceptable risk AI systems will be banned\n\nReal time biometric identification\nBehavioural manipulation\nSocial scoring systems\n\nAI needs to be transparant\n\nYou must know if you are interacting with AI\nCompanies must disclose if content was generated with AI\n\nThe setup of a new European AI Office to coordinate compliance, implementation, and enforcement of the AI Act\n\nTasked with oversight of General Purpose AI models across Europe"
-  },
-  {
-    "objectID": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#the-economic-impact-of-ai",
-    "href": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#the-economic-impact-of-ai",
-    "title": "Ethical Considerations in Using LLMs",
-    "section": "The economic impact of AI",
-    "text": "The economic impact of AI\n\nWill it take (many of) our jobs?\nWill it create jobs?\nOr will it just make us more efficient at our current job?"
-  },
-  {
-    "objectID": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#climate-impact-of-large-language-models",
-    "href": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#climate-impact-of-large-language-models",
-    "title": "Ethical Considerations in Using LLMs",
-    "section": "Climate impact of large language models",
-    "text": "Climate impact of large language models\n\nThese models are very compute intensive:\n\nIn the training process\nBut also during inference!\n\nEstimated to use 0.5%-2% of global energy usage in 2026 (International Energy Agency - Electricity forecast 2024)\nHow can we justify this (inefficient) use of technology?"
-  },
-  {
-    "objectID": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#training-the-model-via-rlhf",
-    "href": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#training-the-model-via-rlhf",
-    "title": "Ethical Considerations in Using LLMs",
-    "section": "Training the model via RLHF",
-    "text": "Training the model via RLHF\n\n\n\nLow-wage workers in Kenia were paid to help collect data for the ‘moderation’ tool:\n\nTraumatising work\n\n\n\n Time: Exclusive: OpenAI Used Kenyan Workers on Less Than $2 Per Hour to Make ChatGPT Less Toxic"
-  },
-  {
-    "objectID": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#use-of-llms-for-essays-homework-etc.-cannot-be-reliably-detected.",
-    "href": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#use-of-llms-for-essays-homework-etc.-cannot-be-reliably-detected.",
-    "title": "Ethical Considerations in Using LLMs",
-    "section": "Use of LLMs for essays, homework, etc. cannot be reliably detected.",
-    "text": "Use of LLMs for essays, homework, etc. cannot be reliably detected.\n\n\n\nAI-detectors don’t work, which is creating serious issues for students. \n\n\n\nAI-detectors don’t work, which is disrupting how homework is given and made."
-  },
-  {
-    "objectID": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#overview-4",
-    "href": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#overview-4",
-    "title": "Ethical Considerations in Using LLMs",
-    "section": "Overview",
-    "text": "Overview\n\n\nBiases and Misinformation\nThe Dark Side of LLMs\nGroup discussion"
-  },
-  {
-    "objectID": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#overview-5",
-    "href": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#overview-5",
-    "title": "Ethical Considerations in Using LLMs",
-    "section": "Overview",
-    "text": "Overview\n\n\nBiases and Misinformation\nThe Dark Side of LLMs\nGroup discussion"
-  },
-  {
-    "objectID": "slides/day_1/3.Prompt_Engineering.html#overview",
-    "href": "slides/day_1/3.Prompt_Engineering.html#overview",
-    "title": "Introduction to Prompt Engineering",
-    "section": "Overview",
-    "text": "Overview\n\n\nIntroduction to Prompting\nBest techniques for prompting"
-  },
-  {
-    "objectID": "slides/day_1/3.Prompt_Engineering.html#overview-1",
-    "href": "slides/day_1/3.Prompt_Engineering.html#overview-1",
-    "title": "Introduction to Prompt Engineering",
-    "section": "Overview",
-    "text": "Overview\n\n\nIntroduction to Prompting\nBest techniques for prompting"
-  },
-  {
-    "objectID": "slides/day_1/3.Prompt_Engineering.html#introduction-to-prompting-1",
-    "href": "slides/day_1/3.Prompt_Engineering.html#introduction-to-prompting-1",
-    "title": "Introduction to Prompt Engineering",
-    "section": "Introduction to prompting",
-    "text": "Introduction to prompting\n\nPrompts are a natural (language) way to interact with language models\n\nvery easy to understand\nanybody can do it\nit makes the interaction feel  human \n\nEnables Semantic coding instead of logical coding\nThis makes it very easy and very fast to iterate"
-  },
-  {
-    "objectID": "slides/day_1/3.Prompt_Engineering.html#nlp-lifecycle-on-its-head",
-    "href": "slides/day_1/3.Prompt_Engineering.html#nlp-lifecycle-on-its-head",
-    "title": "Introduction to Prompt Engineering",
-    "section": "NLP-lifecycle on it’s head",
-    "text": "NLP-lifecycle on it’s head\n\nRegular ML:\nProblem → Idea → Gather data → Train Model → Evaluate Model →\nRepeat if neccessary → deploy\nDuration: Months\n\n\n\nPrompting workflow:\nProblem → Idea → Gather (less) data → Finetune prompt → Evaluate Model →\nRepeat if neccessary → already deployed\nDuration: Days"
-  },
-  {
-    "objectID": "slides/day_1/3.Prompt_Engineering.html#overview-2",
-    "href": "slides/day_1/3.Prompt_Engineering.html#overview-2",
-    "title": "Introduction to Prompt Engineering",
-    "section": "Overview",
-    "text": "Overview\n\n\nIntroduction to Prompting\nBest techniques for prompting"
-  },
-  {
-    "objectID": "slides/day_1/3.Prompt_Engineering.html#overview-3",
-    "href": "slides/day_1/3.Prompt_Engineering.html#overview-3",
-    "title": "Introduction to Prompt Engineering",
-    "section": "Overview",
-    "text": "Overview\n\n\nIntroduction to Prompting\nBest techniques for prompting"
-  },
-  {
-    "objectID": "slides/day_1/3.Prompt_Engineering.html#best-techniques-for-prompting-1",
-    "href": "slides/day_1/3.Prompt_Engineering.html#best-techniques-for-prompting-1",
-    "title": "Introduction to Prompt Engineering",
-    "section": "Best techniques for prompting",
-    "text": "Best techniques for prompting\n\nMake use of a general prompting template such as RTF\nBe precise in your description\ninclude a reference text\n‘No’ is also an answer\nGive LLMs room to think\nGuide complex problems with chain-of-thought prompting\nMind the Context Window!"
-  },
-  {
-    "objectID": "slides/day_1/3.Prompt_Engineering.html#general-prompting-template---rtf-framework",
-    "href": "slides/day_1/3.Prompt_Engineering.html#general-prompting-template---rtf-framework",
-    "title": "Introduction to Prompt Engineering",
-    "section": "General prompting template - RTF framework",
-    "text": "General prompting template - RTF framework\n\nA general decent prompt templates looks like the following:\nSpecify which ROLE the model should assume.\nSpecify the TASK it should perform:\n\nTASK_DESCRIPTION: What is the task.\nTASK_SPECIFICATION: Specify how the task should be performed\n\n(Optional) Specify in what FORMAT the answer should be given.\n\n\nf\"\"\"\nROLE: {ROLE: You are a professional translator.}\nTASK: {TASK_DESCRIPTION: Translate the user input from English to Dutch.}\n      {TASK_SPECIFICATION: Make sure you only use formal language that is suitable for a business setting.}\n      {FORMAT_OUTPUT: Only return the translated text, nothing else} \n\"\"\""
-  },
-  {
-    "objectID": "slides/day_1/3.Prompt_Engineering.html#general-prompting-template",
-    "href": "slides/day_1/3.Prompt_Engineering.html#general-prompting-template",
-    "title": "Introduction to Prompt Engineering",
-    "section": "General prompting template",
-    "text": "General prompting template\n\n\n\n\nA general decent prompt templates looks like the following:\nSpecify which ROLE the model should assume.\nSpecify the TASK it should perform:\n\nTASK_DESCRIPTION: What is the task.\nTASK_SPECIFICATION: Specify how the task should be performed\n\n(Optional) Specify in what FORMAT the answer should be given."
-  },
-  {
-    "objectID": "slides/day_1/3.Prompt_Engineering.html#be-precise-in-your-task-descriptions",
-    "href": "slides/day_1/3.Prompt_Engineering.html#be-precise-in-your-task-descriptions",
-    "title": "Introduction to Prompt Engineering",
-    "section": "Be precise in your task descriptions",
-    "text": "Be precise in your task descriptions\nYou may think your task is clear, but it may not be:\n\n\n\n\nAs I’m going to the store, my roommate asks me: ‘Can you get a gallon of milk? And if they have eggs, get 6.’\nWhen I come home my roommate was in shock: “You got 6 gallons of milk?!” I responded ‘They had eggs.’"
-  },
-  {
-    "objectID": "slides/day_1/3.Prompt_Engineering.html#be-precise-in-your-task-descriptions-1",
-    "href": "slides/day_1/3.Prompt_Engineering.html#be-precise-in-your-task-descriptions-1",
-    "title": "Introduction to Prompt Engineering",
-    "section": "Be precise in your task descriptions",
-    "text": "Be precise in your task descriptions\n\nLLMs don’t know anything about you or the task it is given.\nGive the model the context it needs to know\n“Please explain to me how LLMs works?”\n\nWhat is your background knowledge? Academic, high-school, etc..\nHow would you like the explanation? Technical, simple summary, funny, etc..\nHow long should it be? 5 sentences, 5 paragraphs, 5 pages etc..\nDo you want the model to answer with or without the mathemathical foundations?\nDo you need references?\netc…"
-  },
-  {
-    "objectID": "slides/day_1/3.Prompt_Engineering.html#include-a-reference-text",
-    "href": "slides/day_1/3.Prompt_Engineering.html#include-a-reference-text",
-    "title": "Introduction to Prompt Engineering",
-    "section": "Include a reference text",
-    "text": "Include a reference text\n\n\n\nLLMs should not be trusted with giving specific information, they can make up completely nonsence answers\nThese answers are called Hallucinations, more on them later."
-  },
-  {
-    "objectID": "slides/day_1/3.Prompt_Engineering.html#include-a-reference-text-1",
-    "href": "slides/day_1/3.Prompt_Engineering.html#include-a-reference-text-1",
-    "title": "Introduction to Prompt Engineering",
-    "section": "Include a reference text",
-    "text": "Include a reference text\n\nTo help mitigate this (partially), you can Include a reference text1\n\nNote: Finding these reference texts in a smart way, is essentially what RAG systems do\n\n\n\nf\"\"\"\nROLE: {ROLE}\nTASK: {TASK_DESCRIPTION}\n      Your task is to answer the question using only the provided document \n      and to cite the passage(s) of the document used to answer the question.\n      The answer must be annotated with a citation. \n      Use the following format to cite relevant passages ({'citation' : …}).\n      {FORMAT_OUTPUT}\n\nDOCUMENT:\n'''\n{DOCUMENT}\n'''\n\"\"\"\n\nOpenAI GPT guide"
-  },
-  {
-    "objectID": "slides/day_1/3.Prompt_Engineering.html#use-delimiters",
-    "href": "slides/day_1/3.Prompt_Engineering.html#use-delimiters",
-    "title": "Introduction to Prompt Engineering",
-    "section": "Use delimiters",
-    "text": "Use delimiters\n\nIndicates what describes the task at hand, and what the task should be performed on\nuse either:\n\n### TEXT ###\n““” TEXT “““\n’’’ TEXT ’’’\nThese triplets are all a single token\n\nOr use clear section titles, HTML-tags, etc."
-  },
-  {
-    "objectID": "slides/day_1/3.Prompt_Engineering.html#no-is-also-an-answer",
-    "href": "slides/day_1/3.Prompt_Engineering.html#no-is-also-an-answer",
-    "title": "Introduction to Prompt Engineering",
-    "section": "‘No’ is also an answer!",
-    "text": "‘No’ is also an answer!\n\nTo help mitigate this (partially), you can Include a reference text1\nExplicitly tell the model to not answer the question if it can’t.\n\n\nf\"\"\"\nROLE: {ROLE}\nTASK: {TASK_DESCRIPTION}\n      Your task is to answer the question using only the provided document \n      and to cite the passage(s) of the document used to answer the question.\n      If the document does not contain the information needed to answer this question \n      then simply write: \n        'Insufficient information.' \n      If an answer to the question is provided, it must be annotated with a citation. \n      Use the following format to cite relevant passages ({'citation' : …}).\n      {FORMAT_OUTPUT}\n\nDOCUMENT:\n'''\n{DOCUMENT}\n'''\n\"\"\"\n\nOpenAI GPT guide"
-  },
-  {
-    "objectID": "slides/day_1/3.Prompt_Engineering.html#give-models-time-to-think",
-    "href": "slides/day_1/3.Prompt_Engineering.html#give-models-time-to-think",
-    "title": "Introduction to Prompt Engineering",
-    "section": "Give models time-to-think",
-    "text": "Give models time-to-think\n\nAllow the model to work through a problem first\nbreak up a task into smaller steps\n\nf\"\"\"\nDetermine if my answer below is correct.\n\nI'm trying to figure out how expensive my prompting of the GPT4 API will be in total.\nI'm going to run around 1000 prompts. For these prompts, the average prompt-lengt is 250 words.\nThe average response length of the model for these prompts is 300 words. \n\nThe API pricing is as follows:\n$0.03/1k prompt tokens.\n$0.06/1k sampled tokens.\n\nWe can assume that 1 token is on average 3/4th of a single word. \n\nI found the following answer:\n18 dollars.\n\"\"\"\nf\"\"\"\nFirst work out your own solution to the problem. \nThen compare your solution to the given solution and evaluate if the given solution is correct or not. \nDon't decide if the student's solution is correct until you have done the problem yourself.\n\nI'm trying to figure out how expensive my prompting of the GPT4 API will be in total.\nI'm going to run around 1000 prompts. For these prompts, the average prompt-lengt is 250 words.\nThe average response length of the model for these prompts is 300 words. \n\nThe API pricing is as follows:\n$0.03/1k prompt tokens.\n$0.06/1k sampled tokens.\n\nWe can assume that 1 token is on average 3/4th of a single word. \n\nI found the following answer:\n18 dollars.\n\"\"\""
-  },
-  {
-    "objectID": "slides/day_1/3.Prompt_Engineering.html#take-into-account-the-order-of-operations",
-    "href": "slides/day_1/3.Prompt_Engineering.html#take-into-account-the-order-of-operations",
-    "title": "Introduction to Prompt Engineering",
-    "section": "Take into account the order-of-operations",
-    "text": "Take into account the order-of-operations\n\nFirst give calculation steps, then give the answer.\nOtherwise the model tries to retrofit the computation to the answer.\n\n\n\n\nBad order\n\n\n\n\n\nGood order"
-  },
-  {
-    "objectID": "slides/day_1/3.Prompt_Engineering.html#chain-of-thought-prompting",
-    "href": "slides/day_1/3.Prompt_Engineering.html#chain-of-thought-prompting",
-    "title": "Introduction to Prompt Engineering",
-    "section": "Chain-of-thought prompting",
-    "text": "Chain-of-thought prompting\n\nSome tasks are complicated for a LLM, based on just the prompt\nGive the model room to think with Chain-of-Thought prompting\nChain-of-Thought prompting is essentially single or few-shot prompting for reasoning.\nWhat was few-shot prompting again?\n\n\nInput\nPoor English input: I eated the purple berries.\nGood English output: I ate the purple berries.\nPoor English input: Thank you for picking me as your designer. I’d appreciate it.\nGood English output: Thank you for choosing me as your designer. I appreciate it.\nPoor English input: The mentioned changes have done. or I did the alteration that you\nrequested. or I changed things you wanted and did the modifications.\nGood English output:\noutput\nThe requested changes have been made. or I made the alteration that you requested. or I changed things you wanted and made the modifications.1\n\n\nThat this works, is one of the emergent properties of LLMs\n\nLanguage Models are Few-Shot Learners: https://arxiv.org/pdf/2005.14165.pdf"
-  },
-  {
-    "objectID": "slides/day_1/3.Prompt_Engineering.html#chain-of-thought-prompting-1",
-    "href": "slides/day_1/3.Prompt_Engineering.html#chain-of-thought-prompting-1",
-    "title": "Introduction to Prompt Engineering",
-    "section": "Chain-of-thought prompting",
-    "text": "Chain-of-thought prompting\n\nSome tasks are complicated for a LLM, based on just the prompt\nGive the model room to think with Chain-of-Thought prompting\nChain-of-Thought prompting is essentially single or few-shot prompting for reasoning.\nChain-of-Thought prompting demonstrates how to reason1:\n\n\nChain-of-Thought Prompting Elicits Reasoning in Large Language Modelshttps://arxiv.org/pdf/2201.11903.pdf"
-  },
-  {
-    "objectID": "slides/day_1/3.Prompt_Engineering.html#shot-chain-of-thought-prompting",
-    "href": "slides/day_1/3.Prompt_Engineering.html#shot-chain-of-thought-prompting",
-    "title": "Introduction to Prompt Engineering",
-    "section": "0-shot Chain-of-thought prompting",
-    "text": "0-shot Chain-of-thought prompting\nYou can already improve performance by just adding:\n “Let’s think step by step.” \nat the end of a prompt1\nLarge Language Models are Zero-Shot Reasonershttps://arxiv.org/pdf/2205.11916.pdf"
-  },
-  {
-    "objectID": "slides/day_1/3.Prompt_Engineering.html#mind-the-context-window",
-    "href": "slides/day_1/3.Prompt_Engineering.html#mind-the-context-window",
-    "title": "Introduction to Prompt Engineering",
-    "section": "Mind the Context Window",
-    "text": "Mind the Context Window\n\nDepending on the model, the context window is between 10 and 200 pages of text\nUse 1 conversation for 1 task"
-  },
-  {
-    "objectID": "slides/day_1/3.Prompt_Engineering.html#meta-prompting",
-    "href": "slides/day_1/3.Prompt_Engineering.html#meta-prompting",
-    "title": "Introduction to Prompt Engineering",
-    "section": "Meta-prompting",
-    "text": "Meta-prompting\n\nWriting good prompts is time-consuming\nA meta-prompt instructs the model to write a good prompt for you:\n\nIt incorporates best practices and guidelines for prompting\nIt helps you get started with your prompt faster\n\n\n\n\"\"\"\nGiven a task description or existing prompt, produce a detailed system prompt to guide a language model in completing the task effectively.\n\n# Guidelines\n\n- Understand the Task: Grasp the main objective, goals, requirements, constraints, and expected output.\n- Minimal Changes: If an existing prompt is provided, improve it only if it's simple. For complex prompts, enhance clarity and add missing elements without altering the original structure.\n- Reasoning Before Conclusions**: Encourage reasoning steps before any conclusions are reached. ATTENTION! If the user provides examples where the reasoning happens afterward, REVERSE the order! NEVER START EXAMPLES WITH CONCLUSIONS!\n    - Reasoning Order: Call out reasoning portions of the prompt and conclusion parts (specific fields by name). For each, determine the ORDER in which this is done, and whether it needs to be reversed.\n    - Conclusion, classifications, or results should ALWAYS appear last.\n- Examples: Include high-quality examples if helpful, using placeholders [in brackets] for complex elements.\n   - What kinds of examples may need to be included, how many, and whether they are complex enough to benefit from placeholders.\n- Clarity and Conciseness: Use clear, specific language. Avoid unnecessary instructions or bland statements.\n- Formatting: Use markdown features for readability. DO NOT USE ``` CODE BLOCKS UNLESS SPECIFICALLY REQUESTED.\n- Preserve User Content: If the input task or prompt includes extensive guidelines or examples, preserve them entirely, or as closely as possible. If they are vague, consider breaking down into sub-steps. Keep any details, guidelines, examples, variables, or placeholders provided by the user.\n- Constants: DO include constants in the prompt, as they are not susceptible to prompt injection. Such as guides, rubrics, and examples.\n- Output Format: Explicitly the most appropriate output format, in detail. This should include length and syntax (e.g. short sentence, paragraph, JSON, etc.)\n    - For tasks outputting well-defined or structured data (classification, JSON, etc.) bias toward outputting a JSON.\n    - JSON should never be wrapped in code blocks (```) unless explicitly requested.\n\nThe final prompt you output should adhere to the following structure below. Do not include any additional commentary, only output the completed system prompt. SPECIFICALLY, do not include any additional messages at the start or end of the prompt. (e.g. no \"---\")\n\n[Concise instruction describing the task - this should be the first line in the prompt, no section header]\n\n[Additional details as needed.]\n\n[Optional sections with headings or bullet points for detailed steps.]\n\n# Steps [optional]\n\n[optional: a detailed breakdown of the steps necessary to accomplish the task]\n\n# Output Format\n\n[Specifically call out how the output should be formatted, be it response length, structure e.g. JSON, markdown, etc]\n\n# Examples [optional]\n\n[Optional: 1-3 well-defined examples with placeholders if necessary. Clearly mark where examples start and end, and what the input and output are. User placeholders as necessary.]\n[If the examples are shorter than what a realistic example is expected to be, make a reference with () explaining how real examples should be longer / shorter / different. AND USE PLACEHOLDERS! ]\n\n# Notes [optional]\n\n[optional: edge cases, details, and an area to call or repeat out specific important considerations]\n\"\"\""
-  },
-  {
-    "objectID": "slides/day_1/3.Prompt_Engineering.html#prompting-for-image-generation-1",
-    "href": "slides/day_1/3.Prompt_Engineering.html#prompting-for-image-generation-1",
-    "title": "Introduction to Prompt Engineering",
-    "section": "Prompting for image Generation",
-    "text": "Prompting for image Generation\n\nDall-E 3 (also used by bing) first  rewords your prompt, to refine it.\n\nOther image generators such as Stable-Diffusion don’t do this\n\n\n\n\n\nUser Input\nAn image of a black cat, sitting on a piano during golden hour. the image is a realistic photograph, taken by a pro photographer. The cat looks content.\n\nDall-E Input\nA realistic photograph of a black cat sitting on a piano. The background features a window with golden light shining through, indicative of an off-screen sunset. The cat looks content, with a relaxed posture and serene expression. The image captures the ambiance of a cozy, warmly lit room, highlighting the reflective surface of the piano and the soft, diffused sunlight."
-  },
-  {
-    "objectID": "slides/day_1/3.Prompt_Engineering.html#tips-for-writing-image-generation-prompts",
-    "href": "slides/day_1/3.Prompt_Engineering.html#tips-for-writing-image-generation-prompts",
-    "title": "Introduction to Prompt Engineering",
-    "section": "Tips for writing image generation prompts",
-    "text": "Tips for writing image generation prompts\n\n\nDo’s\n\n\n Be Specific:\nInclude details about the subject, background, mood, etc.\n Be descriptive:\nInstead of saying “a dog” say “a fluffy, small, brown dog.”\n Specify a style: “cubism” “watercolor painting”, “In the style of starry night by Van Gogh”, “photorealistic”, etc.\n Add search-keywords: for high quality images consider: “4k”, “HD”, “DSLR photography”, etc\n Iterate over images: Ask Dall-E to make slight changes you’d prefer\n Specify the resolution: “Portait”, “Widescreen”, etc…\n Request a specific random seed: This reduces the variance when iterating over images.\n*GPT4o no longer generates a new random seed for each image\n\n\nDon’ts\n\n\n Expect the image to perfectly match your vision  The randomness in the process makes it very hard to recreate specific visions.\n Don’t try ask Dall-E to Not do something\nThis will insert the keyword into the prompt and often achieves the oppossite.\n Don’t add too many elements to your images\nAdherence to your prompt will suffer from this\n Don’t expect photorealism\nOpenAI has tuned these models to typically display a cartoony hyperrealism\n\n\n\n\n\n\nPrompt Engineering"
-  },
-  {
-    "objectID": "slides/day_1/1.Opening.html#about-me",
-    "href": "slides/day_1/1.Opening.html#about-me",
-    "title": "Welcome",
-    "section": "About me",
-    "text": "About me\n\n\n\nAlex van Vorstenbosch\nSenior Data Scientist, NZa\nPhD candidate at Tilburg University\nNLP-enthousiast"
-  },
-  {
-    "objectID": "slides/day_1/1.Opening.html#why-am-i-here-today",
-    "href": "slides/day_1/1.Opening.html#why-am-i-here-today",
-    "title": "Welcome",
-    "section": "Why am I here today?",
-    "text": "Why am I here today?\n\n\n\n\nFascinated by Deep Learning during astronomy study\nMostly experience with Convolutional networks (and a bit with GAN’s)\nPivoted to NLP (Very relevant within government and relatively unexplored in healthcare economics)\nGreat resources available for free 1\n\n\n\n\n\n\nC. Manning and J. Hewwit, “Natural language processing with deep learning,” cs224n. Available: https://web.stanford.edu/class/cs224n/"
-  },
-  {
-    "objectID": "slides/day_1/1.Opening.html#the-fast-rise-of-chatgpt",
-    "href": "slides/day_1/1.Opening.html#the-fast-rise-of-chatgpt",
-    "title": "Welcome",
-    "section": "The fast rise of ChatGPT",
-    "text": "The fast rise of ChatGPT\n\n\n\n\nReleased on 30 November 2022\nTook the world by storm\nEverybody has heard of it, but…"
-  },
-  {
-    "objectID": "slides/day_1/1.Opening.html#the-second-wave---opensource-deepseek-r1",
-    "href": "slides/day_1/1.Opening.html#the-second-wave---opensource-deepseek-r1",
-    "title": "Welcome",
-    "section": "The second wave (?) - OpenSource Deepseek-R1",
-    "text": "The second wave (?) - OpenSource Deepseek-R1\n\n\n\n\nReleased on 20 januari 2025\nOpen sourced Open sourced methodology and released models Generative AIopen weights \nQuickly dethroned ChatGPT as most downloaded app in App store and Play store\nReportedly developed very cheaply within limited GPU embargo position\n\nThe reality was a lot less extreme than what was reported.\n\nDisruptive, erased 1 trillion dollars from the stock markets\n\nNvidia stocks dropped by 18%"
-  },
-  {
-    "objectID": "slides/day_1/1.Opening.html#the-adoption-of-chatgpt",
-    "href": "slides/day_1/1.Opening.html#the-adoption-of-chatgpt",
-    "title": "Welcome",
-    "section": "The adoption of ChatGPT",
-    "text": "The adoption of ChatGPT\n\n\n\n\nHas not been widely adopted\nIs not used that often by those who have adopted it\nIt is used for writing, coding and finding information\n\n\n\n\n\n\n\n\nwe hoeven niet te wachten totdat de computer kan schrijven als Vestdijk en schilderen als Vermeer, maar moeten nu beginnen met het toepassen en gebruiken ervan. Zeker op het werk.\n\n\n“How ChatGPT is transforming the postdoc experience”, Nature, 16-10-2023: https://www.nature.com/articles/d41586-023-03235-8"
-  },
-  {
-    "objectID": "slides/day_1/1.Opening.html#section",
-    "href": "slides/day_1/1.Opening.html#section",
-    "title": "Welcome",
-    "section": "",
-    "text": "Overview of the course"
-  },
-  {
-    "objectID": "slides/day_1/1.Opening.html#why-are-you-here-today",
-    "href": "slides/day_1/1.Opening.html#why-are-you-here-today",
-    "title": "Welcome",
-    "section": "Why are you here today?",
-    "text": "Why are you here today?\n\nWho are you?\nWhat is your occupation?\nWhat do you hope to get out of this course?"
-  },
-  {
-    "objectID": "slides/day_1/1.Opening.html#the-planning",
-    "href": "slides/day_1/1.Opening.html#the-planning",
-    "title": "Welcome",
-    "section": "The Planning",
-    "text": "The Planning\n\nDay 1Day 2\n\n\n\n\n\n\n\n\n\n\nTime\nTitle\nDescription\n\n\n\n\n09:00 – 09:30 AM\n👋 Introduction\n\n\n\n09:30 – 10:45 AM\n🤖 Introduction to LLM’s and ChatGPT\nNLP and development of LLMsCapabilities of ChatGPTReal world applications\n\n\n10:45 – 11:00 AM\n☕ Break\n\n\n\n11:00 – 12:00 PM\n💬 Prompt Engineering\nIntroduction to promptingBest practices for promptingHands-on exercises\n\n\n12:00 – 13:00 PM\n🥪 Lunch\n\n\n\n13:00 – 13:45 PM\n💻 Programming with GPT\nIntroduction to the OpenAI APIHands-on exercises\n\n\n13:45 – 14:45 PM\n⚖️ Ethical Considerations in Using LLMs\nBiases and MisinformationThe Dark Side of LLMsPrivacy and Legal Challenges\n\n\n14:45 - 15:00 PM\n☕ Break\n\n\n\n15:00 - 16:00 PM\n💻Programming with GPT\nPair-programming with LLMsHands-on exercises\n\n\n16:00 – 16:45 PM\n🚀 Improved Efficiency with ChatGPT\nExamples of real implementations of ChatGPT in a workflow\n\n\n16:45 – 17:00 PM\n📝 Summary, Evaluation and Conclusion of Day 1\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTime\nTitle\nDescription\n\n\n\n\n09:00 – 09:20 AM\n🌅 Opening and Discussion of the Day’s Agenda\n\n\n\n09:20 – 10:45 AM\n📊 Text Analysis with LLMs\nFoundation models for NLPEvaluation of performanceHands-on Exercises\n\n\n10:45 – 11:00 AM\n☕ Break\n\n\n\n11:00 – 12:30 PM\n🔍 Retrieval Augmented Generation (RAG), open source, and next steps\nLLMs versus Search EnginesHow to host your own LLMNext steps?\n\n\n12:30 – 13:30 PM\n🥗 Lunch\n\n\n\n13:30 - 16:30 PM\n🚀 Extended Practical Assignment - RAG 🔍\nBuilding your own Retrieval Augmented Generation system with fact-checking against hallucinations\n\n\n16:30 - 17:00 PM\n📝 Summary, Evaluation, and Conclusion"
-  },
-  {
-    "objectID": "slides/day_1/1.Opening.html#practical-points",
-    "href": "slides/day_1/1.Opening.html#practical-points",
-    "title": "Welcome",
-    "section": "Practical Points",
-    "text": "Practical Points\n\nPlease feel free to ask questions during the presentations!\nSlides will be shared and published online\nMake sure you have acces to an environment with coding notebooks:\n\nPython: Jupyter or VScode and/or Quarto\nR: Rstudio with Quarto\n\n\n\n\n\nChatGPT for Data Science"
-  },
-  {
-    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#hello-world",
-    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#hello-world",
-    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
-    "section": "Hello world!",
-    "text": "Hello world!\n\nGenerative AI, is the biggest data-driven hype of the past years."
-  },
-  {
-    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#what-is-generative-ai",
-    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#what-is-generative-ai",
-    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
-    "section": "What is generative AI",
-    "text": "What is generative AI\n\nGenerative AI:\n\n\n\n\n“In three words: deep learning worked.”\n\n\n\n\n“In 15 words: deep learning worked, got predictably better with scale, and we dedicated increasing resources to it.”\n\n\n\n\n“That’s really it; humanity discovered an algorithm that could really, truly learn any distribution of data (or really, the underlying “rules” that produce any distribution of data). To a shocking degree of precision, the more compute and data available, the better it gets at helping people solve hard problems. I find that no matter how much time I spend thinking about this, I can never really internalize how consequential it is.”\n\n\n- Sam Altman, [The Intelligence Age, 23-09-2024]"
-  },
-  {
-    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#what-is-generative-ai-1",
-    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#what-is-generative-ai-1",
-    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
-    "section": "What is generative AI",
-    "text": "What is generative AI\n\nGenerative AI:\n\n\n“\nArtificial Intelligence that has learned to create data such as:\nimages, text, audio, videos, etc…\n”\n\n- Text (Large Language Models)\n- Images (and Video) (Diffusion Models)\n- Audio (Text-to-Speech)\n- Tabular Data (Synthetic data)\n\nTypically meant in the context of content-creation\nThis is not new: thispersondoesnotexist.com (2018)\n\nFor more check out ThisXdoesnotexist.com\n\nBut became significantly more powerfull, flexible, practical, and “mainstream” around ~2022"
-  },
-  {
-    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#what-is-generative-ai---language-models",
-    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#what-is-generative-ai---language-models",
-    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
-    "section": "What is generative AI - Language Models",
-    "text": "What is generative AI - Language Models\n\nLarge Language Models are:\n\nThe State-of-the-Art for generating language\nFamous LLMs are:\n\nOpenAI: ChatGPT (GPT 3.5), GPT4(o) (proprietary)\nMeta: LLama\nGoogle: Gemini (Bard) (proprietary)\nAlibaba: Qwen\nAnthropic: Claude (proprietary)\nMistral: Mistral, Mixtral\nMicrosoft: Phi"
-  },
-  {
-    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#what-is-generative-ai---image-models",
-    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#what-is-generative-ai---image-models",
-    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
-    "section": "What is generative AI - Image models",
-    "text": "What is generative AI - Image models\n\nDiffusion models are the State-of-the-Art for generating images:\n\nFamous diffusion models are:\n\nOpenAI: Dall-E (proprietary)\nMidjourney: Midjourney (proprietary)\nStability-AI: Stable Diffusion"
-  },
-  {
-    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#overview",
-    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#overview",
-    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
-    "section": "Overview",
-    "text": "Overview\n\n\nA brief history of LLMs\nCapabilities of ChatGPT"
-  },
-  {
-    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#overview-1",
-    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#overview-1",
-    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
-    "section": "Overview",
-    "text": "Overview\n\n\nA brief history of LLMs\nCapabilities of ChatGPT"
-  },
-  {
-    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#next-word-prediction-machine",
-    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#next-word-prediction-machine",
-    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
-    "section": "Next-word prediction machine",
-    "text": "Next-word prediction machine\n\\[P(token_n|token_{n-1}, \\cdots, token_1)\\]\nA token: a single character, a combination of characters, or a word"
-  },
-  {
-    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#next-word-prediction-machine-1",
-    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#next-word-prediction-machine-1",
-    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
-    "section": "Next-word prediction machine",
-    "text": "Next-word prediction machine\n\\[P(token_n|token_{n-1}, \\cdots, token_1)\\]\nThis is nothing new, your phone does something similair:"
-  },
-  {
-    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#byte-pair-encoding-tokenizer",
-    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#byte-pair-encoding-tokenizer",
-    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
-    "section": "Byte-Pair Encoding Tokenizer",
-    "text": "Byte-Pair Encoding Tokenizer\n\nEasy algorithm to compress text into most common elements\n[Flying, Trying, Sky, Cry, Sly] –&gt; “F, L, Y, I, N, G, T, R, K, C, S”\n“F, L, Y, I, N, G, T, R, K, C, S, IN”\n“F, L, Y, I, N, G, T, R, K, C, S, IN, LY”\n“F, L, Y, I, N, G, T, R, K, C, S, IN, LY, RY”\n“F, L, Y, I, N, G, T, R, K, C, S, IN, LY, RY, ING”\netc…"
-  },
-  {
-    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#byte-pair-encoding-tokenizer-1",
-    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#byte-pair-encoding-tokenizer-1",
-    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
-    "section": "Byte-Pair Encoding Tokenizer",
-    "text": "Byte-Pair Encoding Tokenizer\n\nAble to:\n\nencode you whole vocabulary per definition\nChose precize size you want for your model\nAssign tokens to most important parts of vocabulary\n\nThis does mean that English gets more tokens than Dutch:\n\n\n\n\n\n\n\n\n\nTry it Yourself"
-  },
-  {
-    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#one-hot-encoding",
-    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#one-hot-encoding",
-    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
-    "section": "One-hot Encoding",
-    "text": "One-hot Encoding\n\n\\[\n\\begin{array}{c@{\\hspace{0.3cm}}c@{\\hspace{0.3cm}}c@{\\hspace{0.3cm}}c@{\\hspace{0.3cm}}c}\n\\text{A} & \\text{dry} & \\text{well!} & \\text{Well} & \\text{done!} \\\\\n\\begin{pmatrix}\n1\\\\\n0\\\\\n0\\\\\n0\n\\end{pmatrix} & \\begin{pmatrix}\n0\\\\\n1\\\\\n0\\\\\n0\n\\end{pmatrix} & \\begin{pmatrix}\n0\\\\\n0\\\\\n1\\\\\n0\n\\end{pmatrix} & \\begin{pmatrix}\n0\\\\\n0\\\\\n1\\\\\n0\n\\end{pmatrix} & \\begin{pmatrix}\n0\\\\\n0\\\\\n0\\\\\n1\n\\end{pmatrix}\n\\end{array}\n\\]\n\n\n\nSparse vector of the vocabulary dimension\n3 out of 4 numbers are uninformative\n‘Expensive’ for large corpus of text\nCan we do better?"
-  },
-  {
-    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#word-embeddings",
-    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#word-embeddings",
-    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
-    "section": "Word embeddings",
-    "text": "Word embeddings\n\n\\[\n\\begin{array}{c@{\\hspace{0.3cm}}c@{\\hspace{0.3cm}}c@{\\hspace{0.3cm}}c@{\\hspace{0.3cm}}c}\n\\text{A} & \\text{dry} & \\text{well!} & \\text{Well} & \\text{done!} \\\\\n\\begin{pmatrix}\n\\phantom{-}0.33\\\\\n-0.51\\\\\n\\phantom{-}0.83\\\\\n\\phantom{-}0.12\n\\end{pmatrix} & \\begin{pmatrix}\n\\phantom{-}0.97\\\\\n-0.15\\\\\n-0.11\\\\\n\\phantom{-}0.85\n\\end{pmatrix} & \\begin{pmatrix}\n\\phantom{-}0.94\\\\\n\\phantom{-}0.79\\\\\n-0.34\\\\\n\\phantom{-}0.35\n\\end{pmatrix} & \\begin{pmatrix}\n\\phantom{-}0.94\\\\\n\\phantom{-}0.79\\\\\n-0.34\\\\\n\\phantom{-}0.35\n\\end{pmatrix} & \\begin{pmatrix}\n-0.02\\\\\n\\phantom{-}0.69\\\\\n\\phantom{-}0.54\\\\\n-0.12\n\\end{pmatrix}\n\\end{array}\n\\]\n\n\n\nDense vectors of Dimension N (hyperparameter of model ~ 728)\nLatent embedding \nMeaningfull representation\nEncoded semantic information:\n\n\n\n\nKing - Man + Woman =\n\n\nQueen\n\n\n\n\nThese embeddings marked the start of the new NLP era 1\nGenerated using shallow networks to:\n\nPredict middle word from context\nPredict context from middle word\n\nTuning via Backpropegation and gradient descent\nThis still has some issues…\n\n\n2013 - Efficient Estimation of Word Representations in Vector Space: https://arxiv.org/pdf/1301.3781.pdf"
-  },
-  {
-    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#word-embeddings-1",
-    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#word-embeddings-1",
-    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
-    "section": "Word embeddings",
-    "text": "Word embeddings\n\\[\n\\begin{array}{c@{\\hspace{0.3cm}}c@{\\hspace{0.3cm}}c@{\\hspace{0.3cm}}c@{\\hspace{0.3cm}}c}\n\\text{A} & \\text{dry} & \\text{well!} & \\text{Well} & \\text{done!} \\\\\n\\begin{pmatrix}\n\\phantom{-}0.33\\\\\n-0.51\\\\\n\\phantom{-}0.83\\\\\n\\phantom{-}0.12\n\\end{pmatrix} & \\begin{pmatrix}\n\\phantom{-}0.97\\\\\n-0.15\\\\\n-0.11\\\\\n\\phantom{-}0.85\n\\end{pmatrix} & \\color{red}{\\begin{pmatrix}\n\\phantom{-}0.94\\\\\n\\phantom{-}0.79\\\\\n-0.34\\\\\n\\phantom{-}0.35\n\\end{pmatrix}} & \\color{red}{\\begin{pmatrix}\n\\phantom{-}0.94\\\\\n\\phantom{-}0.79\\\\\n-0.34\\\\\n\\phantom{-}0.35\n\\end{pmatrix}} & \\begin{pmatrix}\n-0.02\\\\\n\\phantom{-}0.69\\\\\n\\phantom{-}0.54\\\\\n-0.12\n\\end{pmatrix}\n\\end{array}\n\\]\n\nDense vectors\nLatent embedding \nThe numbers are now informative to qualities of the token\nSemanticly-meaningfull:\n\n\nKing - Man + Woman = Queen\n\n\nThis still causes problems…"
-  },
-  {
-    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#transformer-embeddings",
-    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#transformer-embeddings",
-    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
-    "section": "Transformer Embeddings",
-    "text": "Transformer Embeddings\n\n\\[\n\\begin{array}{c@{\\hspace{0.3cm}}c@{\\hspace{0.3cm}}c@{\\hspace{0.3cm}}c@{\\hspace{0.3cm}}c}\n\\text{A} & \\text{dry} & \\text{well!} & \\text{Well} & \\text{done!} \\\\\n\\begin{pmatrix}\n\\phantom{-}0.33\\\\\n-0.51\\\\\n\\phantom{-}0.83\\\\\n\\phantom{-}0.12\n\\end{pmatrix} & \\begin{pmatrix}\n\\phantom{-}0.97\\\\\n-0.15\\\\\n-0.11\\\\\n\\phantom{-}0.75\n\\end{pmatrix} & \\begin{pmatrix}\n\\phantom{-}0.54\\\\\n-0.79\\\\\n-0.34\\\\\n\\phantom{-}0.22\n\\end{pmatrix} & \\begin{pmatrix}\n-0.41\\\\\n\\phantom{-}0.79\\\\\n\\phantom{-}0.17\\\\\n\\phantom{-}0.84\n\\end{pmatrix} & \\begin{pmatrix}\n-0.02\\\\\n\\phantom{-}0.69\\\\\n\\phantom{-}0.54\\\\\n-0.12\n\\end{pmatrix}\n\\end{array}\n\\]\n\n\n\nWord-embedding now depends on context\nAble to encode even more meaningfull information\nEmperically this just works!\nThe start of the new age of NLP 1\n\n\n2017 - Attention is all you need https://arxiv.org/abs/1706.03762"
-  },
-  {
-    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#what-does-self-attention-look-like",
-    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#what-does-self-attention-look-like",
-    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
-    "section": "What does self-attention look like",
-    "text": "What does self-attention look like"
-  },
-  {
-    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#what-does-self-attention-look-like-1",
-    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#what-does-self-attention-look-like-1",
-    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
-    "section": "What does self-attention look like",
-    "text": "What does self-attention look like\n \\[\nAttention \\sim Query \\cdot Key^{T}\n\\]\n\n\nConceptual Interpretation:\n\nQuery: I have a Noun, I need a Subject!\nKey: I have a Subject here."
-  },
-  {
-    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#what-does-self-attention-look-like-2",
-    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#what-does-self-attention-look-like-2",
-    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
-    "section": "What does self-attention look like",
-    "text": "What does self-attention look like\n \\[\n\\mathrm{Output\\ embedding} \\sim \\mathrm{Softmax}( Query \\cdot Key^{T}) Value\n\\]\n\n\nConceptual Interpretation:\n\nQuery: I have a Noun, I need a Subject!\nKey: I have a Subject here.\n\n\n\n\nData-dependent aggregation of information"
-  },
-  {
-    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#what-does-self-attention-look-like-3",
-    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#what-does-self-attention-look-like-3",
-    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
-    "section": "What does self-attention look like",
-    "text": "What does self-attention look like\n\n\n\n\n1. jessevig/bertviz"
-  },
-  {
-    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#are-you-still-following-what-is-happening",
-    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#are-you-still-following-what-is-happening",
-    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
-    "section": "Are you still following what is happening?",
-    "text": "Are you still following what is happening?\n\n\n\n\n1. jessevig/bertviz"
-  },
-  {
-    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#sampling-output-tokens",
-    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#sampling-output-tokens",
-    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
-    "section": "Sampling output tokens",
-    "text": "Sampling output tokens\n\nOutput is sampled, and therefore a stochastic variable:\n\nRunning the same prompt twice will give 2 different results \\[\nP_i = \\frac{e^{\\frac{y_i}{T}}}{\\sum_i^n e^{\\frac{y_i}{T}}} = \\frac{(e^{y_i})^\\frac{1}{T}}{\\sum_i^n (e^{y_i})^\\frac{1}{T}}\n\\]\n\n\n\nT = 1 (normal)T = 0.5T = 2T = 0"
-  },
-  {
-    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#attention-and-bert",
-    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#attention-and-bert",
-    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
-    "section": "Attention and BERT",
-    "text": "Attention and BERT\n\nBERT: Pre-training of Deep Bidirectional Transformers for Language Understanding\nPretraining on massive corpora of text\nVery powerfull contextual embeddings of language\nState-of-the-art on many language tasks with finetuning:\n\nSentiment Analysis\nText Classification\nNamed entity recognition\nQuestion Answering\nLanguage Modeling\n\nBert-base: 110m parameters\nBert-large: 340m parameters"
-  },
-  {
-    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#if-we-have-more-compute",
-    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#if-we-have-more-compute",
-    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
-    "section": "If we have more compute …",
-    "text": "If we have more compute …\n\nWhat if we want to improve our models.\nCompanies like OpenAI have more compute available, what should they do?\n\n\n\n Optimal model size grows smoothly with the loss target and compute \\(\\mathrm{budget^1}\\)\n\n For optimally compute-efficient training, most of the increase should go towards increased model size1\n\n\nScaling Laws for Neural Language Models"
-  },
-  {
-    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#we-puth-it-towards-the-model-scale",
-    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#we-puth-it-towards-the-model-scale",
-    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
-    "section": "… we puth it towards the model scale",
-    "text": "… we puth it towards the model scale\n Models just kept on growing, credit: Julien Simon, Huggingface"
-  },
-  {
-    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#gpt3-is-chatgpt-almost",
-    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#gpt3-is-chatgpt-almost",
-    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
-    "section": "GPT3 IS ChatGPT, almost …",
-    "text": "GPT3 IS ChatGPT, almost …\n\n\n\n2020 - Language Models are Few-Shot Learners\nThese models are so good at language modeling (SOTA),\nthat finetuning is no longer needed to perform NLP task\nVery strong 0-shot performance in many NLP task (already in GPT2)\nCan perform In-context learning:\n\nGiven a few examples, learn how to perform task\nNo model parameters are adjusted at any point\n Emergent property  of LLMs"
-  },
-  {
-    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#section-2",
-    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#section-2",
-    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
-    "section": "",
-    "text": "Andrej Karpathy, Microsoft - State of GPT"
-  },
-  {
-    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#instruction-tuning-finetuning",
-    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#instruction-tuning-finetuning",
-    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
-    "section": "Instruction tuning (finetuning)",
-    "text": "Instruction tuning (finetuning)\n\nThe models just predict likely continuations of text.\nThis does not match with the behaviour we seek (alignment)\n\n\nBase modelInstruction tuning\n\n\nINPUT:\nExplain what a Large Language Model is.\n\nOUTPUT:\nExplain what a transformer model is.\n\nExplain what a tokenizer is.\n\nExplain what gradient descent is.\n\n\nINPUT:\nExplain what a Large Language Model is.\n\nHUMAN EXAMPLE:\nA Large Language Model is a foundational language model with typically billions of parameters. These models have become popular in recent years because of their ease of use combined with impressive performance across the board on NLP-tasks"
-  },
-  {
-    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#reinforcement-learning-from-human-feedback",
-    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#reinforcement-learning-from-human-feedback",
-    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
-    "section": "Reinforcement Learning From Human Feedback",
-    "text": "Reinforcement Learning From Human Feedback\n\nNot just showing example completions, but also rating them.\nApply Reward Modeling and Reinforcement learning to tune the model towards higher quality responses.\nVery difficult to train, but…\nIt just works better."
-  },
-  {
-    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#and-this-gives-you",
-    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#and-this-gives-you",
-    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
-    "section": "And this gives you…",
-    "text": "And this gives you…"
-  },
-  {
-    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#overview-2",
-    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#overview-2",
-    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
-    "section": "Overview",
-    "text": "Overview\n\n\nA brief history of LLMs\nCapabilities of ChatGPT"
-  },
-  {
-    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#overview-3",
-    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#overview-3",
-    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
-    "section": "Overview",
-    "text": "Overview\n\n\nA brief history of LLMs\nCapabilities of ChatGPT"
-  },
-  {
-    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#strenghts-of-llms",
-    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#strenghts-of-llms",
-    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
-    "section": "Strenghts of LLMs",
-    "text": "Strenghts of LLMs\nFoundational language model that:\n\n‘Understands’ language conventions (syntax, grammer, etc.)\nCan answer questions (has knowledge backed into weights)\nCan code\nCan write just like humans\nCan do some basic arithmatic\nCan understand deep elements of writing: sentiment, style, etc.\nCan do logical reasoning (to some extent)\nCapabilities measured on easy scales"
-  },
-  {
-    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#weaknesses-of-llms",
-    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#weaknesses-of-llms",
-    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
-    "section": "Weaknesses of LLMs",
-    "text": "Weaknesses of LLMs\n\nLimited context window (input size)\nIt has no memory\nIt can only predict next tokens, nothing else:\n\nIt cannot perform tasks while you wait!\n\nIt cannot think in `multiple directions’ like we do!\nThinking only has a fast mode, no thinking fast and slow.\nIt doesn’t understand it’s own internal model!\nIt doesn’t know what the truth is and what it is not\nIt doesn’t understand tabular data well\nIt doesn’t proces language in a human way (The Reversal Curse)\n\n\n“Who is Tom Cruise’s mother? [A: Mary Lee Pfeiffer]” and the reverse “Who is Mary Lee Pfeiffer’s son?”. GPT-4 correctly answers questions like the former 79% of the time, compared to 33% for the latter."
-  },
-  {
-    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#common-mistakes",
-    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#common-mistakes",
-    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
-    "section": "Common mistakes",
-    "text": "Common mistakes\n\n\n\n\n\n\nBe Carefull\n\n\n\nLLMs don’t learn continuously! LLMs have a seperate training phase, they need frequent updates for recent events\nLLMs don’t work like our brains! On a conceptual level biological neurons inspired the technique, but in practice they worlds apart in how they function and why\nLLMs don’t search in a database LLMs learn a statistical distribution, and use this to predict the best next token.1\n\n\n\n\nUnless results from a search engine are explicitly used as an input (Copilot in Bing search, Gemini in Google Search, search on ChatGPT.com, etc.)"
-  },
-  {
-    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#how-you-should-not-think-of-chatgpt",
-    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#how-you-should-not-think-of-chatgpt",
-    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
-    "section": "How you should not think of ChatGPT",
-    "text": "How you should not think of ChatGPT\n\nWe tend to feel empathy for ChatGPT\n\nPeople like to say thank you to ChatGPT\nIt feels very human to interact with\n\nBUT: it really boils down to a very very big autocomplete next-word predictor\nWE CAN BREAK THE MODEL LOGIC"
-  },
-  {
-    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#repeated-sampling-penalty",
-    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#repeated-sampling-penalty",
-    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
-    "section": "Repeated sampling Penalty",
-    "text": "Repeated sampling Penalty\n\nGenerative language models have a tendency to repeat themselves:\n\nTherefore the sampling algorithm receives a repetition penalty\nThis can be exploited"
-  },
-  {
-    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#glitch-tokens",
-    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#glitch-tokens",
-    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
-    "section": "Glitch Tokens",
-    "text": "Glitch Tokens\n\nSome tokens identified by BPE only appear in useless context\n\nSuch as /r/counting\nusernames get very high frequency and get their own tokens"
-  },
-  {
-    "objectID": "slides/day_1/4.Programming_with_LLMs.html#what-can-llms-mean-for-you",
-    "href": "slides/day_1/4.Programming_with_LLMs.html#what-can-llms-mean-for-you",
-    "title": "Programming with LLMs",
-    "section": "What can LLMs mean for you?",
-    "text": "What can LLMs mean for you?\n\n\n\nWriting code:\n\nGreat for code with extensive syntax, but simple logic:\n\nRegex patterns\nSQL queries\n\nGetting better at complex logic which reasoning models such as:\n\nDeepseek R1\nGPT o1\n\n\nTranslation between code-languages:\n\ni.e. Python to R\ni.e. R to Python\n\nWriting boilerplate-code\nWriting documentation\nWriting unittests\nExplainig code\nDebugging code\nReviewing code\n\nOptimising code\nImproving code"
-  },
-  {
-    "objectID": "slides/day_1/4.Programming_with_LLMs.html#what-can-llms-mean-for-you-1",
-    "href": "slides/day_1/4.Programming_with_LLMs.html#what-can-llms-mean-for-you-1",
-    "title": "Programming with LLMs",
-    "section": "What can LLMs mean for you?",
-    "text": "What can LLMs mean for you?\n\n\n\nHow does using LLM chat differ from github copilot?\n\nGeneral purpose versus only code specific\nMore interactive\nLonger conversations\nAbility to guide more in the Context\nBut also more removed from IDE\nCannot see code context from your project"
-  },
-  {
-    "objectID": "slides/day_1/4.Programming_with_LLMs.html#demo-github-copilot-chat-in-vscode",
-    "href": "slides/day_1/4.Programming_with_LLMs.html#demo-github-copilot-chat-in-vscode",
-    "title": "Programming with LLMs",
-    "section": "Demo: GitHub Copilot Chat in VSCode",
-    "text": "Demo: GitHub Copilot Chat in VSCode\n\nDemo"
-  },
-  {
-    "objectID": "slides/day_1/4.Programming_with_LLMs.html#writing-code-with-llms",
-    "href": "slides/day_1/4.Programming_with_LLMs.html#writing-code-with-llms",
-    "title": "Programming with LLMs",
-    "section": "Writing code with LLMs",
-    "text": "Writing code with LLMs\n\n“What I love is that it will come out of left field with methods I didn’t even know existed. Of course in some cases those methods actually don’t exist…”\n\n\nAdventOfCode\nExample of a task where there reasoning models feels like a big leap forwards:\n\nCan handle more complex code involving more distinct reasoning steps to solve\n\n\n\n\n\n\n\n\nI placed 2nd (out of ~100,000) in #AdventOfCode Part 1 today, by having @OpenAI's GPT-3 write the code@ostwilkens placed 1st, and did the sameLots more competitions are going to become like chess competitions — humans striving to emulate a computer pic.twitter.com/aH0ZlX1b09\n\n— Max (@max_sixty) December 3, 2022"
-  },
-  {
-    "objectID": "slides/day_1/4.Programming_with_LLMs.html#writing-code---sql-queries",
-    "href": "slides/day_1/4.Programming_with_LLMs.html#writing-code---sql-queries",
-    "title": "Programming with LLMs",
-    "section": "Writing code - SQL queries",
-    "text": "Writing code - SQL queries"
-  },
-  {
-    "objectID": "slides/day_1/4.Programming_with_LLMs.html#writing-code---regex-patterns",
-    "href": "slides/day_1/4.Programming_with_LLMs.html#writing-code---regex-patterns",
-    "title": "Programming with LLMs",
-    "section": "Writing code - Regex patterns",
-    "text": "Writing code - Regex patterns"
-  },
-  {
-    "objectID": "slides/day_1/4.Programming_with_LLMs.html#writing-code---pong-in-python",
-    "href": "slides/day_1/4.Programming_with_LLMs.html#writing-code---pong-in-python",
-    "title": "Programming with LLMs",
-    "section": "Writing code - Pong in Python",
-    "text": "Writing code - Pong in Python"
-  },
-  {
-    "objectID": "slides/day_1/4.Programming_with_LLMs.html#translation-between-code-languages",
-    "href": "slides/day_1/4.Programming_with_LLMs.html#translation-between-code-languages",
-    "title": "Programming with LLMs",
-    "section": "Translation between code-languages",
-    "text": "Translation between code-languages\n\nRemember this function from the exercises :)"
-  },
-  {
-    "objectID": "slides/day_1/4.Programming_with_LLMs.html#documenting-code",
-    "href": "slides/day_1/4.Programming_with_LLMs.html#documenting-code",
-    "title": "Programming with LLMs",
-    "section": "Documenting code",
-    "text": "Documenting code"
-  },
-  {
-    "objectID": "slides/day_1/4.Programming_with_LLMs.html#explaining-code",
-    "href": "slides/day_1/4.Programming_with_LLMs.html#explaining-code",
-    "title": "Programming with LLMs",
-    "section": "Explaining code",
-    "text": "Explaining code"
-  },
-  {
-    "objectID": "slides/day_1/4.Programming_with_LLMs.html#improvingoptimisingreviewing-code",
-    "href": "slides/day_1/4.Programming_with_LLMs.html#improvingoptimisingreviewing-code",
-    "title": "Programming with LLMs",
-    "section": "Improving/Optimising/Reviewing code",
-    "text": "Improving/Optimising/Reviewing code\n\n\n\n\n\nPair-programming with LLMs"
-  },
-  {
     "objectID": "slides/day_1/6.Increased_efficiency_with_LLMs.html#how-should-we-interact-with-documents",
     "href": "slides/day_1/6.Increased_efficiency_with_LLMs.html#how-should-we-interact-with-documents",
     "title": "Increased efficiency with LLMs",
@@ -1265,6 +502,769 @@
     "title": "Increased efficiency with LLMs",
     "section": "Finding the right context to answer the question",
     "text": "Finding the right context to answer the question\n\nThese solutions all have the following in common:\n\nLLM embedded in nicely defined context\nMost relevant information directly at hand as context for the model\nThe task is performed based on information in the context window, not model internal knowledge\n\n\n\n\n\nLLMs in Practice"
+  },
+  {
+    "objectID": "slides/day_1/4.Programming_with_LLMs.html#what-can-llms-mean-for-you",
+    "href": "slides/day_1/4.Programming_with_LLMs.html#what-can-llms-mean-for-you",
+    "title": "Programming with LLMs",
+    "section": "What can LLMs mean for you?",
+    "text": "What can LLMs mean for you?\n\n\n\nWriting code:\n\nGreat for code with extensive syntax, but simple logic:\n\nRegex patterns\nSQL queries\n\nGetting better at complex logic which reasoning models such as:\n\nDeepseek R1\nGPT o1\n\n\nTranslation between code-languages:\n\ni.e. Python to R\ni.e. R to Python\n\nWriting boilerplate-code\nWriting documentation\nWriting unittests\nExplainig code\nDebugging code\nReviewing code\n\nOptimising code\nImproving code"
+  },
+  {
+    "objectID": "slides/day_1/4.Programming_with_LLMs.html#what-can-llms-mean-for-you-1",
+    "href": "slides/day_1/4.Programming_with_LLMs.html#what-can-llms-mean-for-you-1",
+    "title": "Programming with LLMs",
+    "section": "What can LLMs mean for you?",
+    "text": "What can LLMs mean for you?\n\n\n\nHow does using LLM chat differ from github copilot?\n\nGeneral purpose versus only code specific\nMore interactive\nLonger conversations\nAbility to guide more in the Context\nBut also more removed from IDE\nCannot see code context from your project"
+  },
+  {
+    "objectID": "slides/day_1/4.Programming_with_LLMs.html#demo-github-copilot-chat-in-vscode",
+    "href": "slides/day_1/4.Programming_with_LLMs.html#demo-github-copilot-chat-in-vscode",
+    "title": "Programming with LLMs",
+    "section": "Demo: GitHub Copilot Chat in VSCode",
+    "text": "Demo: GitHub Copilot Chat in VSCode\n\nDemo"
+  },
+  {
+    "objectID": "slides/day_1/4.Programming_with_LLMs.html#writing-code-with-llms",
+    "href": "slides/day_1/4.Programming_with_LLMs.html#writing-code-with-llms",
+    "title": "Programming with LLMs",
+    "section": "Writing code with LLMs",
+    "text": "Writing code with LLMs\n\n“What I love is that it will come out of left field with methods I didn’t even know existed. Of course in some cases those methods actually don’t exist…”\n\n\nAdventOfCode\nExample of a task where there reasoning models feels like a big leap forwards:\n\nCan handle more complex code involving more distinct reasoning steps to solve\n\n\n\n\n\n\n\n\nI placed 2nd (out of ~100,000) in #AdventOfCode Part 1 today, by having @OpenAI's GPT-3 write the code@ostwilkens placed 1st, and did the sameLots more competitions are going to become like chess competitions — humans striving to emulate a computer pic.twitter.com/aH0ZlX1b09\n\n— Max (@max_sixty) December 3, 2022"
+  },
+  {
+    "objectID": "slides/day_1/4.Programming_with_LLMs.html#writing-code---sql-queries",
+    "href": "slides/day_1/4.Programming_with_LLMs.html#writing-code---sql-queries",
+    "title": "Programming with LLMs",
+    "section": "Writing code - SQL queries",
+    "text": "Writing code - SQL queries"
+  },
+  {
+    "objectID": "slides/day_1/4.Programming_with_LLMs.html#writing-code---regex-patterns",
+    "href": "slides/day_1/4.Programming_with_LLMs.html#writing-code---regex-patterns",
+    "title": "Programming with LLMs",
+    "section": "Writing code - Regex patterns",
+    "text": "Writing code - Regex patterns"
+  },
+  {
+    "objectID": "slides/day_1/4.Programming_with_LLMs.html#writing-code---pong-in-python",
+    "href": "slides/day_1/4.Programming_with_LLMs.html#writing-code---pong-in-python",
+    "title": "Programming with LLMs",
+    "section": "Writing code - Pong in Python",
+    "text": "Writing code - Pong in Python"
+  },
+  {
+    "objectID": "slides/day_1/4.Programming_with_LLMs.html#translation-between-code-languages",
+    "href": "slides/day_1/4.Programming_with_LLMs.html#translation-between-code-languages",
+    "title": "Programming with LLMs",
+    "section": "Translation between code-languages",
+    "text": "Translation between code-languages\n\nRemember this function from the exercises :)"
+  },
+  {
+    "objectID": "slides/day_1/4.Programming_with_LLMs.html#documenting-code",
+    "href": "slides/day_1/4.Programming_with_LLMs.html#documenting-code",
+    "title": "Programming with LLMs",
+    "section": "Documenting code",
+    "text": "Documenting code"
+  },
+  {
+    "objectID": "slides/day_1/4.Programming_with_LLMs.html#explaining-code",
+    "href": "slides/day_1/4.Programming_with_LLMs.html#explaining-code",
+    "title": "Programming with LLMs",
+    "section": "Explaining code",
+    "text": "Explaining code"
+  },
+  {
+    "objectID": "slides/day_1/4.Programming_with_LLMs.html#improvingoptimisingreviewing-code",
+    "href": "slides/day_1/4.Programming_with_LLMs.html#improvingoptimisingreviewing-code",
+    "title": "Programming with LLMs",
+    "section": "Improving/Optimising/Reviewing code",
+    "text": "Improving/Optimising/Reviewing code\n\n\n\n\n\nPair-programming with LLMs"
+  },
+  {
+    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#hello-world",
+    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#hello-world",
+    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
+    "section": "Hello world!",
+    "text": "Hello world!\n\nGenerative AI, is the biggest data-driven hype of the past years."
+  },
+  {
+    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#what-is-generative-ai",
+    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#what-is-generative-ai",
+    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
+    "section": "What is generative AI",
+    "text": "What is generative AI\n\nGenerative AI:\n\n\n\n\n“In three words: deep learning worked.”\n\n\n\n\n“In 15 words: deep learning worked, got predictably better with scale, and we dedicated increasing resources to it.”\n\n\n\n\n“That’s really it; humanity discovered an algorithm that could really, truly learn any distribution of data (or really, the underlying “rules” that produce any distribution of data). To a shocking degree of precision, the more compute and data available, the better it gets at helping people solve hard problems. I find that no matter how much time I spend thinking about this, I can never really internalize how consequential it is.”\n\n\n- Sam Altman, [The Intelligence Age, 23-09-2024]"
+  },
+  {
+    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#what-is-generative-ai-1",
+    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#what-is-generative-ai-1",
+    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
+    "section": "What is generative AI",
+    "text": "What is generative AI\n\nGenerative AI:\n\n\n“\nArtificial Intelligence that has learned to create data such as:\nimages, text, audio, videos, etc…\n”\n\n- Text (Large Language Models)\n- Images (and Video) (Diffusion Models)\n- Audio (Text-to-Speech)\n- Tabular Data (Synthetic data)\n\nTypically meant in the context of content-creation\nThis is not new: thispersondoesnotexist.com (2018)\n\nFor more check out ThisXdoesnotexist.com\n\nBut became significantly more powerfull, flexible, practical, and “mainstream” around ~2022"
+  },
+  {
+    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#what-is-generative-ai---language-models",
+    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#what-is-generative-ai---language-models",
+    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
+    "section": "What is generative AI - Language Models",
+    "text": "What is generative AI - Language Models\n\nLarge Language Models are:\n\nThe State-of-the-Art for generating language\nFamous LLMs are:\n\nOpenAI: ChatGPT (GPT 3.5), GPT4(o) (proprietary)\nMeta: LLama\nGoogle: Gemini (Bard) (proprietary)\nAlibaba: Qwen\nAnthropic: Claude (proprietary)\nMistral: Mistral, Mixtral\nMicrosoft: Phi"
+  },
+  {
+    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#what-is-generative-ai---image-models",
+    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#what-is-generative-ai---image-models",
+    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
+    "section": "What is generative AI - Image models",
+    "text": "What is generative AI - Image models\n\nDiffusion models are the State-of-the-Art for generating images:\n\nFamous diffusion models are:\n\nOpenAI: Dall-E (proprietary)\nMidjourney: Midjourney (proprietary)\nStability-AI: Stable Diffusion"
+  },
+  {
+    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#overview",
+    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#overview",
+    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
+    "section": "Overview",
+    "text": "Overview\n\n\nA brief history of LLMs\nCapabilities of ChatGPT"
+  },
+  {
+    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#overview-1",
+    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#overview-1",
+    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
+    "section": "Overview",
+    "text": "Overview\n\n\nA brief history of LLMs\nCapabilities of ChatGPT"
+  },
+  {
+    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#next-word-prediction-machine",
+    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#next-word-prediction-machine",
+    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
+    "section": "Next-word prediction machine",
+    "text": "Next-word prediction machine\n\\[P(token_n|token_{n-1}, \\cdots, token_1)\\]\nA token: a single character, a combination of characters, or a word"
+  },
+  {
+    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#next-word-prediction-machine-1",
+    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#next-word-prediction-machine-1",
+    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
+    "section": "Next-word prediction machine",
+    "text": "Next-word prediction machine\n\\[P(token_n|token_{n-1}, \\cdots, token_1)\\]\nThis is nothing new, your phone does something similair:"
+  },
+  {
+    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#byte-pair-encoding-tokenizer",
+    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#byte-pair-encoding-tokenizer",
+    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
+    "section": "Byte-Pair Encoding Tokenizer",
+    "text": "Byte-Pair Encoding Tokenizer\n\nEasy algorithm to compress text into most common elements\n[Flying, Trying, Sky, Cry, Sly] –&gt; “F, L, Y, I, N, G, T, R, K, C, S”\n“F, L, Y, I, N, G, T, R, K, C, S, IN”\n“F, L, Y, I, N, G, T, R, K, C, S, IN, LY”\n“F, L, Y, I, N, G, T, R, K, C, S, IN, LY, RY”\n“F, L, Y, I, N, G, T, R, K, C, S, IN, LY, RY, ING”\netc…"
+  },
+  {
+    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#byte-pair-encoding-tokenizer-1",
+    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#byte-pair-encoding-tokenizer-1",
+    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
+    "section": "Byte-Pair Encoding Tokenizer",
+    "text": "Byte-Pair Encoding Tokenizer\n\nAble to:\n\nencode you whole vocabulary per definition\nChose precize size you want for your model\nAssign tokens to most important parts of vocabulary\n\nThis does mean that English gets more tokens than Dutch:\n\n\n\n\n\n\n\n\n\nTry it Yourself"
+  },
+  {
+    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#one-hot-encoding",
+    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#one-hot-encoding",
+    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
+    "section": "One-hot Encoding",
+    "text": "One-hot Encoding\n\n\\[\n\\begin{array}{c@{\\hspace{0.3cm}}c@{\\hspace{0.3cm}}c@{\\hspace{0.3cm}}c@{\\hspace{0.3cm}}c}\n\\text{A} & \\text{dry} & \\text{well!} & \\text{Well} & \\text{done!} \\\\\n\\begin{pmatrix}\n1\\\\\n0\\\\\n0\\\\\n0\n\\end{pmatrix} & \\begin{pmatrix}\n0\\\\\n1\\\\\n0\\\\\n0\n\\end{pmatrix} & \\begin{pmatrix}\n0\\\\\n0\\\\\n1\\\\\n0\n\\end{pmatrix} & \\begin{pmatrix}\n0\\\\\n0\\\\\n1\\\\\n0\n\\end{pmatrix} & \\begin{pmatrix}\n0\\\\\n0\\\\\n0\\\\\n1\n\\end{pmatrix}\n\\end{array}\n\\]\n\n\n\nSparse vector of the vocabulary dimension\n3 out of 4 numbers are uninformative\n‘Expensive’ for large corpus of text\nCan we do better?"
+  },
+  {
+    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#word-embeddings",
+    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#word-embeddings",
+    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
+    "section": "Word embeddings",
+    "text": "Word embeddings\n\n\\[\n\\begin{array}{c@{\\hspace{0.3cm}}c@{\\hspace{0.3cm}}c@{\\hspace{0.3cm}}c@{\\hspace{0.3cm}}c}\n\\text{A} & \\text{dry} & \\text{well!} & \\text{Well} & \\text{done!} \\\\\n\\begin{pmatrix}\n\\phantom{-}0.33\\\\\n-0.51\\\\\n\\phantom{-}0.83\\\\\n\\phantom{-}0.12\n\\end{pmatrix} & \\begin{pmatrix}\n\\phantom{-}0.97\\\\\n-0.15\\\\\n-0.11\\\\\n\\phantom{-}0.85\n\\end{pmatrix} & \\begin{pmatrix}\n\\phantom{-}0.94\\\\\n\\phantom{-}0.79\\\\\n-0.34\\\\\n\\phantom{-}0.35\n\\end{pmatrix} & \\begin{pmatrix}\n\\phantom{-}0.94\\\\\n\\phantom{-}0.79\\\\\n-0.34\\\\\n\\phantom{-}0.35\n\\end{pmatrix} & \\begin{pmatrix}\n-0.02\\\\\n\\phantom{-}0.69\\\\\n\\phantom{-}0.54\\\\\n-0.12\n\\end{pmatrix}\n\\end{array}\n\\]\n\n\n\nDense vectors of Dimension N (hyperparameter of model ~ 728)\nLatent embedding \nMeaningfull representation\nEncoded semantic information:\n\n\n\n\nKing - Man + Woman =\n\n\nQueen\n\n\n\n\nThese embeddings marked the start of the new NLP era 1\nGenerated using shallow networks to:\n\nPredict middle word from context\nPredict context from middle word\n\nTuning via Backpropegation and gradient descent\nThis still has some issues…\n\n\n2013 - Efficient Estimation of Word Representations in Vector Space: https://arxiv.org/pdf/1301.3781.pdf"
+  },
+  {
+    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#word-embeddings-1",
+    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#word-embeddings-1",
+    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
+    "section": "Word embeddings",
+    "text": "Word embeddings\n\\[\n\\begin{array}{c@{\\hspace{0.3cm}}c@{\\hspace{0.3cm}}c@{\\hspace{0.3cm}}c@{\\hspace{0.3cm}}c}\n\\text{A} & \\text{dry} & \\text{well!} & \\text{Well} & \\text{done!} \\\\\n\\begin{pmatrix}\n\\phantom{-}0.33\\\\\n-0.51\\\\\n\\phantom{-}0.83\\\\\n\\phantom{-}0.12\n\\end{pmatrix} & \\begin{pmatrix}\n\\phantom{-}0.97\\\\\n-0.15\\\\\n-0.11\\\\\n\\phantom{-}0.85\n\\end{pmatrix} & \\color{red}{\\begin{pmatrix}\n\\phantom{-}0.94\\\\\n\\phantom{-}0.79\\\\\n-0.34\\\\\n\\phantom{-}0.35\n\\end{pmatrix}} & \\color{red}{\\begin{pmatrix}\n\\phantom{-}0.94\\\\\n\\phantom{-}0.79\\\\\n-0.34\\\\\n\\phantom{-}0.35\n\\end{pmatrix}} & \\begin{pmatrix}\n-0.02\\\\\n\\phantom{-}0.69\\\\\n\\phantom{-}0.54\\\\\n-0.12\n\\end{pmatrix}\n\\end{array}\n\\]\n\nDense vectors\nLatent embedding \nThe numbers are now informative to qualities of the token\nSemanticly-meaningfull:\n\n\nKing - Man + Woman = Queen\n\n\nThis still causes problems…"
+  },
+  {
+    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#transformer-embeddings",
+    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#transformer-embeddings",
+    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
+    "section": "Transformer Embeddings",
+    "text": "Transformer Embeddings\n\n\\[\n\\begin{array}{c@{\\hspace{0.3cm}}c@{\\hspace{0.3cm}}c@{\\hspace{0.3cm}}c@{\\hspace{0.3cm}}c}\n\\text{A} & \\text{dry} & \\text{well!} & \\text{Well} & \\text{done!} \\\\\n\\begin{pmatrix}\n\\phantom{-}0.33\\\\\n-0.51\\\\\n\\phantom{-}0.83\\\\\n\\phantom{-}0.12\n\\end{pmatrix} & \\begin{pmatrix}\n\\phantom{-}0.97\\\\\n-0.15\\\\\n-0.11\\\\\n\\phantom{-}0.75\n\\end{pmatrix} & \\begin{pmatrix}\n\\phantom{-}0.54\\\\\n-0.79\\\\\n-0.34\\\\\n\\phantom{-}0.22\n\\end{pmatrix} & \\begin{pmatrix}\n-0.41\\\\\n\\phantom{-}0.79\\\\\n\\phantom{-}0.17\\\\\n\\phantom{-}0.84\n\\end{pmatrix} & \\begin{pmatrix}\n-0.02\\\\\n\\phantom{-}0.69\\\\\n\\phantom{-}0.54\\\\\n-0.12\n\\end{pmatrix}\n\\end{array}\n\\]\n\n\n\nWord-embedding now depends on context\nAble to encode even more meaningfull information\nEmperically this just works!\nThe start of the new age of NLP 1\n\n\n2017 - Attention is all you need https://arxiv.org/abs/1706.03762"
+  },
+  {
+    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#what-does-self-attention-look-like",
+    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#what-does-self-attention-look-like",
+    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
+    "section": "What does self-attention look like",
+    "text": "What does self-attention look like"
+  },
+  {
+    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#what-does-self-attention-look-like-1",
+    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#what-does-self-attention-look-like-1",
+    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
+    "section": "What does self-attention look like",
+    "text": "What does self-attention look like\n \\[\nAttention \\sim Query \\cdot Key^{T}\n\\]\n\n\nConceptual Interpretation:\n\nQuery: I have a Noun, I need a Subject!\nKey: I have a Subject here."
+  },
+  {
+    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#what-does-self-attention-look-like-2",
+    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#what-does-self-attention-look-like-2",
+    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
+    "section": "What does self-attention look like",
+    "text": "What does self-attention look like\n \\[\n\\mathrm{Output\\ embedding} \\sim \\mathrm{Softmax}( Query \\cdot Key^{T}) Value\n\\]\n\n\nConceptual Interpretation:\n\nQuery: I have a Noun, I need a Subject!\nKey: I have a Subject here.\n\n\n\n\nData-dependent aggregation of information"
+  },
+  {
+    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#what-does-self-attention-look-like-3",
+    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#what-does-self-attention-look-like-3",
+    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
+    "section": "What does self-attention look like",
+    "text": "What does self-attention look like\n\n\n\n\n1. jessevig/bertviz"
+  },
+  {
+    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#are-you-still-following-what-is-happening",
+    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#are-you-still-following-what-is-happening",
+    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
+    "section": "Are you still following what is happening?",
+    "text": "Are you still following what is happening?\n\n\n\n\n1. jessevig/bertviz"
+  },
+  {
+    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#sampling-output-tokens",
+    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#sampling-output-tokens",
+    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
+    "section": "Sampling output tokens",
+    "text": "Sampling output tokens\n\nOutput is sampled, and therefore a stochastic variable:\n\nRunning the same prompt twice will give 2 different results \\[\nP_i = \\frac{e^{\\frac{y_i}{T}}}{\\sum_i^n e^{\\frac{y_i}{T}}} = \\frac{(e^{y_i})^\\frac{1}{T}}{\\sum_i^n (e^{y_i})^\\frac{1}{T}}\n\\]\n\n\n\nT = 1 (normal)T = 0.5T = 2T = 0"
+  },
+  {
+    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#attention-and-bert",
+    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#attention-and-bert",
+    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
+    "section": "Attention and BERT",
+    "text": "Attention and BERT\n\nBERT: Pre-training of Deep Bidirectional Transformers for Language Understanding\nPretraining on massive corpora of text\nVery powerfull contextual embeddings of language\nState-of-the-art on many language tasks with finetuning:\n\nSentiment Analysis\nText Classification\nNamed entity recognition\nQuestion Answering\nLanguage Modeling\n\nBert-base: 110m parameters\nBert-large: 340m parameters"
+  },
+  {
+    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#if-we-have-more-compute",
+    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#if-we-have-more-compute",
+    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
+    "section": "If we have more compute …",
+    "text": "If we have more compute …\n\nWhat if we want to improve our models.\nCompanies like OpenAI have more compute available, what should they do?\n\n\n\n Optimal model size grows smoothly with the loss target and compute \\(\\mathrm{budget^1}\\)\n\n For optimally compute-efficient training, most of the increase should go towards increased model size1\n\n\nScaling Laws for Neural Language Models"
+  },
+  {
+    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#we-puth-it-towards-the-model-scale",
+    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#we-puth-it-towards-the-model-scale",
+    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
+    "section": "… we puth it towards the model scale",
+    "text": "… we puth it towards the model scale\n Models just kept on growing, credit: Julien Simon, Huggingface"
+  },
+  {
+    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#gpt3-is-chatgpt-almost",
+    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#gpt3-is-chatgpt-almost",
+    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
+    "section": "GPT3 IS ChatGPT, almost …",
+    "text": "GPT3 IS ChatGPT, almost …\n\n\n\n2020 - Language Models are Few-Shot Learners\nThese models are so good at language modeling (SOTA),\nthat finetuning is no longer needed to perform NLP task\nVery strong 0-shot performance in many NLP task (already in GPT2)\nCan perform In-context learning:\n\nGiven a few examples, learn how to perform task\nNo model parameters are adjusted at any point\n Emergent property  of LLMs"
+  },
+  {
+    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#section-2",
+    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#section-2",
+    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
+    "section": "",
+    "text": "Andrej Karpathy, Microsoft - State of GPT"
+  },
+  {
+    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#instruction-tuning-finetuning",
+    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#instruction-tuning-finetuning",
+    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
+    "section": "Instruction tuning (finetuning)",
+    "text": "Instruction tuning (finetuning)\n\nThe models just predict likely continuations of text.\nThis does not match with the behaviour we seek (alignment)\n\n\nBase modelInstruction tuning\n\n\nINPUT:\nExplain what a Large Language Model is.\n\nOUTPUT:\nExplain what a transformer model is.\n\nExplain what a tokenizer is.\n\nExplain what gradient descent is.\n\n\nINPUT:\nExplain what a Large Language Model is.\n\nHUMAN EXAMPLE:\nA Large Language Model is a foundational language model with typically billions of parameters. These models have become popular in recent years because of their ease of use combined with impressive performance across the board on NLP-tasks"
+  },
+  {
+    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#reinforcement-learning-from-human-feedback",
+    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#reinforcement-learning-from-human-feedback",
+    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
+    "section": "Reinforcement Learning From Human Feedback",
+    "text": "Reinforcement Learning From Human Feedback\n\nNot just showing example completions, but also rating them.\nApply Reward Modeling and Reinforcement learning to tune the model towards higher quality responses.\nVery difficult to train, but…\nIt just works better."
+  },
+  {
+    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#and-this-gives-you",
+    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#and-this-gives-you",
+    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
+    "section": "And this gives you…",
+    "text": "And this gives you…"
+  },
+  {
+    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#overview-2",
+    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#overview-2",
+    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
+    "section": "Overview",
+    "text": "Overview\n\n\nA brief history of LLMs\nCapabilities of ChatGPT"
+  },
+  {
+    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#overview-3",
+    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#overview-3",
+    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
+    "section": "Overview",
+    "text": "Overview\n\n\nA brief history of LLMs\nCapabilities of ChatGPT"
+  },
+  {
+    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#strenghts-of-llms",
+    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#strenghts-of-llms",
+    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
+    "section": "Strenghts of LLMs",
+    "text": "Strenghts of LLMs\nFoundational language model that:\n\n‘Understands’ language conventions (syntax, grammer, etc.)\nCan answer questions (has knowledge backed into weights)\nCan code\nCan write just like humans\nCan do some basic arithmatic\nCan understand deep elements of writing: sentiment, style, etc.\nCan do logical reasoning (to some extent)\nCapabilities measured on easy scales"
+  },
+  {
+    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#weaknesses-of-llms",
+    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#weaknesses-of-llms",
+    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
+    "section": "Weaknesses of LLMs",
+    "text": "Weaknesses of LLMs\n\nLimited context window (input size)\nIt has no memory\nIt can only predict next tokens, nothing else:\n\nIt cannot perform tasks while you wait!\n\nIt cannot think in `multiple directions’ like we do!\nThinking only has a fast mode, no thinking fast and slow.\nIt doesn’t understand it’s own internal model!\nIt doesn’t know what the truth is and what it is not\nIt doesn’t understand tabular data well\nIt doesn’t proces language in a human way (The Reversal Curse)\n\n\n“Who is Tom Cruise’s mother? [A: Mary Lee Pfeiffer]” and the reverse “Who is Mary Lee Pfeiffer’s son?”. GPT-4 correctly answers questions like the former 79% of the time, compared to 33% for the latter."
+  },
+  {
+    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#common-mistakes",
+    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#common-mistakes",
+    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
+    "section": "Common mistakes",
+    "text": "Common mistakes\n\n\n\n\n\n\nBe Carefull\n\n\n\nLLMs don’t learn continuously! LLMs have a seperate training phase, they need frequent updates for recent events\nLLMs don’t work like our brains! On a conceptual level biological neurons inspired the technique, but in practice they worlds apart in how they function and why\nLLMs don’t search in a database LLMs learn a statistical distribution, and use this to predict the best next token.1\n\n\n\n\nUnless results from a search engine are explicitly used as an input (Copilot in Bing search, Gemini in Google Search, search on ChatGPT.com, etc.)"
+  },
+  {
+    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#how-you-should-not-think-of-chatgpt",
+    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#how-you-should-not-think-of-chatgpt",
+    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
+    "section": "How you should not think of ChatGPT",
+    "text": "How you should not think of ChatGPT\n\nWe tend to feel empathy for ChatGPT\n\nPeople like to say thank you to ChatGPT\nIt feels very human to interact with\n\nBUT: it really boils down to a very very big autocomplete next-word predictor\nWE CAN BREAK THE MODEL LOGIC"
+  },
+  {
+    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#repeated-sampling-penalty",
+    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#repeated-sampling-penalty",
+    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
+    "section": "Repeated sampling Penalty",
+    "text": "Repeated sampling Penalty\n\nGenerative language models have a tendency to repeat themselves:\n\nTherefore the sampling algorithm receives a repetition penalty\nThis can be exploited"
+  },
+  {
+    "objectID": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#glitch-tokens",
+    "href": "slides/day_1/2.Introduction_Large_Language_Models_and_ChatGPT.html#glitch-tokens",
+    "title": "Introduction to Large Language Models, ChatGPT, and Generative AI",
+    "section": "Glitch Tokens",
+    "text": "Glitch Tokens\n\nSome tokens identified by BPE only appear in useless context\n\nSuch as /r/counting\nusernames get very high frequency and get their own tokens"
+  },
+  {
+    "objectID": "slides/day_1/1.Opening.html#about-me",
+    "href": "slides/day_1/1.Opening.html#about-me",
+    "title": "Welcome",
+    "section": "About me",
+    "text": "About me\n\n\n\nAlex van Vorstenbosch\nSenior Data Scientist, NZa\nPhD candidate at Tilburg University\nNLP-enthousiast"
+  },
+  {
+    "objectID": "slides/day_1/1.Opening.html#why-am-i-here-today",
+    "href": "slides/day_1/1.Opening.html#why-am-i-here-today",
+    "title": "Welcome",
+    "section": "Why am I here today?",
+    "text": "Why am I here today?\n\n\n\n\nFascinated by Deep Learning during astronomy study\nMostly experience with Convolutional networks (and a bit with GAN’s)\nPivoted to NLP (Very relevant within government and relatively unexplored in healthcare economics)\nGreat resources available for free 1\n\n\n\n\n\n\nC. Manning and J. Hewwit, “Natural language processing with deep learning,” cs224n. Available: https://web.stanford.edu/class/cs224n/"
+  },
+  {
+    "objectID": "slides/day_1/1.Opening.html#the-fast-rise-of-chatgpt",
+    "href": "slides/day_1/1.Opening.html#the-fast-rise-of-chatgpt",
+    "title": "Welcome",
+    "section": "The fast rise of ChatGPT",
+    "text": "The fast rise of ChatGPT\n\n\n\n\nReleased on 30 November 2022\nTook the world by storm\nEverybody has heard of it, but…"
+  },
+  {
+    "objectID": "slides/day_1/1.Opening.html#the-second-wave---opensource-deepseek-r1",
+    "href": "slides/day_1/1.Opening.html#the-second-wave---opensource-deepseek-r1",
+    "title": "Welcome",
+    "section": "The second wave (?) - OpenSource Deepseek-R1",
+    "text": "The second wave (?) - OpenSource Deepseek-R1\n\n\n\n\nReleased on 20 januari 2025\nOpen sourced Open sourced methodology and released models Generative AIopen weights \nQuickly dethroned ChatGPT as most downloaded app in App store and Play store\nReportedly developed very cheaply within limited GPU embargo position\n\nThe reality was a lot less extreme than what was reported.\n\nDisruptive, erased 1 trillion dollars from the stock markets\n\nNvidia stocks dropped by 18%"
+  },
+  {
+    "objectID": "slides/day_1/1.Opening.html#the-adoption-of-chatgpt",
+    "href": "slides/day_1/1.Opening.html#the-adoption-of-chatgpt",
+    "title": "Welcome",
+    "section": "The adoption of ChatGPT",
+    "text": "The adoption of ChatGPT\n\n\n\n\nHas not been widely adopted\nIs not used that often by those who have adopted it\nIt is used for writing, coding and finding information\n\n\n\n\n\n\n\n\nwe hoeven niet te wachten totdat de computer kan schrijven als Vestdijk en schilderen als Vermeer, maar moeten nu beginnen met het toepassen en gebruiken ervan. Zeker op het werk.\n\n\n“How ChatGPT is transforming the postdoc experience”, Nature, 16-10-2023: https://www.nature.com/articles/d41586-023-03235-8"
+  },
+  {
+    "objectID": "slides/day_1/1.Opening.html#section",
+    "href": "slides/day_1/1.Opening.html#section",
+    "title": "Welcome",
+    "section": "",
+    "text": "Overview of the course"
+  },
+  {
+    "objectID": "slides/day_1/1.Opening.html#why-are-you-here-today",
+    "href": "slides/day_1/1.Opening.html#why-are-you-here-today",
+    "title": "Welcome",
+    "section": "Why are you here today?",
+    "text": "Why are you here today?\n\nWho are you?\nWhat is your occupation?\nWhat do you hope to get out of this course?"
+  },
+  {
+    "objectID": "slides/day_1/1.Opening.html#the-planning",
+    "href": "slides/day_1/1.Opening.html#the-planning",
+    "title": "Welcome",
+    "section": "The Planning",
+    "text": "The Planning\n\nDay 1Day 2\n\n\n\n\n\n\n\n\n\n\nTime\nTitle\nDescription\n\n\n\n\n09:00 – 09:30 AM\n👋 Introduction\n\n\n\n09:30 – 10:45 AM\n🤖 Introduction to LLM’s and ChatGPT\nNLP and development of LLMsCapabilities of ChatGPTReal world applications\n\n\n10:45 – 11:00 AM\n☕ Break\n\n\n\n11:00 – 12:00 PM\n💬 Prompt Engineering\nIntroduction to promptingBest practices for promptingHands-on exercises\n\n\n12:00 – 13:00 PM\n🥪 Lunch\n\n\n\n13:00 – 13:45 PM\n💻 Programming with GPT\nIntroduction to the OpenAI APIHands-on exercises\n\n\n13:45 – 14:45 PM\n⚖️ Ethical Considerations in Using LLMs\nBiases and MisinformationThe Dark Side of LLMsPrivacy and Legal Challenges\n\n\n14:45 - 15:00 PM\n☕ Break\n\n\n\n15:00 - 16:00 PM\n💻Programming with GPT\nPair-programming with LLMsHands-on exercises\n\n\n16:00 – 16:45 PM\n🚀 Improved Efficiency with ChatGPT\nExamples of real implementations of ChatGPT in a workflow\n\n\n16:45 – 17:00 PM\n📝 Summary, Evaluation and Conclusion of Day 1\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTime\nTitle\nDescription\n\n\n\n\n09:00 – 09:20 AM\n🌅 Opening and Discussion of the Day’s Agenda\n\n\n\n09:20 – 10:45 AM\n📊 Text Analysis with LLMs\nFoundation models for NLPEvaluation of performanceHands-on Exercises\n\n\n10:45 – 11:00 AM\n☕ Break\n\n\n\n11:00 – 12:30 PM\n🔍 Retrieval Augmented Generation (RAG), open source, and next steps\nLLMs versus Search EnginesHow to host your own LLMNext steps?\n\n\n12:30 – 13:30 PM\n🥗 Lunch\n\n\n\n13:30 - 16:30 PM\n🚀 Extended Practical Assignment - RAG 🔍\nBuilding your own Retrieval Augmented Generation system with fact-checking against hallucinations\n\n\n16:30 - 17:00 PM\n📝 Summary, Evaluation, and Conclusion"
+  },
+  {
+    "objectID": "slides/day_1/1.Opening.html#practical-points",
+    "href": "slides/day_1/1.Opening.html#practical-points",
+    "title": "Welcome",
+    "section": "Practical Points",
+    "text": "Practical Points\n\nPlease feel free to ask questions during the presentations!\nSlides will be shared and published online\nMake sure you have acces to an environment with coding notebooks:\n\nPython: Jupyter or VScode and/or Quarto\nR: Rstudio with Quarto\n\n\n\n\n\nChatGPT for Data Science"
+  },
+  {
+    "objectID": "slides/day_1/3.Prompt_Engineering.html#overview",
+    "href": "slides/day_1/3.Prompt_Engineering.html#overview",
+    "title": "Introduction to Prompt Engineering",
+    "section": "Overview",
+    "text": "Overview\n\n\nIntroduction to Prompting\nBest techniques for prompting"
+  },
+  {
+    "objectID": "slides/day_1/3.Prompt_Engineering.html#overview-1",
+    "href": "slides/day_1/3.Prompt_Engineering.html#overview-1",
+    "title": "Introduction to Prompt Engineering",
+    "section": "Overview",
+    "text": "Overview\n\n\nIntroduction to Prompting\nBest techniques for prompting"
+  },
+  {
+    "objectID": "slides/day_1/3.Prompt_Engineering.html#introduction-to-prompting-1",
+    "href": "slides/day_1/3.Prompt_Engineering.html#introduction-to-prompting-1",
+    "title": "Introduction to Prompt Engineering",
+    "section": "Introduction to prompting",
+    "text": "Introduction to prompting\n\nPrompts are a natural (language) way to interact with language models\n\nvery easy to understand\nanybody can do it\nit makes the interaction feel  human \n\nEnables Semantic coding instead of logical coding\nThis makes it very easy and very fast to iterate"
+  },
+  {
+    "objectID": "slides/day_1/3.Prompt_Engineering.html#nlp-lifecycle-on-its-head",
+    "href": "slides/day_1/3.Prompt_Engineering.html#nlp-lifecycle-on-its-head",
+    "title": "Introduction to Prompt Engineering",
+    "section": "NLP-lifecycle on it’s head",
+    "text": "NLP-lifecycle on it’s head\n\nRegular ML:\nProblem → Idea → Gather data → Train Model → Evaluate Model →\nRepeat if neccessary → deploy\nDuration: Months\n\n\n\nPrompting workflow:\nProblem → Idea → Gather (less) data → Finetune prompt → Evaluate Model →\nRepeat if neccessary → already deployed\nDuration: Days"
+  },
+  {
+    "objectID": "slides/day_1/3.Prompt_Engineering.html#overview-2",
+    "href": "slides/day_1/3.Prompt_Engineering.html#overview-2",
+    "title": "Introduction to Prompt Engineering",
+    "section": "Overview",
+    "text": "Overview\n\n\nIntroduction to Prompting\nBest techniques for prompting"
+  },
+  {
+    "objectID": "slides/day_1/3.Prompt_Engineering.html#overview-3",
+    "href": "slides/day_1/3.Prompt_Engineering.html#overview-3",
+    "title": "Introduction to Prompt Engineering",
+    "section": "Overview",
+    "text": "Overview\n\n\nIntroduction to Prompting\nBest techniques for prompting"
+  },
+  {
+    "objectID": "slides/day_1/3.Prompt_Engineering.html#best-techniques-for-prompting-1",
+    "href": "slides/day_1/3.Prompt_Engineering.html#best-techniques-for-prompting-1",
+    "title": "Introduction to Prompt Engineering",
+    "section": "Best techniques for prompting",
+    "text": "Best techniques for prompting\n\nMake use of a general prompting template such as RTF\nBe precise in your description\ninclude a reference text\n‘No’ is also an answer\nGive LLMs room to think\nGuide complex problems with chain-of-thought prompting\nMind the Context Window!"
+  },
+  {
+    "objectID": "slides/day_1/3.Prompt_Engineering.html#general-prompting-template---rtf-framework",
+    "href": "slides/day_1/3.Prompt_Engineering.html#general-prompting-template---rtf-framework",
+    "title": "Introduction to Prompt Engineering",
+    "section": "General prompting template - RTF framework",
+    "text": "General prompting template - RTF framework\n\nA general decent prompt templates looks like the following:\nSpecify which ROLE the model should assume.\nSpecify the TASK it should perform:\n\nTASK_DESCRIPTION: What is the task.\nTASK_SPECIFICATION: Specify how the task should be performed\n\n(Optional) Specify in what FORMAT the answer should be given.\n\n\nf\"\"\"\nROLE: {ROLE: You are a professional translator.}\nTASK: {TASK_DESCRIPTION: Translate the user input from English to Dutch.}\n      {TASK_SPECIFICATION: Make sure you only use formal language that is suitable for a business setting.}\n      {FORMAT_OUTPUT: Only return the translated text, nothing else} \n\"\"\""
+  },
+  {
+    "objectID": "slides/day_1/3.Prompt_Engineering.html#general-prompting-template",
+    "href": "slides/day_1/3.Prompt_Engineering.html#general-prompting-template",
+    "title": "Introduction to Prompt Engineering",
+    "section": "General prompting template",
+    "text": "General prompting template\n\n\n\n\nA general decent prompt templates looks like the following:\nSpecify which ROLE the model should assume.\nSpecify the TASK it should perform:\n\nTASK_DESCRIPTION: What is the task.\nTASK_SPECIFICATION: Specify how the task should be performed\n\n(Optional) Specify in what FORMAT the answer should be given."
+  },
+  {
+    "objectID": "slides/day_1/3.Prompt_Engineering.html#be-precise-in-your-task-descriptions",
+    "href": "slides/day_1/3.Prompt_Engineering.html#be-precise-in-your-task-descriptions",
+    "title": "Introduction to Prompt Engineering",
+    "section": "Be precise in your task descriptions",
+    "text": "Be precise in your task descriptions\nYou may think your task is clear, but it may not be:\n\n\n\n\nAs I’m going to the store, my roommate asks me: ‘Can you get a gallon of milk? And if they have eggs, get 6.’\nWhen I come home my roommate was in shock: “You got 6 gallons of milk?!” I responded ‘They had eggs.’"
+  },
+  {
+    "objectID": "slides/day_1/3.Prompt_Engineering.html#be-precise-in-your-task-descriptions-1",
+    "href": "slides/day_1/3.Prompt_Engineering.html#be-precise-in-your-task-descriptions-1",
+    "title": "Introduction to Prompt Engineering",
+    "section": "Be precise in your task descriptions",
+    "text": "Be precise in your task descriptions\n\nLLMs don’t know anything about you or the task it is given.\nGive the model the context it needs to know\n“Please explain to me how LLMs works?”\n\nWhat is your background knowledge? Academic, high-school, etc..\nHow would you like the explanation? Technical, simple summary, funny, etc..\nHow long should it be? 5 sentences, 5 paragraphs, 5 pages etc..\nDo you want the model to answer with or without the mathemathical foundations?\nDo you need references?\netc…"
+  },
+  {
+    "objectID": "slides/day_1/3.Prompt_Engineering.html#include-a-reference-text",
+    "href": "slides/day_1/3.Prompt_Engineering.html#include-a-reference-text",
+    "title": "Introduction to Prompt Engineering",
+    "section": "Include a reference text",
+    "text": "Include a reference text\n\n\n\nLLMs should not be trusted with giving specific information, they can make up completely nonsence answers\nThese answers are called Hallucinations, more on them later."
+  },
+  {
+    "objectID": "slides/day_1/3.Prompt_Engineering.html#include-a-reference-text-1",
+    "href": "slides/day_1/3.Prompt_Engineering.html#include-a-reference-text-1",
+    "title": "Introduction to Prompt Engineering",
+    "section": "Include a reference text",
+    "text": "Include a reference text\n\nTo help mitigate this (partially), you can Include a reference text1\n\nNote: Finding these reference texts in a smart way, is essentially what RAG systems do\n\n\n\nf\"\"\"\nROLE: {ROLE}\nTASK: {TASK_DESCRIPTION}\n      Your task is to answer the question using only the provided document \n      and to cite the passage(s) of the document used to answer the question.\n      The answer must be annotated with a citation. \n      Use the following format to cite relevant passages ({'citation' : …}).\n      {FORMAT_OUTPUT}\n\nDOCUMENT:\n'''\n{DOCUMENT}\n'''\n\"\"\"\n\nOpenAI GPT guide"
+  },
+  {
+    "objectID": "slides/day_1/3.Prompt_Engineering.html#use-delimiters",
+    "href": "slides/day_1/3.Prompt_Engineering.html#use-delimiters",
+    "title": "Introduction to Prompt Engineering",
+    "section": "Use delimiters",
+    "text": "Use delimiters\n\nIndicates what describes the task at hand, and what the task should be performed on\nuse either:\n\n### TEXT ###\n““” TEXT “““\n’’’ TEXT ’’’\nThese triplets are all a single token\n\nOr use clear section titles, HTML-tags, etc."
+  },
+  {
+    "objectID": "slides/day_1/3.Prompt_Engineering.html#no-is-also-an-answer",
+    "href": "slides/day_1/3.Prompt_Engineering.html#no-is-also-an-answer",
+    "title": "Introduction to Prompt Engineering",
+    "section": "‘No’ is also an answer!",
+    "text": "‘No’ is also an answer!\n\nTo help mitigate this (partially), you can Include a reference text1\nExplicitly tell the model to not answer the question if it can’t.\n\n\nf\"\"\"\nROLE: {ROLE}\nTASK: {TASK_DESCRIPTION}\n      Your task is to answer the question using only the provided document \n      and to cite the passage(s) of the document used to answer the question.\n      If the document does not contain the information needed to answer this question \n      then simply write: \n        'Insufficient information.' \n      If an answer to the question is provided, it must be annotated with a citation. \n      Use the following format to cite relevant passages ({'citation' : …}).\n      {FORMAT_OUTPUT}\n\nDOCUMENT:\n'''\n{DOCUMENT}\n'''\n\"\"\"\n\nOpenAI GPT guide"
+  },
+  {
+    "objectID": "slides/day_1/3.Prompt_Engineering.html#give-models-time-to-think",
+    "href": "slides/day_1/3.Prompt_Engineering.html#give-models-time-to-think",
+    "title": "Introduction to Prompt Engineering",
+    "section": "Give models time-to-think",
+    "text": "Give models time-to-think\n\nAllow the model to work through a problem first\nbreak up a task into smaller steps\n\nf\"\"\"\nDetermine if my answer below is correct.\n\nI'm trying to figure out how expensive my prompting of the GPT4 API will be in total.\nI'm going to run around 1000 prompts. For these prompts, the average prompt-lengt is 250 words.\nThe average response length of the model for these prompts is 300 words. \n\nThe API pricing is as follows:\n$0.03/1k prompt tokens.\n$0.06/1k sampled tokens.\n\nWe can assume that 1 token is on average 3/4th of a single word. \n\nI found the following answer:\n18 dollars.\n\"\"\"\nf\"\"\"\nFirst work out your own solution to the problem. \nThen compare your solution to the given solution and evaluate if the given solution is correct or not. \nDon't decide if the student's solution is correct until you have done the problem yourself.\n\nI'm trying to figure out how expensive my prompting of the GPT4 API will be in total.\nI'm going to run around 1000 prompts. For these prompts, the average prompt-lengt is 250 words.\nThe average response length of the model for these prompts is 300 words. \n\nThe API pricing is as follows:\n$0.03/1k prompt tokens.\n$0.06/1k sampled tokens.\n\nWe can assume that 1 token is on average 3/4th of a single word. \n\nI found the following answer:\n18 dollars.\n\"\"\""
+  },
+  {
+    "objectID": "slides/day_1/3.Prompt_Engineering.html#take-into-account-the-order-of-operations",
+    "href": "slides/day_1/3.Prompt_Engineering.html#take-into-account-the-order-of-operations",
+    "title": "Introduction to Prompt Engineering",
+    "section": "Take into account the order-of-operations",
+    "text": "Take into account the order-of-operations\n\nFirst give calculation steps, then give the answer.\nOtherwise the model tries to retrofit the computation to the answer.\n\n\n\n\nBad order\n\n\n\n\n\nGood order"
+  },
+  {
+    "objectID": "slides/day_1/3.Prompt_Engineering.html#chain-of-thought-prompting",
+    "href": "slides/day_1/3.Prompt_Engineering.html#chain-of-thought-prompting",
+    "title": "Introduction to Prompt Engineering",
+    "section": "Chain-of-thought prompting",
+    "text": "Chain-of-thought prompting\n\nSome tasks are complicated for a LLM, based on just the prompt\nGive the model room to think with Chain-of-Thought prompting\nChain-of-Thought prompting is essentially single or few-shot prompting for reasoning.\nWhat was few-shot prompting again?\n\n\nInput\nPoor English input: I eated the purple berries.\nGood English output: I ate the purple berries.\nPoor English input: Thank you for picking me as your designer. I’d appreciate it.\nGood English output: Thank you for choosing me as your designer. I appreciate it.\nPoor English input: The mentioned changes have done. or I did the alteration that you\nrequested. or I changed things you wanted and did the modifications.\nGood English output:\noutput\nThe requested changes have been made. or I made the alteration that you requested. or I changed things you wanted and made the modifications.1\n\n\nThat this works, is one of the emergent properties of LLMs\n\nLanguage Models are Few-Shot Learners: https://arxiv.org/pdf/2005.14165.pdf"
+  },
+  {
+    "objectID": "slides/day_1/3.Prompt_Engineering.html#chain-of-thought-prompting-1",
+    "href": "slides/day_1/3.Prompt_Engineering.html#chain-of-thought-prompting-1",
+    "title": "Introduction to Prompt Engineering",
+    "section": "Chain-of-thought prompting",
+    "text": "Chain-of-thought prompting\n\nSome tasks are complicated for a LLM, based on just the prompt\nGive the model room to think with Chain-of-Thought prompting\nChain-of-Thought prompting is essentially single or few-shot prompting for reasoning.\nChain-of-Thought prompting demonstrates how to reason1:\n\n\nChain-of-Thought Prompting Elicits Reasoning in Large Language Modelshttps://arxiv.org/pdf/2201.11903.pdf"
+  },
+  {
+    "objectID": "slides/day_1/3.Prompt_Engineering.html#shot-chain-of-thought-prompting",
+    "href": "slides/day_1/3.Prompt_Engineering.html#shot-chain-of-thought-prompting",
+    "title": "Introduction to Prompt Engineering",
+    "section": "0-shot Chain-of-thought prompting",
+    "text": "0-shot Chain-of-thought prompting\nYou can already improve performance by just adding:\n “Let’s think step by step.” \nat the end of a prompt1\nLarge Language Models are Zero-Shot Reasonershttps://arxiv.org/pdf/2205.11916.pdf"
+  },
+  {
+    "objectID": "slides/day_1/3.Prompt_Engineering.html#mind-the-context-window",
+    "href": "slides/day_1/3.Prompt_Engineering.html#mind-the-context-window",
+    "title": "Introduction to Prompt Engineering",
+    "section": "Mind the Context Window",
+    "text": "Mind the Context Window\n\nDepending on the model, the context window is between 10 and 200 pages of text\nUse 1 conversation for 1 task"
+  },
+  {
+    "objectID": "slides/day_1/3.Prompt_Engineering.html#meta-prompting",
+    "href": "slides/day_1/3.Prompt_Engineering.html#meta-prompting",
+    "title": "Introduction to Prompt Engineering",
+    "section": "Meta-prompting",
+    "text": "Meta-prompting\n\nWriting good prompts is time-consuming\nA meta-prompt instructs the model to write a good prompt for you:\n\nIt incorporates best practices and guidelines for prompting\nIt helps you get started with your prompt faster\n\n\n\n\"\"\"\nGiven a task description or existing prompt, produce a detailed system prompt to guide a language model in completing the task effectively.\n\n# Guidelines\n\n- Understand the Task: Grasp the main objective, goals, requirements, constraints, and expected output.\n- Minimal Changes: If an existing prompt is provided, improve it only if it's simple. For complex prompts, enhance clarity and add missing elements without altering the original structure.\n- Reasoning Before Conclusions**: Encourage reasoning steps before any conclusions are reached. ATTENTION! If the user provides examples where the reasoning happens afterward, REVERSE the order! NEVER START EXAMPLES WITH CONCLUSIONS!\n    - Reasoning Order: Call out reasoning portions of the prompt and conclusion parts (specific fields by name). For each, determine the ORDER in which this is done, and whether it needs to be reversed.\n    - Conclusion, classifications, or results should ALWAYS appear last.\n- Examples: Include high-quality examples if helpful, using placeholders [in brackets] for complex elements.\n   - What kinds of examples may need to be included, how many, and whether they are complex enough to benefit from placeholders.\n- Clarity and Conciseness: Use clear, specific language. Avoid unnecessary instructions or bland statements.\n- Formatting: Use markdown features for readability. DO NOT USE ``` CODE BLOCKS UNLESS SPECIFICALLY REQUESTED.\n- Preserve User Content: If the input task or prompt includes extensive guidelines or examples, preserve them entirely, or as closely as possible. If they are vague, consider breaking down into sub-steps. Keep any details, guidelines, examples, variables, or placeholders provided by the user.\n- Constants: DO include constants in the prompt, as they are not susceptible to prompt injection. Such as guides, rubrics, and examples.\n- Output Format: Explicitly the most appropriate output format, in detail. This should include length and syntax (e.g. short sentence, paragraph, JSON, etc.)\n    - For tasks outputting well-defined or structured data (classification, JSON, etc.) bias toward outputting a JSON.\n    - JSON should never be wrapped in code blocks (```) unless explicitly requested.\n\nThe final prompt you output should adhere to the following structure below. Do not include any additional commentary, only output the completed system prompt. SPECIFICALLY, do not include any additional messages at the start or end of the prompt. (e.g. no \"---\")\n\n[Concise instruction describing the task - this should be the first line in the prompt, no section header]\n\n[Additional details as needed.]\n\n[Optional sections with headings or bullet points for detailed steps.]\n\n# Steps [optional]\n\n[optional: a detailed breakdown of the steps necessary to accomplish the task]\n\n# Output Format\n\n[Specifically call out how the output should be formatted, be it response length, structure e.g. JSON, markdown, etc]\n\n# Examples [optional]\n\n[Optional: 1-3 well-defined examples with placeholders if necessary. Clearly mark where examples start and end, and what the input and output are. User placeholders as necessary.]\n[If the examples are shorter than what a realistic example is expected to be, make a reference with () explaining how real examples should be longer / shorter / different. AND USE PLACEHOLDERS! ]\n\n# Notes [optional]\n\n[optional: edge cases, details, and an area to call or repeat out specific important considerations]\n\"\"\""
+  },
+  {
+    "objectID": "slides/day_1/3.Prompt_Engineering.html#prompting-for-image-generation-1",
+    "href": "slides/day_1/3.Prompt_Engineering.html#prompting-for-image-generation-1",
+    "title": "Introduction to Prompt Engineering",
+    "section": "Prompting for image Generation",
+    "text": "Prompting for image Generation\n\nDall-E 3 (also used by bing) first  rewords your prompt, to refine it.\n\nOther image generators such as Stable-Diffusion don’t do this\n\n\n\n\n\nUser Input\nAn image of a black cat, sitting on a piano during golden hour. the image is a realistic photograph, taken by a pro photographer. The cat looks content.\n\nDall-E Input\nA realistic photograph of a black cat sitting on a piano. The background features a window with golden light shining through, indicative of an off-screen sunset. The cat looks content, with a relaxed posture and serene expression. The image captures the ambiance of a cozy, warmly lit room, highlighting the reflective surface of the piano and the soft, diffused sunlight."
+  },
+  {
+    "objectID": "slides/day_1/3.Prompt_Engineering.html#tips-for-writing-image-generation-prompts",
+    "href": "slides/day_1/3.Prompt_Engineering.html#tips-for-writing-image-generation-prompts",
+    "title": "Introduction to Prompt Engineering",
+    "section": "Tips for writing image generation prompts",
+    "text": "Tips for writing image generation prompts\n\n\nDo’s\n\n\n Be Specific:\nInclude details about the subject, background, mood, etc.\n Be descriptive:\nInstead of saying “a dog” say “a fluffy, small, brown dog.”\n Specify a style: “cubism” “watercolor painting”, “In the style of starry night by Van Gogh”, “photorealistic”, etc.\n Add search-keywords: for high quality images consider: “4k”, “HD”, “DSLR photography”, etc\n Iterate over images: Ask Dall-E to make slight changes you’d prefer\n Specify the resolution: “Portait”, “Widescreen”, etc…\n Request a specific random seed: This reduces the variance when iterating over images.\n*GPT4o no longer generates a new random seed for each image\n\n\nDon’ts\n\n\n Expect the image to perfectly match your vision  The randomness in the process makes it very hard to recreate specific visions.\n Don’t try ask Dall-E to Not do something\nThis will insert the keyword into the prompt and often achieves the oppossite.\n Don’t add too many elements to your images\nAdherence to your prompt will suffer from this\n Don’t expect photorealism\nOpenAI has tuned these models to typically display a cartoony hyperrealism\n\n\n\n\n\n\nPrompt Engineering"
+  },
+  {
+    "objectID": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#overview",
+    "href": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#overview",
+    "title": "Ethical Considerations in Using LLMs",
+    "section": "Overview",
+    "text": "Overview\n__Disclaimer__\nI don’t claim to have the answers.\nBe aware of these topics.\nForm your own opinions and openly discuss issues."
+  },
+  {
+    "objectID": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#overview-1",
+    "href": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#overview-1",
+    "title": "Ethical Considerations in Using LLMs",
+    "section": "Overview",
+    "text": "Overview\n\n\nBiases and Misinformation\nThe Dark Side of LLMs\nGroup discussion"
+  },
+  {
+    "objectID": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#biases",
+    "href": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#biases",
+    "title": "Ethical Considerations in Using LLMs",
+    "section": "Biases",
+    "text": "Biases\n\nLLMs can strengthen negative stereotypes.\nLLMs can strengten the views of users via confirmation bias:\n\nLLMs have a tendency to agree with the user\nPeople have a tendency to think that models are ‘objective’ and speak the ‘truth’\n\nLLMs are ‘skewed’ to the trainingset majority:\n\nEnglish Western views for example\n\n\n\n\nReuters: Amazon scraps secret AI recruiting tool that showed bias against women"
+  },
+  {
+    "objectID": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#hallucinating-false-information",
+    "href": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#hallucinating-false-information",
+    "title": "Ethical Considerations in Using LLMs",
+    "section": "Hallucinating false information",
+    "text": "Hallucinating false information\n\nWhat are Hallucinations?\n\nIt’s when LLMs generates incorrect, nonsensical, or unverifiable information presented as fact.\nMight also be answers that are not supported by the provided context\nCan be hard to spot as the model is a great ‘bluffer’\n\nDoesn’t know that the information is wrong\nasking for self-reflection does help"
+  },
+  {
+    "objectID": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#hallucinating-false-information-1",
+    "href": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#hallucinating-false-information-1",
+    "title": "Ethical Considerations in Using LLMs",
+    "section": "Hallucinating false information",
+    "text": "Hallucinating false information\n\nWhat are Hallucinations?\n\nIt’s when LLMs generates incorrect, nonsensical, or unverifiable information presented as fact."
+  },
+  {
+    "objectID": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#who-is-responsible-when-ai-makes-a-mistake",
+    "href": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#who-is-responsible-when-ai-makes-a-mistake",
+    "title": "Ethical Considerations in Using LLMs",
+    "section": "Who is responsible when AI makes a mistake?",
+    "text": "Who is responsible when AI makes a mistake?\n\nFirst recorded death of the driver of a self-driving car in 2016\nFirst recorded fatility of a pedestrian by a self-driving car in 2018\n\n\n\nThe first known fatal accident involving a vehicle being driven by itself took place in Williston, Florida on 7 May 2016 while a Tesla Model S electric car was engaged in Autopilot mode. The driver was killed in a crash with a large 18-wheel tractor-trailer.\nFirst pedestrian was pushing a bike with shoping bags accross the road."
+  },
+  {
+    "objectID": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#stories-of-dangerous-behaviour-by-ai-chatbots",
+    "href": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#stories-of-dangerous-behaviour-by-ai-chatbots",
+    "title": "Ethical Considerations in Using LLMs",
+    "section": "Stories of dangerous behaviour by AI chatbots",
+    "text": "Stories of dangerous behaviour by AI chatbots\n\nNYtimes: A Conversation With Bing’s Chatbot Left Me Deeply Unsettled\n\n“It (red: Sydney chatbot) then tried to convince me that I was unhappy in my marriage, and that I should leave my wife and be with it instead.”\n\nUnable to verify: La Libre Belgique story: Without these conversations with the Eliza chatbot, my husband would still be here\n\n\nScreenshots of Business Insider’s disturbing conversation with “Eliza,” a chatbot from Chai Research."
+  },
+  {
+    "objectID": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#stories-of-dangerous-behaviour-by-ai-chatbots-1",
+    "href": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#stories-of-dangerous-behaviour-by-ai-chatbots-1",
+    "title": "Ethical Considerations in Using LLMs",
+    "section": "Stories of dangerous behaviour by AI chatbots",
+    "text": "Stories of dangerous behaviour by AI chatbots\n\nGoogle Gemini tells user to ‘Please die’\nMother says AI chatbot led her son to kill himself in lawsuit against its maker"
+  },
+  {
+    "objectID": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#importance-of-human-in-the-loop",
+    "href": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#importance-of-human-in-the-loop",
+    "title": "Ethical Considerations in Using LLMs",
+    "section": "Importance of human-in-the-loop",
+    "text": "Importance of human-in-the-loop\n\nQuality Control: Because of the generative design LLMs are prone to errors. Require human checks and feedback to ensure accuracy of the output.\nHuman (ethical) Judgement: Some decisions require human (ethical) judgment, especially in complex, nuanced situations where the context matters.\n\n My personal beliefs: \n\nGenerative AI is an amazing transformative tool, but not an autonomous agent\nYou are responsible for the mistakes you make when using generative AI:\n\nMake sure the risks are known\nMake sure the risks are manageble\nIf not possible, make sure the risks are acceptable"
+  },
+  {
+    "objectID": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#what-constitutes-appropriate-content",
+    "href": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#what-constitutes-appropriate-content",
+    "title": "Ethical Considerations in Using LLMs",
+    "section": "What constitutes appropriate content?",
+    "text": "What constitutes appropriate content?\n\n\n\n\n\n\n\n\nModel\nSource\nRestrictions\n\n\n\n\nChatGPT by OpenAI\nClosed source\nStrongly moderated and curated\n\n\nGrok by Xai\nClosed source\nLess restrictions\n\n\nLlama-models by Meta\nOpen source\nCan be finetuned for any purpose\n\n\n\n\n\nKeep in mind: Nobody is sharing the most important part: HIGH QUALITY DATA\n\n\n\n\n\n\nA reddit pol on the most annoying ChatGPT responses"
+  },
+  {
+    "objectID": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#overview-2",
+    "href": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#overview-2",
+    "title": "Ethical Considerations in Using LLMs",
+    "section": "Overview",
+    "text": "Overview\n\n\nBiases and Misinformation\nThe Dark Side of LLMs\nGroup discussion"
+  },
+  {
+    "objectID": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#overview-3",
+    "href": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#overview-3",
+    "title": "Ethical Considerations in Using LLMs",
+    "section": "Overview",
+    "text": "Overview\n\n\nBiases and Misinformation\nThe Dark Side of LLMs\nGroup discussion"
+  },
+  {
+    "objectID": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#copyright-issues-and-llms",
+    "href": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#copyright-issues-and-llms",
+    "title": "Ethical Considerations in Using LLMs",
+    "section": "Copyright issues and LLMs",
+    "text": "Copyright issues and LLMs\n\nCan the output be copyrighted?\nCan they be trained on copyrighted materials?\nCan you claim contain generated by LLMs is infringing copyright?\nOpen source code does not mean no licenses apply:\n\nGPL: “You may use my code as long as you also release your code open source”\n\n\n\n\n\n\n\n\n@github copilot, with \"public code\" blocked, emits large chunks of my copyrighted code, with no attribution, no LGPL license. For example, the simple prompt \"sparse matrix transpose, cs_\" produces my cs_transpose in CSparse. My code on left, github on right. Not OK. pic.twitter.com/sqpOThi8nf\n\n— Tim Davis (@DocSparse) October 16, 2022\n\n\n\n\n\n\n\n\n\n\n\ndeveloper Tim Davis, a professor of computer science and engineering at Texas A&M University"
+  },
+  {
+    "objectID": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#privacy-issues-and-llms",
+    "href": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#privacy-issues-and-llms",
+    "title": "Ethical Considerations in Using LLMs",
+    "section": "Privacy issues and LLMs",
+    "text": "Privacy issues and LLMs\n\nCan companies train LLMs on (scraped) private data without consent?\n\nWhat if LLMs memorise private data?\n\nHow can we mitigate inference of private information by LLMs?\n\nhttps://llm-privacy.org/\n\nHow can we trust third-parties with our proprietary/private information?"
+  },
+  {
+    "objectID": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#current-view-dutch-government",
+    "href": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#current-view-dutch-government",
+    "title": "Ethical Considerations in Using LLMs",
+    "section": "Current view Dutch-government",
+    "text": "Current view Dutch-government\n\n(Overheidsbrede visie Generatieve AI; 01-01-2024):\n\n\n\nNiet-gecontracteerde generatieve AI-toepassingen voldoen over het algemeen niet aantoonbaar aan de geldende privacy- en auteursrechtelijke wetgeving. Zodoende is het gebruik hiervan door Rijksorganisaties (of in opdracht daarvan) niet toegestaan, in die gevallen waarin het risico bestaat dat wetgeving wordt overtreden, tenzij de aanbieder en de gebruiker aantoonbaar voldoen aan de geldende wet- en regelgeving."
+  },
+  {
+    "objectID": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#transparency-issues-of-llms",
+    "href": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#transparency-issues-of-llms",
+    "title": "Ethical Considerations in Using LLMs",
+    "section": "Transparency issues of LLMs",
+    "text": "Transparency issues of LLMs\n\nHow can we trust models that are “black boxes”?\n\nEspecially if aren’t even sure what these models look like or how they were trained?\n\nHow can these models be used if they can generate ‘hallucinations’ at any point?\nHow can we prevent the use of LLMs for unsuited usecases?"
+  },
+  {
+    "objectID": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#misuse-of-llms",
+    "href": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#misuse-of-llms",
+    "title": "Ethical Considerations in Using LLMs",
+    "section": "Misuse of LLMs",
+    "text": "Misuse of LLMs\n\n\n\nHow can we prevent the automated generation of misinformation at scale?\nHow can we prevent the use of these techniques for spam, identity fraud, and worse?\nWho should decide what misuse of LLMs means?"
+  },
+  {
+    "objectID": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#are-these-ai-developments-safe",
+    "href": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#are-these-ai-developments-safe",
+    "title": "Ethical Considerations in Using LLMs",
+    "section": "Are these AI developments safe?",
+    "text": "Are these AI developments safe?\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBBC: AI ‘godfather’ Geoffrey Hinton tells the BBC of AI dangers after he quits Google\n\nBBC: AI ‘godfather’ Yoshua Bengio feels ‘lost’ over life’s work\n\nBBC: Yann LeCun says AI won’t take over the world or destroy jobs forever\n\n\n\nGeoffrey E. Hinton is internationally distinguished for his work on artificial neural nets, especially how they can be designed to learn without the aid of a human teacher. This may well be the start of autonomous intelligent brain-like machines.\nGeoffrey Hinton, Yann LeCun, and Joshua Bengio won the 2018 Turing Award. Highest distinction in computer science."
+  },
+  {
+    "objectID": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#are-these-ai-developments-safe-1",
+    "href": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#are-these-ai-developments-safe-1",
+    "title": "Ethical Considerations in Using LLMs",
+    "section": "Are these AI developments safe?",
+    "text": "Are these AI developments safe?\n\n\n\n\n\nBI: AI one-percenters seizing power forever is the real doomsday scenario, warns AI godfather\n\n\nVery real threat in current social media ecosystem:\n\nRomanian election result annulment due to Election Interference\nReport On The Investigation Into Russian Interference In The 2016 Presidential Election, R. Mueller\nSpeculative: Whistleblower: X’s Role in 2024 Election Interference via AI-bots"
+  },
+  {
+    "objectID": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#are-these-ai-developments-safe-2",
+    "href": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#are-these-ai-developments-safe-2",
+    "title": "Ethical Considerations in Using LLMs",
+    "section": "Are these AI developments safe?",
+    "text": "Are these AI developments safe?\n\n\n\nBI: Google Brain cofounder says Big Tech companies are inflating fears about the risks of AI wiping out humanity because they want to dominate the market\n\nAndrew NG: head of Google Brain and was the former Chief Scientist at Baidu, Stanford professor"
+  },
+  {
+    "objectID": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#should-there-be-governmental-oversight-on-ai",
+    "href": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#should-there-be-governmental-oversight-on-ai",
+    "title": "Ethical Considerations in Using LLMs",
+    "section": "Should there be governmental oversight on AI",
+    "text": "Should there be governmental oversight on AI\n\n22 march 2023 - Call for pause on giant AI development\n\n6 months\ndevelop and implement a shared safety protocols\nwork with policymakers to dramatically accelerate development of robust AI governance systems\n“…new and capable regulatory authorities dedicated to AI”\n\nU.S. senate hearing: Oversight of A.I.: Rules for Artificial Intelligence"
+  },
+  {
+    "objectID": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#eu-ai-act",
+    "href": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#eu-ai-act",
+    "title": "Ethical Considerations in Using LLMs",
+    "section": "EU AI Act",
+    "text": "EU AI Act\n\n\nWas just passed earlier this month, main effects:\n\nUnacceptable risk AI systems will be banned\n\nReal time biometric identification\nBehavioural manipulation\nSocial scoring systems\n\nAI needs to be transparant\n\nYou must know if you are interacting with AI\nCompanies must disclose if content was generated with AI\n\nThe setup of a new European AI Office to coordinate compliance, implementation, and enforcement of the AI Act\n\nTasked with oversight of General Purpose AI models across Europe"
+  },
+  {
+    "objectID": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#the-economic-impact-of-ai",
+    "href": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#the-economic-impact-of-ai",
+    "title": "Ethical Considerations in Using LLMs",
+    "section": "The economic impact of AI",
+    "text": "The economic impact of AI\n\nWill it take (many of) our jobs?\nWill it create jobs?\nOr will it just make us more efficient at our current job?"
+  },
+  {
+    "objectID": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#climate-impact-of-large-language-models",
+    "href": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#climate-impact-of-large-language-models",
+    "title": "Ethical Considerations in Using LLMs",
+    "section": "Climate impact of large language models",
+    "text": "Climate impact of large language models\n\nThese models are very compute intensive:\n\nIn the training process\nBut also during inference!\n\nEstimated to use 0.5%-2% of global energy usage in 2026 (International Energy Agency - Electricity forecast 2024)\nHow can we justify this (inefficient) use of technology?"
+  },
+  {
+    "objectID": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#training-the-model-via-rlhf",
+    "href": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#training-the-model-via-rlhf",
+    "title": "Ethical Considerations in Using LLMs",
+    "section": "Training the model via RLHF",
+    "text": "Training the model via RLHF\n\n\n\nLow-wage workers in Kenia were paid to help collect data for the ‘moderation’ tool:\n\nTraumatising work\n\n\n\n Time: Exclusive: OpenAI Used Kenyan Workers on Less Than $2 Per Hour to Make ChatGPT Less Toxic"
+  },
+  {
+    "objectID": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#use-of-llms-for-essays-homework-etc.-cannot-be-reliably-detected.",
+    "href": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#use-of-llms-for-essays-homework-etc.-cannot-be-reliably-detected.",
+    "title": "Ethical Considerations in Using LLMs",
+    "section": "Use of LLMs for essays, homework, etc. cannot be reliably detected.",
+    "text": "Use of LLMs for essays, homework, etc. cannot be reliably detected.\n\n\n\nAI-detectors don’t work, which is creating serious issues for students. \n\n\n\nAI-detectors don’t work, which is disrupting how homework is given and made."
+  },
+  {
+    "objectID": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#overview-4",
+    "href": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#overview-4",
+    "title": "Ethical Considerations in Using LLMs",
+    "section": "Overview",
+    "text": "Overview\n\n\nBiases and Misinformation\nThe Dark Side of LLMs\nGroup discussion"
+  },
+  {
+    "objectID": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#overview-5",
+    "href": "slides/day_1/5.Ethical_Considerations_in_Using_LLMs.html#overview-5",
+    "title": "Ethical Considerations in Using LLMs",
+    "section": "Overview",
+    "text": "Overview\n\n\nBiases and Misinformation\nThe Dark Side of LLMs\nGroup discussion"
   },
   {
     "objectID": "slides/day_2/2.NLP_with_LLMs.html#nlp-lifecycle-on-its-head",

@@ -17,7 +17,7 @@ header-includes:
   - \fancyhead[C]{\textbf{Prompt Engineering Exercises}}
   - \fancyhead[R]{\thepage}
   - \fancyhead[L]{\ }
-  - \fancyfoot[L]{May 31, 2024}
+  - \fancyfoot[L]{Februari, 2025}
   - \fancyfoot[C]{ }
   - \fancyfoot[R]{\thepage}
   - \pagestyle{fancy}
@@ -49,7 +49,7 @@ header-includes:
 ---
 
 \section*{Google Colab}
-You can make these exercises using the general [google colab notebook](https://colab.research.google.com/github/avvorstenbosch/Masterclass-LLMs-for-Data-Science/blob/main/exercises/day_1/Google_Colab_General_notebook_for_assignments.ipynb).
+You can make these exercises using the general [google colab notebook](https://colab.research.google.com/drive/1LnsvqzL8BjO3m52siYJpakS-uR64B9pI?usp=sharing).
 Please take a few minutes to read through the notebook to familiarize yourself with the environment.
 
 \section*{Prompting Cheatsheet}
