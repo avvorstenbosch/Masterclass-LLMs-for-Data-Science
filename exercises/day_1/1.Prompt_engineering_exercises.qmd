@@ -17,7 +17,7 @@ header-includes:
   - \fancyhead[C]{\textbf{Prompt Engineering Exercises}}
   - \fancyhead[R]{\thepage}
   - \fancyhead[L]{\ }
-  - \fancyfoot[L]{May 31, 2024}
+  - \fancyfoot[L]{Februari, 2025}
   - \fancyfoot[C]{ }
   - \fancyfoot[R]{\thepage}
   - \pagestyle{fancy}
