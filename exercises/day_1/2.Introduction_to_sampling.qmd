@@ -42,7 +42,7 @@ header-includes:
       vshift=6cm,
       hshift=-3cm,
       contents={
-        \includegraphics[width=8cm,keepaspectratio]{../../slides/day_1/figures/banner.png}
+        \includegraphics[width=8cm,keepaspectratio]{../../../slides/day_1/figures/banner.png}
         }
       }
 ---
@@ -57,8 +57,16 @@ Run `help(generate_response)` to see the documentation of the function.
 
 Experiment with the various parameters of LLM response:
 
--   What happens when you adjust temperature to 0? And what happens when you adjust temperature to 2?
+-   What happens when you adjust temperature to 0.4? And what happens when you adjust temperature to 0?
 -   What happens when you adjust max_tokens? 
+
+\begin{mdframed}[style=answers  ]
+\textbf{Answer:}\newline
+Adjusting the temperature determines how much randomness is added to the model's output. A temperature of 0 will result in the model always choosing the most likely token, while a temperature of 1 will result in the model choosing tokens according to their probabilities. Thus a temperature below 1 will make the model more deterministic, while a temperature above 1 will make the model more random. `llama-cpp` does not support temperatures above 1, so the maximum value is 1.
+
+Adjusting the max\_tokens determines how long the model response is allowed to be before we cut if off. 
+\end{mdframed}
+
 
 \newpage
 # Exercise: Iterative prompt development on a movie review
@@ -92,10 +100,29 @@ Does it work?
 While we cannot really look into the inner workings of the models, it can be informative to look at the outputs of the model. The logits are the raw outputs of the model, before they are transformed into probabilities.
 These are accessible to the user, and allow us to look into the sampling options of the model. 
 
+For this exercise you need to reload your model adding `logits_all=True` to the function call:
+
+```{.python}
+# Load you llm model
+llm = Llama.from_pretrained(
+    # Huggingface repo name
+    repo_id="unsloth/gemma-3-12b-it-GGUF",
+    # select the quant file within the repo you want '*' is a wildcard selector
+    filename="*Q6_K.gguf",
+    n_gpu_layers=-1,
+    n_ctx=8192, # this is 25 A4 pages of context window!
+    verbose=False
+    logits_all=True
+)
+```
+
+Use the `1.3 Clear GPU VRAM` chunk to clear your VRAM. So you can load the model again. 
+
 ## The quick Brown Fox
 
 Using the low-level API for llama-cpp, we are going to look at what possible completions the model generates for the phrase: `The quick brown fox`.
-Use the code below to look at the completions.
+Use the code below to look at the completions. What do they look like? What happens when you adjust the temperature in block 2 where the probabilities are calculated?
+What happens when you change the temperature to 0.1? And what happens when you change the temperature to 2?
 
 ```{.python}
 # ---------------------------
@@ -118,7 +145,7 @@ response = llm(
 # 2. Retrieve and process the logits for the last token generated
 # ---------------------------
 logits = np.array(llm.eval_logits)  # shape: (vocab_size,)
-last_token_logits = logits.squeeze()# shape: (vocab_size,)
+last_token_logits = logits[-1]      # shape: (vocab_size,)
 
 # Compute probabilities using softmax:
 t = 0.8 #         sampling temperature
@@ -155,9 +182,49 @@ for i in range(0, n):  # Last n elements in the sorted highest indices
 Now use the chat completion framework to let the model generate responses to a question. 
 Give the model a name in the system prompt, and ask it what it's name is in the user prompt.
 
+```{.python}
+# specify the system message
+system_role = """
+<-- your input here -->
+"""
+
+# Provide your specific input
+
+prompt = """
+<-- your input here -->
+"""
+
+messages = [
+    {"role": "system", "content": system_role},
+    {"role": "user", "content": prompt}
+]
+
+# ---------------------------
+# 1. Load your model and set up the prompt
+# ---------------------------
+# Use a short prompt so that we get the full logits distribution for each generated token.
+# Note: tokenize() expects bytes.
+prompt_tokens = llm.tokenize(prompt.encode("utf-8"))
+
+# Generate several tokens; here we generate 1 tokens.
+response = llm.create_chat_completion(
+    messages=messages,
+    max_tokens=1,
+    temperature = 0)
+```
 Visualize the output probabilities in a bar-chart using the code provided below. Plotting all tokens is very slow, so we filter on a reasonable threshold value. 
 
+
 ```{.python}
+import matplotlib.pyplot as plt
+logits = np.array(llm.eval_logits)  # shape: (vocab_size,)
+last_token_logits = logits[-1]      # shape: (vocab_size,)
+
+# Compute probabilities using softmax:
+t = 0.8 #         sampling temperature
+exp_logits = np.exp(last_token_logits/t)
+probs = exp_logits / np.sum(exp_logits)
+
 # ---------------------------
 # 1. Filter and sort tokens based on probability
 # ---------------------------
@@ -211,3 +278,4 @@ Again use the chat completions framework:
 
 Visualize the output probabilities in a bar-chart using the code provided above.
 Is this what you would expect? Can you get the distribution to change?
+

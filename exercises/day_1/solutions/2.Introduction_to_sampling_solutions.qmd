@@ -106,12 +106,12 @@ For this exercise you need to reload your model adding `logits_all=True` to the 
 # Load you llm model
 llm = Llama.from_pretrained(
     # Huggingface repo name
-    repo_id="bartowski/Meta-Llama-3.1-8B-Instruct-GGUF",
+    repo_id="unsloth/gemma-3-12b-it-GGUF",
     # select the quant file within the repo you want '*' is a wildcard selector
     filename="*Q6_K.gguf",
     n_gpu_layers=-1,
-    n_ctx=32518, # this is 50 A4 pages of context window!
-    verbose=False,
+    n_ctx=8192, # this is 25 A4 pages of context window!
+    verbose=False
     logits_all=True
 )
 ```
@@ -235,6 +235,15 @@ Visualize the output probabilities in a bar-chart using the code provided below.
 
 
 ```{.python}
+import matplotlib.pyplot as plt
+logits = np.array(llm.eval_logits)  # shape: (vocab_size,)
+last_token_logits = logits[-1]      # shape: (vocab_size,)
+
+# Compute probabilities using softmax:
+t = 0.8 #         sampling temperature
+exp_logits = np.exp(last_token_logits/t)
+probs = exp_logits / np.sum(exp_logits)
+
 # ---------------------------
 # 1. Filter and sort tokens based on probability
 # ---------------------------
