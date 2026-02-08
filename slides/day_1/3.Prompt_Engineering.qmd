@@ -387,6 +387,17 @@ The final prompt you output should adhere to the following structure below. Do n
 ```
 
 
+## Prompting workflow for complex tasks
+
+Prompting workflow:\
+Write prompt &rarr; Refine via Meta-prompt &rarr; Finetune prompt &rarr; Evaluate Prompt &rarr;\
+<span class="highlighted-text">Repeat if neccessary</span>
+
+- Add all the `context` you can meta prompt task. 
+- This workflow saves you a lot of time on complex inference task using reasoning models and deep research workflows
+- More time in prompt development = less time in redoing inference
+
+
 
 # Prompting for image Generation {background-image="./figures/image-generation.png" background-opacity=0.45}
 
