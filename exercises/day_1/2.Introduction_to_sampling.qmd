@@ -42,7 +42,7 @@ header-includes:
       vshift=6cm,
       hshift=-3cm,
       contents={
-        \includegraphics[width=8cm,keepaspectratio]{../../../slides/day_1/figures/banner.png}
+        \includegraphics[width=8cm,keepaspectratio]{../../slides/day_1/figures/banner.png}
         }
       }
 ---
