@@ -625,9 +625,9 @@ Foundational language model that:
 
 :::
 
-# ChatGPT3.5 vs GPT4{.smaller}
+# LLM developments - proprietary {.smaller}
 
-| Feature/Aspect           | GPT-3.5                                      | GPT-4(o)                                               |
+| Feature/Aspect           | GPT-3.5                                      | Newer Models                                               |
 |--------------------------|----------------------------------------------|-----------------------------------------------------|
 | **Problem-Solving**      | Standard problem-solving skills                 | Greater accuracy and broader knowledge              |
 | **Creativity**           | Standard                                     | More creative and collaborative                      |
@@ -637,4 +637,19 @@ Foundational language model that:
 | **Extra features**   | None                                    | - RAG <br> - Advanced Data Analysis  |
 | **Factual Accuracy**     | Standard                   | more likely to produce factual responses        |
 | **Command Adherence**    | Standard                         | More likely to adhere to prompt                     |
+| **Hallucinations**     | High                   | A lot lower      |
+: {.custom-table }
+
+# LLM developments - Open Weights vs Proprietary{.smaller}
+
+| Feature/Aspect           | Proprietary (ChatGPT/Gemini/Mistral)        | Open-Weights  Models                                               |
+|--------------------------|----------------------------------------------|-----------------------------------------------------|
+| **Problem-Solving**      | Deep Research modes and a lot of `reasoning` compute  | Limited compute due to hardware              |
+| **Speed**           | Can be fast, noticable slowdown with heavy use    | Faster, but lesser quality                      |
+| **Context Length**       |  128K+ tokens                 | ~8K to ~128K tokens context                             |
+| **Multimodality**        | Standard     | Available, but not default   |
+| **Factual Accuracy**     | Higher, especially with tool support | low, requires RAG for most usecases   |
+| **Instruction following**    | High, but less controlable settings          | Highly controlable settings, but lesser base instruction following                      |
+| **Hallucinations**     | High                   | more likely to produce factual responses        |
+| **Privacy** | Low, external processing by third parties | High, best option for sensitive data/information |
 : {.custom-table }
