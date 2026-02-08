@@ -1,0 +1,1479 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.4.554">
+
+  <meta name="author" content="Alex van Vorstenbosch">
+  <meta name="dcterms.date" content="2025-02-01">
+  <title>LLMs for Data Science - Increased efficiency with LLMs</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #d3d7c1; background-color: #201f1f; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #d3d7c1; } /* Normal */
+    code span.al { color: #e85848; background-color: #451e1a; font-weight: bold; } /* Alert */
+    code span.an { color: #ad7fa8; } /* Annotation */
+    code span.at { color: #ad7fa8; } /* Attribute */
+    code span.bn { color: #edd400; } /* BaseN */
+    code span.bu { color: #729fcf; } /* BuiltIn */
+    code span.cf { color: #ffffff; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #ce5c00; } /* Char */
+    code span.cn { color: #edd400; font-weight: bold; } /* Constant */
+    code span.co { color: #30a100; } /* Comment */
+    code span.cv { color: #ad7fa8; } /* CommentVar */
+    code span.do { color: #4e9a06; } /* Documentation */
+    code span.dt { color: #508ed8; } /* DataType */
+    code span.dv { color: #edd400; } /* DecVal */
+    code span.er { color: #e85848; text-decoration: underline; } /* Error */
+    code span.ex { color: #508ed8; font-weight: bold; } /* Extension */
+    code span.fl { color: #ce5c00; } /* Float */
+    code span.fu { color: #729fcf; font-weight: bold; } /* Function */
+    code span.im { color: #ad7fa8; } /* Import */
+    code span.in { color: #c0a25f; } /* Information */
+    code span.kw { color: #ffffff; font-weight: bold; } /* Keyword */
+    code span.op { color: #eeeeec; } /* Operator */
+    code span.ot { color: #edd400; } /* Other */
+    code span.pp { color: #ad7fa8; } /* Preprocessor */
+    code span.re { color: #508ed8; background-color: #1c2c3f; } /* RegionMarker */
+    code span.sc { color: #ce5c00; } /* SpecialChar */
+    code span.ss { color: #fce94f; } /* SpecialString */
+    code span.st { color: #edd400; } /* String */
+    code span.va { color: #ce5c00; } /* Variable */
+    code span.vs { color: #c4a000; } /* VerbatimString */
+    code span.wa { color: #e85848; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto.css">
+  <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
+  }
+
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
+
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-titled.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-titled) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-titled.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-titled .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-titled .callout-title  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-titled.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-titled.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-title {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-title {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-title {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-titled .callout-body > .callout-content > :last-child {
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
+  }
+
+  .callout.callout-titled .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-titled) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-title {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-title {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-title {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-title {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-title {
+    background-color: #ffe5d0
+  }
+
+  </style>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-dark">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" data-background-image="./figures/Increased-efficiency-with-llms.webp" data-background-opacity="0.5" class="quarto-title-block center">
+  <h1 class="title">Increased efficiency with LLMs</h1>
+  <p class="subtitle">A few projects highlighted</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Alex van Vorstenbosch 
+</div>
+</div>
+</div>
+
+  <p class="date">2025-02-01</p>
+</section>
+<section id="how-should-we-interact-with-documents" class="slide level2">
+<h2>How should we interact with documents?</h2>
+<ul>
+<li class="fragment">Many documents we are interested in are too large for the context window of LLMs
+<ul>
+<li class="fragment">For the GPT4o-API this is 128K tokens!! (200-300 pages)</li>
+</ul></li>
+<li class="fragment">But even then:
+<ul>
+<li class="fragment">You might want to search through a large collection of large documents:<br>
+
+<ul>
+<li class="fragment"><span class="highlighted-text">your companies knowledge base</span></li>
+<li class="fragment">100s of financial reports</li>
+<li class="fragment">Wikipedia</li>
+<li class="fragment">etc.</li>
+</ul></li>
+<li class="fragment">You might not want to add all the documents to the context window due to:
+<ul>
+<li class="fragment">Speed issues</li>
+<li class="fragment">Cost issues</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="finding-the-right-context-to-answer-the-question" class="slide level2 full-bg-slide" data-background-image="./figures/retrieval-augmented-generation.png">
+<h2>Finding the right context to answer the question</h2>
+</section>
+<section id="finding-the-right-context-to-answer-the-question-1" class="slide level2 full-bg-slide" data-background-image="./figures/retrieval-augmented-generation2.png">
+<h2>Finding the right context to answer the question</h2>
+</section>
+<section id="the-solution-retrieval-augmented-generation" class="slide level2">
+<h2>The Solution: Retrieval-Augmented Generation</h2>
+<ul>
+<li class="fragment">RAG couples your generative model to a knowledge base via <span class="highlighted-text">chunks </span>.</li>
+<li class="fragment"><span class="highlighted-text">chunks </span> = <em>A piece of text found using semantic search</em>(embeddings)</li>
+<li class="fragment">combines the strengths of <span class="highlighted-text">search</span> methods and <span class="highlighted-text">generative models</span></li>
+<li class="fragment">Using a <span class="highlighted-text">search engine</span> to find relevant text chunks, and <span class="highlighted-text">Large Language Models</span> to reason about them.</li>
+<li class="fragment">Commonly used when we require precise information from documentation, such as legal texts, research papers, or customer support databases.</li>
+</ul>
+
+<img data-src="./figures/retrieval-augmented-generation2.png" class="quarto-figure quarto-figure-center;width=1500px r-stretch quarto-figure-center"></section>
+<section id="automated-data-analysis-with-chatgpt" class="slide level2">
+<h2>Automated Data Analysis with ChatGPT</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li class="fragment"><span class="highlighted-text"><strong>Exploratory Data Analysis</strong></span>:<br>
+Automatically start analysing your dataset</li>
+<li class="fragment"><span class="highlighted-text"><strong>Interactive customization</strong></span>:<br>
+
+<ul>
+<li class="fragment">Customize the analysis and charts by just chatting!</li>
+<li class="fragment">No coding experience needed!</li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p><img data-src="./figures/ADA.webp" width="500"></p>
+</div><!--column-->
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="fragment">
+<p><strong>Supported File Types</strong><br>
+</p>
+</div>
+<!--fragment-->
+<div class="fragment">
+<div>
+<ul>
+<li>Excel (.xls / .xlsx)</li>
+<li>CSV (.csv)</li>
+<li>PDF (.pdf)</li>
+<li>JSON</li>
+</ul>
+</div>
+<!--nonincremental-->
+</div>
+<!--fragment-->
+</div><!--column--><div class="column" style="width:50%;">
+<div class="fragment">
+<p><strong>File Uploads</strong>:<br>
+</p>
+</div>
+<div class="fragment">
+<div>
+<ul>
+<li>Up to 10 files per conversation.</li>
+<li>Up to 20 files can be attached to a GPT as Knowledge.</li>
+</ul>
+</div>
+</div>
+</div><!--column-->
+</div>
+<!--columns-->
+</section>
+<section id="automated-data-analysis-with-chatgpt-1" class="slide level2">
+<h2>Automated Data Analysis with ChatGPT</h2>
+<div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)">
+<p><span class="highlighted-text" style="font-size: 150px;">Demo</span></p>
+</div>
+</section>
+<section id="best-practices-for-data-preparation" class="slide level2">
+<h2>Best Practices for Data Preparation</h2>
+<ul>
+<li class="fragment"><span class="highlighted-text"> <strong>Do</strong></span>:
+<ul>
+<li class="fragment">Include descriptive column headers in the first row</li>
+<li class="fragment">Use plain language for column headers</li>
+<li class="fragment">Use one row per record</li>
+</ul></li>
+<li class="fragment"><span class="highlighted-text"> <strong>Don’t</strong></span>:
+<ul>
+<li class="fragment">Include multiple sections and tables in a single spreadsheet</li>
+<li class="fragment">Include empty rows or columns</li>
+<li class="fragment">Include images containing critical information</li>
+</ul></li>
+</ul>
+</section>
+<section id="applications-beyond-data-analysis" class="slide level2">
+<h2>Applications Beyond Data Analysis</h2>
+<p><strong>File Manipulation and Generation</strong><br>
+</p>
+<ul>
+<li class="fragment"><p>“<em>Please remove the background of this image</em>”<br>
+<span class="highlighted-text" style="font-size: 150px; margin-left: 25%;text-align:center">Demo</span></p></li>
+<li class="fragment"><p>“<em>Please make an excel template for my planner</em>”<br>
+<span class="highlighted-text" style="font-size: 150px; margin-left: 25%;text-align:center">Demo</span></p></li>
+</ul>
+</section>
+<section id="openai-gpts-agents" class="slide level2">
+<h2>OpenAI GPTs (Agents)</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment"><span class="highlighted-text"><strong>Customization</strong></span>:<br>
+Create tailored versions of ChatGPT for specific purposes.</li>
+<li class="fragment"><span class="highlighted-text"><strong>No Coding Required</strong></span>:<br>
+Easily build GPTs for personal use, internal company use, or public sharing.</li>
+<li class="fragment"><span class="highlighted-text"><strong>Example Applications</strong></span>:<br>
+Learning rules to board games, teaching you about math, designing stickers.</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><img data-src="./figures/gpt-store-cropped.webp"></p>
+</div>
+</div>
+</section>
+<section id="gpts-under-the-hood" class="slide level2">
+<h2>GPTs (under the hood)</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment">Re-use <span class="highlighted-text">custom instructions</span></li>
+<li class="fragment">USe 10 documents for <span class="highlighted-text">RAG</span> knowledge</li>
+<li class="fragment">(advanced) <span class="highlighted-text">API-acces</span> to external services</li>
+<li class="fragment"><span class="highlighted-text">Make GPTs for your most used prompts</span> and insert them in your chat at any moment with <span class="highlighted-text"><span class="citation" data-cites="GPT">@GPT</span>…</span></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><img data-src="./figures/gpt-store-cropped.webp"></p>
+</div>
+</div>
+</section>
+<section id="example-gpts" class="slide level2">
+<h2>Example GPTs</h2>
+<ul>
+<li class="fragment"><span class="highlighted-text"><strong>Scholar GPT</strong></span>: RAG chat with scientific publications</li>
+<li class="fragment"><span class="highlighted-text"><strong>Wolfram</strong></span>: Solve math problems, circumventing the issues with LLMs and math by using the Wolfrom-Alpha API.</li>
+<li class="fragment"><span class="highlighted-text"><strong>Interviewer/Negotiator</strong></span>: Practice for Job Interviews or Salary Negotiations</li>
+<li class="fragment"><span class="highlighted-text"><strong>Sous Chef</strong></span>: Generates recipes you can make, based on your listed ingredients</li>
+</ul>
+<div class="fragment">
+<p><a href="https://chatgpt.com/gpts">Visit the GPT-store for many more</a></p>
+</div>
+</section>
+<section id="audio-data-with-chatgpt" class="slide level2">
+<h2>Audio Data with ChatGPT</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li class="fragment"><span class="highlighted-text"><strong>Audio input</strong></span>:<br>
+GPT models can understand spoken audio</li>
+<li class="fragment"><span class="highlighted-text"><strong>Processing</strong></span>:<br>
+Speech to Speech translation, Speech transcription</li>
+<li class="fragment"><span class="highlighted-text"><strong>Voice synthesis</strong></span>:<br>
+natural-sounding conversations with ChatGPT</li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p><img data-src="./figures/her.jpg"></p>
+</div>
+</div>
+</section>
+<section id="use-cases" class="slide level2">
+<h2>Use Cases</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li class="fragment"><span class="highlighted-text"><strong>Voice Assistants</strong></span>:<br>
+Enhancing the capabilities of voice-activated assistants with more natural and context-aware responses.</li>
+<li class="fragment"><span class="highlighted-text"><strong>Transcription Services</strong></span>:<br>
+Converting spoken language into written text for meetings, notes, etc.</li>
+<li class="fragment"><span class="highlighted-text"><strong>Language Translation</strong></span>:<br>
+Real-time translation of audio content</li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p><img data-src="./figures/her.jpg"></p>
+</div>
+</div>
+</section>
+<section>
+<section id="coding-assistants" class="title-slide slide level1 center">
+<h1>Coding-assistants</h1>
+
+</section>
+<section id="what-is-github-copilot" class="slide level2">
+<h2>What is Github Copilot</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment">an LLM-Powered Code Assistant
+<ul>
+<li class="fragment">We will talk more about LLMs in <span class="highlighted-text"> Februari 2025 </span></li>
+</ul></li>
+<li class="fragment">Developed by GitHub, OpenAI and Microsoft</li>
+<li class="fragment">Helps write code faster with AI suggestions</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><img data-src="./figures/copilot_generate_test.gif"></p>
+</div>
+</div>
+</section>
+<section id="how-does-it-work" class="slide level2">
+<h2>How Does It Work?</h2>
+<div class="columns">
+<div class="column">
+<ul>
+<li class="fragment">Based on a <span class="highlighted-text"> GPT-model </span>
+<ul>
+<li class="fragment">Originally <code>Codex</code></li>
+</ul></li>
+<li class="fragment">Trained on billions of lines of public (and private) code</li>
+<li class="fragment">Provides context-aware code completion suggestions</li>
+</ul>
+</div><div class="column">
+<p><img data-src="./figures/autoregressive-llm.jpg"></p>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:35%;">
+<div class="fragment">
+<p>Supported Languages:</p>
+</div>
+<ul>
+<li class="fragment">R</li>
+<li class="fragment">Python</li>
+<li class="fragment">JavaScript</li>
+<li class="fragment">SQL</li>
+<li class="fragment">Typescript,</li>
+<li class="fragment">C#,</li>
+<li class="fragment">C++</li>
+<li class="fragment">Ruby, Go, Rust, etc…</li>
+</ul>
+</div><div class="column" style="width:65%;">
+<ul>
+<li class="fragment">Quality of suggestions relates directly to language <span class="highlighted-text"> popularity </span> on Github</li>
+</ul>
+</div>
+</div>
+</section></section>
+<section>
+<section id="types-of-tasks-copilot-can-help-with" class="title-slide slide level1 center">
+<h1>Types of tasks Copilot can help with</h1>
+<div class="columns">
+<div class="column">
+<ul>
+<li class="fragment">Writing code</li>
+<li class="fragment">Translation between code-languages</li>
+<li class="fragment">Writing boilerplate-code</li>
+<li class="fragment">Documenting code</li>
+<li class="fragment">Writing unittests</li>
+<li class="fragment">Explainig code</li>
+<li class="fragment">Improving/Optimising code</li>
+<li class="fragment">Debugging code</li>
+<li class="fragment">Reviewing code</li>
+</ul>
+</div><div class="column">
+<p><img data-src="./figures/Copilot-image.webp"></p>
+</div>
+</div>
+</section>
+<section id="limitations-and-considerations" class="slide level2">
+<h2>Limitations and Considerations</h2>
+<ul>
+<li class="fragment">Suggestions can be far from optimal
+<ul>
+<li class="fragment">They can also be flat out wrong!</li>
+<li class="fragment">Sometimes <span class="highlighted-text"> ‘hallucinates’ </span> non-existing functions.</li>
+</ul></li>
+<li class="fragment">be mindfull of inconsistent use of libraries and style
+<ul>
+<li class="fragment">Less so when using integrated tools like <code>github copilot</code></li>
+<li class="fragment">More so when using seperate online tools like <code>ChatGPT</code></li>
+</ul></li>
+</ul>
+<div class="fragment">
+<p>Remedy:</p>
+</div>
+<ul>
+<li class="fragment">Always review and test the code!</li>
+<li class="fragment">Never just accept blindly</li>
+<li class="fragment">Try to understand what is going on</li>
+</ul>
+</section>
+<section id="security-risks" class="slide level2">
+<h2>Security Risks</h2>
+<ul>
+<li class="fragment">May produce insecure code
+<ul>
+<li class="fragment">Especially when you are more on the product development side of things</li>
+</ul></li>
+<li class="fragment">Be cautious with sensitive information
+<ul>
+<li class="fragment">Your environment can contain propriatery code or data</li>
+<li class="fragment">Never install copilot without consulting with your <span class="highlighted-text"> Security departement</span>.</li>
+</ul></li>
+</ul>
+<p>GitHub Copilot in VSCode</p>
+</section>
+<section id="github-copilot-in-vscode" class="slide level2">
+<h2>GitHub Copilot in VSCode</h2>
+<div class="columns">
+<div class="column" style="width:30;">
+<p>Copilot in VSCode - Autocomplete Your Code - Start typing code or comments - Copilot suggests completions inline - Accept with Tab - Press Ctrl + Enter to view alternatives - Extension ecosystem - Supports Copilot Chat</p>
+</div><div class="column" style="width:70;">
+<p><img data-src="./figures/invscode.png"></p>
+</div>
+</div>
+</section>
+<section id="comment-based-prompts" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Comment-Based Prompts</h2>
+<ul>
+<li class="fragment">Write a comment describing desired code</li>
+<li class="fragment">Copilot generates the code for you as ghost code (press tab to accept) Example: Calculating Mean</li>
+</ul>
+<div class="cell" data-incremental="true">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb1-1" class="hljs-ln-code"><a></a><span class="co"># Function to calculate mean of a vector</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="comment-based-prompts-1" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Comment-Based Prompts</h2>
+<div>
+<ul>
+<li>Write a comment describing desired code</li>
+<li>Copilot generates the code for you Example: Calculating Mean</li>
+</ul>
+</div>
+<div class="cell" data-incremental="true">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb2-1" class="hljs-ln-code"><a></a><span class="co"># Function to calculate mean of a vector</span></span>
+<span id="cb2-2" class="hljs-ln-code"><a></a>def <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb2-3" class="hljs-ln-code"><a></a>    mean <span class="ot">&lt;-</span> <span class="fu">sum</span>(x) <span class="sc">/</span> <span class="fu">length</span>(x)</span>
+<span id="cb2-4" class="hljs-ln-code"><a></a>    <span class="fu">return</span>(mean)</span>
+<span id="cb2-5" class="hljs-ln-code"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="asking-questions-in-comments" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Asking Questions in Comments</h2>
+<ul>
+<li class="fragment">Use Natural Language</li>
+<li class="fragment">Pose questions in comments</li>
+<li class="fragment">Only works for short questions</li>
+<li class="fragment">preferably, but not limited to, coding questions</li>
+</ul>
+<div class="cell" data-incremental="true">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb3-1" class="hljs-ln-code"><a></a><span class="co"># Q: What is a recursive function?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="asking-questions-in-comments-1" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Asking Questions in Comments</h2>
+<div>
+<ul>
+<li>Use Natural Language</li>
+<li>Pose questions in comments</li>
+<li>Only works for short questions</li>
+<li>preferably, but not limited to, coding questions</li>
+</ul>
+</div>
+<div class="cell" data-incremental="true">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb4-1" class="hljs-ln-code"><a></a><span class="co"># Q: What is a recursive function?</span></span>
+<span id="cb4-2" class="hljs-ln-code"><a></a><span class="co"># A: A recursive function is a function that calls itself within its definition. This allows the function to repeat its operation on a smaller or simpler version of the input untill a base case is reached, at which point the function returns a final result.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section></section>
+<section>
+<section id="generative-ai-for-exams" class="title-slide slide level1 center">
+<h1>Generative AI for exams</h1>
+
+</section>
+<section id="programming-exam-evaluation---dr.-nick-koning" class="slide level2">
+<h2>Programming Exam Evaluation - Dr.&nbsp;Nick Koning</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<ul>
+<li class="fragment">A practical example of LLM usage at the EUR</li>
+<li class="fragment">Graciously provided for this MC by Dr.&nbsp;Nick Koning</li>
+<li class="fragment">Accesible yet innovative usecase</li>
+</ul>
+<div class="fragment">
+<p>Context:</p>
+</div>
+<ul>
+<li class="fragment">Introduction to Programming Course - Java</li>
+<li class="fragment">16 TAs to help with grading</li>
+</ul>
+</div><div class="column" style="width:60%;">
+<iframe width="1000" height="500" src="https://www.youtube.com/embed/bIHyktT_GGs?si=A3_Ba4nEe90-pei0&amp;start=11" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="">
+</iframe>
+</div>
+</div>
+</section>
+<section id="exam-evaluation---dr.-nick-koning" class="slide level2">
+<h2>Exam Evaluation - Dr.&nbsp;Nick Koning</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<ul>
+<li class="fragment">Example question:
+<ul>
+<li class="fragment">Write code to find the <span class="highlighted-text"> second </span> largest number in the sequence.</li>
+<li class="fragment">{3, 1, 4, 5, 3, 2}
+<ul>
+<li class="fragment">4</li>
+</ul></li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:60%;">
+<p><img data-src="./figures/NK-exam-question-3.png"></p>
+</div>
+</div>
+</section>
+<section id="exam-evaluation---dr.-nick-koning-1" class="slide level2">
+<h2>Exam Evaluation - Dr.&nbsp;Nick Koning</h2>
+<p>There are 3 scenarios:</p>
+<ol type="1">
+<li class="fragment"><p>Code runs and wit right answers AutoTest: <em>full points</em></p></li>
+<li class="fragment"><p>Code runs, but get’s wrong answers: <em>Needs to be manually checked</em></p></li>
+<li class="fragment"><p>Code doesn’t run: <em>Needs to be manually checked</em></p></li>
+</ol>
+<ul>
+<li class="fragment">Manually checking code for 400 students is a lot of work
+<ul>
+<li class="fragment">Can we automate this?</li>
+<li class="fragment">ChatGPT??</li>
+</ul></li>
+</ul>
+</section>
+<section id="exam-evaluation---dr.-nick-koning-2" class="slide level2">
+<h2>Exam Evaluation - Dr.&nbsp;Nick Koning</h2>
+<p>How did he do it:</p>
+<ul>
+<li class="fragment">Webinterface was not an option, used the API</li>
+<li class="fragment">Organise students questions in seperate files</li>
+</ul>
+
+<img data-src="./figures/NK-API-coding.png" class="quarto-figure quarto-figure-right r-stretch"></section>
+<section id="exam-evaluation---dr.-nick-koning-3" class="slide level2">
+<h2>Exam Evaluation - Dr.&nbsp;Nick Koning</h2>
+<p>Quick observation:</p>
+<ul>
+<li class="fragment">Out-of-the-box ChatGPT does not work</li>
+<li class="fragment">Mediocre and inconsistent quality</li>
+</ul>
+<p>Start Small!</p>
+<ul>
+<li class="fragment">Just 3 students</li>
+<li class="fragment">First graded them manually</li>
+<li class="fragment">Main advantage of starting small:
+<ul>
+<li class="fragment">Fast</li>
+<li class="fragment">Cheap</li>
+<li class="fragment">Able to keep overview</li>
+</ul></li>
+<li class="fragment">Spent 90% of time on finetuning prototype</li>
+</ul>
+</section>
+<section id="exam-evaluation---dr.-nick-koning-4" class="slide level2">
+<h2>Exam Evaluation - Dr.&nbsp;Nick Koning</h2>
+<p>Final instructions - Role + Task: <img data-src="./figures/nk-system-prompt.png"></p>
+</section>
+<section id="exam-evaluation---dr.-nick-koning-5" class="slide level2">
+<h2>Exam Evaluation - Dr.&nbsp;Nick Koning</h2>
+<p>Final instructions - Task: <img data-src="./figures/NK-task-specification.png"></p>
+</section>
+<section id="exam-evaluation---dr.-nick-koning-6" class="slide level2">
+<h2>Exam Evaluation - Dr.&nbsp;Nick Koning</h2>
+<p>Final instructions - Task format: <img data-src="./figures/NK-output-formatting.png"></p>
+</section>
+<section id="exam-evaluation---dr.-nick-koning-7" class="slide level2">
+<h2>Exam Evaluation - Dr.&nbsp;Nick Koning</h2>
+<p>Results: <img data-src="./figures/nk-output-model.png"></p>
+</section>
+<section id="exam-evaluation---dr.-nick-koning-8" class="slide level2">
+<h2>Exam Evaluation - Dr.&nbsp;Nick Koning</h2>
+<p>Results: <img data-src="./figures/NK-3.5vs4.png"></p>
+</section>
+<section id="exam-evaluation---dr.-nick-koning-9" class="slide level2">
+<h2>Exam Evaluation - Dr.&nbsp;Nick Koning</h2>
+<p>Integrated into exam environment:</p>
+<ul>
+<li class="fragment"><p>Exams are graded as soon as student hands-in the work</p></li>
+<li class="fragment"><p>Feedback + preliminary result in 2 minutes …</p></li>
+<li class="fragment"><p>… not 2 weeks</p></li>
+<li class="fragment"><p>Human-in-the-loop: Grading serves as input for the TA’s</p>
+<ul>
+<li class="fragment">And if you don’t agree there is room for an appeal</li>
+</ul></li>
+<li class="fragment"><p>Broadly available via the <a href="https://www.codegrade.com/">CodeGrade</a></p></li>
+</ul>
+</section>
+<section id="exam-evaluation---dr.-nick-koning-10" class="slide level2">
+<h2>Exam Evaluation - Dr.&nbsp;Nick Koning</h2>
+<p>Suggestions for next steps:</p>
+<ul>
+<li class="fragment">Finetune a model for grading:
+<ul>
+<li class="fragment">Show don’t tell: It allows for more concise prompts as you’ve shown it what answers you expect</li>
+<li class="fragment">Should align GPT grades better with TA grades</li>
+</ul></li>
+<li class="fragment">Ask the model for Json output:
+<ul>
+<li class="fragment">Can use JSON mode introduced on <a href="https://openai.com/blog/new-models-and-developer-products-announced-at-devday">Devday</a><br>
+</li>
+<li class="fragment">No need for regex parsing of response anymore</li>
+</ul></li>
+</ul>
+</section></section>
+<section>
+<section id="generative-ai-for-healthcare" class="title-slide slide level1 center">
+<h1>Generative AI for healthcare</h1>
+
+</section>
+<section id="gpt4-answering-patient-questions-in-groningen" class="slide level2">
+<h2>GPT4 answering patient questions in Groningen</h2>
+
+<img data-src="./figures/umc-groningen.webp" class="r-stretch quarto-figure-center"><p class="caption"><a href="https://nieuws.umcg.nl/w/umcg-beantwoordt-vragen-pati%C3%ABnten-met-hulp-van-ai">UMCG beantwoordt vragen patiënten met hulp van AI</a></p></section>
+<section id="gpt4-answering-patient-questions-in-groningen-1" class="slide level2">
+<h2>GPT4 answering patient questions in Groningen</h2>
+<ul>
+<li class="fragment">UMCG get’s up to 1200 patient questions a week</li>
+<li class="fragment">Hospital staff has little time to answers such questions</li>
+</ul>
+</section>
+<section id="gpt4-answering-patient-questions-in-groningen-2" class="slide level2">
+<h2>GPT4 answering patient questions in Groningen</h2>
+<ul>
+<li class="fragment">GPT4 integrated securely inside the EPD:
+<ul>
+<li class="fragment">Access to the relevant healthrecords</li>
+</ul></li>
+<li class="fragment">Colaboration between EPIC (EPD company) and Microsoft.</li>
+</ul>
+</section>
+<section id="gpt4-answering-patient-questions-in-groningen-3" class="slide level2">
+<h2>GPT4 answering patient questions in Groningen</h2>
+<ul>
+<li class="fragment">Human-in-the-loop: GPT4 writes a draft</li>
+<li class="fragment">Healthcare providers can correct and/or expand on answer given</li>
+<li class="fragment">Research suggests people actually prefer GPT answers</li>
+</ul>
+</section>
+<section id="physicians-versus-gpt" class="slide level2">
+<h2>Physicians versus GPT</h2>
+<p><a href="https://jamanetwork.com/journals/jamainternalmedicine/article-abstract/2804309">Comparing Physician and Artificial Intelligence Chatbot Responses to Patient Questions Posted to a Public Social Media Forum</a></p>
+<ul>
+<li class="fragment">Chatbot responses preferred in <span class="highlighted-text">78.6%</span> (95% CI: 75.0%-81.8%) of the 585 evaluations.</li>
+<li class="fragment">Response length:
+<ul>
+<li class="fragment">Chatbot <span class="highlighted-text">211</span> (95% CI: 168-245) words</li>
+<li class="fragment">Physicians <span class="highlighted-text">52</span> (95% CI: 17-62) words</li>
+</ul></li>
+<li class="fragment">The proportion of good or very good quality responses:
+<ul>
+<li class="fragment">Chatbot: <span class="highlighted-text">78.5%</span>, (95% CI: 72.3%-84.1%)</li>
+<li class="fragment">Physicians: <span class="highlighted-text">22.1%</span>, (95% CI: 16.4%-28.2%).</li>
+</ul></li>
+<li class="fragment">The proportion of responses rated empathetic or very empathetic (≥4):
+<ul>
+<li class="fragment">Chatbot: <span class="highlighted-text">45.1%</span>, (95% CI: 38.5%-51.8%)</li>
+<li class="fragment">Physicians: <span class="highlighted-text">4.6%</span>, (95% CI: 2.1%-7.7%);</li>
+</ul></li>
+</ul>
+</section>
+<section id="gpt4-answering-patient-questions-in-groningen-4" class="slide level2">
+<h2>GPT4 answering patient questions in Groningen</h2>
+<ul>
+<li class="fragment">Win-win
+<ul>
+<li class="fragment">Less pressure for doctors</li>
+<li class="fragment">Better answers for patients</li>
+</ul></li>
+</ul>
+</section>
+<section id="healthcare-specific-llms-such-as-med-palm2" class="slide level2">
+<h2>Healthcare specific LLMs such as med-PaLM2</h2>
+
+<img data-src="./figures/medpalm2-ranking.png" class="r-stretch quarto-figure-center"><p class="caption"><a href="https://arxiv.org/pdf/2305.09617.pdf">16 May 2023 - Towards Expert-Level Medical Question Answering with Large Language Models</a></p></section></section>
+<section>
+<section id="generative-ai-for-learning" class="title-slide slide level1 center">
+<h1>Generative AI for learning</h1>
+
+</section>
+<section id="khanmigo-as-a-socratic-super-tutor" class="slide level2">
+<h2>Khanmigo as a socratic super tutor</h2>
+<iframe width="1250" height="750" src="https://www.youtube.com/embed/hJP5GqnTrNo? si=LsAmn-U_1rAqkOqy" style="display: block; margin-left: auto; margin-right: auto;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="">
+</iframe>
+</section>
+<section id="khanmigo-as-a-socratic-super-tutor-1" class="slide level2">
+<h2>Khanmigo as a socratic super tutor</h2>
+<ul>
+<li class="fragment">Get personalised help over a wide range of topics</li>
+<li class="fragment">Socratic method based:
+<ul>
+<li class="fragment">Not giving answers</li>
+<li class="fragment">Instead, ask thought provoking questions</li>
+<li class="fragment">Less risk of bad answers due to isolated environment</li>
+</ul></li>
+</ul>
+</section>
+<section id="finding-the-right-context-to-answer-the-question-2" class="slide level2">
+<h2>Finding the right context to answer the question</h2>
+<ul>
+<li class="fragment">These solutions all have the following in common:
+<ul>
+<li class="fragment">LLM embedded in nicely defined context</li>
+<li class="fragment">Most relevant information directly at hand as context for the model</li>
+<li class="fragment">The task is performed based on information in the context window, not model internal knowledge</li>
+</ul></li>
+</ul>
+
+<div class="quarto-auto-generated-content">
+<div class="footer footer-default">
+<p>LLMs in Practice</p>
+</div>
+</div>
+</section></section>
+    </div>
+  </div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":false},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: true,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1600,
+
+        height: 1000,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button', {
+        text: function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+      });
+      clipboard.on('success', function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      });
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+        const config = {
+          allowHTML: true,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start',
+        };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
+
+</body></html>

@@ -122,7 +122,7 @@ This makes all models except the 70B model usable on low to mid-range profession
 
 ## Try out huggingchat
 
-![](./figures/huggingface.png){.absolute left="20%" width="auto" height="500px"}
+![](./figures/hf-logo-with-title.png){.absolute left="20%" width="auto" height="500px"}
 
 <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)">
   <span class="highlighted-text" style="font-size: 150px;">[Demo](https://huggingface.co/chat/)</span>
@@ -156,7 +156,7 @@ This makes all models except the 70B model usable on low to mid-range profession
 
 ## LLM OS - Microsoft Copilot
 
-![](./figures/microsoft-copilot.avif)
+![](./figures/microsoft-copilot.png)
 
 ## Reinforcement Learning - Self-Improvement
 

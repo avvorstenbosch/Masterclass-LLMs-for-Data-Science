@@ -327,15 +327,16 @@ Andrew NG: head of Google Brain and was the former Chief Scientist at Baidu, Sta
 
 :::{.column width="60%"}
 
-Was just passed earlier this month, main effects:
+Passed in 2024, main effects:
 
 - Unacceptable risk AI systems will be banned
   - Real time biometric identification
   - Behavioural manipulation
   - Social scoring systems
-- AI needs to be transparant
+- Limited Risk AI needs to be transparant:
   - You must know if you are interacting with AI
   - Companies must disclose if content was generated with AI
+  - Chatbots are classified as limited risk
 - The setup of a new European AI Office to coordinate compliance, implementation, and enforcement of the AI Act
   - Tasked with oversight of General Purpose AI models across Europe
 
