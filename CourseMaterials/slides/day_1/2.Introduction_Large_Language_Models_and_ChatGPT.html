@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.4.554">
 
   <meta name="author" content="Alex van Vorstenbosch">
-  <meta name="dcterms.date" content="2025-02-01">
+  <meta name="dcterms.date" content="2026-02-01">
   <title>LLMs for Data Science - Introduction to Large Language Models, ChatGPT, and Generative AI</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -339,7 +339,7 @@ Alex van Vorstenbosch
 </div>
 </div>
 
-  <p class="date">2025-02-01</p>
+  <p class="date">2026-02-01</p>
 </section>
 <section id="hello-world" class="slide level2">
 <h2>Hello world!</h2>
@@ -1045,8 +1045,8 @@ A Large Language Model is a foundational language model with typically billions 
 </div>
 </div>
 </section></section>
-<section id="chatgpt3.5-vs-gpt4" class="title-slide slide level1 smaller center">
-<h1>ChatGPT3.5 vs GPT4</h1>
+<section id="llm-developments---proprietary" class="title-slide slide level1 smaller center">
+<h1>LLM developments - proprietary</h1>
 <table class="custom-table">
 <colgroup>
 <col style="width: 20%">
@@ -1057,7 +1057,7 @@ A Large Language Model is a foundational language model with typically billions 
 <tr class="header">
 <th>Feature/Aspect</th>
 <th>GPT-3.5</th>
-<th>GPT-4(o)</th>
+<th>Newer Models</th>
 </tr>
 </thead>
 <tbody>
@@ -1100,6 +1100,71 @@ A Large Language Model is a foundational language model with typically billions 
 <td><strong>Command Adherence</strong></td>
 <td>Standard</td>
 <td>More likely to adhere to prompt</td>
+</tr>
+<tr class="odd">
+<td><strong>Hallucinations</strong></td>
+<td>High</td>
+<td>A lot lower</td>
+</tr>
+</tbody>
+</table>
+</section>
+
+<section id="llm-developments---open-weights-vs-proprietary" class="title-slide slide level1 smaller center">
+<h1>LLM developments - Open Weights vs Proprietary</h1>
+<table class="custom-table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 36%">
+<col style="width: 42%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Feature/Aspect</th>
+<th>Proprietary (ChatGPT/Gemini/Mistral)</th>
+<th>Open-Weights Models</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Problem-Solving</strong></td>
+<td>Deep Research modes and a lot of <code>reasoning</code> compute</td>
+<td>Limited compute due to hardware</td>
+</tr>
+<tr class="even">
+<td><strong>Speed</strong></td>
+<td>Can be fast, noticable slowdown with heavy use</td>
+<td>Faster, but lesser quality</td>
+</tr>
+<tr class="odd">
+<td><strong>Context Length</strong></td>
+<td>128K+ tokens</td>
+<td>~8K to ~128K tokens context</td>
+</tr>
+<tr class="even">
+<td><strong>Multimodality</strong></td>
+<td>Standard</td>
+<td>Available, but not default</td>
+</tr>
+<tr class="odd">
+<td><strong>Factual Accuracy</strong></td>
+<td>Higher, especially with tool support</td>
+<td>low, requires RAG for most usecases</td>
+</tr>
+<tr class="even">
+<td><strong>Instruction following</strong></td>
+<td>High, but less controlable settings</td>
+<td>Highly controlable settings, but lesser base instruction following</td>
+</tr>
+<tr class="odd">
+<td><strong>Hallucinations</strong></td>
+<td>High</td>
+<td>more likely to produce factual responses</td>
+</tr>
+<tr class="even">
+<td><strong>Privacy</strong></td>
+<td>Low, external processing by third parties</td>
+<td>High, best option for sensitive data/information</td>
 </tr>
 </tbody>
 </table>

@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.4.554">
 
   <meta name="author" content="Alex van Vorstenbosch">
-  <meta name="dcterms.date" content="2025-02-01">
+  <meta name="dcterms.date" content="2026-02-01">
   <title>LLMs for Data Science - Programming with LLMs</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -30,6 +30,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #d3d7c1; background-color: #201f1f; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #d3d7c1; } /* Normal */
+    code span.al { color: #e85848; background-color: #451e1a; font-weight: bold; } /* Alert */
+    code span.an { color: #ad7fa8; } /* Annotation */
+    code span.at { color: #ad7fa8; } /* Attribute */
+    code span.bn { color: #edd400; } /* BaseN */
+    code span.bu { color: #729fcf; } /* BuiltIn */
+    code span.cf { color: #ffffff; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #ce5c00; } /* Char */
+    code span.cn { color: #edd400; font-weight: bold; } /* Constant */
+    code span.co { color: #30a100; } /* Comment */
+    code span.cv { color: #ad7fa8; } /* CommentVar */
+    code span.do { color: #4e9a06; } /* Documentation */
+    code span.dt { color: #508ed8; } /* DataType */
+    code span.dv { color: #edd400; } /* DecVal */
+    code span.er { color: #e85848; text-decoration: underline; } /* Error */
+    code span.ex { color: #508ed8; font-weight: bold; } /* Extension */
+    code span.fl { color: #ce5c00; } /* Float */
+    code span.fu { color: #729fcf; font-weight: bold; } /* Function */
+    code span.im { color: #ad7fa8; } /* Import */
+    code span.in { color: #c0a25f; } /* Information */
+    code span.kw { color: #ffffff; font-weight: bold; } /* Keyword */
+    code span.op { color: #eeeeec; } /* Operator */
+    code span.ot { color: #edd400; } /* Other */
+    code span.pp { color: #ad7fa8; } /* Preprocessor */
+    code span.re { color: #508ed8; background-color: #1c2c3f; } /* RegionMarker */
+    code span.sc { color: #ce5c00; } /* SpecialChar */
+    code span.ss { color: #fce94f; } /* SpecialString */
+    code span.st { color: #edd400; } /* String */
+    code span.va { color: #ce5c00; } /* Variable */
+    code span.vs { color: #c4a000; } /* VerbatimString */
+    code span.wa { color: #e85848; } /* Warning */
   </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -340,53 +405,274 @@ Alex van Vorstenbosch
 </div>
 </div>
 
-  <p class="date">2025-02-01</p>
+  <p class="date">2026-02-01</p>
 </section>
+<section id="what-is-github-copilot" class="slide level2">
+<h2>What is Github Copilot</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment">an LLM-Powered Code Assistant</li>
+<li class="fragment">Developed by GitHub, OpenAI and Microsoft</li>
+<li class="fragment">Helps write code faster with AI suggestions</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><img data-src="./figures/copilot_generate_test.gif"></p>
+</div>
+</div>
+</section>
+<section id="how-does-it-work" class="slide level2">
+<h2>How Does It Work?</h2>
+<div class="columns">
+<div class="column">
+<ul>
+<li class="fragment">Based on a <span class="highlighted-text"> GPT-model </span>
+<ul>
+<li class="fragment">Originally <code>Codex</code></li>
+</ul></li>
+<li class="fragment">Trained on billions of lines of public (and private) code</li>
+<li class="fragment">Provides context-aware code completion suggestions</li>
+</ul>
+</div><div class="column">
+<p><img data-src="./figures/autoregressive-llm.jpg"></p>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:35%;">
+<div class="fragment">
+<p>Supported Languages:</p>
+</div>
+<ul>
+<li class="fragment">R</li>
+<li class="fragment">Python</li>
+<li class="fragment">JavaScript</li>
+<li class="fragment">SQL</li>
+<li class="fragment">Typescript,</li>
+<li class="fragment">C#,</li>
+<li class="fragment">C++</li>
+<li class="fragment">Ruby, Go, Rust, etc…</li>
+</ul>
+</div><div class="column" style="width:65%;">
+<ul>
+<li class="fragment">Quality of suggestions relates directly to language <span class="highlighted-text"> popularity </span> on Github</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="benefits-of-using-github-copilot" class="slide level2">
+<h2>Benefits of Using GitHub Copilot</h2>
+<ul>
+<li class="fragment">Increase Productivity</li>
+<li class="fragment">Reduces time spent on boilerplate code</li>
+<li class="fragment">Helps you focus on logic rather than syntax</li>
+</ul>
+</section>
+<section id="learning-tool" class="slide level2">
+<h2>Learning Tool</h2>
+<ul>
+<li class="fragment">Offers code examples and patterns</li>
+<li class="fragment">Assists in learning new libraries and functions</li>
+<li class="fragment">Suggests alternative approaches</li>
+<li class="fragment">Inspires creative solutions</li>
+</ul>
+</section>
+<section>
+<section id="types-of-tasks-copilot-can-help-with" class="title-slide slide level1 center">
+<h1>Types of tasks Copilot can help with</h1>
+<div class="columns">
+<div class="column">
+<ul>
+<li class="fragment">Writing code</li>
+<li class="fragment">Translation between code-languages</li>
+<li class="fragment">Writing boilerplate-code</li>
+<li class="fragment">Documenting code</li>
+<li class="fragment">Writing unittests</li>
+<li class="fragment">Explainig code</li>
+<li class="fragment">Improving/Optimising code</li>
+<li class="fragment">Debugging code</li>
+<li class="fragment">Reviewing code</li>
+</ul>
+</div><div class="column">
+<p><img data-src="./figures/Copilot-image.webp"></p>
+</div>
+</div>
+</section>
+<section id="limitations-and-considerations" class="slide level2">
+<h2>Limitations and Considerations</h2>
+<ul>
+<li class="fragment">Suggestions can be far from optimal
+<ul>
+<li class="fragment">They can also be flat out wrong!</li>
+<li class="fragment">Sometimes <span class="highlighted-text"> ‘hallucinates’ </span> non-existing functions.</li>
+</ul></li>
+<li class="fragment">be mindfull of inconsistent use of libraries and style
+<ul>
+<li class="fragment">Less so when using integrated tools like <code>github copilot</code></li>
+<li class="fragment">More so when using seperate tools like <code>ChatGPT</code> or local LLMs</li>
+</ul></li>
+</ul>
+<div class="fragment">
+<p>Remedy:</p>
+</div>
+<ul>
+<li class="fragment">Always review and test the code!</li>
+<li class="fragment">Never just accept blindly</li>
+<li class="fragment">Try to understand what is going on</li>
+</ul>
+</section>
+<section id="security-risks" class="slide level2">
+<h2>Security Risks</h2>
+<ul>
+<li class="fragment">May produce insecure code
+<ul>
+<li class="fragment">Especially when you are more on the product development side of things</li>
+</ul></li>
+<li class="fragment">Be cautious with sensitive information
+<ul>
+<li class="fragment">Your environment can contain propriatery code or data</li>
+<li class="fragment">Never install copilot without consulting with your <span class="highlighted-text"> Security departement</span>.</li>
+</ul></li>
+</ul>
+</section>
+<section id="intellectual-property" class="slide level2">
+<h2>Intellectual Property</h2>
+<div class="columns">
+<div class="column">
+<ul>
+<li class="fragment">Be aware of licensing issues</li>
+<li class="fragment">Generated code may resemble existing code</li>
+</ul>
+</div><div class="column">
+<blockquote class="twitter-tweet">
+<p lang="en" dir="ltr">
+<a href="https://twitter.com/github?ref_src=twsrc%5Etfw"><span class="citation" data-cites="github">@github</span></a> copilot, with "public code" blocked, emits large chunks of my copyrighted code, with no attribution, no LGPL license. For example, the simple prompt "sparse matrix transpose, cs_" produces my cs_transpose in CSparse. My code on left, github on right. Not OK. <a href="https://t.co/sqpOThi8nf">pic.twitter.com/sqpOThi8nf</a>
+</p>
+— Tim Davis (<span class="citation" data-cites="DocSparse">@DocSparse</span>) <a href="https://twitter.com/DocSparse/status/1581461734665367554?ref_src=twsrc%5Etfw">October 16, 2022</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+</div>
+</section>
+<section id="comment-based-prompts" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Comment-Based Prompts</h2>
+<ul>
+<li class="fragment">Write a comment describing desired code</li>
+<li class="fragment">Copilot generates the code for you as ghost code (press tab to accept) Example: Calculating Mean</li>
+</ul>
+<div class="cell" data-incremental="true">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb1-1" class="hljs-ln-code"><a></a><span class="co"># Function to calculate mean of a vector</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="comment-based-prompts-1" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Comment-Based Prompts</h2>
+<div>
+<ul>
+<li>Write a comment describing desired code</li>
+<li>Copilot generates the code for you Example: Calculating Mean</li>
+</ul>
+</div>
+<div class="cell" data-incremental="true">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb2-1" class="hljs-ln-code"><a></a><span class="co"># Function to calculate mean of a vector</span></span>
+<span id="cb2-2" class="hljs-ln-code"><a></a>def <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb2-3" class="hljs-ln-code"><a></a>    mean <span class="ot">&lt;-</span> <span class="fu">sum</span>(x) <span class="sc">/</span> <span class="fu">length</span>(x)</span>
+<span id="cb2-4" class="hljs-ln-code"><a></a>    <span class="fu">return</span>(mean)</span>
+<span id="cb2-5" class="hljs-ln-code"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="asking-questions-in-comments" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Asking Questions in Comments</h2>
+<ul>
+<li class="fragment">Use Natural Language</li>
+<li class="fragment">Pose questions in comments</li>
+<li class="fragment">Only works for short questions</li>
+<li class="fragment">preferably, but not limited to, coding questions</li>
+</ul>
+<div class="cell" data-incremental="true">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb3-1" class="hljs-ln-code"><a></a><span class="co"># Q: What is a recursive function?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="asking-questions-in-comments-1" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Asking Questions in Comments</h2>
+<div>
+<ul>
+<li>Use Natural Language</li>
+<li>Pose questions in comments</li>
+<li>Only works for short questions</li>
+<li>preferably, but not limited to, coding questions</li>
+</ul>
+</div>
+<div class="cell" data-incremental="true">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb4-1" class="hljs-ln-code"><a></a><span class="co"># Q: What is a recursive function?</span></span>
+<span id="cb4-2" class="hljs-ln-code"><a></a><span class="co"># A: A recursive function is a function that calls itself within its definition. This allows the function to repeat its operation on a smaller or simpler version of the input untill a base case is reached, at which point the function returns a final result.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="autocomplete-inside-projects" class="slide level2">
+<h2>Autocomplete Inside Projects</h2>
+<ul>
+<li class="fragment">Context-Aware Suggestions</li>
+<li class="fragment">Considers variables and functions in your project</li>
+<li class="fragment">Tailors suggestions to your codebase</li>
+</ul>
+<p>Example: using R-projects:</p>
+<ul>
+<li class="fragment">If you have a <code>process_data()</code> function</li>
+<li class="fragment">Copilot may suggest how to use it elsewhere</li>
+</ul>
+<p>In VSCode:</p>
+<ul>
+<li class="fragment">Copilot looks at your active file and open tabs as context for suggestions</li>
+<li class="fragment">To a degree, this helps to keep consistency in your codebase</li>
+</ul>
+</section>
+<section id="demo-github-copilot-in-rstudio" class="slide level2">
+<h2>Demo: GitHub Copilot in RStudio</h2>
+<div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)">
+<p><span class="highlighted-text" style="font-size: 150px;">Demo</span></p>
+</div>
+</section></section>
+<section>
+<section id="github-copilot-in-vscode" class="title-slide slide level1 center">
+<h1>GitHub Copilot in VSCode</h1>
+
+</section>
+<section id="github-copilot-in-vscode-1" class="slide level2">
+<h2>GitHub Copilot in VSCode</h2>
+<div class="columns">
+<div class="column" style="width:30;">
+<p>What’s Different in VSCode?</p>
+<ul>
+<li class="fragment">More extensive extension ecosystem</li>
+<li class="fragment">Supports Copilot Chat
+<ul>
+<li class="fragment">We will discuss this in the next part</li>
+</ul></li>
+<li class="fragment">Multiple Suggestions</li>
+<li class="fragment">Press Ctrl + Enter to view alternatives</li>
+</ul>
+</div><div class="column" style="width:70;">
+<p><img data-src="./figures/invscode.png"></p>
+</div>
+</div>
+</section>
+<section id="best-practices-with-github-copilot" class="slide level2">
+<h2>Best Practices with GitHub Copilot</h2>
+<ul>
+<li class="fragment">Always Review Code</li>
+<li class="fragment">Don’t blindly accept suggestions</li>
+<li class="fragment">Ensure code meets your standards</li>
+<li class="fragment">Take your time to see what is happening, or you won’t learn to code yourself!</li>
+<li class="fragment">Learn new patterns and practices</li>
+<li class="fragment">Avoid Over-Reliance</li>
+<li class="fragment">Use Copilot to enhance, not replace, your work</li>
+<li class="fragment">Continue to write code independently</li>
+</ul>
+</section></section>
 <section>
 <section id="pair-programming-with-llm-chats" class="title-slide slide level1 center">
 <h1>Pair-programming with LLM-Chats</h1>
 
 </section>
 <section id="what-can-llms-mean-for-you" class="slide level2 smaller">
-<h2>What can LLMs mean for you?</h2>
-<div class="columns">
-<div class="column">
-<ul>
-<li class="fragment">Writing code:
-<ul>
-<li class="fragment">Great for code with extensive syntax, but simple logic:
-<ul>
-<li class="fragment">Regex patterns</li>
-<li class="fragment">SQL queries</li>
-</ul></li>
-<li class="fragment">Getting better at complex logic which reasoning models such as:
-<ul>
-<li class="fragment"><a href="https://arxiv.org/abs/2501.12948">Deepseek R1</a></li>
-<li class="fragment"><a href="https://openai.com/index/learning-to-reason-with-llms/">GPT o1</a></li>
-</ul></li>
-</ul></li>
-<li class="fragment">Translation between code-languages:
-<ul>
-<li class="fragment">i.e.&nbsp;Python to R</li>
-<li class="fragment">i.e.&nbsp;R to Python</li>
-</ul></li>
-<li class="fragment">Writing boilerplate-code</li>
-<li class="fragment">Writing documentation</li>
-<li class="fragment">Writing unittests</li>
-<li class="fragment">Explainig code</li>
-<li class="fragment">Debugging code</li>
-<li class="fragment">Reviewing code
-<ul>
-<li class="fragment">Optimising code</li>
-<li class="fragment">Improving code</li>
-</ul></li>
-</ul>
-</div><div class="column">
-<p><img data-src="./figures/Gif-ChatGPT.gif"></p>
-</div>
-</div>
-</section>
-<section id="what-can-llms-mean-for-you-1" class="slide level2 smaller">
 <h2>What can LLMs mean for you?</h2>
 <div class="columns">
 <div class="column">
@@ -404,12 +690,6 @@ Alex van Vorstenbosch
 </div><div class="column">
 <p><img data-src="./figures/Gif-ChatGPT.gif"></p>
 </div>
-</div>
-</section>
-<section id="demo-github-copilot-chat-in-vscode" class="slide level2">
-<h2>Demo: GitHub Copilot Chat in VSCode</h2>
-<div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)">
-<p><span class="highlighted-text" style="font-size: 150px;">Demo</span></p>
 </div>
 </section>
 <section id="writing-code-with-llms" class="slide level2">
@@ -699,6 +979,44 @@ I placed 2nd (out of ~100,000) in <a href="https://twitter.com/hashtag/AdventOfC
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.4.554">
 
   <meta name="author" content="Alex van Vorstenbosch">
-  <meta name="dcterms.date" content="2025-02-01">
+  <meta name="dcterms.date" content="2026-02-01">
   <title>LLMs for Data Science - Introduction to Prompt Engineering</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -405,7 +405,7 @@ Alex van Vorstenbosch
 </div>
 </div>
 
-  <p class="date">2025-02-01</p>
+  <p class="date">2026-02-01</p>
 </section>
 <section id="overview" class="slide level2">
 <h2>Overview</h2>
@@ -505,7 +505,7 @@ Duration: Days</p>
 </ul></li>
 <li class="fragment">(Optional) Specify in what <span class="highlighted-text">FORMAT</span> the answer should be given.</li>
 </ul>
-<div id="49d6066d" class="cell" data-execution_count="2">
+<div id="29f94dcb" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1" data-code-line-numbers="|2|3|4|5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="ss">f"""</span></span>
 <span id="cb1-2"><a></a><span class="ss">ROLE: </span><span class="sc">{</span>ROLE<span class="sc">:</span> You are a professional translator<span class="sc">.}</span></span>
 <span id="cb1-3"><a></a><span class="ss">TASK: </span><span class="sc">{</span>TASK_DESCRIPTION<span class="sc">:</span> Translate the user <span class="bu">input</span> <span class="im">from</span> English to Dutch<span class="sc">.}</span></span>
@@ -588,7 +588,7 @@ Duration: Days</p>
 <li class="fragment">Note: Finding these reference texts in a smart way, is essentially what RAG systems do</li>
 </ul></li>
 </ul>
-<div id="e78910ad" class="cell" data-execution_count="3">
+<div id="e49e8c52" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="ss">f"""</span></span>
 <span id="cb2-2"><a></a><span class="ss">ROLE: </span><span class="sc">{</span>ROLE<span class="sc">}</span></span>
 <span id="cb2-3"><a></a><span class="ss">TASK: </span><span class="sc">{</span>TASK_DESCRIPTION<span class="sc">}</span></span>
@@ -625,7 +625,7 @@ Duration: Days</p>
 <li class="fragment">To help mitigate this (partially), you can Include a reference text<sup>1</sup></li>
 <li class="fragment">Explicitly tell the model to not answer the question if it can’t.</li>
 </ul>
-<div id="d7646423" class="cell" data-execution_count="4">
+<div id="9d43d8f7" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3" data-code-line-numbers="|6-9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="ss">f"""</span></span>
 <span id="cb3-2"><a></a><span class="ss">ROLE: </span><span class="sc">{</span>ROLE<span class="sc">}</span></span>
 <span id="cb3-3"><a></a><span class="ss">TASK: </span><span class="sc">{</span>TASK_DESCRIPTION<span class="sc">}</span></span>
@@ -765,7 +765,7 @@ at the end of a prompt<sup>1</sup></p>
 <li class="fragment">It helps you get started with your prompt faster</li>
 </ul></li>
 </ul>
-<div id="20cbbb59" class="cell" data-execution_count="5">
+<div id="a5a690c8" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="co">"""</span></span>
 <span id="cb6-2"><a></a><span class="co">Given a task description or existing prompt, produce a detailed system prompt to guide a language model in completing the task effectively.</span></span>
 <span id="cb6-3"><a></a></span>
@@ -812,6 +812,17 @@ at the end of a prompt<sup>1</sup></p>
 <span id="cb6-44"><a></a><span class="co">[optional: edge cases, details, and an area to call or repeat out specific important considerations]</span></span>
 <span id="cb6-45"><a></a><span class="co">"""</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="prompting-workflow-for-complex-tasks" class="slide level2">
+<h2>Prompting workflow for complex tasks</h2>
+<p>Prompting workflow:<br>
+Write prompt → Refine via Meta-prompt → Finetune prompt → Evaluate Prompt →<br>
+<span class="highlighted-text">Repeat if neccessary</span></p>
+<ul>
+<li class="fragment">Add all the <code>context</code> you can meta prompt task.</li>
+<li class="fragment">This workflow saves you a lot of time on complex inference task using reasoning models and deep research workflows</li>
+<li class="fragment">More time in prompt development = less time in redoing inference</li>
+</ul>
 </section></section>
 <section>
 <section id="prompting-for-image-generation" class="title-slide slide level1 center" data-background-image="./figures/image-generation.png" data-background-opacity="0.45">

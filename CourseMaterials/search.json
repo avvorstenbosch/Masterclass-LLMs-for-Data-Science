@@ -200,7 +200,7 @@
     "href": "slides/day_1/6.Increased_efficiency_with_LLMs.html#how-should-we-interact-with-documents",
     "title": "Increased efficiency with LLMs",
     "section": "How should we interact with documents?",
-    "text": "How should we interact with documents?\n\nMany documents we are interested in are too large for the context window of LLMs\n\nFor the GPT4o-API this is 128K tokens!! (200-300 pages)\n\nBut even then:\n\nYou might want to search through a large collection of large documents:\n\n\nyour companies knowledge base\n100s of financial reports\nWikipedia\netc.\n\nYou might not want to add all the documents to the context window due to:\n\nSpeed issues\nCost issues"
+    "text": "How should we interact with documents?\n\nMany documents we are interested in are too large for the context window of LLMs\n\nFor the GPT5-API this is 128K+ tokens!! (200-300 pages)\n\nBut even then:\n\nYou might want to search through a large collection of large documents:\n\n\nyour companies knowledge base\n100s of financial reports\nWikipedia\netc.\n\nYou might not want to add all the documents to the context window due to:\n\nSpeed issues\nCost issues"
   },
   {
     "objectID": "slides/day_1/6.Increased_efficiency_with_LLMs.html#finding-the-right-context-to-answer-the-question",
@@ -291,7 +291,7 @@
     "href": "slides/day_1/6.Increased_efficiency_with_LLMs.html#what-is-github-copilot",
     "title": "Increased efficiency with LLMs",
     "section": "What is Github Copilot",
-    "text": "What is Github Copilot\n\n\n\nan LLM-Powered Code Assistant\n\nWe will talk more about LLMs in  Februari 2025 \n\nDeveloped by GitHub, OpenAI and Microsoft\nHelps write code faster with AI suggestions"
+    "text": "What is Github Copilot\n\n\n\nan LLM-Powered Code Assistant\nDeveloped by GitHub, OpenAI and Microsoft\nHelps write code faster with AI suggestions"
   },
   {
     "objectID": "slides/day_1/6.Increased_efficiency_with_LLMs.html#how-does-it-work",
@@ -504,25 +504,116 @@
     "text": "Finding the right context to answer the question\n\nThese solutions all have the following in common:\n\nLLM embedded in nicely defined context\nMost relevant information directly at hand as context for the model\nThe task is performed based on information in the context window, not model internal knowledge\n\n\n\n\n\nLLMs in Practice"
   },
   {
+    "objectID": "slides/day_1/4.Programming_with_LLMs.html#what-is-github-copilot",
+    "href": "slides/day_1/4.Programming_with_LLMs.html#what-is-github-copilot",
+    "title": "Programming with LLMs",
+    "section": "What is Github Copilot",
+    "text": "What is Github Copilot\n\n\n\nan LLM-Powered Code Assistant\nDeveloped by GitHub, OpenAI and Microsoft\nHelps write code faster with AI suggestions"
+  },
+  {
+    "objectID": "slides/day_1/4.Programming_with_LLMs.html#how-does-it-work",
+    "href": "slides/day_1/4.Programming_with_LLMs.html#how-does-it-work",
+    "title": "Programming with LLMs",
+    "section": "How Does It Work?",
+    "text": "How Does It Work?\n\n\n\nBased on a  GPT-model \n\nOriginally Codex\n\nTrained on billions of lines of public (and private) code\nProvides context-aware code completion suggestions\n\n\n\n\n\n\n\n\nSupported Languages:\n\n\nR\nPython\nJavaScript\nSQL\nTypescript,\nC#,\nC++\nRuby, Go, Rust, etc…\n\n\n\nQuality of suggestions relates directly to language  popularity  on Github"
+  },
+  {
+    "objectID": "slides/day_1/4.Programming_with_LLMs.html#benefits-of-using-github-copilot",
+    "href": "slides/day_1/4.Programming_with_LLMs.html#benefits-of-using-github-copilot",
+    "title": "Programming with LLMs",
+    "section": "Benefits of Using GitHub Copilot",
+    "text": "Benefits of Using GitHub Copilot\n\nIncrease Productivity\nReduces time spent on boilerplate code\nHelps you focus on logic rather than syntax"
+  },
+  {
+    "objectID": "slides/day_1/4.Programming_with_LLMs.html#learning-tool",
+    "href": "slides/day_1/4.Programming_with_LLMs.html#learning-tool",
+    "title": "Programming with LLMs",
+    "section": "Learning Tool",
+    "text": "Learning Tool\n\nOffers code examples and patterns\nAssists in learning new libraries and functions\nSuggests alternative approaches\nInspires creative solutions"
+  },
+  {
+    "objectID": "slides/day_1/4.Programming_with_LLMs.html#limitations-and-considerations",
+    "href": "slides/day_1/4.Programming_with_LLMs.html#limitations-and-considerations",
+    "title": "Programming with LLMs",
+    "section": "Limitations and Considerations",
+    "text": "Limitations and Considerations\n\nSuggestions can be far from optimal\n\nThey can also be flat out wrong!\nSometimes  ‘hallucinates’  non-existing functions.\n\nbe mindfull of inconsistent use of libraries and style\n\nLess so when using integrated tools like github copilot\nMore so when using seperate tools like ChatGPT or local LLMs\n\n\n\nRemedy:\n\n\nAlways review and test the code!\nNever just accept blindly\nTry to understand what is going on"
+  },
+  {
+    "objectID": "slides/day_1/4.Programming_with_LLMs.html#security-risks",
+    "href": "slides/day_1/4.Programming_with_LLMs.html#security-risks",
+    "title": "Programming with LLMs",
+    "section": "Security Risks",
+    "text": "Security Risks\n\nMay produce insecure code\n\nEspecially when you are more on the product development side of things\n\nBe cautious with sensitive information\n\nYour environment can contain propriatery code or data\nNever install copilot without consulting with your  Security departement."
+  },
+  {
+    "objectID": "slides/day_1/4.Programming_with_LLMs.html#intellectual-property",
+    "href": "slides/day_1/4.Programming_with_LLMs.html#intellectual-property",
+    "title": "Programming with LLMs",
+    "section": "Intellectual Property",
+    "text": "Intellectual Property\n\n\n\nBe aware of licensing issues\nGenerated code may resemble existing code\n\n\n\n\n@github copilot, with \"public code\" blocked, emits large chunks of my copyrighted code, with no attribution, no LGPL license. For example, the simple prompt \"sparse matrix transpose, cs_\" produces my cs_transpose in CSparse. My code on left, github on right. Not OK. pic.twitter.com/sqpOThi8nf\n\n— Tim Davis (@DocSparse) October 16, 2022"
+  },
+  {
+    "objectID": "slides/day_1/4.Programming_with_LLMs.html#comment-based-prompts",
+    "href": "slides/day_1/4.Programming_with_LLMs.html#comment-based-prompts",
+    "title": "Programming with LLMs",
+    "section": "Comment-Based Prompts",
+    "text": "Comment-Based Prompts\n\nWrite a comment describing desired code\nCopilot generates the code for you as ghost code (press tab to accept) Example: Calculating Mean\n\n\n# Function to calculate mean of a vector"
+  },
+  {
+    "objectID": "slides/day_1/4.Programming_with_LLMs.html#comment-based-prompts-1",
+    "href": "slides/day_1/4.Programming_with_LLMs.html#comment-based-prompts-1",
+    "title": "Programming with LLMs",
+    "section": "Comment-Based Prompts",
+    "text": "Comment-Based Prompts\n\n\nWrite a comment describing desired code\nCopilot generates the code for you Example: Calculating Mean\n\n\n\n# Function to calculate mean of a vector\ndef &lt;- function(x) {\n    mean &lt;- sum(x) / length(x)\n    return(mean)\n}"
+  },
+  {
+    "objectID": "slides/day_1/4.Programming_with_LLMs.html#asking-questions-in-comments",
+    "href": "slides/day_1/4.Programming_with_LLMs.html#asking-questions-in-comments",
+    "title": "Programming with LLMs",
+    "section": "Asking Questions in Comments",
+    "text": "Asking Questions in Comments\n\nUse Natural Language\nPose questions in comments\nOnly works for short questions\npreferably, but not limited to, coding questions\n\n\n# Q: What is a recursive function?"
+  },
+  {
+    "objectID": "slides/day_1/4.Programming_with_LLMs.html#asking-questions-in-comments-1",
+    "href": "slides/day_1/4.Programming_with_LLMs.html#asking-questions-in-comments-1",
+    "title": "Programming with LLMs",
+    "section": "Asking Questions in Comments",
+    "text": "Asking Questions in Comments\n\n\nUse Natural Language\nPose questions in comments\nOnly works for short questions\npreferably, but not limited to, coding questions\n\n\n\n# Q: What is a recursive function?\n# A: A recursive function is a function that calls itself within its definition. This allows the function to repeat its operation on a smaller or simpler version of the input untill a base case is reached, at which point the function returns a final result."
+  },
+  {
+    "objectID": "slides/day_1/4.Programming_with_LLMs.html#autocomplete-inside-projects",
+    "href": "slides/day_1/4.Programming_with_LLMs.html#autocomplete-inside-projects",
+    "title": "Programming with LLMs",
+    "section": "Autocomplete Inside Projects",
+    "text": "Autocomplete Inside Projects\n\nContext-Aware Suggestions\nConsiders variables and functions in your project\nTailors suggestions to your codebase\n\nExample: using R-projects:\n\nIf you have a process_data() function\nCopilot may suggest how to use it elsewhere\n\nIn VSCode:\n\nCopilot looks at your active file and open tabs as context for suggestions\nTo a degree, this helps to keep consistency in your codebase"
+  },
+  {
+    "objectID": "slides/day_1/4.Programming_with_LLMs.html#demo-github-copilot-in-rstudio",
+    "href": "slides/day_1/4.Programming_with_LLMs.html#demo-github-copilot-in-rstudio",
+    "title": "Programming with LLMs",
+    "section": "Demo: GitHub Copilot in RStudio",
+    "text": "Demo: GitHub Copilot in RStudio\n\nDemo"
+  },
+  {
+    "objectID": "slides/day_1/4.Programming_with_LLMs.html#github-copilot-in-vscode-1",
+    "href": "slides/day_1/4.Programming_with_LLMs.html#github-copilot-in-vscode-1",
+    "title": "Programming with LLMs",
+    "section": "GitHub Copilot in VSCode",
+    "text": "GitHub Copilot in VSCode\n\n\nWhat’s Different in VSCode?\n\nMore extensive extension ecosystem\nSupports Copilot Chat\n\nWe will discuss this in the next part\n\nMultiple Suggestions\nPress Ctrl + Enter to view alternatives"
+  },
+  {
+    "objectID": "slides/day_1/4.Programming_with_LLMs.html#best-practices-with-github-copilot",
+    "href": "slides/day_1/4.Programming_with_LLMs.html#best-practices-with-github-copilot",
+    "title": "Programming with LLMs",
+    "section": "Best Practices with GitHub Copilot",
+    "text": "Best Practices with GitHub Copilot\n\nAlways Review Code\nDon’t blindly accept suggestions\nEnsure code meets your standards\nTake your time to see what is happening, or you won’t learn to code yourself!\nLearn new patterns and practices\nAvoid Over-Reliance\nUse Copilot to enhance, not replace, your work\nContinue to write code independently"
+  },
+  {
     "objectID": "slides/day_1/4.Programming_with_LLMs.html#what-can-llms-mean-for-you",
     "href": "slides/day_1/4.Programming_with_LLMs.html#what-can-llms-mean-for-you",
     "title": "Programming with LLMs",
     "section": "What can LLMs mean for you?",
-    "text": "What can LLMs mean for you?\n\n\n\nWriting code:\n\nGreat for code with extensive syntax, but simple logic:\n\nRegex patterns\nSQL queries\n\nGetting better at complex logic which reasoning models such as:\n\nDeepseek R1\nGPT o1\n\n\nTranslation between code-languages:\n\ni.e. Python to R\ni.e. R to Python\n\nWriting boilerplate-code\nWriting documentation\nWriting unittests\nExplainig code\nDebugging code\nReviewing code\n\nOptimising code\nImproving code"
-  },
-  {
-    "objectID": "slides/day_1/4.Programming_with_LLMs.html#what-can-llms-mean-for-you-1",
-    "href": "slides/day_1/4.Programming_with_LLMs.html#what-can-llms-mean-for-you-1",
-    "title": "Programming with LLMs",
-    "section": "What can LLMs mean for you?",
     "text": "What can LLMs mean for you?\n\n\n\nHow does using LLM chat differ from github copilot?\n\nGeneral purpose versus only code specific\nMore interactive\nLonger conversations\nAbility to guide more in the Context\nBut also more removed from IDE\nCannot see code context from your project"
-  },
-  {
-    "objectID": "slides/day_1/4.Programming_with_LLMs.html#demo-github-copilot-chat-in-vscode",
-    "href": "slides/day_1/4.Programming_with_LLMs.html#demo-github-copilot-chat-in-vscode",
-    "title": "Programming with LLMs",
-    "section": "Demo: GitHub Copilot Chat in VSCode",
-    "text": "Demo: GitHub Copilot Chat in VSCode\n\nDemo"
   },
   {
     "objectID": "slides/day_1/4.Programming_with_LLMs.html#writing-code-with-llms",
@@ -1055,6 +1146,13 @@
     "title": "Introduction to Prompt Engineering",
     "section": "Meta-prompting",
     "text": "Meta-prompting\n\nWriting good prompts is time-consuming\nA meta-prompt instructs the model to write a good prompt for you:\n\nIt incorporates best practices and guidelines for prompting\nIt helps you get started with your prompt faster\n\n\n\n\"\"\"\nGiven a task description or existing prompt, produce a detailed system prompt to guide a language model in completing the task effectively.\n\n# Guidelines\n\n- Understand the Task: Grasp the main objective, goals, requirements, constraints, and expected output.\n- Minimal Changes: If an existing prompt is provided, improve it only if it's simple. For complex prompts, enhance clarity and add missing elements without altering the original structure.\n- Reasoning Before Conclusions**: Encourage reasoning steps before any conclusions are reached. ATTENTION! If the user provides examples where the reasoning happens afterward, REVERSE the order! NEVER START EXAMPLES WITH CONCLUSIONS!\n    - Reasoning Order: Call out reasoning portions of the prompt and conclusion parts (specific fields by name). For each, determine the ORDER in which this is done, and whether it needs to be reversed.\n    - Conclusion, classifications, or results should ALWAYS appear last.\n- Examples: Include high-quality examples if helpful, using placeholders [in brackets] for complex elements.\n   - What kinds of examples may need to be included, how many, and whether they are complex enough to benefit from placeholders.\n- Clarity and Conciseness: Use clear, specific language. Avoid unnecessary instructions or bland statements.\n- Formatting: Use markdown features for readability. DO NOT USE ``` CODE BLOCKS UNLESS SPECIFICALLY REQUESTED.\n- Preserve User Content: If the input task or prompt includes extensive guidelines or examples, preserve them entirely, or as closely as possible. If they are vague, consider breaking down into sub-steps. Keep any details, guidelines, examples, variables, or placeholders provided by the user.\n- Constants: DO include constants in the prompt, as they are not susceptible to prompt injection. Such as guides, rubrics, and examples.\n- Output Format: Explicitly the most appropriate output format, in detail. This should include length and syntax (e.g. short sentence, paragraph, JSON, etc.)\n    - For tasks outputting well-defined or structured data (classification, JSON, etc.) bias toward outputting a JSON.\n    - JSON should never be wrapped in code blocks (```) unless explicitly requested.\n\nThe final prompt you output should adhere to the following structure below. Do not include any additional commentary, only output the completed system prompt. SPECIFICALLY, do not include any additional messages at the start or end of the prompt. (e.g. no \"---\")\n\n[Concise instruction describing the task - this should be the first line in the prompt, no section header]\n\n[Additional details as needed.]\n\n[Optional sections with headings or bullet points for detailed steps.]\n\n# Steps [optional]\n\n[optional: a detailed breakdown of the steps necessary to accomplish the task]\n\n# Output Format\n\n[Specifically call out how the output should be formatted, be it response length, structure e.g. JSON, markdown, etc]\n\n# Examples [optional]\n\n[Optional: 1-3 well-defined examples with placeholders if necessary. Clearly mark where examples start and end, and what the input and output are. User placeholders as necessary.]\n[If the examples are shorter than what a realistic example is expected to be, make a reference with () explaining how real examples should be longer / shorter / different. AND USE PLACEHOLDERS! ]\n\n# Notes [optional]\n\n[optional: edge cases, details, and an area to call or repeat out specific important considerations]\n\"\"\""
+  },
+  {
+    "objectID": "slides/day_1/3.Prompt_Engineering.html#prompting-workflow-for-complex-tasks",
+    "href": "slides/day_1/3.Prompt_Engineering.html#prompting-workflow-for-complex-tasks",
+    "title": "Introduction to Prompt Engineering",
+    "section": "Prompting workflow for complex tasks",
+    "text": "Prompting workflow for complex tasks\nPrompting workflow:\nWrite prompt → Refine via Meta-prompt → Finetune prompt → Evaluate Prompt →\nRepeat if neccessary\n\nAdd all the context you can meta prompt task.\nThis workflow saves you a lot of time on complex inference task using reasoning models and deep research workflows\nMore time in prompt development = less time in redoing inference"
   },
   {
     "objectID": "slides/day_1/3.Prompt_Engineering.html#prompting-for-image-generation-1",
