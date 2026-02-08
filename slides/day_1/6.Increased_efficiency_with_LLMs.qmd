@@ -12,7 +12,7 @@ title-slide-attributes:
 ## How should we interact with documents?
 
 * Many documents we are interested in are too large for the context window of LLMs
-    * For the GPT4o-API this is 128K tokens!! (200-300 pages)
+    * For the GPT5-API this is 128K+ tokens!! (200-300 pages)
 * But even then:
     * You might want to search through a large collection of large documents:\
         - <span class="highlighted-text">your companies knowledge base</span>
@@ -229,7 +229,6 @@ Real-time translation of audio content
 ::: {.column width="50%"}
 
 - an LLM-Powered Code Assistant
-  - We will talk more about LLMs in <span class='highlighted-text'> Februari 2025 </span>
 - Developed by GitHub, OpenAI and Microsoft
 - Helps write code faster with AI suggestions
 

@@ -199,12 +199,16 @@ First try to solve it yourself! What is the answer?
 ## Compare the answers given by 2 different LLMs
 Now pair up with a partner and use 2 different chats to ask this question.
 
-* one of you will use `bartowski/Mistral-Small-24B-Instruct-2501-GGUF`
-* The other will use a smaller model such as the llama model we were already using.
+* one of you will use `Mistral small-3.2-24B-2506 quantized`
+* The other will use a smaller model such as `Microsoft Phi-4-mini quantized` model we were already using.
 * Both use the same system and user prompts to ask the question.
 
 Did both get it right? What did you think of the difference in the answers?
-If you have access to Deepseek-R1 or ChatGPT 0X, you can also compare to these reasoning models. Those tend to easily one-shot this riddle.
+
+Now also try with the reasoning model: `Deepseek R1-0528-Qwen-8B quantized`
+Reasoning models are trained to first spend tokens 'thinking': reasoning about a problem, and planning which steps to solve next. 
+This increases the amount of compute a model can spend on an answer, and creates usefull extra context tokens in de context-window. These models tend to easily one-shot this riddle.
+Why no use them all the time? I usually do, but they are more expensive and slower to run, and for many tasks the regular models are good enough.
 
 \newpage
 # Summarizing texts
@@ -235,46 +239,9 @@ Have the model generate a review of a movie or television series of your own cho
 - The review should be around 500 words long. 
 
 \newpage
-# Do you have time left? Perform the above exercises on chatgpt.com
-You can just use the free account, and see how the OpenAI models compare to these open weights models. 
-
-# ChatGPT website only - Generating images
-**Use GPT4o for this assignment**
-
-## Start generic
-Write a very simple image generation prompt, no more than 1 line of text.
-We are going to itterate over this prompt. 
-
-Ask the model to give you the prompt it used to generate this image.3
-
-## Adjust the Prompt
-Using the image prompt from the model as a reference, use it to write a new prompt. Adjust any elements you want, make use of the `Do's' from the slides:
-
-Do’s
-
+# Do you have time left? Perform the above exercises on gemini.google.com, ChatGPT.com, or huggingchat.co/chat/
+You can just use the free account for these 3 options, and see how the state-of-the-art cloud models compare to, the state of the art open-weights models, compared to the the local open-weights models we have used so far.
 \begin{itemize}
-\item \textbf{Be Specific:}\\
-Include details about the subject, background, mood, etc.
-\item \textbf{Be descriptive:}\\
-Instead of saying ``a dog” say ``a fluffy, small, brown dog.”
-\item \textbf{Specify a style:}\\
-``cubism”, ``watercolor painting”, ``In the style of starry night by Van Gogh”, ``photorealistic”, etc.
-\item \textbf{Add search-keywords:}\\
-for high quality images consider: ``4k”, ``HD”, ``DSLR photography”, etc.
-\item \textbf{Iterate over images:}\\
-Ask Dall-E to make slight changes you’d prefer.
-\item \textbf{Specify the resolution:}\\
-“Portrait”, “Widescreen”, etc.
-\item \textbf{Request a specific random seed:}\\
-This reduces the variance when iterating over images. The newest version of GPT4 no longer generates a new random seed for each image.
+\item Gemini: `https://gemini.google.com` is currenctly the leading model above ChatGPT
+\item HuggingChat: `https://huggingchat.co/chat` is a collection of free open-weights models. We have been using huggingface so far to download the models for the exercises, but it also has a chat interface hosting some seriously impressive (and big) open-weights models
 \end{itemize}
-
-Ask the model to generate a few different images.
-
-## Adjustment Tool
-Now, for the image you like best, click on it, and adjust it using the adjustment tool:
-\begin{itemize}
-\item mark an element of the image that should be changes
-\item describe what the content of that element should be instead.
-\end{itemize}
-

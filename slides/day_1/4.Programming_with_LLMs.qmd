@@ -8,35 +8,243 @@ title-slide-attributes:
 
 ---
 
-# Pair-programming with LLM-Chats
+## What is Github Copilot
+::: {.columns}
+::: {.column width="50%"}
 
-## What can LLMs mean for you? {.smaller}
+- an LLM-Powered Code Assistant
+- Developed by GitHub, OpenAI and Microsoft
+- Helps write code faster with AI suggestions
+
+:::
+::: {.column width="50%"}
+![](./figures/copilot_generate_test.gif)
+:::
+::: 
+
+## How Does It Work?
+::: {.columns}
+::: {.column}
+- Based on a   <span class='highlighted-text'> GPT-model </span>
+  - Originally `Codex`
+- Trained on billions of lines of public (and private) code
+- Provides context-aware code completion suggestions
+:::
+::: {.column}
+![](./figures/autoregressive-llm.jpg)
+:::
+::: 
+
+::: {.columns}
+::: {.column width='35%'}
+
+:::{.fragment}
+Supported Languages:
+:::
+
+- R
+- Python
+- JavaScript
+- SQL
+- Typescript,
+- C#,
+- C++
+- Ruby, Go, Rust, etc...
+:::
+
+::: {.column width='65%'}
+- Quality of suggestions relates directly to language <span class='highlighted-text'> popularity </span> on Github
+:::
+:::
+
+## Benefits of Using GitHub Copilot
+- Increase Productivity
+- Reduces time spent on boilerplate code
+- Helps you focus on logic rather than syntax
+
+## Learning Tool
+- Offers code examples and patterns
+- Assists in learning new libraries and functions
+- Suggests alternative approaches
+- Inspires creative solutions
+
+# Types of tasks Copilot can help with
+
+::: {.columns}
+::: {.column}
+- Writing code
+- Translation between code-languages
+- Writing boilerplate-code
+- Documenting code
+- Writing unittests
+- Explainig code
+- Improving/Optimising code
+- Debugging code
+- Reviewing code
+:::
+::: {.column}
+![](./figures/Copilot-image.webp)
+:::
+::: 
+
+
+## Limitations and Considerations
+- Suggestions can be far from optimal
+  - They can also be flat out wrong!
+  - Sometimes <span class="highlighted-text"> 'hallucinates' </span> non-existing functions.
+- be mindfull of inconsistent use of libraries and style
+  - Less so when using integrated tools like `github copilot`
+  - More so when using seperate tools like `ChatGPT` or local LLMs 
+
+:::{.fragment}
+Remedy:
+:::
+
+- Always review and test the code!
+- Never just accept blindly
+- Try to understand what is going on
+
+
+## Security Risks
+- May produce insecure code
+  - Especially when you are more on the product development side of things
+- Be cautious with sensitive information
+  - Your environment can contain propriatery code or data
+  - Never install copilot without consulting with your <span class="highlighted-text"> Security departement</span>. 
+
+## Intellectual Property
 ::: {.columns}
 ::: {.column}
 
-- Writing code: 
-    - Great for code with extensive syntax, but simple logic: 
-        - Regex patterns
-        - SQL queries
-    - Getting better at complex logic which reasoning models such as:
-        - [Deepseek R1](https://arxiv.org/abs/2501.12948)
-        - [GPT o1](https://openai.com/index/learning-to-reason-with-llms/)
-- Translation between code-languages:
-    - i.e. Python to R
-    - i.e. R to Python
-- Writing boilerplate-code 
-- Writing documentation
-- Writing unittests 
-- Explainig code
-- Debugging code
-- Reviewing code
-    - Optimising code
-    - Improving code
+- Be aware of licensing issues
+- Generated code may resemble existing code
+
 :::
 ::: {.column}
-![](./figures/Gif-ChatGPT.gif)
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr"><a href="https://twitter.com/github?ref_src=twsrc%5Etfw">@github</a> copilot, with &quot;public code&quot; blocked, emits large chunks of my copyrighted code, with no attribution, no LGPL license. For example, the simple prompt &quot;sparse matrix transpose, cs_&quot; produces my cs_transpose in CSparse. My code on left, github on right. Not OK. <a href="https://t.co/sqpOThi8nf">pic.twitter.com/sqpOThi8nf</a></p>&mdash; Tim Davis (@DocSparse) <a href="https://twitter.com/DocSparse/status/1581461734665367554?ref_src=twsrc%5Etfw">October 16, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
 :::
 ::: 
+
+
+## Comment-Based Prompts {auto-animate="true"}
+- Write a comment describing desired code
+- Copilot generates the code for you as ghost code (press tab to accept)
+Example: Calculating Mean
+```{r}
+#| eval: false
+#| incremental: true
+#| echo: true
+#| code-line-numbers: '1'
+# Function to calculate mean of a vector
+```
+
+## Comment-Based Prompts {auto-animate="true"}
+:::{.nonincremental}
+- Write a comment describing desired code
+- Copilot generates the code for you
+Example: Calculating Mean
+:::
+```{r}
+#| eval: false
+#| incremental: true
+#| echo: true
+# Function to calculate mean of a vector
+def <- function(x) {
+    mean <- sum(x) / length(x)
+    return(mean)
+}
+```
+
+
+## Asking Questions in Comments {auto-animate="true"}
+- Use Natural Language
+- Pose questions in comments
+- Only works for short questions
+- preferably, but not limited to, coding questions
+```{r}
+#| eval: false
+#| incremental: true
+#| echo: true
+
+# Q: What is a recursive function?
+```
+
+## Asking Questions in Comments {auto-animate="true"}
+:::{.nonincremental}
+- Use Natural Language
+- Pose questions in comments
+- Only works for short questions
+- preferably, but not limited to, coding questions
+:::
+```{r}
+#| eval: false
+#| incremental: true
+#| echo: true
+
+# Q: What is a recursive function?
+# A: A recursive function is a function that calls itself within its definition. This allows the function to repeat its operation on a smaller or simpler version of the input untill a base case is reached, at which point the function returns a final result.
+
+```
+
+## Autocomplete Inside Projects
+- Context-Aware Suggestions
+- Considers variables and functions in your project
+- Tailors suggestions to your codebase
+
+Example: using R-projects:
+
+- If you have a `process_data()` function
+- Copilot may suggest how to use it elsewhere
+
+In VSCode:
+
+- Copilot looks at your active file and open tabs as context for suggestions
+- To a degree, this helps to keep consistency in your codebase
+
+## Demo: GitHub Copilot in RStudio
+
+<div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)">
+  <span class="highlighted-text" style="font-size: 150px;">Demo</span>
+</div>
+
+
+
+# GitHub Copilot in VSCode
+
+## GitHub Copilot in VSCode
+
+::: {.columns}
+
+::: {.column width="30"}
+
+What's Different in VSCode?
+
+- More extensive extension ecosystem
+- Supports Copilot Chat
+  - We will discuss this in the next part
+- Multiple Suggestions
+- Press Ctrl + Enter to view alternatives
+:::
+
+::: {.column width="70"}
+![](./figures/invscode.png)
+
+:::
+::: 
+
+## Best Practices with GitHub Copilot
+- Always Review Code
+- Don't blindly accept suggestions
+- Ensure code meets your standards
+- Take your time to see what is happening, or you won't learn to code yourself!
+- Learn new patterns and practices
+- Avoid Over-Reliance
+- Use Copilot to enhance, not replace, your work
+- Continue to write code independently
+
+# Pair-programming with LLM-Chats
 
 ## What can LLMs mean for you? {.smaller}
 ::: {.columns}
@@ -54,11 +262,6 @@ title-slide-attributes:
 ![](./figures/Gif-ChatGPT.gif)
 :::
 ::: 
-
-## Demo: GitHub Copilot Chat in VSCode
-<div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)">
-  <span class="highlighted-text" style="font-size: 150px;">Demo</span>
-</div>
 
 ## Writing code with LLMs
 
